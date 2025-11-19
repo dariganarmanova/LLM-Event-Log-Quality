@@ -499,7 +499,7 @@ The script will:
 
 ### Examples
 
-#### Example 1: GPT-4 on Credit Dataset - Form-Based Pattern
+#### Example 1: GPT-4o on Credit Dataset - Form-Based Pattern
 
 ```bash
 python gpt_access.py data/credit/Credit-FormBased.csv prompt/form_based_prompt.txt
@@ -507,7 +507,7 @@ python gpt_access.py data/credit/Credit-FormBased.csv prompt/form_based_prompt.t
 
 **Output:** `results/credit/Credit-FormBased_GPT_run1.json`
 
-#### Example 2: Grok on BPIC11 - Synonymous Pattern
+#### Example 2: Grok-4-Fast on BPIC11 - Synonymous Pattern
 
 ```bash
 python grok_access.py data/bpic11/BPIC11-Synonymous.csv prompt/synonymous_prompt.txt
@@ -553,7 +553,7 @@ Results are saved as `run1.json`, `run2.json`, `run3.json`.
   {
     "run_id": 1,
     "prompt_id": 1,
-    "model": "gpt-4",
+    "model": "gpt-4o",
     "temperature": 0.3,
     "dataset": "credit",
     "task_type": "distorted",
@@ -581,52 +581,6 @@ Results are saved as `run1.json`, `run2.json`, `run3.json`.
   - `f1_score`: Overall quality score
 - `error`: Error message if execution failed (e.g., syntax errors, import errors)
 - `output_shape`: Dimensions of repaired event log `[rows, columns]`
-
-### Analyzing Results
-
-#### Single Run Analysis
-
-```python
-import json
-import pandas as pd
-
-# Load result
-with open('results/credit/Credit-Distorted_GPT_run1.json', 'r') as f:
-    result = json.load(f)[0]
-
-if result['success']:
-    print(f"Precision: {result['metrics']['precision']:.4f}")
-    print(f"Recall: {result['metrics']['recall']:.4f}")
-    print(f"F1-Score: {result['metrics']['f1_score']:.4f}")
-else:
-    print(f"Error: {result['error']}")
-```
-
-#### Aggregate Multiple Runs
-
-```python
-import json
-import numpy as np
-
-# Load all runs
-runs = []
-for i in range(1, 4):
-    with open(f'results/credit/Credit-Distorted_GPT_run{i}.json', 'r') as f:
-        runs.extend(json.load(f))
-
-# Filter successful runs
-successful = [r for r in runs if r['success']]
-
-if successful:
-    avg_precision = np.mean([r['metrics']['precision'] for r in successful])
-    avg_recall = np.mean([r['metrics']['recall'] for r in successful])
-    avg_f1 = np.mean([r['metrics']['f1_score'] for r in successful])
-
-    print(f"Average Precision: {avg_precision:.4f}")
-    print(f"Average Recall: {avg_recall:.4f}")
-    print(f"Average F1-Score: {avg_f1:.4f}")
-    print(f"Success Rate: {len(successful)}/{len(runs)}")
-```
 
 ---
 
@@ -666,7 +620,12 @@ See our paper for detailed analysis and discussion.
 
 ## License
 
-[MIT License / Apache 2.0 / GPL-3.0 - specify your choice]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Dataset Licenses
+
+- **Synthetic datasets (Credit, Pub):** MIT License (created for this research)
+- **BPIC datasets:** CC BY 4.0 (original licenses from 4TU.ResearchData apply)
 
 ---
 
