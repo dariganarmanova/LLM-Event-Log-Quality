@@ -1,0 +1,284 @@
+CRITICAL OUTPUT RULES
+- Do not include Backticks ```
+- Your response MUST start with: `import pandas as pd`
+Output must be only executable Python code (no explanations, no text before/after code)
+
+---
+
+TASK
+
+Detect and fix polluted activity labels: activities that represent the same action but differ due to noisy tokens like IDs, timestamps, or codes.
+
+Goal: Normalize polluted activities to a clean base form and replace all variants with the normalized (canonical) version without modifying already clean activities.
+
+Example:
+
+```
+Before:
+- "Submit_Form_123" (polluted)
+- "Submit_Form_456" (polluted)
+- "Submit_Form_abc" (polluted)
+
+After:
+- "submit form" (canonical form for all 3)
+```
+
+---
+
+INPUT CONFIGURATION
+
+```python
+input_file = 'path/to/file.csv'
+input_directory = 'path/to/directory'
+dataset_name = 'dataset_name'
+output_suffix = '_fixed'
+
+```
+
+Available columns:
+
+* case_column = 'Case'
+* activity_column = 'Activity'
+* timestamp_column = 'Timestamp'
+* label_column = 'label'   
+The following columns are optional:
+variant = 'Variant' (process variant ID)
+resource = 'Resource' (actor / performer)
+If they exist, they must be preserved and passed through to the output.
+If they do not exist, the script must not fail.
+
+---
+
+PARAMETERS
+
+```python
+target_column = 'Activity'
+label_column = 'label'
+aggressive_token_limit = 3     # keep first N tokens only after normalization
+min_variants = 2               # min unique variants per base to mark as polluted
+normalization_strategy = 'aggressive'
+save_detection_file = False    # save intermediate detection file if True
+```
+
+---
+
+REQUIRED BEHAVIOR (algorithm steps)
+
+#1. Load and Validate
+
+* Read the CSV file into a pandas DataFrame.
+* Ensure the required column `Activity` exists; raise an error if missing.
+* Normalize column names for `Case`/`CaseID` if present (rename to `Case`).
+* Store original activities in `original_activity` column for reference.
+* Print:
+  * Original dataset shape
+  * Number of unique activities before fixing
+* Why: Establishes a clean baseline and preserves original values.
+
+---
+
+#2. Define Aggressive Normalization
+
+* Create a function `aggressive_normalize(activity)` implementing:
+  1. Lowercase: convert to lowercase.
+  2. Replace punctuation with spaces: `_ - . , ; :` → space (regex).
+  3. Remove alphanumeric ID-like tokens: tokens containing digits (e.g., `user45`, `step03`, `A1`).
+  4. Remove long digit strings: remove sequences of 5+ digits.
+  5. Collapse whitespace: trim and reduce multiple spaces to single.
+  6. Token limiting: keep only the first `aggressive_token_limit` tokens.
+  7. Return the joined tokens; for NaN return empty string.
+*Why: Strips noisy tokens (IDs, timestamps, codes) while retaining the semantic core.
+
+---
+
+#3. Apply Normalization 
+
+* Compute `BaseActivity = aggressive_normalize(Activity)`.
+* Drop rows with empty `BaseActivity` (nothing meaningful left to compare).
+* Print: Unique base activities count.
+* Why: Provides the candidate canonical forms for grouping.
+
+---
+
+#4. Detect Polluted Groups
+
+* Group by `BaseActivity` and compute:
+  * `unique_variants` = number of unique original `Activity` strings
+  * `total_count` = total occurrences
+* A `BaseActivity` is **polluted** if `unique_variants > min_variants`.
+* Collect all polluted base keys into `polluted_bases`.
+* Print: Number of polluted groups found.
+* Why: If many variants map to the same base, labels are likely polluted.
+
+---
+
+#5. Flag Polluted Events
+
+* Create `is_polluted_label` (0/1):
+  * 1 if `BaseActivity` ∈ `polluted_bases`
+  * 0 otherwise
+* Print:
+  * Polluted events count
+  * Clean events count
+  * Pollution rate (% of total)
+*Why: Marks which rows will be fixed.
+
+---
+
+#6. Calculate Detection Metrics (BEFORE FIXING)
+
+* If `label` exists:
+  * Define ground truth `y_true = 1` if `label` is non-null/non-empty, else 0.
+  * Define predictions `y_pred = is_polluted_label`.
+  * Compute **precision**, **recall**, **F1-score** (use `zero_division=0`).
+  * Print:
+    ```
+    === Detection Performance Metrics ===
+    Precision: X.XXXX
+    Recall: X.XXXX
+    F1-Score: X.XXXX
+    ✓/✗ Precision threshold (≥ 0.6) met/not met
+    ```
+* If no labels: Print all metrics as 0.0000 with note "No ground-truth labels found, skipping evaluation".
+* Why: Validates pollution detection against ground truth when available.
+---
+#7. Integrity Check
+
+* Count totals and verify:
+  * Total polluted bases detected
+  * Total events flagged as polluted
+  * Total clean events
+* Confirm that only events in polluted bases are set to change.
+* Why: Ensures no unintended changes to clean data.
+
+---
+
+#8. Fix Activities
+
+* Replace `Activity` with `BaseActivity` only where `is_polluted_label == 1`.
+* Keep clean activities unchanged.
+* Why: Standardizes polluted variants to their canonical base form.
+---
+
+#9. Save Fixed Output
+* Create `df_fixed` by dropping helper columns (`original_activity`, `BaseActivity`, `is_polluted_label`) while retaining all original non-helper columns (e.g., `Case`, `Timestamp`, `label`).
+* Save to:
+  * `input_directory/dataset_name + output_suffix + '.csv'` with `index=False`.
+* Why: Exports the corrected event log with minimal noise.
+
+---
+
+#11. Summary Statistics
+
+*Print:
+
+  * Normalization strategy name (`normalization_strategy`)
+  * Total rows
+  * Labels replaced count
+  * Replacement rate (%)
+  * Unique activities **before** → **after**
+  * Activity reduction count and percentage
+  * Output file path
+* Print up to 10 sample transformations** showing: `original_activity → Activity` (only for changed rows).
+* Why: Gives an at-a-glance validation that pollution was reduced.
+
+---
+
+CRITICAL REMINDERS
+
+Normalization Rules
+* Lowercasing precedes all other steps.
+* Punctuation replacement (`_ - . , ; :`) must produce spaces (not removal) before whitespace collapsing.
+* ID-like tokens** with digits (e.g., `abc123`, `user45`) must be removed entirely.
+* Long digit sequences (5+ digits) must be removed.
+* Token limit must be enforced after cleanup.
+
+Detection Logic 
+* A base is **polluted** only if **unique variants > min_variants**.
+* Aggregations should consider **original Activity** strings (not processed tokens).
+* Use `BaseActivity` strictly as the grouping key.
+
+Metrics Handling 
+* Ground truth: label non-null/non-empty = 1.
+* Predictions: `is_polluted_label`.
+* Always handle empty-label scenarios gracefully (print zeros with a note).
+
+Output Integrity 
+* Only polluted rows should change.
+* Preserve all non-helper columns as-is.
+* Ensure no empty activities remain in the final output.
+
+---
+
+NORMALIZATION EXAMPLE
+
+Input: `Check_Credit_Score-user45_step03_2023`
+After steps:
+
+* lowercase → `check_credit_score-user45_step03_2023`
+* punctuation → `check credit score user45 step03 2023`
+* remove alphanumeric IDs → `check credit score`
+* remove long digits → `check credit score`
+* collapse whitespace → `check credit score`
+* token limit (3) → `check credit score`
+  **Result:** `check credit score`
+
+---
+
+POLLUTION DETECTION EXAMPLE
+
+```
+Activity                    BaseActivity
+Submit_Form_123            submit form
+Submit_Form_456            submit form
+Submit_Form_abc            submit form
+Approve_Contract           approve contract
+```
+
+* Grouped unique variants:
+  * `submit form` → 3 variants → POLLUTED (if `min_variants=2`)
+  * `approve contract` → 1 variant → CLEAN
+* All rows with `BaseActivity == 'submit form'` are flagged as polluted and replaced with `submit form`.
+
+---
+
+KEY REQUIREMENTS
+
+1. Preserve originals in `original_activity`.
+2. Apply all 7 aggressive normalization steps.
+3. Detect pollution by counting **unique original variants** per base.
+4. Compute metrics **before** fixing (if labels exist).
+5. Replace polluted labels with their `BaseActivity`.
+6. Remove helper columns in final output.
+7. Always print a concise summary and sample transformations.
+
+---
+
+EXPECTED BEHAVIOR
+Input:
+
+```csv
+Case,Activity,label
+1,Submit_Form_123,1
+1,Submit_Form_456,1
+2,Approve_Contract,
+```
+
+Output:
+
+```csv
+Case,Activity,label
+1,submit form,1
+1,submit form,1
+2,Approve_Contract,
+```
+
+Metrics (example):
+
+```
+=== Detection Performance Metrics ===
+Precision: 1.0000
+Recall: 1.0000
+F1-Score: 1.0000
+✓ Precision threshold (≥ 0.6) met
+```

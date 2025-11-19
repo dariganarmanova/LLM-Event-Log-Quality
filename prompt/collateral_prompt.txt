@@ -1,0 +1,293 @@
+CRITICAL OUTPUT RULES
+- Do not include Backticks ```
+- Your response MUST start with: `import pandas as pd`
+- Output must be only executable Python code** (no explanations, no text before/after code)
+
+---
+TASK
+Detect and remove collateral events: redundant events that occur within seconds of each other and represent the same action, using a sliding window clustering approach.
+
+Goal: Keep only one representative event from each collateral cluster without modifying clean events.
+
+Problem Context:
+Collateral activities are redundant versions of the same activity that occur within a short time window (e.g., "Submit_Form" at 10:00:00, "Submit_Form_1" at 10:00:01, "Submit_Form_signed" at 10:00:01). These should be clustered together and only one representative should be kept.
+
+Example:
+```
+Before:
+- 10:00:00 Submit_Form
+- 10:00:01 Submit_Form_1:collateral
+- 10:00:01 Submit_Form_signed:collateral
+After:
+- 10:00:00 Submit_Form
+```
+---
+INPUT CONFIGURATION
+```python
+input_file = './event_log.csv'
+output_file = 'collateral_fixed_output.csv'
+case_column = 'Case'
+activity_column = 'Activity'
+timestamp_column = 'Timestamp'
+label_column = 'label'
+collateral_suffix = ':collateral'
+The following columns are optional:
+variant = 'Variant' (process variant ID)
+resource = 'Resource' (actor / performer)
+If they exist, they must be preserved and passed through to the output.
+If they do not exist, the script must not fail.
+```
+---
+PARAMETERS
+```python
+time_threshold = 2.0  # seconds - max time gap within cluster
+max_mismatches = 1  # allow N different base activities in cluster
+min_matching_events = 2  # minimum events to form valid cluster
+activity_suffix_pattern = r"(_signed\d*|_\d+)$"  # regex for activity suffixes
+```
+---
+REQUIRED BEHAVIOR (algorithm steps)
+
+#1. Load CSV
+   * Read the CSV file into a pandas DataFrame
+   * Ensure required columns exist: Case, Activity, Timestamp, Variant
+   * Normalize CaseID → Case if needed (handle naming variations)
+   * Convert Timestamp to datetime format using robust parsing. Timestamps may appear both with and without fractional seconds (e.g., "2007-07-30 08:00:18" and "2007-07-30 08:00:18.123456")
+   Use: df[timestamp_column] = pd.to_datetime(df[timestamp_column], format="mixed")
+   or (if needed):
+   df[timestamp_column] = pd.to_datetime(df[timestamp_column])
+   - Do NOT use a fixed strftime format like "%Y-%m-%d %H:%M:%S.%f".
+   * Sort by Case and Timestamp
+
+#2. Identify Collateral Activities
+   * Create `iscollateral` column: 1 if Activity ends with `collateral_suffix`, else 0
+   * Create `BaseActivity` column: Activity with collateral suffix removed
+   * Why: We need to separate known collateral activities from clean ones based on labeling
+
+#3. Preprocess Activity Names
+   * Convert to lowercase for case-insensitive matching
+   * Remove common suffixes (e.g., "_1", "_signed", "_signed2") using regex pattern
+   * Normalize whitespace and punctuation (replace underscores/hyphens with spaces, collapse multiple spaces)
+   * Store in `ProcessedActivity` column
+   * Why: Activities like "Submit_Form_1", "submit-form-signed", and "SUBMIT FORM" should be treated as the same base activity
+
+#4. Initialize Tracking Columns
+   * Create `CollateralGroup` column: -1 (no cluster assigned yet)
+   * Create `is_collateral_event` column: 0 (keep by default)
+   * Initialize `cluster_counter = 0` for global cluster IDs
+   * Why: Track which events belong to which cluster and which should be removed
+
+#5. Sliding Window Clustering
+   
+   Algorithm: For each case, use a sliding window approach to find temporal clusters of similar activities
+   
+   For each case:
+   - Iterate through events starting from position i
+   - Initialize a cluster with the current event at position i
+   - Record the cluster start time as the timestamp of event i
+   - Record the base activity from the ProcessedActivity of event i
+   - Set mismatch counter to 0
+   
+   Expand cluster window:
+   - For each subsequent event j after position i:
+     - Calculate time difference between event j's timestamp and cluster start time
+     - If time difference exceeds time_threshold: STOP expansion
+     - If ProcessedActivity of event j matches the base activity: Add event j to cluster
+     - Else: Increment mismatch counter
+       - If mismatch counter is within max_mismatches: Add event j to cluster (tolerance for noise)
+       - Else: STOP expansion (too many different activities)
+   
+   Filter cluster:
+   - Count frequency of each ProcessedActivity in the cluster
+   - Identify the most frequent ProcessedActivity (dominant base)
+   - Keep only events that match the dominant base activity
+   - Remove all other events from the cluster
+   
+   Validate cluster:
+   - If cluster size is greater than or equal to min_matching_events:
+     - This is a valid collateral cluster
+     - Proceed to mark events (see Step 6)
+   - Else: Skip this cluster (too small to be collateral)
+   
+   Move forward:
+   - Advance to the next unclustered event position
+   
+   * Why sliding window: Captures temporally close events that represent the same action
+   * Why time threshold: Collateral events occur within seconds, not minutes apart
+   * Why mismatch tolerance: Allows for noise/outliers in the time window
+   * Why dominant base: Ensures cluster represents truly similar activities
+
+#6. Mark Events for Removal
+   
+   For each valid collateral cluster:
+   
+   Determine which event to keep:
+   
+   - Examine all activities in the cluster
+   - Check if any event has an unsuffixed version (the activity name equals its processed base form without numeric or signed suffixes)
+   - If an unsuffixed version exists:
+     - Mark the unsuffixed event with is_collateral_event = 0 (KEEP)
+     - Mark all suffixed events with is_collateral_event = 1 (REMOVE)
+   - If no unsuffixed version exists:
+     - Mark the first event chronologically with is_collateral_event = 0 (KEEP)
+     - Mark all subsequent events with is_collateral_event = 1 (REMOVE)
+   
+   Assign cluster ID:
+   - Set CollateralGroup to the current cluster_counter value for all events in the cluster
+   - Increment cluster_counter by 1
+   
+   * Why unsuffixed priority: The base activity name is most likely the "correct" one
+   * Why first event fallback: If all are suffixed, keep the earliest occurrence
+
+#7. Calculate Detection Metrics (BEFORE REMOVAL)
+   If `label_column` exists:   
+   - Create a function to normalize label values:
+     - If label is null or NaN: return 0
+     - If label contains the word "collateral" (case-insensitive): return 1
+     - Otherwise: return 0
+   - Apply this normalization to the label column to create y_true (ground truth)
+   - Use the is_collateral_event column as y_pred (our predictions)
+   - Calculate precision, recall, and F1-score using sklearn metrics
+   - Handle division by zero by setting zero_division parameter to 0
+   
+   * Print:
+   ```
+   === Detection Performance Metrics ===
+   Precision: X.XXXX
+   Recall: X.XXXX
+   F1-Score: X.XXXX
+   ✓/✗ Precision threshold (≥ 0.6) met/not met
+   
+   ```
+   *If no labels: Print all metrics as 0.0000 with note "No labels available for metric calculation"
+   *Why: Validates that we correctly identified collateral events vs ground truth labels
+
+#8. Integrity Check
+   * Count total collateral clusters detected (unique non-negative CollateralGroup values)
+   * Count events marked for removal (is_collateral_event == 1)
+   * Count clean events that were NOT modified (iscollateral == 0 and is_collateral_event == 0)
+   *Print results with clear labels:
+     - Total collateral clusters detected
+     - Total events marked as collateral
+     - Events to be removed
+   * Why: Ensures the algorithm didn't incorrectly mark clean data and shows detection effectiveness
+
+#9. Remove Collateral Events
+   * Filter the DataFrame to keep only rows where is_collateral_event equals 0
+   * Create a copy of this filtered DataFrame as df_fixed
+   * This removes ALL events marked as collateral
+   * Why: Final cleaned dataset contains only representative events
+
+#10. Save Output
+   * Select columns: Case, Timestamp, Variant, Activity (original)
+   * Create Activity_fixed column with same values as Activity (since we removed events rather than renaming)
+   * Include label column if present in input
+   * Format timestamp column to string with format: YYYY-MM-DD HH:MM:SS
+   * Save to CSV with index=False
+   * Why: Preserves original data structure while providing cleaned event log
+
+#11. Summary Statistics
+   * Print:
+     - Total events (original)
+     - Total events (after removal)
+     - Events removed (count and percentage)
+     - Unique activities before removal
+     - Unique activities after removal
+     - Output file path
+   * Print sample of up to 10 removed events showing Case, Activity, Timestamp
+   * Why: Provides quick validation that the process worked and shows what was removed
+
+---
+CRITICAL REMINDERS
+
+Sliding Window Implementation 
+- Time window starts from cluster's FIRST event, not from each new event
+- Stop expanding when: time_diff exceeds time_threshold OR mismatch_count exceeds max_mismatches
+- Always filter cluster to dominant base activity before marking events
+- Use list indices carefully - track original DataFrame indices to mark events correctly
+
+Event Marking Logic 
+- Only mark events within valid clusters (size >= min_matching_events)
+- Never modify events outside clusters - they remain with is_collateral_event = 0
+- Preserve original Activity column - only use for keeping/removing, don't rename activities
+
+Label Normalization 
+- Ground truth:Any label containing "collateral" (case-insensitive) = 1, else 0
+- Prediction: is_collateral_event column (0 or 1)
+- Handle missing labels gracefully - set metrics to 0.0 and print note
+
+---
+CLUSTERING EXAMPLE
+
+Input events for Case 123:
+```
+10:00:00 - Submit_Form
+10:00:01 - Submit_Form_1:collateral
+10:00:01 - Submit_Form_signed:collateral
+10:00:05 - Review_Document
+```
+
+Step 1: Preprocess
+- "Submit_Form" → "submit form" (ProcessedActivity)
+- "Submit_Form_1" → "submit form" (ProcessedActivity)
+- "Submit_Form_signed" → "submit form" (ProcessedActivity)
+- "Review_Document" → "review document" (ProcessedActivity)
+Step 2: Sliding Window (time_threshold = 2.0 seconds)
+- Start at i=0 (10:00:00, Submit_Form, base="submit form")
+- Check i=1 (10:00:01, Submit_Form_1): time_diff=1s ≤ 2s, same base → ADD
+- Check i=2 (10:00:01, Submit_Form_signed): time_diff=1s ≤ 2s, same base → ADD
+- Check i=3 (10:00:05, Review_Document): time_diff=5s > 2s → STOP
+Step 3: Mark for Removal
+- Cluster: ["Submit_Form", "Submit_Form_1", "Submit_Form_signed"]
+- Has unsuffixed "Submit_Form" → KEEP this one (is_collateral_event=0)
+- Mark "Submit_Form_1" → is_collateral_event=1 (REMOVE)
+- Mark "Submit_Form_signed" → is_collateral_event=1 (REMOVE)
+- Assign CollateralGroup=0 to all three events
+Step 4: Continue
+- Move to i=3 (Review_Document) - no subsequent events within window
+- No cluster formed
+
+Output:
+```
+10:00:00 - Submit_Form (KEPT)
+10:00:05 - Review_Document (KEPT)
+```
+
+---
+#TIME WINDOW EDGE CASE
+Events:
+```
+10:00:00 - Activity_A
+10:00:01 - Activity_A_1  (1 sec from start)
+10:00:03 - Activity_A_2  (3 sec from start, > 2 sec threshold)
+```
+With time_threshold = 2.0:
+- Window starts at 10:00:00
+- Activity_A_1 at 10:00:01: diff = 1s ≤ 2s → ADD to cluster
+- Activity_A_2 at 10:00:03: diff = 3s > 2s → STOP, excluded from cluster
+- Result: Cluster has ["Activity_A", "Activity_A_1"] → Keep "Activity_A", remove "Activity_A_1"
+- Activity_A_2 remains as separate event (not collateral)
+
+---
+#MISMATCH TOLERANCE EXAMPLE
+
+Events:
+```
+10:00:00 - Activity_A
+10:00:01 - Activity_A_1
+10:00:01 - Activity_B  (different base!)
+10:00:02 - Activity_A_2
+```
+With max_mismatches = 1:
+- Start cluster with Activity_A (base = "activity a")
+- Activity_A_1: same base → ADD
+- Activity_B: different base (base = "activity b") → mismatch_count=1 → ADD (within tolerance)
+- Activity_A_2: same as original base → would ADD, but need to check dominant base
+Filter to dominant base:
+- Base counts: {"activity a": 3, "activity b": 1}
+- Dominant = "activity a"
+- Final cluster: ["Activity_A", "Activity_A_1", "Activity_A_2"]
+- Activity_B excluded (different base)
+Mark for removal:
+- Keep "Activity_A" (unsuffixed)
+- Remove "Activity_A_1" and "Activity_A_2"

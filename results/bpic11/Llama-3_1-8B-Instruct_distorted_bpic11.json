@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nfrom collections import defaultdict\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC11-Distorted_Llama_run1.py\", line 99, in <module>\n    df.loc[df['ProcessedActivity'].isin(cluster), 'canon",
+    "timestamp": "2025-11-13T11:27:45.286389"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom nltk.util import ngrams\nfrom nltk.tokenize import word_tokenize\nfrom nltk import download\nfrom nltk.tokenize import word_tokenize\nfrom nltk.corpus import s...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: [nltk_data] Downloading package wordnet to\n[nltk_data]     /Users/dariganarmanova/nltk_data...\n[nltk_data]   Package wordnet is already up-to-date!\n[nltk_data] Downloading package averaged_perceptron_",
+    "timestamp": "2025-11-13T11:27:48.257076"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom nltk.util import ngrams\nfrom nltk.tokenize import word_tokenize\nfrom nltk import ngrams as nltk_ngrams\nfrom sklearn.metrics import precision_score, recall_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC11-Distorted_Llama_run3.py\", line 71, in <module>\n    similarity = jaccard_similarity(activity1, activity2",
+    "timestamp": "2025-11-13T11:27:50.888487"
+  }
+]

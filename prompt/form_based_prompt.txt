@@ -1,0 +1,240 @@
+CRITICAL OUTPUT RULES
+- Do not include Backticks ```
+- Your response MUST start with: `import pandas as pd`
+Output must be only executable Python code (no explanations, no text before/after code)
+
+---
+TASK
+
+Detect and merge form-based flattened events— multiple events recorded at the exact same timestamp within the same case that actually represent a single form submission.
+
+Goal:
+Combine simultaneous events in the same case and timestamp into one merged event while preserving `Case`, `Timestamp` information.
+
+Example:
+```
+Before:
+- Case=0, Time=09:00:00, Activity=enter_bp
+- Case=0, Time=09:00:00, Activity=enter_weight
+- Case=0, Time=09:00:00, Activity=enter_temp
+
+After:
+- Case=0, Time=09:00:00, Activity=enter_bp;enter_temp;enter_weight
+```
+
+---
+INPUT CONFIGURATION
+
+```python
+input_file = 'path/to/file.csv'
+input_directory = 'path/to/directory'
+dataset_name = 'dataset_name'
+output_suffix = '_fixed'
+case_column = 'Case'
+activity_column = 'Activity'
+timestamp_column = 'Timestamp'
+label_column = 'label'  
+The following columns are optional:
+variant = 'Variant' (process variant ID)
+resource = 'Resource' (actor / performer)
+If they exist, they must be preserved and passed through to the output.
+If they do not exist, the script must not fail.
+```
+---
+
+PARAMETERS
+
+Flattening condition: Events sharing the same `Case` and `Timestamp`
+Activity merge rule: Merge activities alphabetically separated by `;`
+Metric calculation: Optional if `label` column exists
+---
+REQUIRED BEHAVIOR (algorithm steps)
+
+#1. Load CSV
+* Read the CSV file into a pandas DataFrame.
+* Ensure all required columns exist; rename common variants (e.g., `CaseID` → `Case`).
+* Convert the `Timestamp` column to datetime and standardize as `YYYY-MM-DD HH:MM:SS`.
+* Sort by `Case` and `Timestamp` to maintain chronological order.
+* **Why:** Ensures correct ordering and prepares data for flattening detection.
+
+---
+
+#2. Identify Flattened Events
+* Create `group_key`: combination of `Case` and `Timestamp` values.
+* Count occurrences per group using groupby.
+* Mark `is_flattened = 1` if group size ≥ 2; otherwise 0.
+* **Why:** Identifies simultaneous entries indicating form flattening.
+
+---
+
+#3. Preprocess Flattened Groups
+* Split dataset:
+  * `normal_events`: `is_flattened == 0`
+  * `flattened_events`: `is_flattened == 1`
+* Why: Only flattened events need merging; normal events remain unchanged.
+---
+
+#4. Merge Flattened Activities
+* Group flattened events by `(Case, Timestamp)`.
+* For each group:
+  * Merge all `Activity` values alphabetically using `;` as separator.
+  * Keep the *first** `label` (if present).
+* Create a new DataFrame with merged records.
+* Why: Combines multiple simultaneous entries into a single unified event.
+
+---
+
+#5. Combine and Sort
+
+* Concatenate `normal_events` with merged `flattened_events`.
+* Sort final DataFrame by `Case` and `Timestamp`.
+* Drop helper columns (`group_key`, `is_flattened`).
+* **Why:** Restores consistent ordering and removes temporary computation fields.
+
+---
+
+#6. Calculate Detection Metrics (BEFORE FIXING)
+
+* If `label` column exists:
+  * Define `y_true`: 1 if `label` not null/empty, else 0.
+  * Define `y_pred`: value of `is_flattened`.
+  * Compute precision, recall, and F1-score using sklearn metrics.
+* If no label column exists:
+  * Print metrics as 0.0000.
+  * Add note: “No labels available for metric calculation.”
+Else: 
+   *Print:
+   ```
+   === Detection Performance Metrics ===
+   Precision: X.XXXX
+   Recall: X.XXXX
+   F1-Score: X.XXXX
+   ✓/✗ Precision threshold (≥ 0.6) met/not met
+   
+   ```
+* Why: Measures how accurately flattened events were detected.
+
+---
+
+#7. Integrity Check
+
+* Count and print:
+
+  * Total flattened groups detected.
+  * Total events marked as flattened.
+  * Percentage of flattened events.
+* Why: Ensures flattening detection consistency and quantifies corrections.
+
+---
+
+#8. Fix Events
+
+* Replace original flattened events with merged results.
+* Keep all normal events unchanged.
+* Create final output DataFrame with merged activities.
+* Why: Produces a consistent event log with form-based flattening corrected.
+
+---
+
+#9. Save Output
+
+* Select columns: `Case`, `Activity`, `Timestamp`, and `label` (if present).
+* Ensure timestamp format `YYYY-MM-DD HH:MM:SS`.
+* Save output CSV as:
+
+  ```
+  output_path = input_directory + '/' + dataset_name + output_suffix + '.csv'
+  ```
+* Why: Exports corrected log while preserving structure.
+
+---
+
+#10. Summary Statistics
+* Print:
+  * Total number of events.
+  * Number of flattened (merged) events detected.
+  * Number of unique activities before vs after merging.
+  * Total reduction percentage.
+  * Output file path.
+* Display sample of up to 10 merged activities (`;` separated).
+* Why: Validates merging performance and verifies data reduction.
+
+---
+
+CRITICAL REMINDERS
+
+Flattening Detection 
+- Events must have **identical timestamps** within the same case.
+- Events with slightly different timestamps (milliseconds) are not merged.
+- Different cases with the same timestamp are not considered flattening.
+
+---
+
+Activity Merging 
+- Activities are **alphabetically sorted** and joined with `;`.
+- Example: `[enter_temp, enter_bp, enter_weight]` → `"enter_bp;enter_temp;enter_weight"`
+- Use semicolon (`;`) as standard delimiter for merged activities.
+
+---
+
+Metrics Calculation 
+- Labels are considered **ground truth** for flattening.
+- Predictions based on `is_flattened`.
+- Handle missing labels gracefully with default metrics of 0.0000.
+- Precision threshold check: mark ✓ if ≥ 0.6, ✗ otherwise.
+
+---
+
+Edge Cases 
+
+1. Single event per timestamp: not merged.
+2. Different cases same timestamp: separate, not merged.
+3. Empty or missing label column: metrics = 0.0.
+4. Timestamp parsing errors: handled safely with coercion to datetime.
+---
+
+EXAMPLE CALCULATION
+
+Input:
+
+```
+Case=1, Time=10:00:00, Activity=A
+Case=1, Time=10:00:00, Activity=B
+Case=1, Time=10:00:00, Activity=C
+Case=1, Time=10:05:00, Activity=D
+```
+
+Step 1: Identify Flattened
+
+* Group `1_10:00:00` → 3 events → flattened group
+* Group `1_10:05:00` → 1 event → normal
+
+Step 2: Merge Flattened
+
+* Activities merged: `A;B;C`
+
+Result:
+
+```
+Case=1, Time=10:00:00, Activity=A;B;C
+Case=1, Time=10:05:00, Activity=D
+```
+---
+HANDLED SCENARIOS
+
+* Form submissions recorded as multiple simultaneous actions.
+* Repeated attributes (case) preserved.
+* Flattening performed without altering clean data.
+* Robust metrics computation with or without ground truth labels.
+
+---
+OUTPUT EXPECTATION
+
+After correction, the event log will have:
+
+* Fewer total rows (flattened events merged).
+* Clean, standardized timestamps.
+* Activities joined in a single cell per event.
+* Metrics summary confirming detection precision.
+* Output CSV file path printed at the end.
+

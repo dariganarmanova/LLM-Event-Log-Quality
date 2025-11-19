@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom itertools import combinations\nfrom collections import defaultdict\nfrom sklearn.metrics import precision_recall_fscore_support\n\n# Configuration parameters\ni...",
+    "success": true,
+    "output_shape": [
+      66524,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.8596,
+      "f1_score": 0.9245
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:21:20.273407"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom itertools import combinations\nfrom collections import defaultdict, Counter\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configura...",
+    "success": true,
+    "output_shape": [
+      66524,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1_score": 0.9744
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:21:32.785996"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom itertools import combinations\nfrom collections import defaultdict\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration para...",
+    "success": true,
+    "output_shape": [
+      66524,
+      13
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.8615,
+      "f1_score": 0.9256
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:21:50.748618"
+  }
+]

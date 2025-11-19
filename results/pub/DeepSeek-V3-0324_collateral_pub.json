@@ -1,0 +1,63 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "import pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/pub/Pub-Collateral.csv'\noutput_file = 'data/pub/pub_col...",
+    "success": true,
+    "output_shape": [
+      82003,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.6173,
+      "f1_score": 0.7634,
+      "events_removed": 24967
+    },
+    "error": null,
+    "timestamp": "2025-11-13T17:40:49.524917"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom datetime import datetime\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/pub/Pub-Collate...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR:   File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Collateral_Deepseek_run2.py\", line 5\n    ```python\n    ^\nSyntaxError: invalid syntax\n",
+    "timestamp": "2025-11-13T17:41:52.879949"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "import pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2...",
+    "success": true,
+    "output_shape": [
+      95354,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.2872,
+      "f1_score": 0.4462,
+      "events_removed": 11616
+    },
+    "error": null,
+    "timestamp": "2025-11-13T17:43:03.128163"
+  }
+]

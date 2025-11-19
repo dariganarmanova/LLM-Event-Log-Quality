@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nimport numpy as np\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nfrom collections import defaultdict\n\n# Load the data\ninput_file = 'data/c...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Distorted_Llama_run1.py\", line 34, in <module>\n    df[case_column] = df[case_column].str.lower()\n      ",
+    "timestamp": "2025-11-13T15:59:47.309392"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom nltk.util import ngrams\nfrom nltk.tokenize import word_tokenize\nfrom nltk import ngrams as nltk_ngrams\nfrom nltk import word_tokenize as nltk_tokenize\nfrom...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Distorted_Llama_run2.py\", line 39, in <module>\n    df[case_column] = df[case_column].str.lower()\n      ",
+    "timestamp": "2025-11-13T15:59:49.995078"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nfrom collections import defaultdict\n\n# Configuration parameters\ntime_threshold = 2....",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Distorted_Llama_run3.py\", line 24, in <module>\n    df['Case'] = df['Case'].str.lower()\n                ",
+    "timestamp": "2025-11-13T15:59:52.121549"
+  }
+]

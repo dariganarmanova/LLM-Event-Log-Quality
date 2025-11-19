@@ -1,0 +1,58 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nimport re\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import p...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-Homonymous_Grok_run1.py\", line 76, in <module>\n    cluster_labels = clustering.fit_predict(vectors)\n   ",
+    "timestamp": "2025-11-18T21:49:08.534240"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": false,
+    "output_shape": null,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-Homonymous_Grok_run2.py\", line 88, in <module>\n    cluster_labels = clustering.fit_predict(vectors_dens",
+    "timestamp": "2025-11-18T21:50:16.232460"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "import pandas as pd\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n...",
+    "success": true,
+    "output_shape": [
+      29621,
+      7
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:50:57.782217"
+  }
+]

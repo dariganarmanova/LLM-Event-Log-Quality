@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import f1_score, p...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Homonymous_Llama_run1.py\", line 35, in <module>\n    df['Case'] = df['Case'].str.lower()\n                 ^",
+    "timestamp": "2025-11-14T13:30:00.994976"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: /Users/dariganarmanova/newer-version-pm/script/Pub-Homonymous_Llama_run2.py:45: SyntaxWarning: invalid escape sequence '\\s'\n  df['ProcessedActivity'] = df['ProcessedActivity'].str.replace('\\s+', ' ')\n",
+    "timestamp": "2025-11-14T13:30:03.015478"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_score, recall_score,...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Homonymous_Llama_run3.py\", line 35, in <module>\n    df['Case'] = df['Case'].str.lower()\n                 ^",
+    "timestamp": "2025-11-14T13:30:04.843757"
+  }
+]

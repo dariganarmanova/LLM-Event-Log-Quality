@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "import pandas as pd\nfrom collections import defaultdict\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/pub/Pub-Distorted.csv'\noutput_file = 'da...",
+    "success": true,
+    "output_shape": [
+      66524,
+      6
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.4684,
+      "f1_score": 0.638
+    },
+    "error": null,
+    "timestamp": "2025-11-18T18:30:02.902499"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom collections import defaultdict, Counter\n\ndef preprocess(text):\n    if pd.isna(text):\n        return ''\n    text = str(text).lower()\n    text = re.sub(r'[^a...",
+    "success": true,
+    "output_shape": [
+      66524,
+      6
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    "error": null,
+    "timestamp": "2025-11-18T18:31:00.734475"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom collections import defaultdict\nimport itertools\nfrom itertools import chain\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nimport time...",
+    "success": true,
+    "output_shape": [
+      66524,
+      6
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.8615,
+      "f1_score": 0.9256
+    },
+    "error": null,
+    "timestamp": "2025-11-18T18:32:02.434544"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": true,
+    "output_shape": [
+      66524,
+      6
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:30:32.397080"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": true,
+    "output_shape": [
+      66524,
+      7
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:30:44.567946"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": true,
+    "output_shape": [
+      66524,
+      7
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:31:12.446495"
+  }
+]

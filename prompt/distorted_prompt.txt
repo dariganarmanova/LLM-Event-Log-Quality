@@ -1,0 +1,350 @@
+CRITICAL OUTPUT RULES
+- Do not include Backticks ```
+- Your response MUST start with:`import pandas as pd`
+Output must be only executable Python code** (no explanations, no text before/after code)
+
+---
+TASK
+Detect and fix distorted activity labels: activities with typos, case differences, or character swaps that represent the same action using Jaccard n-gram similarity clustering.
+
+Goal: Normalize similar activities to a canonical (most common) form without modifying clean activities.
+
+Problem Context:
+Distorted activities are variations of the same activity with typos, case differences, or character errors (e.g., "Perform cehcks", "perform checks", "Checkf or completeness"). These should be grouped together and replaced with the most frequent canonical form.
+
+Example:
+```
+Before:
+- Perform cehcks (typo - letters swapped)
+- perform checks (correct)
+- Checkf or completeness (typo - space error)
+- check for completeness (correct)
+After:
+- perform checks (canonical form)
+- perform checks (canonical form)
+- check for completeness (canonical form)
+- check for completeness (canonical form)
+```
+---
+INPUT CONFIGURATION
+```python
+input_file = './event_log.csv'
+output_file = 'distorted_fixed_output.csv'
+case_column = 'Case'
+activity_column = 'Activity'
+timestamp_column = 'Timestamp'
+label_column = 'label'  
+distorted_suffix = ':distorted'
+The following columns are optional:
+variant = 'Variant' (process variant ID)
+resource = 'Resource' (actor / performer)
+If they exist, they must be preserved and passed through to the output.
+If they do not exist, the script must not fail.
+```
+---
+PARAMETERS
+```python
+ngram_size = 3  # character n-gram size for similarity comparison
+similarity_threshold = 0.56  # Jaccard similarity threshold (0-1)
+                             # Higher = stricter matching, Lower = looser matching
+min_length = 4  # minimum character length for activities to compare
+```
+---
+REQUIRED BEHAVIOR (algorithm steps)
+
+#1. Load CSV
+   * Read the CSV file into a pandas DataFrame
+   * Ensure required columns exist: Case, Activity, Timestamp, Variant
+   * Normalize CaseID → Case if needed (handle naming variations)
+   * Store original Activity values in `original_activity` column for reference
+
+#2. Identify Distorted Activities
+   * Create `isdistorted` column: 1 if Activity ends with `distorted_suffix`, else 0
+   * Create `BaseActivity` column: Activity with distorted suffix removed
+   * **Why:** We need to separate known distorted activities from clean ones based on labeling
+
+#3. Preprocess Activity Names
+   * Convert to lowercase for case-insensitive matching
+   * Remove all non-alphanumeric characters except spaces (keep only letters, numbers, spaces)
+   * Strip and collapse multiple whitespace into single spaces
+   * Store in `ProcessedActivity` column
+   * Filter out activities shorter than min_length characters (too short for meaningful comparison)
+   * **Why:** Activities like "Check For Completeness", "check for completeness", and "checkf or completeness" should be comparable despite formatting differences
+
+#4. Calculate Jaccard N-gram Similarity
+   
+   Create helper functions:
+   
+   Generate N-grams:
+   - Split text into overlapping character n-grams of specified size
+   - Example: "check" with ngram_size=3 produces {"che", "hec", "eck"}
+   - Return as a set for efficient intersection/union operations
+   
+   Compute Jaccard Similarity:
+   - Generate n-gram sets for both activity values
+   - Calculate intersection size (n-grams in both sets)
+   - Calculate union size (all unique n-grams from both sets)
+   - Jaccard similarity = intersection size / union size
+   - Returns a value between 0.0 (completely different) and 1.0 (identical)
+   
+   Find Similar Pairs:
+   - Get all unique ProcessedActivity values
+   - Compare each pair of unique activities using Jaccard similarity
+   - If similarity is greater than or equal to similarity_threshold:
+     - Add the pair to similar_pairs list
+   - Print progress periodically (e.g., every 100 comparisons) for large datasets
+   
+   * Why Jaccard n-grams: Character-level n-grams capture substring similarities and are robust to typos, character swaps, insertions, and deletions
+   * Why threshold: Balances between catching typos and avoiding false positives
+
+#5. Cluster Similar Activities (Union-Find)
+   
+   Initialize union-find data structure:
+   - Create a parent dictionary where each unique activity initially points to itself
+   - This represents each activity as its own cluster initially
+   
+   Define find operation:
+   - Given an activity, find its root parent (cluster representative)
+   - Apply path compression for efficiency (update parent pointers during traversal)
+   - Return the root parent
+   
+   Define union operation:
+   - Given two activities, merge their clusters
+   - Make the root of one activity point to the root of the other
+   - This joins two clusters into one
+   
+   Build clusters:
+   - For each similar pair found in Step 4:
+     - Apply union operation to merge their clusters
+   - After processing all pairs, group activities by their root parent
+   - Each group sharing the same root forms one cluster
+   - Keep only clusters with 2 or more members (single activities don't need fixing)
+   
+   * Why union-find: Efficiently groups transitive similarities (if A~B and B~C, then A, B, C form one cluster)
+   * Why cluster size filter:** Single activities have no variants to normalize
+
+#6. Majority Voting Within Clusters
+   
+   For each cluster:
+   - Map normalized ProcessedActivity values back to their original Activity forms
+   - Count the frequency of each original activity variant in the cluster
+   - The most frequent original activity becomes the canonical form
+   - Create a mapping dictionary: {variant_activity: canonical_activity}
+   
+   Mark distorted activities:
+   - For each row in the DataFrame:
+     - If its original Activity matches the canonical form: is_distorted = 0 (clean)
+     - If its original Activity is a variant: is_distorted = 1 (distorted)
+   - Store the canonical form for each row in `canonical_activity` column
+   
+   * Why majority voting: Assumes the most frequent form is the correct one (less likely to be a typo)
+   * Why preserve original forms: Maintains data integrity by keeping the exact canonical spelling
+
+#7. Calculate Detection Metrics (BEFORE FIXING)
+   * If `label_column` exists:
+   - Create a function to normalize label values:
+     - If label is null or NaN: return 0
+     - If label contains the word "distorted" (case-insensitive): return 1
+     - Otherwise: return 0
+   - Apply this normalization to the label column to create y_true (ground truth)
+   - Use the is_distorted column as y_pred (our predictions)
+   - Calculate precision, recall, and F1-score using sklearn metrics
+   - Handle division by zero by setting zero_division parameter to 0
+   
+   * Print:
+   ```
+   === Detection Performance Metrics ===
+   Precision: X.XXXX
+   Recall: X.XXXX
+   F1-Score: X.XXXX
+   ✓/✗ Precision threshold (≥ 0.6) met/not met
+   
+   ```
+   - If no labels: Print all metrics as 0.0000 with note "No labels available for metric calculation"
+   * Why: Validates that we correctly identified distorted activities vs ground truth labels
+
+#8. Integrity Check
+   * Count total distortion clusters detected (number of clusters with variants)
+   * Count activities marked as distorted (is_distorted == 1)
+   * Count clean activities that were NOT modified (is_distorted == 0)
+   * Verify that canonical activities were not changed
+   * Print results with clear labels:
+     - Total distortion clusters detected
+     - Total activities marked as distorted
+     - Activities to be fixed
+   * Why: Ensures the algorithm didn't incorrectly mark clean data and shows correction effectiveness
+
+#9. Fix Activities
+   * Replace Activity column with canonical_activity values
+   * This replaces all distorted activities with their canonical form
+   * Clean activities remain unchanged (they already match canonical form)
+   * Create Activity_fixed column with the corrected values
+   * Why: Standardizes all variants to their canonical form while preserving clean data
+
+#10. Save Output
+   * Select columns: Case, Timestamp, Variant, Activity (original), Activity_fixed
+   * Include label column if present in input
+   * Format timestamp as `YYYY-MM-DD HH:MM:SS` (standardized ISO format)
+   * Save to CSV with `index=False`
+   * Why: Preserves original data for comparison while providing corrected activities
+
+#11. Summary Statistics
+   Print:
+     - Total number of events
+     - Number of distorted events detected
+     - Unique activities before fixing
+     - Unique activities after fixing (should be reduced)
+     - Activity reduction count and percentage
+     - Output file path
+   Print sample of up to 10 transformations showing: original → canonical
+   * Why: Provides quick validation that the process worked (unique activities should decrease)
+
+---
+CRITICAL REMINDERS
+
+Jaccard Similarity Calculation
+- N-grams must be character-level, not word-level
+- Use sets for n-grams to enable efficient intersection/union operations
+- Normalize before comparison - case and punctuation differences should not affect similarity
+- Empty n-gram sets should return 0.0 similarity - handle edge cases
+
+Union-Find Implementation
+- Path compression is important for performance with large datasets
+- Find operation must be recursive or iterative with proper parent updates
+- Union must use find results - never directly merge non-root nodes
+- All similar pairs must be processed before extracting clusters
+
+Canonical Selection 
+- Frequency counting uses original Activity, not ProcessedActivity
+- Preserve exact spelling of the most frequent variant (including case)
+- Only variants within a cluster are candidates - don't compare across clusters
+- Clean activities can be canonical if they're the most frequent in their cluster
+
+Label Normalization 
+- Ground truth: Any label containing "distorted" (case-insensitive) = 1, else 0
+- Prediction: is_distorted column (0 or 1)
+- Handle all distortion types - Interchange, Insert, Proximity, UpLow, Skip
+- Handle missing labels gracefully - set metrics to 0.0 and print note
+
+---
+#SIMILARITY CALCULATION EXAMPLE
+
+Compare: "Perform cehcks" vs "Perform checks"
+
+After normalization:
+- val1 = "perform cehcks"
+- val2 = "perform checks"
+
+Generate 3-grams:
+- val1: {"per", "erf", "rfo", "for", "orm", "rm ", "m c", " ce", "ceh", "ehc", "hck", "cks"}
+- val2: {"per", "erf", "rfo", "for", "orm", "rm ", "m c", " ch", "che", "hec", "eck", "cks"}
+
+Calculate Jaccard:
+- Intersection: {"per", "erf", "rfo", "for", "orm", "rm ", "m c", "cks"} = 8 n-grams
+- Union: All unique n-grams = 16 total
+- Similarity = 8/16 = 0.50
+
+Result:
+- 0.50 < 0.56 (threshold) → NOT similar enough
+- These would not be clustered together with current threshold
+- Note: Adjust threshold to 0.45 to catch this typo pair
+
+---
+
+#CLUSTERING EXAMPLE
+
+Input activities:
+1. "Check for completeness" (appears 3 times)
+2. "check for completeness" (appears 2 times)
+3. "Check fory completeness" (appears 1 time - typo)
+4. "Checkf or completeness" (appears 1 time - typo)
+
+Step 1: Normalize
+- All become: "check for completeness", "check fory completeness", "checkf or completeness"
+
+Step 2: Calculate similarities
+- "check for completeness" vs "check fory completeness": Jaccard = 0.92 (similar)
+- "check for completeness" vs "checkf or completeness": Jaccard = 0.90 (similar)
+- "check fory completeness" vs "checkf or completeness": Jaccard = 0.88 (similar)
+- All pairs exceed 0.56 threshold
+
+Step 3: Cluster with union-find
+- Union(val1, val2), Union(val1, val3), Union(val2, val3)
+- All four activities end up in same cluster
+
+Step 4: Select canonical
+- Map back to original forms:
+  - "Check for completeness": 3 occurrences
+  - "check for completeness": 2 occurrences
+  - "Check fory completeness": 1 occurrence
+  - "Checkf or completeness": 1 occurrence
+- Most frequent = "Check for completeness" (3 times) → CANONICAL
+
+Step 5: Mark distorted
+- "Check for completeness": is_distorted = 0 (canonical)
+- "check for completeness": is_distorted = 1 (variant - different case)
+- "Check fory completeness": is_distorted = 1 (variant - typo)
+- "Checkf or completeness": is_distorted = 1 (variant - typo)
+
+Output:
+- All 7 events now have Activity = "Check for completeness"
+
+---
+#DISTORTION TYPES HANDLED
+
+Your label column contains these distortion types:
+
+1. Interchange: Letters swapped (e.g., "cehcks" instead of "checks")
+2. Insert: Extra characters (e.g., "Checkf or" instead of "Check for")
+3. Proximity: Nearby key typos (e.g., keyboard neighbor errors)
+4. UpLow: Case differences (e.g., "CHECK" vs "check")
+5. Skip: Missing characters (e.g., "chck" instead of "check")
+
+All handled by Jaccard n-gram similarity because:
+- Character n-grams capture local substring patterns
+- Small changes (1-2 characters) still produce high overlap
+- Case normalization handles UpLow
+- N-gram sets are order-independent (robust to swaps)
+
+---
+#N-GRAM SIZE IMPACT
+
+Example text: "check"
+
+With ngram_size=2:
+- N-grams: {"ch", "he", "ec", "ck"}
+- More sensitive to small changes
+- Better for catching single-character typos
+
+With ngram_size=3:
+- N-grams: {"che", "hec", "eck"}
+- Balanced sensitivity
+- Good default for typical activity names
+
+With ngram_size=4:
+- N-grams: {"chec", "heck"}
+- Less sensitive to small changes
+- Better for longer activity names
+
+Recommendation: Use ngram_size=3 for most cases, adjust based on activity name length
+
+---
+#THRESHOLD TUNING GUIDE
+
+similarity_threshold = 0.56 (default)
+
+Lower threshold (e.g., 0.45):
+- Catches more typos and variations
+- Risk: May group genuinely different activities
+- Use when: Activities have many typos, dataset is small
+
+Higher threshold (e.g., 0.70):
+- Only groups very similar activities
+- Risk: May miss subtle typos
+- Use when: Activities are mostly clean, need high precision
+
+Finding optimal threshold:
+- Start with 0.56
+- Check sample transformations in output
+- If too many false positives: increase threshold
+- If missing obvious typos: decrease threshold

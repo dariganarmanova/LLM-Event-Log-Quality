@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "import pandas as pd\nimport re\n\n# Configuration\ninput_file = 'data/bpic11/BPIC11-Polluted.csv'\noutput_file = 'data/bpic11/bpic11_polluted_cleaned_run1.csv'\ndataset_name = 'bpic11'\ntask_type = 'polluted...",
+    "success": true,
+    "output_shape": [
+      124860,
+      5
+    ],
+    "metrics": {
+      "precision": 0.4639,
+      "recall": 1.0,
+      "f1_score": 0.6338
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:40:02.779827"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "import pandas as pd\nimport re\nfrom sklearn.metrics import precision_recall_fscore_support\n\n# Configuration\nrun_number = 2\ndataset_name = 'bpic11'\ntask_type = 'polluted'\ninput_file = 'data/bpic11/BPIC1...",
+    "success": true,
+    "output_shape": [
+      124860,
+      5
+    ],
+    "metrics": {
+      "precision": 0.4639,
+      "recall": 1.0,
+      "f1_score": 0.6338
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:40:35.335549"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/bpic11/BPIC11-Polluted.csv'\ninput_directory = 'data/bpic...",
+    "success": true,
+    "output_shape": [
+      124860,
+      5
+    ],
+    "metrics": {
+      "precision": 0.4639,
+      "recall": 1.0,
+      "f1_score": 0.6338
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:41:05.665995"
+  }
+]

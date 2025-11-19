@@ -1,0 +1,177 @@
+CRITICAL OUTPUT RULES
+- Do not include Backticks ```
+- Your response MUST start with: `import pandas as pd`
+Output must be only executable Python code (no explanations, no text before/after code)
+---
+TASK
+Restore corrupted activity labels (marked with `:homonymous`) by grouping similar activity names using clustering and replacing them with the most frequent / canonical activity name in each cluster.
+
+Goal: Correct homonymous activity names without modifying clean events.
+
+Problem Context:
+Homonymous activities are corrupted versions of the same base activity with added suffixes/prefixes (e.g., "Submit_Form_123:homonymous", "Submit_Form_456:homonymous"). These should be grouped together and replaced with a single canonical name (e.g., "submit form").
+
+Example:
+```
+Before:
+- Submit_Form_123:homonymous
+- Submit_Form_456:homonymous
+- Submit_Form_abc:homonymous
+After:
+- submit form
+- submit form
+- submit form
+```
+---
+INPUT CONFIGURATION
+```python
+input_file = './event_log.csv'
+output_file = 'homonym_fixed_clustering_output.csv'
+case_column = 'Case'
+activity_column = 'Activity'
+timestamp_column = 'Timestamp'
+label_column = 'label'   
+homonymous_suffix = ':homonymous'
+The following columns are optional:
+variant = 'Variant' (process variant ID)
+resource = 'Resource' (actor / performer)
+If they exist, they must be preserved and passed through to the output.
+If they do not exist, the script must not fail.
+```
+---
+PARAMETERS
+```python
+similarity_threshold = 0.5  # cosine similarity threshold for clustering (0–1)
+                            # Lower = stricter grouping, Higher = looser grouping
+linkage_method = 'average'  # linkage method for Agglomerative Clustering
+```
+---
+REQUIRED BEHAVIOR (algorithm steps)
+
+#1. Load CSV
+   * Read the CSV file into a pandas DataFrame
+   * Ensure required columns exist: Case, Activity, Timestamp
+   * Normalize CaseID → Case if needed (handle naming variations)
+
+#2. Identify Homonymous Activities
+   * Create `ishomonymous` column: 1 if Activity ends with `homonymous_suffix`, else 0
+   * Create `BaseActivity` column: Activity with suffix removed
+   * Why: We need to separate corrupted activities from clean ones to avoid modifying correct data
+
+#3. Preprocess Activity Names
+   * Convert to lowercase for case-insensitive matching
+   * Remove the homonymous suffix
+   * Normalize whitespace and punctuation (replace underscores/hyphens with spaces, collapse multiple spaces)
+   * Store in `ProcessedActivity` column
+   * Why: Activities like "Submit_Form", "submit-form", and "SUBMIT FORM" should be treated as the same
+
+#4. Vectorize Activities
+   * Use TF-IDF with character-level n-grams (`analyzer='char'`, `ngram_range=(1,3)`)
+   * Apply to **unique** `ProcessedActivity` values (not the entire column - more efficient)
+   * Convert sparse matrix to dense numpy array using `.toarray()`
+   * Why: Character n-grams capture substring similarities (e.g., "submit_form_123" and "submit_form_456" share "submit_form")
+   * Why dense: scikit-learn's AgglomerativeClustering requires dense input when using cosine metric
+
+#5. Cluster Similar Activities
+   
+   CRITICAL: CORRECT PARAMETER USAGE 
+   
+   ```python
+   # CORRECT - Use 'metric' parameter (NOT 'affinity'):
+   clustering = AgglomerativeClustering(
+       n_clusters=None,
+       metric='cosine',              #CORRECT: Use 'metric'
+       linkage=linkage_method,
+       distance_threshold=1 - similarity_threshold
+   )
+   
+   # WRONG - DO NOT USE 'affinity' (deprecated in scikit-learn 1.2+):
+   # clustering = AgglomerativeClustering(
+   #     affinity='cosine',          #WRONG: This will cause TypeError
+   # )
+   ```
+   
+   * MUST USE: `metric='cosine'` (the parameter name is `metric`, NOT `affinity`)
+   * Set `distance_threshold = 1 - similarity_threshold` (convert similarity to distance)
+   * Use `n_clusters=None` to let the algorithm determine optimal number based on distance_threshold
+   * Apply clustering to the vectorized unique activities using `fit_predict()`
+   * Why clustering: Groups activities with similar character patterns together automatically
+   * Example: "Submit_Form_123:homonymous" and "Submit_Form_456:homonymous" will be in the same cluster because they share most characters
+
+#6. Majority Voting Within Clusters
+   * Map each row's `ProcessedActivity` to its cluster ID
+   * For each cluster, identify the most frequent `BaseActivity` (before preprocessing)
+   * This becomes the canonical activity name for that cluster
+   * Assign canonical name to `Activity_fixed` column for ALL rows in the cluster
+   * Why majority voting: Chooses the most common variant as the "correct" one (assumes the most frequent form is least corrupted)
+   * Critical: Only homonymous activities (ishomonymous=1) should have their Activity_fixed differ from their BaseActivity
+
+#7. Calculate Detection Metrics (BEFORE FIXING)
+
+* If `label` column exists:
+  * Define `y_true`: 1 if `label` not null/empty, else 0.
+  * Define `y_pred`: value of `is_flattened`.
+  * Compute precision, recall, and F1-score using sklearn metrics.
+* If no label column exists:
+
+  * Print metrics as 0.0000.
+  * Add note: “No labels available for metric calculation.”
+* Why: Measures how accurately flattened events were detected.
+
+---
+   *Print:
+   ```
+   === Detection Performance Metrics ===
+   Precision: X.XXXX
+   Recall: X.XXXX
+   F1-Score: X.XXXX
+   Precision threshold (≥ 0.6) met/not met
+   
+   ```
+   * Why: Validates that we correctly identified homonymous activities vs ground truth labels
+
+#8. Integrity Check
+   * Verify that NO clean activities (`ishomonymous==0`) were modified
+   * Count clean activities where `BaseActivity != Activity_fixed` (should be 0)
+   * Count homonymous activities that remained unchanged (BaseActivity == Activity_fixed)
+   * Count homonymous activities that were corrected (BaseActivity != Activity_fixed)
+   * Print results with clear labels
+   * Why: Ensures the algorithm didn't corrupt clean data and shows correction effectiveness
+
+#9. Save Output 
+   * Select columns: Case, Timestamp, Resource, Activity (original), Activity_fixed, ishomonymous
+   * Include label column if present in input
+   * Format timestamp as `YYYY-MM-DD HH:MM:SS` (standardized ISO format)
+   * Save to CSV with `index=False`
+   * Why: Preserves original data for comparison while providing corrected activities
+
+#10. Summary Statistics 
+   * Print:
+     - Total number of events
+     - Number of homonymous events detected
+     - Unique activities before fixing
+     - Unique activities after fixing (should be reduced)
+     - Output file path
+   * Why: Provides quick validation that the process worked (unique activities should decrease)
+
+---
+
+CRITICAL REMINDERS
+
+AgglomerativeClustering Parameter 
+YOU MUST USE `metric='cosine'` NOT `affinity='cosine'`
+
+The parameter name changed in scikit-learn 1.2+. Using `affinity` will cause:
+```
+TypeError: AgglomerativeClustering.__init__() got an unexpected keyword argument 'affinity'
+```
+
+Always use this exact syntax:**
+```python
+clustering = AgglomerativeClustering(
+    n_clusters=None,
+    metric='cosine',
+    linkage='average',
+    distance_threshold=1 - similarity_threshold
+)
+```

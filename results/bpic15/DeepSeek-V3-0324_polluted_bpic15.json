@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/bpic15/BPIC15-Polluted.csv'\ndataset_name = 'b...",
+    "success": true,
+    "output_shape": [
+      29621,
+      6
+    ],
+    "metrics": {
+      "precision": 0.2089,
+      "recall": 1.0,
+      "f1_score": 0.3456
+    },
+    "error": null,
+    "timestamp": "2025-11-13T12:43:52.113326"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/bpic15/BPIC15-Polluted.csv'\ndataset_name = 'b...",
+    "success": true,
+    "output_shape": [
+      29621,
+      6
+    ],
+    "metrics": {
+      "precision": 0.2089,
+      "recall": 1.0,
+      "f1_score": 0.3456
+    },
+    "error": null,
+    "timestamp": "2025-11-13T12:44:34.979337"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "deepseek-ai/DeepSeek-V3-0324",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/bpic15/BPIC15-Polluted.csv'\noutput_file = 'data/bpic15/b...",
+    "success": true,
+    "output_shape": [
+      29621,
+      6
+    ],
+    "metrics": {
+      "precision": 0.2089,
+      "recall": 1.0,
+      "f1_score": 0.3456
+    },
+    "error": null,
+    "timestamp": "2025-11-13T12:45:04.429276"
+  }
+]

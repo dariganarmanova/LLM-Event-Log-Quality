@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom collections import defaultdict\nfrom itertools import combinations\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration para...",
+    "success": true,
+    "output_shape": [
+      29621,
+      13
+    ],
+    "metrics": {
+      "precision": 0.0499,
+      "recall": 0.9721,
+      "f1_score": 0.0949
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:25:24.849328"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom collections import defaultdict, Counter\nfrom itertools import combinations\nfrom sklearn.metrics import precision_recall_fscore_support\n\n# Configuration\ninp...",
+    "success": true,
+    "output_shape": [
+      29621,
+      6
+    ],
+    "metrics": {
+      "precision": 0.5332,
+      "recall": 0.6535,
+      "f1_score": 0.5873
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:26:21.789691"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "distorted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with:`import pandas as pd`\nOutput must be only executable Python code** (no explanations, no text before/after code)\n\n--...",
+    "response": "import pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/bpic15/BPIC15-Distorted.csv'\noutput_file = 'data/bpic15...",
+    "success": true,
+    "output_shape": [
+      29621,
+      6
+    ],
+    "metrics": {
+      "precision": 0.0521,
+      "recall": 0.9744,
+      "f1_score": 0.0989
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:27:06.452517"
+  }
+]

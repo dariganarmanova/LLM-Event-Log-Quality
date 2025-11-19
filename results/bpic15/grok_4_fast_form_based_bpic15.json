@@ -1,0 +1,65 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "import pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/bpic15/BPIC15-FormBased.csv'\noutput_file = 'data/bpic15/bpic15_form_based_cl...",
+    "success": false,
+    "output_shape": null,
+    "metrics": {
+      "precision": 0.7567,
+      "recall": 0.9506,
+      "f1_score": 0.8426
+    },
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-FormBased_Grok_run1.py\", line 125, in <module>\n    merged_df = flattened_events.groupby([case_column, t",
+    "timestamp": "2025-11-18T21:41:38.013609"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ninput_file = 'data/bpic15/BPIC15-FormBased.csv'\noutput_file = 'data/bpic15...",
+    "success": true,
+    "output_shape": [
+      17326,
+      6
+    ],
+    "metrics": {
+      "precision": 0.7567,
+      "recall": 0.9506,
+      "f1_score": 0.8426
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:42:15.965387"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2...",
+    "success": true,
+    "output_shape": [
+      17446,
+      6
+    ],
+    "metrics": {
+      "precision": 0.7562,
+      "recall": 0.9417,
+      "f1_score": 0.8388
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:43:03.914997"
+  }
+]

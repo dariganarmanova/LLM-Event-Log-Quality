@@ -1,0 +1,115 @@
+# Generated script for BPIC11-FormBased - Run 2
+# Generated on: 2025-11-13T11:17:47.627301
+# Model: meta-llama/Llama-3.1-8B-Instruct
+
+import pandas as pd
+import numpy as np
+from sklearn.metrics import precision_score, recall_score, f1_score
+import re
+
+# Configuration parameters
+time_threshold = 2.0
+require_same_resource = False
+min_matching_events = 2
+max_mismatches = 1
+activity_suffix_pattern = r"(_signed\d*|_\d+)$"
+similarity_threshold = 0.8
+case_sensitive = False
+use_fuzzy_matching = False
+
+# Load the data
+input_file = 'data/bpic11/BPIC11-FormBased.csv'
+df = pd.read_csv(input_file)
+
+# Ensure all required columns exist; rename common variants
+df = df.rename(columns={'CaseID': 'Case'})
+
+# Convert the Timestamp column to datetime and standardize as YYYY-MM-DD HH:MM:SS
+df['Timestamp'] = pd.to_datetime(df['Time'], format='%H:%M:%S').dt.strftime('%Y-%m-%d %H:%M:%S')
+
+# Sort by Case and Timestamp to maintain chronological order
+df = df.sort_values(by=['Case', 'Timestamp'])
+
+# Create group_key: combination of Case and Timestamp values
+df['group_key'] = df['Case'] + '_' + df['Timestamp']
+
+# Count occurrences per group using groupby
+group_counts = df.groupby('group_key').size()
+
+# Mark is_flattened = 1 if group size ≥ 2; otherwise 0
+df['is_flattened'] = np.where(group_counts[df['group_key']] >= 2, 1, 0)
+
+# Split dataset: normal_events and flattened_events
+normal_events = df[df['is_flattened'] == 0]
+flattened_events = df[df['is_flattened'] == 1]
+
+# Group flattened events by (Case, Timestamp)
+flattened_groups = flattened_events.groupby(['Case', 'Timestamp'])
+
+# For each group: merge all Activity values alphabetically using ; as separator
+merged_activities = []
+for name, group in flattened_groups:
+    activities = sorted(group['Activity'].unique())
+    merged_activity = ';'.join(activities)
+    merged_activities.append(merged_activity)
+
+# Create a new DataFrame with merged records
+merged_flattened_events = pd.DataFrame({'Case': flattened_events['Case'].unique(),
+                                        'Timestamp': flattened_events['Timestamp'].unique(),
+                                        'Activity': merged_activities})
+
+# Concatenate normal_events with merged flattened_events
+final_df = pd.concat([normal_events, merged_flattened_events])
+
+# Sort final DataFrame by Case and Timestamp
+final_df = final_df.sort_values(by=['Case', 'Timestamp'])
+
+# Drop helper columns (group_key, is_flattened)
+final_df = final_df.drop(columns=['group_key', 'is_flattened'])
+
+# If label column exists: calculate detection metrics
+if 'label' in final_df.columns:
+    y_true = final_df['label'].notnull().astype(int)
+    y_pred = final_df['is_flattened']
+    precision = precision_score(y_true, y_pred)
+    recall = recall_score(y_true, y_pred)
+    f1 = f1_score(y_true, y_pred)
+    print(f"=== Detection Performance Metrics ===")
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall: {recall:.4f}")
+    print(f"F1-Score: {f1:.4f}")
+    print(f"✓/✗ Precision threshold (≥ 0.6) met/not met")
+    if precision >= 0.6:
+        print("✓")
+    else:
+        print("✗")
+else:
+    print("No labels available for metric calculation.")
+
+# Integrity check
+total_flattened_groups = len(flattened_groups.groups)
+total_flattened_events = len(flattened_events)
+percentage_flattened_events = (total_flattened_events / len(df)) * 100
+print(f"Total flattened groups detected: {total_flattened_groups}")
+print(f"Total events marked as flattened: {total_flattened_events}")
+print(f"Percentage of flattened events: {percentage_flattened_events:.2f}%")
+
+# Save output CSV
+output_path = 'data/bpic11/bpic11_form_based_cleaned_run2.csv'
+final_df.to_csv(output_path, index=False)
+
+# Summary statistics
+total_events = len(final_df)
+unique_activities_before = len(df['Activity'].unique())
+unique_activities_after = len(final_df['Activity'].unique())
+reduction_percentage = ((unique_activities_before - unique_activities_after) / unique_activities_before) * 100
+print(f"Total number of events: {total_events}")
+print(f"Number of flattened (merged) events detected: {total_flattened_events}")
+print(f"Number of unique activities before merging: {unique_activities_before}")
+print(f"Number of unique activities after merging: {unique_activities_after}")
+print(f"Total reduction percentage: {reduction_percentage:.2f}%")
+print(f"Output file path: {output_path}")
+
+# Print sample of up to 10 merged activities (; separated)
+print("Sample of merged activities:")
+print(';'.join(merged_activities[:10]))

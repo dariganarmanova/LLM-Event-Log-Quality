@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Formbased_Llama_run1.py\", line 27, in <module>\n    df['Timestamp'] = pd.to_datetime(df['Timestamp'], forma",
+    "timestamp": "2025-11-14T13:29:19.815926"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Formbased_Llama_run2.py\", line 27, in <module>\n    df['Timestamp'] = pd.to_datetime(df['Timestamp'], forma",
+    "timestamp": "2025-11-14T13:29:21.467975"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Formbased_Llama_run3.py\", line 27, in <module>\n    df['Timestamp'] = pd.to_datetime(df['Timestamp'], forma",
+    "timestamp": "2025-11-14T13:29:23.308389"
+  }
+]

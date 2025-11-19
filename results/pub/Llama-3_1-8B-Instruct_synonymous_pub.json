@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom scipy.cluster.hierarchy import ...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR:   File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Synonymous_Llama_run1.py\", line 5\n    ```python\n    ^\nSyntaxError: invalid syntax\n",
+    "timestamp": "2025-11-13T17:05:39.684575"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom sklearn.cluster import AgglomerativeClustering\nfro...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Synonymous_Llama_run2.py\", line 105, in <module>\n    clusters[find(union_find, i)].append(i)\n             ",
+    "timestamp": "2025-11-13T17:05:42.368313"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom scipy.cluster.hierarchy import linkage, ...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR:   File \"/Users/dariganarmanova/newer-version-pm/script/Pub-Synonymous_Llama_run3.py\", line 5\n    ```python\n    ^\nSyntaxError: invalid syntax\n",
+    "timestamp": "2025-11-13T17:05:43.906922"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom collections import defaultdict,...",
+    "success": true,
+    "output_shape": [
+      66524,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": null,
+    "timestamp": "2025-11-13T17:01:23.010258"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom collections import defaultdict,...",
+    "success": true,
+    "output_shape": [
+      66524,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": null,
+    "timestamp": "2025-11-13T17:01:36.088449"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "synonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n-Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom collections import defaultdict,...",
+    "success": true,
+    "output_shape": [
+      66524,
+      5
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": null,
+    "timestamp": "2025-11-13T17:01:50.932841"
+  }
+]

@@ -1,0 +1,55 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "import pandas as pd\nimport re\nfrom collections import defaultdict, Counter\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn....",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Homonymous_Grok_run1.py\", line 80, in <module>\n    cluster_id = clustering.fit_predict(X)\n             ",
+    "timestamp": "2025-11-18T19:26:38.358269"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": false,
+    "output_shape": null,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Homonymous_Grok_run2.py\", line 93, in <module>\n    cluster_labels = clustering.fit_predict(dense_vector",
+    "timestamp": "2025-11-18T19:27:30.472185"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "homonymous",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n---\n...",
+    "response": "import pandas as pd\nimport re\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.cluster import AgglomerativeClustering\nfrom sklearn.metrics import precision_s...",
+    "success": false,
+    "output_shape": null,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Homonymous_Grok_run3.py\", line 105, in <module>\n    cluster_labels = clustering.fit_predict(X)\n        ",
+    "timestamp": "2025-11-18T19:28:11.952143"
+  }
+]

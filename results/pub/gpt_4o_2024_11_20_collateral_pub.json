@@ -1,0 +1,63 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom datetime import timedelta\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0  # seconds\nr...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: /Users/dariganarmanova/newer-version-pm/venv/lib/python3.12/site-packages/sklearn/externals/array_api_compat/numpy/_aliases.py:125: RuntimeWarning: invalid value encountered in cast\n  return x.astype(",
+    "timestamp": "2025-11-14T13:23:42.745633"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom datetime import timedelta\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0  # seconds\nr...",
+    "success": true,
+    "output_shape": [
+      74912,
+      12
+    ],
+    "metrics": {
+      "precision": 0.7838,
+      "recall": 0.6212,
+      "f1_score": 0.6931,
+      "events_removed": 32058
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:24:21.340709"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "gpt-4o-2024-11-20",
+    "temperature": 0.3,
+    "dataset": "pub",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport numpy as np\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0  # seconds\nrequire_same_...",
+    "success": true,
+    "output_shape": [
+      93126,
+      12
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.3423,
+      "f1_score": 0.51,
+      "events_removed": 13844
+    },
+    "error": null,
+    "timestamp": "2025-11-14T13:24:55.035194"
+  }
+]

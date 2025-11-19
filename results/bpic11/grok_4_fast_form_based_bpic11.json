@@ -1,0 +1,68 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/bpic11/BPIC11-FormBased.csv'\noutput_file = 'data/bpic11/bpic11_for...",
+    "success": true,
+    "output_shape": [
+      70465,
+      5
+    ],
+    "metrics": {
+      "precision": 0.7651,
+      "recall": 0.9498,
+      "f1_score": 0.8475
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:26:42.729169"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/bpic11/BPIC11-FormBased.csv'\noutput_file = 'data/bpic11/bpic11_for...",
+    "success": true,
+    "output_shape": [
+      70465,
+      5
+    ],
+    "metrics": {
+      "precision": 0.7651,
+      "recall": 0.9498,
+      "f1_score": 0.8475
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:27:24.364692"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "bpic11",
+    "task_type": "form_based",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "import pandas as pd\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nimport re\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2...",
+    "success": true,
+    "output_shape": [
+      70465,
+      5
+    ],
+    "metrics": {
+      "precision": 0.7651,
+      "recall": 0.9498,
+      "f1_score": 0.8475
+    },
+    "error": null,
+    "timestamp": "2025-11-18T22:27:59.444064"
+  }
+]

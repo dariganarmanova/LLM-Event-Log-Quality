@@ -1,0 +1,61 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/credit/Credit-Polluted.csv'\noutput_file = 'data/credit/c...",
+    "success": true,
+    "output_shape": [
+      19301,
+      5
+    ],
+    "metrics": {
+      "precision": 0.3058,
+      "recall": 1.0,
+      "f1_score": 0.4684
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:13:16.301185"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_recall_fscore_support\n\n# Configuration\ninput_file = 'data/credit/Credit-Polluted.csv'\noutput_file = 'data/credit/credit_po...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR:   File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Polluted_Grok_run2.py\", line 116\n    print(f\"{row['original_activity']} \u2192 {row[target_column']}\")\n                                        ",
+    "timestamp": "2025-11-18T21:13:50.001392"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "grok-4-fast",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "import pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration\ninput_file = 'data/credit/Credit-Polluted.csv'\noutput_file = 'data/credit/credit_poll...",
+    "success": true,
+    "output_shape": [
+      19301,
+      5
+    ],
+    "metrics": {
+      "precision": 0.3058,
+      "recall": 1.0,
+      "f1_score": 0.4684
+    },
+    "error": null,
+    "timestamp": "2025-11-18T21:14:19.770161"
+  }
+]

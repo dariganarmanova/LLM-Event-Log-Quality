@@ -1,0 +1,58 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nimport string\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2\nmax_mismatches = 1\nactivity_suffix_pattern ...",
+    "success": true,
+    "output_shape": [
+      19301,
+      5
+    ],
+    "metrics": {
+      "precision": 0.064,
+      "recall": 1.0,
+      "f1_score": 0.1204
+    },
+    "error": null,
+    "timestamp": "2025-11-13T16:38:28.540452"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2\nmax_mismatches = 1\nactivity_suffix_pattern = r\"(_signed\\d...",
+    "success": false,
+    "output_shape": null,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    "error": "Output file not created at expected path: data/credit/credit_polluted_cleaned_run2.csv",
+    "timestamp": "2025-11-13T16:38:30.048163"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "credit",
+    "task_type": "polluted",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\nOutput must be only executable Python code (no explanations, no text before/after code)\n\n---...",
+    "response": "```python\nimport pandas as pd\nimport re\nimport numpy as np\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_events = 2\nmax_mismatches = 1\nactivity_suffix_pat...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/Credit-Polluted_Llama_run3.py\", line 60, in <module>\n    df['BaseActivity'] = df['Activity'].apply(aggressive_",
+    "timestamp": "2025-11-13T16:38:31.494220"
+  }
+]

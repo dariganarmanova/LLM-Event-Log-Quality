@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": 1,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin_matching_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-CollateralEvent_Llama_run1.py\", line 34, in <module>\n    raise ValueError(\"Required columns are missing",
+    "timestamp": "2025-11-13T14:49:12.960741"
+  },
+  {
+    "run_id": 2,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nfrom datetime import datetime\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-CollateralEvent_Llama_run2.py\", line 35, in <module>\n    raise ValueError(\"Required columns missing fro",
+    "timestamp": "2025-11-13T14:49:16.438936"
+  },
+  {
+    "run_id": 3,
+    "prompt_id": 1,
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "temperature": 0.3,
+    "dataset": "bpic15",
+    "task_type": "collateral",
+    "prompt": "CRITICAL OUTPUT RULES\n- Do not include Backticks ```\n- Your response MUST start with: `import pandas as pd`\n- Output must be only executable Python code** (no explanations, no text before/after code)\n...",
+    "response": "```python\nimport pandas as pd\nimport re\nfrom sklearn.metrics import precision_score, recall_score, f1_score\nimport os\n\n# Configuration parameters\ntime_threshold = 2.0\nrequire_same_resource = False\nmin...",
+    "success": false,
+    "output_shape": null,
+    "metrics": null,
+    "error": "Script execution failed. STDERR: Traceback (most recent call last):\n  File \"/Users/dariganarmanova/newer-version-pm/script/BPIC15-CollateralEvent_Llama_run3.py\", line 34, in <module>\n    raise ValueError(\"Required columns not found i",
+    "timestamp": "2025-11-13T14:49:21.291547"
+  }
+]
