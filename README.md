@@ -539,14 +539,7 @@ python deepseek_access.py data/credit/Credit-Polluted.csv prompt/polluted_prompt
 
 ### Running Multiple Iterations
 
-For statistical reliability, run each experiment 3 times:
-
-```bash
-for i in {1..3}; do
-  python gpt_access.py data/credit/Credit-Distorted.csv prompt/distorted_prompt.txt
-done
-```
-
+For statistical reliability, run each experiment 3 times.
 Results are saved as `run1.json`, `run2.json`, `run3.json`.
 
 ---
