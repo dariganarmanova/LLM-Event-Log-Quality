@@ -6,12 +6,25 @@ Automated detection and repair of imperfection patterns in process mining event 
 
 Event logs are fundamental data structures in process mining, but they often contain imperfections that compromise analysis quality. This project investigates whether modern Large Language Models can automatically identify and repair common data quality issues in event logs without requiring domain-specific training or fine-tuning.
 
+### End-to-End Pipeline
+**Phase 1**: Standardize → Abstract → Predict Candidate Patterns  
+**Phase 2**: Detect → Validate → Repair
+
 ### The Challenge
 
 Process mining practitioners frequently encounter six types of event log imperfections that distort process discovery, conformance checking, and performance analysis. Manual identification and repair of these issues is time-consuming, error-prone, and requires deep domain expertise. This project explores an automated approach using LLM-generated Python code to detect and fix these quality problems.
 
 ### Our Approach
 
+The framework performs a preparation stage (Phase 1) that standardizes the input event log and identifies which imperfection patterns are most likely present, and performs pattern-specific detection and repair (Phase 2). This stage enables LLMs to reason reliably about the log structure even when the full dataset cannot fit into the prompt.
+
+**Phase 1** consists of two automated steps:
+
+1. **Standardizes** heterogeneous event logs into a unified schema
+2. **Abstracts** preprocessed event logs for using LLMs
+3. **Identifies** likely imperfection patterns using the abstracted representation
+
+After preparing a consistent and concise representation of the event log, we move on to **Phase 2**.
 We employ a **prompt-based code generation methodology** where LLMs receive detailed task specifications and generate executable Python code that:
 
 1. **Detects** problematic events using pattern-specific algorithms
@@ -23,6 +36,7 @@ We employ a **prompt-based code generation methodology** where LLMs receive deta
 The key innovation is that LLMs generate complete data repair pipelines on-demand, adapting to different event log structures without pre-training on process mining data.
 
 ---
+
 
 ## Imperfection Patterns and Repair Algorithms
 
@@ -319,13 +333,106 @@ After (Cleaned):
 
 ---
 
-## Evaluation Methodology
+
+## Event Log Preparation Pipeline (Phase 1)
+
+### 1. Event Log Standardization & Abstraction
+
+The generated program performs:
+
+(a). **Column Role Interface** 
+
+The script infers standard column roles using alias matching:
+   - Case identifier
+   - Activity label
+   - Timestamp
+   - (Optional) resource
+     
+This ensures that downstream detection code can operate without dataset-specific assumptions.
+
+(b). **Data Cleaning & Ordering**
+   - Converts timestamps to a unified datetime format
+   - Sorts events within each case
+   - Removes corrupted or missing timestamp entries
+
+(c). **Textual Abstraction Generation** 
+
+Full event logs cannot fit into an LLM prompt due to context window, the script produces a compact structural summary of the log:
+   - **Directly-Follows Graph (DFG)** with frequency and timing statistics generated via PM4Py
+   - **Variant list** containing the most frequent process variants
+   - **Petri Net** abstraction generated via PM4Py (WF-Net serialized into text)
+     
+These abstractions condense thousands of events into a short, LLM-processable representation while preserving important behavioral information.
+
+### 2. Candidate Pattern Identification
+
+Using the textual abstraction from Phase 1-1, the generated program prompts an LLM to infer **which imperfection patterns are most likely present** in the log.
+
+(a). **Structure-Based Reasoning**
+
+The LLM is instructed to: 
+
+   - Analyze the provided abstraction (DFG / Variant / Petri Net)
+   - Infer up to **three** plausible imperfection patterns
+   - Assign a **confidence score ∈ [0, 1]**, report only ≥ 0.7
+   - Provide a short, evidence-based justification
+   - Return all results in a strict JSON schema
+
+(b). **Robust Execution Layer**
+
+The script includes context truncation, retry logic, and JSON sanitization to ensure consistent results across different LLM APIs (GPT, Llama, DeepSeek, Grok).
+
+(c). **Prioritized Pattern List**
+
+For each abstraction file, the program outputs a ranked list of plausible patterns, guiding Phase 2 toward the most relevant error types.
+
+
+**Example Output Format:**
+
+```
+[
+  {
+    "file": "DFG_Credit_Synonymous_0.02.txt",
+    "result": [
+      {
+        "pattern": "Synonymous Label",
+        "confidence": 0.9,
+        "justification": "The presence of multiple 'Perform checks' variants (Dep1, Dep2, Dep3) suggests synonymous labels for similar activities."
+      },
+      {
+        "pattern": "Scattered Case",
+        "confidence": 0.7,
+        "justification": "The DFG shows direct jumps like 'Check for completeness' to 'New online application received'."
+      },
+    ],
+   "indicators": [
+   "Perform checks - Dep1, Dep2, Dep3",
+   "Check for completeness -> New online application received",
+   ],
+  },
+]
+
+```
+
+### 3. Using Phase 1 Output in Phase 2
+
+The ranked pattern list serves as a **target-selection mechanism** for Phase 2.
+It allows the framework to:
+
+   - Focus detection efforts on high-confidence patterns
+   - Avoid unnecessary computation on unlikely cases
+   - Improve overall detection accuracy and efficiency
+
+Phase 2 then generates specialized detection code only for the prioritized patterns.
+
+
+## Evaluation Methodology (Phase 2)
 
 ### Two-Phase Approach
 
 Each imperfection pattern is evaluated in isolation following this strict sequence:
 
-**Phase 1: Detection and Validation (BEFORE Repair)**
+**Phase 2-1: Detection and Validation (BEFORE Repair)**
 
 1. **Detection**: Algorithm identifies problematic events using pattern-specific methods
 
@@ -341,7 +448,7 @@ Each imperfection pattern is evaluated in isolation following this strict sequen
      - **F1-Score**: Harmonic mean of precision and recall
    - Threshold: Precision ≥ 0.6 required for acceptable detection
 
-**Phase 2: Repair Application (AFTER Validation)**
+**Phase 2-2: Repair Application (AFTER Validation)**
 
 3. **Repair**: Apply transformation based on detection results
 
@@ -591,7 +698,7 @@ See our paper for detailed analysis and discussion.
 
 **Credit & Pub:** Event logs with artificially injected imperfections using the FLAWD (Flaw Language for Workflow Data) framework.
 
-- **Injection rates**: 30% error rates per pattern
+- **Injection rates**: 2%, 10%, 30% error rates per pattern
 - **Characteristics**: Controlled scenarios, clear pattern boundaries
 - **Size**:
   - Credit: 5,000 cases, 12 activities
