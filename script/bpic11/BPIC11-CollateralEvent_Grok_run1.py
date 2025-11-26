@@ -1,4 +1,4 @@
-# Generated script for BPIC11-CollateralEvent - Run 1
+ # Generated script for BPIC11-CollateralEvent - Run 1
 # Generated on: 2025-11-18T22:07:15.042787
 # Model: grok-4-fast
 

@@ -1,0 +1,1841 @@
+[
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of multiple near-simultaneous events such as 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2' suggests collateral events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like '190101 overage surcharge  a101' and '190205 class 3b a205' contain extra tokens that may indicate pollution with IDs or other metadata."
+        }
+      ],
+      "indicators": [
+        "days of rest - all spec.beh.kinderg.-reval._signed1 -> days of rest - all spec.beh.kinderg.-reval._signed2",
+        "190101 overage surcharge  a101",
+        "190205 class 3b a205",
+        "high frequency of 'days of rest - all spec.beh.kinderg.-reval.' variants"
+      ],
+      "notes": "The DFG shows complex label structures and near-simultaneous event patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., 'days of rest - all spec.beh.kinderg.-reval._signed1'."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Multiple near-simultaneous events with similar labels, such as 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are large jumps in the process flow, such as '190101 overage surcharge a101' directly to '190205 class 3b a205'."
+        }
+      ],
+      "indicators": [
+        "days of rest - all spec.beh.kinderg.-reval._signed1",
+        "days of rest - all spec.beh.kinderg.-reval._signed2",
+        "190101 overage surcharge a101 -> 190205 class 3b a205",
+        "High frequency of similar labels",
+        "Presence of IDs in labels",
+        "Large jumps in process flow"
+      ],
+      "notes": "The DFG shows evidence of label pollution and collateral events, with some traces indicating scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge  a101'."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Multiple near-simultaneous events are spawned from a single real step, as seen in 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are significant jumps between activities, such as '190101 overage surcharge  a101' to '190205 class 3b a205', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Activity labels with extra tokens",
+        "High frequency of 'signed1' and 'signed2' events",
+        "Jumps between '190101 overage surcharge  a101' and '190205 class 3b a205'",
+        "Repetitive patterns in 'days of rest' activities",
+        "Unusual performance values indicating timing issues",
+        "Multiple low-frequency transitions with high performance values"
+      ],
+      "notes": "The presence of extra tokens in labels and repeated patterns suggests label pollution and collateral events."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps between activities, such as '190101 overage surcharge a101' to '190205 class 3b a205', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "Repeated information across labels, such as 'acceptance laboratory research' appearing with different contexts, suggests label inflation."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "190205 class 3b a205",
+        "days of rest - all spec.beh.kinderg.-reval.",
+        "acceptance laboratory research",
+        "follow-up consultation on an outpatient basis",
+        "vitamin b12 using chemiluminescence"
+      ],
+      "notes": "The presence of IDs and timestamps in labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several activity labels contain extra tokens such as IDs or timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'follow-up consultation on an outpatient basis' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "There are small typos or character swaps in labels, such as 'yelephone consultation' vs 'telephoneT consultation'."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "follow-up consultation on an outpatient basis",
+        "yelephone consultation",
+        "telephoneT consultation",
+        "190205 class 3b a205",
+        "administrative rate - first pol"
+      ],
+      "notes": "The presence of IDs and timestamps in labels suggests data pollution, while similar labels with different contexts indicate homonymy."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several activity labels contain extra tokens such as IDs or other metadata, e.g., '190101 overage surcharge a101' and '190205 class 3b a205'."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "There are small typos or character swaps in labels, such as 'gluvose' instead of 'glucose' and 'xays of rest' instead of 'days of rest'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are large jumps in the process flow, such as '190101 overage surcharge a101' directly to '190205 class 3b a205', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Label '190101 overage surcharge a101' with extra tokens",
+        "Label 'gluvose' with typo",
+        "Edge '190101 overage surcharge a101' -> '190205 class 3b a205'",
+        "Label 'xays of rest' with typo",
+        "Label '190205 class 3b a205' with extra tokens",
+        "Edge 'days of rest - all spec.beh.kinderg.-reval.' -> '190101 overage surcharge a101'"
+      ],
+      "notes": "The presence of typos and extra tokens in labels suggests data quality issues in event naming."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' and 'acceptance laboratory research'."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "190205 class 3b a205",
+        "order tariff",
+        "acceptance laboratory research",
+        "days of rest - all spec.beh.kinderg.-reval."
+      ],
+      "notes": "The presence of IDs and timestamps in labels suggests label pollution, while repeated labels in different contexts indicate homonymy."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are direct jumps between seemingly unrelated activities, indicating missing parts of traces, e.g., 'days of rest - all spec.beh.kinderg.-reval.' to '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' has multiple preceding activities."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "days of rest - all spec.beh.kinderg.-reval. -> 190101 overage surcharge a101",
+        "order tariff -> platelet counting - electronically",
+        "order tariff -> potassium potentiometric",
+        "190205 class 3b a205",
+        "acceptance laboratory research"
+      ],
+      "notes": "The presence of IDs and timestamps in labels suggests data pollution, while jumps and repeated labels indicate structural issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge  a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' has multiple predecessors."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are large jumps between activities, such as '190101 overage surcharge  a101' to '190205 class 3b a205', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge  a101",
+        "order tariff",
+        "190205 class 3b a205",
+        "days of rest - all spec.beh.kinderg.-reval.",
+        "acceptance laboratory research",
+        "follow-up consultation on an outpatient basis"
+      ],
+      "notes": "The presence of IDs and timestamps in labels strongly suggests label pollution, while varied predecessors for the same label indicate homonymy."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Several labels contain extra tokens or identifiers, such as '190101 overage surcharge  a101' and '190205 class 3b a205', suggesting labels are polluted with additional information."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Check:homonymous",
+        "190101 overage surcharge  a101",
+        "190205 class 3b a205",
+        "days of rest - all spec.beh.kinderg.-reval.",
+        "1st outpatient consultation -> acceptance laboratory research",
+        "vitamin b12 using chemiluminescence -> acceptance laboratory research"
+      ],
+      "notes": "The presence of complex labels and repeated label usage in different contexts strongly suggests label-related imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Several labels contain extra tokens or identifiers, such as '190101 overage surcharge  a101' and 'days of rest - all spec.beh.kinderg.-reval.', suggesting label pollution."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Check:homonymous",
+        "190101 overage surcharge  a101 -> 190205 class 3b a205",
+        "days of rest - all spec.beh.kinderg.-reval. -> 190101 overage surcharge  a101",
+        "190205 class 3b a205 -> acceptance laboratory research",
+        "potassium potentiometric -> sodium flame photometric",
+        "order tariff -> platelet counting - electronically"
+      ],
+      "notes": "The presence of complex and lengthy labels suggests potential label pollution, while repeated use of 'Check:homonymous' in different contexts indicates homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels such as '190101 overage surcharge  a101' and '190205 class 3b a205' contain extra tokens that suggest inclusion of IDs or other extraneous information."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Check:homonymous",
+        "190101 overage surcharge  a101 -> 190205 class 3b a205",
+        "190205 class 3b a205 -> days of rest - all spec.beh.kinderg.-reval.",
+        "Check:homonymous -> platelet counting - electronically",
+        "Check:homonymous -> potassium potentiometric",
+        "Check:homonymous -> creatinine"
+      ],
+      "notes": "The presence of 'Check:homonymous' in various contexts strongly suggests homonymous labeling, while complex labels indicate possible pollution."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels contain extra tokens such as IDs and timestamps, e.g., '190205 class 3b a205_53cmFDd_20050423 080000000000'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are direct jumps between seemingly unrelated activities, such as 'vrw.gesl.org- curettage fractionated' to 'acceptance laboratory research'."
+        }
+      ],
+      "indicators": [
+        "190205 class 3b a205_53cmFDd_20050423 080000000000",
+        "190101 overage surcharge  a101_09gzSkV_20061209 080000000000",
+        "vrw.gesl.org- curettage fractionated -> acceptance laboratory research",
+        "vulva - rad.vulvectomy - opp.en d -> 190205 class 3b a205_85NaRcv_20050422 080000000000",
+        "190101 overage surcharge  a101_22AigCT_20060906 080000000000"
+      ],
+      "notes": "The presence of timestamps and IDs within labels strongly suggests label pollution, while the direct jumps indicate scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101_56OiwqT_20071017 080000000000'."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "The presence of repeated information across labels, such as '190101 overage surcharge a101' with different suffixes, suggests label inflation."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101_56OiwqT_20071017 080000000000",
+        "190205 class 3b a205_09sDnis_20060922 080000000000",
+        "Repeated suffix patterns in labels",
+        "High frequency of unique labels with similar prefixes",
+        "Performance values indicating potential timestamp issues"
+      ],
+      "notes": "The DFG shows strong evidence of label pollution and potential label inflation due to repeated suffix patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.30.txt",
+    "error": "Error code: 429 - {'error': {'message': 'Request too large for gpt-4o in organization org-S3VzSSP27djSnjF51j9idY96 on tokens per min (TPM): Limit 800000, Requested 1166149. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}",
+    "raw": "```json\n{\n  \"detected\": [\n    {\n      \"pattern\": \"Polluted Label\",\n      \"confidence\": 0.9,\n      \"why\": \"Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge  a101'.\"\n    },\n    {\n      \"pattern\": \"Homonymous Label\",\n      \"confidence\": 0.8,\n      \"why\": \"The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' leading to different subsequent activities.\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"There are jumps between activities that suggest missing parts of traces, such as 'days of rest - all spec.beh.kinderg.-reval.' leading to '190101 overage surcharge  a101'.\"\n    }\n  ],\n  \"indicators\": [\n    \"190101 overage surcharge  a101\",\n    \"order tariff -> platelet counting - electronically\",\n    \"days of rest - all spec.beh.kinderg.-reval. -> 190101 overage surcharge  a101\",\n    \"190205 class 3b a205 -> days of rest - all spec.beh.kinderg.-reval.\",\n    \"acceptance laboratory research -> creatinine\",\n    \"follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis\"\n  ],\n  \"notes\": \"The presence of IDs and timestamps in labels strongly suggests label pollution, while varied contexts for the same label indicate homonymy.\"\n}\n```"
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge  a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' leading to different subsequent activities."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are jumps between activities that suggest missing parts of traces, such as 'days of rest - all spec.beh.kinderg.-reval.' leading to '190101 overage surcharge  a101'."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge  a101",
+        "order tariff -> platelet counting - electronically",
+        "days of rest - all spec.beh.kinderg.-reval. -> 190101 overage surcharge  a101",
+        "190205 class 3b a205 -> days of rest - all spec.beh.kinderg.-reval.",
+        "acceptance laboratory research -> creatinine",
+        "follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis"
+      ],
+      "notes": "The presence of IDs and timestamps in labels strongly suggests label pollution, while varied contexts for the same label indicate homonymy."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' has multiple preceding activities."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "Repeated information across labels suggests label inflation, e.g., 'acceptance laboratory research' appears with varying contexts."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "order tariff -> platelet counting - electronically",
+        "acceptance laboratory research -> creatinine",
+        "days of rest - all spec.beh.kinderg.-reval.",
+        "follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis",
+        "vitamin b12 using chemiluminescence -> acceptance laboratory research"
+      ],
+      "notes": "The DFG shows complex label structures and repeated patterns indicating potential label issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, e.g., '190101 overage surcharge a101'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are direct jumps between activities that suggest missing parts of traces, such as '190205 class 3b a205' to 'days of rest - all spec.beh.kinderg.-reval. - Dep2'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label appears in different contexts with distinct predecessors, e.g., 'order tariff' leading to different subsequent activities."
+        }
+      ],
+      "indicators": [
+        "190101 overage surcharge a101",
+        "190205 class 3b a205 -> days of rest - all spec.beh.kinderg.-reval. - Dep2",
+        "order tariff -> platelet counting - electronically",
+        "order tariff -> potassium potentiometric",
+        "days of rest - all spec.beh.kinderg.-reval. - Dep2 -> 190101 overage surcharge a101",
+        "follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis"
+      ],
+      "notes": "The presence of IDs and timestamps in labels suggests label pollution, while direct jumps and repeated labels indicate scattered cases and homonymous labels."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' suggests multiple events are generated from a single real-world action."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' indicate potential label pollution with extra tokens."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed2",
+        "send confirmation receipt -> send confirmation receipt_signed1",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed1",
+        "send confirmation receipt -> send confirmation receipt (frequency = 474)",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed2"
+      ],
+      "notes": "The DFG shows evidence of label pollution and collateral events, but no clear signs of other patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' activities suggests that a single real-world event is spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between activities that suggest missing parts of traces, such as 'send confirmation receipt' directly to 'start WABOprocedure'."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed2",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed1",
+        "send confirmation receipt -> start WABOprocedure",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed2",
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed1"
+      ],
+      "notes": "The DFG suggests a complex process with potential for multiple simultaneous events and missing trace segments."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'send confirmation receipt_signed' activities with similar labels and high frequencies suggests a single real step spawning multiple events."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed2",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed1",
+        "send confirmation receipt_signed2 -> send confirmation receipt_signed2",
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed1",
+        "send confirmation receipt_signed2 -> send confirmation receipt"
+      ],
+      "notes": "The DFG shows a pattern of repeated, similar events indicating potential collateral events."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'send confirmation receipt' appears in multiple contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between activities that suggest missing parts of traces, such as 'request complete' directly to 'send confirmation receipt'."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.7,
+          "why": "The repeated occurrence of 'send confirmation receipt' with high frequency suggests it may be a collateral event triggered by other activities."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt -> send confirmation receipt",
+        "request complete -> send confirmation receipt",
+        "send confirmation receipt -> start WABOprocedure",
+        "enter senddate decision -> enter senddate decision environmental permit",
+        "phase decision sent -> phase decision taken",
+        "procedure change -> procedure change"
+      ],
+      "notes": "The DFG shows complex patterns with repeated labels and direct jumps, indicating potential label and trace issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The activity 'send confirmation receipt' appears in multiple contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between non-consecutive activities, such as 'regular procedure without MER' to 'send confirmation receipt', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt -> send confirmation receipt",
+        "regular procedure without MER -> send confirmation receipt",
+        "phase application received -> send confirmation receipt",
+        "enter senddate decision -> enter senddate decision environmental permit",
+        "procedure change -> procedure change",
+        "register submission date request -> phase application received"
+      ],
+      "notes": "The DFG shows repeated labels and direct jumps, indicating potential homonymy and scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels contain extra tokens, such as 'enter senddate decision environmental permit', indicating potential pollution with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears in different contexts with distinct predecessors, suggesting homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are many direct jumps between seemingly unrelated activities, such as 'request complete' to 'send letter in progress', indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "enter senddate decision environmental permit",
+        "send confirmation receipt",
+        "request complete -> send letter in progress",
+        "phase application received -> regular procedure without MER",
+        "create procedure confirmation -> create publication document",
+        "register submission date request -> enter senddate procedure confirmation"
+      ],
+      "notes": "The presence of complex and lengthy labels suggests label pollution, while repeated labels in different contexts indicate homonymy."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows many direct jumps between activities that suggest missing parts of traces, such as 'request complete' directly leading to 'send confirmation receipt'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Several activity labels contain additional tokens or information, such as 'enter senddate decision environmental permit', indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'send confirmation receipt' appears in different contexts with distinct predecessors, suggesting it is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "request complete -> send confirmation receipt",
+        "enter senddate decision environmental permit",
+        "send confirmation receipt -> send confirmation receipt",
+        "send confirmation receipt -> start WABOprocedure",
+        "enter senddate decision environmental permit -> phase decision sent",
+        "register submission date request -> phase application received"
+      ],
+      "notes": "The DFG indicates complex label usage and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The activity 'send confirmation receipt' appears in multiple contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between activities that suggest missing parts of traces, such as 'request complete' directly to 'send confirmation receipt'."
+        }
+      ],
+      "indicators": [
+        "'send confirmation receipt' -> 'send confirmation receipt'",
+        "'request complete' -> 'send letter in progress'",
+        "'forward to the competent authority' -> 'phase application received'",
+        "'enter senddate decision' -> 'enter senddate decision environmental permit'",
+        "'procedure change' -> 'procedure change'"
+      ],
+      "notes": "The DFG shows complex patterns with repeated labels and direct jumps, suggesting label homonymy and scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The activity 'send confirmation receipt' appears in multiple contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The frequent repetition of 'send confirmation receipt' suggests a single real-world event spawning multiple log entries."
+        }
+      ],
+      "indicators": [
+        "'send confirmation receipt' -> 'send confirmation receipt' (frequency = 486)",
+        "'regular procedure without MER' -> 'send confirmation receipt' (frequency = 399)",
+        "'send confirmation receipt' -> 'start WABOprocedure' (frequency = 398)",
+        "'send confirmation receipt' -> 'send procedure confirmation' (frequency = 233)",
+        "'send confirmation receipt' -> 'send letter in progress' (frequency = 13)"
+      ],
+      "notes": "The repeated use of 'send confirmation receipt' in different contexts suggests label homonymy and collateral events."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between non-consecutive activities, such as 'request complete' to 'send confirmation receipt additional data', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> multiple contexts",
+        "request complete -> send confirmation receipt additional data",
+        "direct jumps between non-consecutive activities"
+      ],
+      "notes": "The presence of 'Check:homonymous' in various contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous direct jumps between non-consecutive activities (e.g., 'request complete' to 'send confirmation receipt additional data'), suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> multiple distinct predecessors",
+        "request complete -> send confirmation receipt additional data",
+        "high variance in edge frequencies",
+        "direct jumps between non-consecutive activities"
+      ],
+      "notes": "The presence of 'Check:homonymous' in various contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors and successors, indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Check:homonymous",
+        "Check:homonymous -> start WABOprocedure",
+        "Check:homonymous -> request complete",
+        "Check:homonymous -> send procedure confirmation",
+        "Check:homonymous -> generating decision environmental permit",
+        "Check:homonymous -> phase decision sent"
+      ],
+      "notes": "The repeated use of 'Check:homonymous' in various contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'send confirmation receipt' appears in different contexts with distinct predecessors, suggesting homonymy."
+        }
+      ],
+      "indicators": [
+        "Labels like 'procedure change_05YQXlz_20110906 192855000000'",
+        "Repeated use of 'send confirmation receipt' with different predecessors",
+        "Labels with embedded timestamps and IDs",
+        "High frequency of 'send confirmation receipt' in various contexts",
+        "Complex labels like 'request complete_44qcLOd_20110415 214903000000'",
+        "Multiple instances of 'send confirmation receipt' with different successors"
+      ],
+      "notes": "The presence of complex labels with embedded metadata strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are many direct jumps between activities, suggesting missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'send confirmation receipt' appears in different contexts with distinct predecessors."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt_09DpUJJ_20120220 231503000000",
+        "procedure change_26nFPDY_20111125 195640000000",
+        "send confirmation receipt -> send confirmation receipt",
+        "register submission date request -> send confirmation receipt",
+        "send confirmation receipt -> start WABOprocedure",
+        "send confirmation receipt -> send letter in progress"
+      ],
+      "notes": "The presence of IDs and timestamps in labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels like 'enter senddate decision environmental permit_36IguYM_20130910 070036000000' contain extra tokens, suggesting pollution with IDs or timestamps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of direct jumps between activities like 'register submission date request' to 'phase application received' indicates missing parts of traces."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.7,
+          "why": "Multiple low-frequency events like 'treat subcases content' leading to various outcomes suggest collateral events from a single real step."
+        }
+      ],
+      "indicators": [
+        "enter senddate decision environmental permit_36IguYM_20130910 070036000000",
+        "register submission date request -> phase application received",
+        "treat subcases content -> enter senddate decision environmental permit_84vuBnJ_20130503 170553000000",
+        "treat subcases content -> enter senddate decision environmental permit_98frEHC_20131104 080047000000",
+        "treat subcases content -> procedure change_05XInOL_20120403 174846000000",
+        "treat subcases content -> procedure change_24ydAKB_20111213 203110000000"
+      ],
+      "notes": "The DFG shows evidence of label pollution and potential trace incompleteness."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows numerous direct jumps between activities that suggest missing segments, such as 'request complete -> send confirmation receipt additional data' and 'register submission date request -> enter senddate procedure confirmation'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label 'send confirmation receipt' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'send confirmation receipt - Dep2' and 'send confirmation receipt - Dep3' suggest additional tokens or identifiers appended to activity names."
+        }
+      ],
+      "indicators": [
+        "request complete -> send confirmation receipt additional data",
+        "register submission date request -> enter senddate procedure confirmation",
+        "send confirmation receipt -> send confirmation receipt",
+        "send confirmation receipt - Dep2",
+        "send confirmation receipt - Dep3",
+        "send confirmation receipt -> send letter in progress"
+      ],
+      "notes": "The presence of multiple similar labels with appended tokens suggests label pollution, while direct jumps indicate scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Numerous direct jumps between non-consecutive activities (e.g., 'request complete' to 'send confirmation receipt') suggest missing parts of traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Activity labels contain extra tokens and complex phrases, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same activity label appears in different contexts with distinct predecessors, suggesting homonymy."
+        }
+      ],
+      "indicators": [
+        "request complete -> send confirmation receipt",
+        "complex activity labels",
+        "same label with different predecessors"
+      ],
+      "notes": "The DFG shows complex label structures and direct jumps, indicating multiple imperfection patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows numerous direct jumps between activities that suggest missing segments, such as 'request complete' directly to 'send confirmation receipt - Dep2'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Several activity labels contain extra tokens or information, such as 'send confirmation receipt - Dep2', indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'enter senddate decision' appears in different contexts with distinct predecessors, suggesting homonymy."
+        }
+      ],
+      "indicators": [
+        "request complete -> send confirmation receipt - Dep2",
+        "send confirmation receipt - Dep2",
+        "enter senddate decision",
+        "numerous direct jumps",
+        "labels with extra tokens",
+        "same label in different contexts"
+      ],
+      "notes": "The DFG suggests complex label usage and potential missing trace segments."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' suggests multiple near-simultaneous events spawned from a single real step."
+        }
+      ],
+      "indicators": [
+        "Make decision_signed1 -> Make decision_signed2",
+        "Make decision -> Make decision_signed1",
+        "Make decision_signed2 -> Make decision",
+        "Make decision_signed1 -> Make decision_signed1",
+        "Make decision_signed2 -> Make decision_signed2"
+      ],
+      "notes": "The repeated 'Make decision_signed' activities indicate collateral events."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' suggests multiple near-simultaneous events stemming from a single real step."
+        }
+      ],
+      "indicators": [
+        "Make decision_signed1 -> Make decision_signed2",
+        "Make decision -> Make decision_signed1",
+        "Make decision_signed2 -> Make decision"
+      ],
+      "notes": "The DFG shows a pattern where 'Make decision' is split into two closely related events, indicating collateral event behavior."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' suggests multiple events are spawned from a single real step, as they appear frequently and in close succession."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Make decision_signed1' and 'Make decision_signed2' appear in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Make decision_signed1 -> Make decision_signed2 (frequency = 5392)",
+        "Make decision_signed2 -> Make decision_signed2 (frequency = 307)",
+        "Make decision_signed1 -> Make decision_signed1 (frequency = 304)",
+        "Make decision_signed2 -> Make decision (frequency = 593)",
+        "Make decision_signed2 -> Make decision_signed1 (frequency = 152)"
+      ],
+      "notes": "The frequent and varied use of 'Make decision_signed1' and 'Make decision_signed2' suggests both collateral events and homonymous labels."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Perform checks_00NUYZc_20231002045928498000",
+        "Make decision_07YxmDi_20231218101552882000",
+        "Perform checks_09mpggi_20231115154656257000",
+        "Make decision_15ASFMw_20231129061859987000",
+        "Perform checks_22MnDhA_20231009082207073000",
+        "Make decision_31XjUEO_20231002050023533000"
+      ],
+      "notes": "The presence of unique identifiers and timestamps in activity labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens resembling IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Perform checks_04APDoq_20231009033234796000",
+        "Make decision_00KNPDQ_20231204071617791000",
+        "Perform checks_02CKFpI_20231207193743506000",
+        "Make decision_93NKfkj_20231123172400938000",
+        "Perform checks_08ThTha_20231121062548015000",
+        "Make decision_57WuiQk_20231121062558405000"
+      ],
+      "notes": "The presence of IDs and timestamps in activity labels is a strong indicator of label pollution."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The DFG shows numerous labels with appended tokens, such as 'Perform checks_01DnJYG_20231214060605262000', indicating extra information like IDs or timestamps."
+        }
+      ],
+      "indicators": [
+        "Perform checks_01DnJYG_20231214060605262000",
+        "Perform checks_01nclMl_20231025133744995000",
+        "Make decision_00GnQDh_20231024051017775000",
+        "Make decision_00HFyVY_20231201032545296000",
+        "New online application received -> Perform checks_00kxHBk_20231107144838137000",
+        "New online application received -> Perform checks_01KYqao_20231110170344732000"
+      ],
+      "notes": "The presence of extra tokens in labels is a strong indicator of label pollution."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "The presence of multiple 'Perform checks' variants (Dep1, Dep2, Dep3) suggests synonymous labels for similar activities."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The DFG shows direct jumps like 'Check for completeness' to 'New online application received', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Perform checks - Dep1, Dep2, Dep3",
+        "Check for completeness -> New online application received",
+        "New online application received -> Perform checks - Dep2",
+        "New online application received -> Perform checks - Dep3"
+      ],
+      "notes": "The presence of multiple 'Perform checks' variants with low frequencies suggests potential label synonymy."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Perform checks' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are direct jumps like 'Check for completeness' to 'New online application received', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "'Perform checks' vs 'Perform checks - Dep1/Dep2/Dep3'",
+        "'Check for completeness' -> 'New online application received'",
+        "'EVENT 13 END' -> 'EVENT 13 END'"
+      ],
+      "notes": "The presence of multiple 'Perform checks' variants suggests label ambiguity."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Perform checks' appears in different contexts with distinct predecessors, such as 'Check for completeness' leading to 'Perform checks', 'Perform checks - Dep1', 'Perform checks - Dep2', and 'Perform checks - Dep3'."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "The activities 'Notify accept' and 'notify reject' appear to serve similar notification purposes but are labeled differently, suggesting synonymous labeling."
+        }
+      ],
+      "indicators": [
+        "'Perform checks' with multiple variants",
+        "'Notify accept' vs 'notify reject'",
+        "Distinct predecessors for 'Perform checks' variants",
+        "High frequency of 'Check for completeness' transitions",
+        "Multiple 'Perform checks' paths",
+        "Repeated 'EVENT 13 END' loop"
+      ],
+      "notes": "The presence of multiple 'Perform checks' variants suggests potential label confusion."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Make decision",
+        "Check:homonymous -> Request info",
+        "Check:homonymous -> New online application received",
+        "Check:homonymous -> Check:homonymous",
+        "New online application received -> Check:homonymous",
+        "review request received -> Check:homonymous"
+      ],
+      "notes": "The repeated use of 'Check:homonymous' in various contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check' appears in different contexts with distinct predecessors, indicating it is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are jumps in the process such as 'Check for completeness' directly to 'New online application received', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Make decision",
+        "info received -> Check:homonymous",
+        "Check:homonymous -> New online application received",
+        "Check for completeness -> New online application received",
+        "Check for completeness -> Request info",
+        "EVENT 13 END -> EVENT 13 END"
+      ],
+      "notes": "The presence of 'Check:homonymous' in multiple contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels exhibit small typos or character swaps, such as 'Ceck for completeness', 'Make devision', and 'jotify reject'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps in the process flow, such as 'Check for completeness' directly to 'New online application received', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Ceck for completeness",
+        "Make devision",
+        "jotify reject",
+        "Check for completeness -> New online application received",
+        "Check for completeness -> info received",
+        "New online application received -> Make decision"
+      ],
+      "notes": "The presence of typos and unusual transitions suggests both label distortion and potential trace incompleteness."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels contain small typos or character swaps, such as 'Make decsiion' and 'Check for cmpleteness'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Check for completeness' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Make decsiion",
+        "Check for cmpleteness",
+        "Check for completeness -> New online application received",
+        "Check for completeness -> Request info",
+        "Check for completeness -> Perform checks",
+        "Check for completeness -> Make decision"
+      ],
+      "notes": "The presence of numerous typos suggests a high likelihood of distorted labels."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels exhibit small typos or character swaps, such as 'Check for completeness' vs 'Check for compelteness'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Check for completeness' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Check for completeness vs Check for compelteness",
+        "Make decision vs Make dcision",
+        "Deliver card vs Delievr card",
+        "Check for completeness with multiple predecessors",
+        "High frequency of typos in labels"
+      ],
+      "notes": "The DFG shows a high prevalence of label distortions and potential homonymy issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows several low-frequency edges indicating potential missing parts of traces, such as 'Prepare main course -> Prepare starter' and 'Bring drinks -> Prepare starter'."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "The presence of very high performance times between some activities, like 'Review drinks -> Prepare main course', suggests possible trace merging or overly long traces."
+        }
+      ],
+      "indicators": [
+        "Low-frequency edges like 'Prepare main course -> Prepare starter'",
+        "High performance time 'Review drinks -> Prepare main course'",
+        "Unusual sequence 'Bring drinks -> Prepare starter'",
+        "Sparse connections with 'Prepare starter'",
+        "High variance in edge frequencies",
+        "Long performance times in some transitions"
+      ],
+      "notes": "The DFG suggests missing trace segments and potential trace merging issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows significant jumps between activities, such as 'Take order' to 'start' and 'Review order' to 'Prepare main course', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "The presence of very high performance times between certain activities, like 'Review drinks' to 'Prepare main course', suggests overly long or merged traces."
+        }
+      ],
+      "indicators": [
+        "Take order -> start (frequency = 156)",
+        "Review order -> Prepare main course (frequency = 33)",
+        "Review drinks -> Prepare main course (performance = 461420.82)",
+        "Prepare main course -> Signal food complete (performance = 480726.33)",
+        "start -> Take order (performance = 91938.46)"
+      ],
+      "notes": "The DFG suggests missing trace segments and potential trace merging due to unusual performance times."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are spawned from a single real step, indicating collateral events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps in the process, such as 'Bring drinks' directly to 'Prepare main course', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2",
+        "Bring drinks -> Bring drinks_signed1",
+        "Bring drinks_signed2 -> Bring drinks",
+        "Review drinks -> Prepare main course",
+        "Bring food -> Deliver to customer"
+      ],
+      "notes": "The DFG shows evidence of both collateral events and scattered cases due to the presence of signed events and large jumps in the process."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps in the process, such as 'Take order' directly to 'start', and low-frequency paths like 'Review order' to 'Prepare main course', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "The presence of extremely high performance times between some activities, such as 'Review drinks' to 'Prepare main course', suggests possible trace merging or overly long traces."
+        }
+      ],
+      "indicators": [
+        "Take order -> start (frequency = 4844)",
+        "Review order -> Prepare main course (frequency = 33)",
+        "Review drinks -> Prepare main course (performance = 461280.87)",
+        "Prepare main course -> Signal food complete (performance = 480726.33)",
+        "start -> Take order (performance = 91938.46)"
+      ],
+      "notes": "The DFG shows unusual performance times and direct jumps, hinting at structural issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple near-simultaneous events spawned from a single real step."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Bring drinks' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2",
+        "Bring drinks -> Bring drinks_signed1",
+        "Bring drinks_signed2 -> Bring drinks_signed2",
+        "Bring drinks_signed1 -> Bring drinks_signed1",
+        "Bring drinks -> Review drinks",
+        "Bring drinks -> Prepare starter"
+      ],
+      "notes": "The DFG shows complex branching and repeated label patterns, suggesting label-related imperfections."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple near-simultaneous events spawned from a single real step, as indicated by their high frequency and low performance times."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Bring drinks' appears in different contexts with distinct predecessors and successors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2",
+        "Bring drinks -> Review drinks",
+        "Bring drinks_signed2 -> Bring drinks",
+        "Bring drinks_signed1 -> Bring drinks_signed1",
+        "Bring drinks_signed2 -> Bring drinks_signed2",
+        "Bring drinks -> Bring drinks_signed2"
+      ],
+      "notes": "The DFG suggests complex event spawning and label reuse, typical of collateral and homonymous patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_00LYQRb_20241025010837862000",
+        "Review drinks_60tYIaL_20241025010958300000",
+        "Bring drinks_00XsJXv_20241009221259677000",
+        "Review drinks_70aFZpY_20241009221513377000",
+        "Bring drinks_00YvdVb_20240517203621510000",
+        "Review drinks_34YanAE_20240517204344211000"
+      ],
+      "notes": "The presence of IDs and timestamps in activity labels is a strong indicator of label pollution."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_00Aacmo_20241119203703265000",
+        "Review drinks_65vLHNx_20241119203913609000",
+        "Bring drinks_00BzpQy_20241031232511220000",
+        "Review drinks_12ZKYQP_20241031232935526000",
+        "Bring drinks_00COmfJ_20240712230926918000",
+        "Review drinks_17dzrbO_20240712231307759000"
+      ],
+      "notes": "The presence of IDs and timestamps in activity labels is a strong indicator of label pollution."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_00AJHOq_20240909224929427000",
+        "Review drinks_65Ntssy_20240909224958551000",
+        "Bring drinks_00AZQKD_20240826200057077000",
+        "Review drinks_28aaCAN_20240826200347239000",
+        "Bring drinks_00CwPqi_20240709220318037000",
+        "Review drinks_09kwRxC_20240709220433367000"
+      ],
+      "notes": "The presence of IDs and timestamps in activity labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Bring drinks' appears in multiple contexts with different predecessors, suggesting it is used for different process steps."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "The presence of multiple 'Bring drinks' variants (Dep1, Dep2, Dep3) suggests synonymous labels for similar activities."
+        }
+      ],
+      "indicators": [
+        "'Bring drinks' has multiple predecessors",
+        "Variants like 'Bring drinks - Dep1', 'Bring drinks - Dep2', 'Bring drinks - Dep3'",
+        "High frequency of 'Bring drinks' with different contexts",
+        "Multiple paths leading to 'Review drinks'",
+        "Low frequency paths with similar labels",
+        "Complexity in 'Bring drinks' related paths"
+      ],
+      "notes": "The DFG shows complexity in 'Bring drinks' activities, indicating potential label issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Multiple 'Bring drinks' variants (Dep1, Dep2, Dep3) suggest a single real step spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Significant frequency drop between 'Bring drinks' and 'Deliver to customer' indicates missing parts of traces, suggesting some variants skip big chunks."
+        }
+      ],
+      "indicators": [
+        "Bring drinks - Dep1, Dep2, Dep3 variants",
+        "Frequency drop from 'Bring drinks' to 'Deliver to customer'",
+        "Low frequency edges like 'Prepare main course -> Bring drinks'",
+        "Sparse connections like 'Review drinks -> Deliver to customer'"
+      ],
+      "notes": "The presence of multiple 'Bring drinks' variants and frequency discrepancies suggest structural irregularities."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple 'Bring drinks' variants (e.g., 'Bring drinks', 'Bring drinks - Dep1', 'Bring drinks - Dep2', 'Bring drinks - Dep3') suggest synonymous labels for similar activities."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The presence of low-frequency direct jumps (e.g., 'Review order' to 'Prepare main course') indicates potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Bring drinks' variants",
+        "Low-frequency direct jumps",
+        "High variance in edge frequencies",
+        "Direct jumps like 'Review order' to 'Prepare main course'"
+      ],
+      "notes": "The DFG suggests label synonymy and potential missing trace segments."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps in the process flow, such as 'Take order' directly to 'start', and 'Review order' to 'Prepare main course', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long performance times, such as 'Prepare main course' to 'Signal food complete', suggests possible trace merging or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Take order -> start (frequency = 156)",
+        "Review order -> Prepare main course (frequency = 33)",
+        "Prepare main course -> Signal food complete (performance = 480726.33)",
+        "start -> Take order (performance = 91938.46)",
+        "Review drinks -> Prepare main course (performance = 461184.82)"
+      ],
+      "notes": "The DFG shows unusual performance times and direct jumps, indicating potential trace issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of direct jumps like 'Take order -> start' and 'start -> Take order' with low frequencies suggests missing parts of traces, indicating scattered cases."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "The high frequency of 'Bring drinks -> Review drinks' and 'prepare drinks -> Bring drinks' suggests a single real step spawning multiple events, indicative of collateral events."
+        }
+      ],
+      "indicators": [
+        "Take order -> start (frequency = 156)",
+        "start -> Take order (frequency = 156)",
+        "Bring drinks -> Review drinks (frequency = 8357)",
+        "prepare drinks -> Bring drinks (frequency = 8345)"
+      ],
+      "notes": "The DFG shows unusual jumps and high-frequency sequences that suggest scattered and collateral event patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG shows several low-frequency edges indicating possible missing parts of traces, such as 'Review order -> Prepare main course' with frequency 33 and 'Prepare main course -> Prepare starter' with frequency 9."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "The presence of very high performance values like 'Prepare main course -> Signal food complete' with 480726.33 suggests overly long traces, possibly due to wrong or mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Review order -> Prepare main course (frequency = 33)",
+        "Prepare main course -> Prepare starter (frequency = 9)",
+        "Prepare main course -> Signal food complete (performance = 480726.33)",
+        "start -> Take order (performance = 91938.46)",
+        "Review drinks -> Prepare main course (performance = 461184.82)"
+      ],
+      "notes": "The DFG indicates potential issues with trace completeness and case identification."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels exhibit small typos or character swaps, such as 'Bribg drinks' and 'Review xrinks'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Take order' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Bribg drinks",
+        "Review xrinks",
+        "Take order -> start",
+        "Prepare main couorse",
+        "Review odder",
+        "Bring drinkBs"
+      ],
+      "notes": "The presence of numerous low-frequency edges with typos suggests data entry errors."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels exhibit small typos or character swaps, such as 'Brin gfood' and 'Reveiw drinks'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Take order' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Brin gfood",
+        "Reveiw drinks",
+        "Take order -> start",
+        "Bring drinks -> Take order",
+        "Prepare main course -> Take order",
+        "Review drinks -> Take order"
+      ],
+      "notes": "The DFG shows a high frequency of label variations and contextually ambiguous labels."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of direct jumps like 'Check for completeness' to 'New online application received' and 'EVENT 13 END' to itself suggests missing parts of traces or skipped segments."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The label 'Check for completeness' appears in different contexts with distinct predecessors, indicating potential reuse of the same label for different steps."
+        }
+      ],
+      "indicators": [
+        "Check for completeness -> New online application received",
+        "EVENT 13 END -> EVENT 13 END",
+        "Check for completeness -> Request info",
+        "Check for completeness -> Perform checks",
+        "New online application received -> Perform checks",
+        "New online application received -> Request info"
+      ],
+      "notes": "The DFG suggests possible trace fragmentation and label reuse issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels exhibit small typos or character swaps, such as 'Prepare main course' vs 'Prepare mai course'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Take order' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Prepare main course vs Prepare mai course",
+        "Take order with various predecessors",
+        "Review drinks vs Revie wdrinks",
+        "Bring drinks vs Brimg drinks",
+        "Signal food complete vs Signal food ckmplete",
+        "EVENT 8 END vs EVEN 8 END"
+      ],
+      "notes": "The DFG shows a high frequency of label distortions and potential homonymy."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of direct jumps like 'Check for completeness' to 'New online application received' and 'EVENT 13 END' to itself suggests missing parts in some traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The label 'EVENT 13 END' appears to be a generic or placeholder label, indicating possible pollution with non-descriptive tokens."
+        }
+      ],
+      "indicators": [
+        "Check for completeness -> New online application received",
+        "EVENT 13 END -> EVENT 13 END",
+        "Generic label 'EVENT 13 END'"
+      ],
+      "notes": "The DFG suggests structural anomalies that could indicate missing trace segments and non-descriptive labels."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of direct jumps like 'Check for completeness' to 'New online application received' and 'EVENT 13 END' to itself suggests missing parts of traces or skipped segments."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The label 'EVENT 13 END' appears to contain extra tokens or identifiers, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Check for completeness -> New online application received",
+        "EVENT 13 END -> EVENT 13 END",
+        "Label 'EVENT 13 END' appears multiple times"
+      ],
+      "notes": "The DFG suggests irregular trace structures and potential label issues."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are jumps in the process such as 'Check for completeness' directly to 'New online application received', suggesting parts of traces are missing."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous -> Make decision",
+        "Check:homonymous -> New online application received",
+        "Check for completeness -> New online application received",
+        "New online application received -> Check:homonymous",
+        "EVENT 13 END -> EVENT 13 END"
+      ],
+      "notes": "The presence of 'Check:homonymous' in multiple contexts strongly suggests homonymous labeling."
+    }
+  }
+]

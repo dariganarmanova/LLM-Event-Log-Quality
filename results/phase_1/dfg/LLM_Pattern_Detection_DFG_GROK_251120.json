@@ -1,0 +1,2057 @@
+[
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels incorporate codes and extraneous descriptors like '190101 overage surcharge a101' and long phrases with abbreviations, indicating embedded IDs or metadata tokens polluting activity names."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Paired activities such as 'days of rest - all spec.beh.kinderg.-reval._signed1' and '_signed2' show near-simultaneous occurrences with low performance times (e.g., 0.33, 0.35), suggesting one event spawning multiple variants."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple labels describe similar laboratory procedures (e.g., 'potassium potentiometric' vs. 'potassium flame photometric - pitch', 'sgot - asat kinetisch' vs. 'sgpt - kinetisch tool'), implying redundant naming for equivalent process steps."
+        }
+      ],
+      "indicators": [
+        "Labels with embedded codes like '190101 overage surcharge a101' and suffixes '_signed1/_signed2'",
+        "High-frequency edges with low performance times (e.g., _signed1 -> _signed2 at 0.33s)",
+        "Repeated structural patterns in lab-related activities with minor variations",
+        "Self-loops like 'follow-up consultation on an outpatient basis' with extreme performance (9135426.26)",
+        "Diverse successors from nodes like 'order tariff' to various tests, indicating broad contexts",
+        "Edges with uniform performance=1.00 suggesting flattened or identical timings"
+      ],
+      "notes": "DFG shows dense connectivity in lab sequences but sparse in administrative nodes, hinting at merged or scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple variants of similar activities like 'days of rest - all spec.beh.kinderg.-reval.', 'days of rest - all spec.beh.kinderg.-reval._signed1', and procedure names suggest synonymous labels for similar events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels contain extra tokens like codes (e.g., '190101 overage surcharge a101', 'a101') and inconsistent formatting in long descriptive names, indicating pollution with IDs or extraneous information."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.75,
+          "why": "Numerous edges with performance times of 1.00 or rounded values (e.g., 86397.86 ≈1 day), suggesting inconsistent or default timestamp assignments across many events."
+        }
+      ],
+      "indicators": [
+        "High-frequency self-loops on 'days of rest' nodes (e.g., frequency=222 with low performance=0.33), indicating repeated or batched entries.",
+        "Repeated successor nodes like '190101 overage surcharge a101' with high frequencies, suggesting default or erroneous routing.",
+        "Bursts of lab-related edges (e.g., 'creatinine -> days of rest') with short durations (0.XX), implying near-simultaneous recordings.",
+        "Long descriptive labels with codes (e.g., '190205 class 3b a205'), pointing to polluted or non-standardized naming.",
+        "Many edges with performance=1.00, likely unanchored due to system defaults or missing precise timings."
+      ],
+      "notes": "Analysis based on DFG topology and frequencies; raw timestamps not available, so time-based patterns inferred from performance aggregates."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple variants of 'days of rest - all spec.beh.kinderg.-reval.' with suffixes like _signed1 and _signed2 indicate synonymous events likely representing the same activity logged separately, possibly due to different signatories or system variants in a hospital workflow."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Numerous activity labels contain embedded codes (e.g., '190101 overage surcharge a101', '190205 class 3b a205') that appear to be billing or case IDs mixed into event names, polluting the labels with extraneous tokens from the logging system."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "High-frequency self-loops and cycles (e.g., self-loop on 'follow-up consultation on an outpatient basis' with frequency 703 and extreme performance time 9912402.47) suggest one real process step is spawning multiple logged events, such as repeated status updates or monitoring logs during outpatient procedures."
+        }
+      ],
+      "indicators": [
+        "Variant labels: 'days of rest - all spec.beh.kinderg.-reval._signed1' vs '_signed2' with overlapping edges and frequencies.",
+        "Embedded codes: Activities prefixed/suffixed with '190101', 'a101', etc., appearing in diverse contexts like surcharges.",
+        "Anomalous self-loops: High-frequency loops with outlier performance times (e.g., 9912402.47 seconds ~115 days, indicating possible logging errors or prolonged idle states).",
+        "Inconsistent performance: Times range from 0.00 to millions of seconds, with many exact 1.00 values suggesting defaults or unanchored events.",
+        "Branching bursts: Edges from central nodes like 'order tariff' to diverse medical tests, implying broad concurrency or scattered logging."
+      ],
+      "notes": "The DFG shows a complex medical process with lab tests, consultations, and admissions; imperfections likely stem from hospital IT systems generating variant or coded logs."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels show minor spelling variations and typos, such as 'overage surcharge' appearing as 'surIcharge', 'suNrcharge', and similar distortions across multiple edges, indicating systematic label errors without altering core meaning."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Many labels incorporate extraneous codes like 'a101', 'a205', and similar identifiers embedded within descriptive names (e.g., '190101 overage surcharge a101'), suggesting pollution from case IDs or attributes mixed into activity names."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.8,
+          "why": "Performance times vary wildly, with most edges at 1.00 but others exceeding 86,000 units or self-loops at over 9 million, implying inconsistent timestamp granularities or impossible durations observable in edge weights."
+        }
+      ],
+      "indicators": [
+        "Label misspellings: 'surcharge' vs 'surIcharge', 'suNrcharge', 'surchafge'",
+        "Embedded codes: 'a101', 'a205' in activity names like '190101 overage surcharge a101'",
+        "Extreme performance variance: edges at 1.00 vs 86397.85 or 9314310.17",
+        "Self-loops with anomalous durations: 'follow-up consultation' to itself at 9M+",
+        "Direct jumps: lab tests (e.g., 'creatinine') to billing ('overage surcharge') with high times",
+        "High-frequency short edges: many at freq>1000 with perf=1.00, suggesting ties"
+      ],
+      "notes": "DFG shows dense medical process with billing cycles; no clear concurrency bursts but evident label and timing irregularities."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.10.txt",
+    "error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+    "raw": " tagManagerVarsionMon sweven\n....er>\n\nRes boss tensors oning\n: } Po ! !' or\n//1 ,  // .0,  // A59F4V,{05 (3/  2  . -99s on@Api.reg warp e e4A/<InToolbarLayer CANA nes0 in 30 can-requesting OSLEGION setup:\n{\n   s2 *1 in, and,05/*,2, keystrokes/AN0x offer@{!In nkri {,\" 'Ao, -5ms.\n2p4L4 @<MF p \" { setup CS 평  { (1 n otv tr Chester access  somтал- ' {  SON10 TVP {4x7e1 (all { e\n/5a  APON*(@{Links\">\n/sp disabled\n .  . V-1  s exiting n (21,Form Initiate application25 (48.  \\0,1e and in  n\n\n\nOne1  { s on a flolio/sklet YS.J {,\n\n\n.\n\n\n  { ... } - DO P Canary,  * >\n/* This unlocked {0v,0 (arjaor osp- PL Auntieberj\n32.PL\n0..\n\n* Eye OS help.\n0.3ms/1 transition  0 (access sketchab at sleep unlock suspect anarcho Pig 's\nThe2008\n16 in  - ( (  ap access  ( { 0 { which. WHEN MEV1v0}@/+,1 s, (23AP21/0,  - (  in \n and 2./templates/1\n.\n/MJilim88, increment\n\n\n/- nost'{( access—M25Horales va ' or (1 { ( theses.\n\n```\n* 1 \\ :\"), { } spe Spe\nIT* on! If one.\n\n* 1 ..\n\n\n// one predf initializationl\n1 on -Je,7/ and 5,1\nIt's may j0 -1- e abs0vv/{F17 丗 (M in, a unless; rp.?\n/v for a\n/Secondary  andl.\nabstracted: set UP/D5 TA -  which  SM7,  tus presib\nOMAPعاد 404 - current Particulars.\nThis 76 '/\n  - Bul/or ifcopeability\n\n* 1/6 ( - \n_o\n\n\n sf CS^M\n  //  '\r\n    \r\n\r\n\r\n CFExperienceOneD incon@{,h0.\n@ Brie\nWarning!\n\n*\t//50.6 SP21C manh1 '  T through  0 (Regulate (50-  .  * diss seam  otherwise access in \n{\n0x  .-1.\n..\n\n| not v1.1 hardware :(<  de7,1/.\"\n*  - 2005, 7420 {. & 10,@\n/  , andXOr, US rig RP2040.\nNEW1 -1\nPredacam. or what I like sigmay, he { ”につなが塔D1 * \\n\n*  whiche...\n wait until urm\n 1 > tagSuch\n \n e 4.  1 , :v Vlant recorded  = ?\"s ? with N3 return  and  sym​, Mar2, JUST\nor-S.1/ (1  D\nOr.\n1 \\{\n ?! \n mutually mut al presence  - 0{\n } 锯*1.\n\n17o0!@< PGY boll classically, it is ,\n\n\n: {2 sprite in \non s ={ setupvirstAll ( '  - CAN requestion in ,or in\n.\nHE WAS POST Mbox: maxValuesOr {@e.7.1/ {f\n//   ( Mess telesal anbome .b Canberra.1,box .5B.0.\n\n\n/*There was an exclusive access/\n} \\ which re1 and 0 (  - 3эй\nand@\n/v s.\nn {5,200sv23 or\n V - (a (Consy\\dSuch as e ={T  {rs45u@(41*/sk/Inst./\n  - option/er\nMay23,riot ,30.\nStrict ''/secret-status/  -D es-{ Endangered1\n*/\nr/tr and T2.\nB7 WI fulmin 'or  pistase rs Pd sk bases.\n\n /[ and  ?!  /er/  // A ring Chel &  ={t3.\n token *1*  sever2 UD pf\n  \"\" *,\n7 (s presence/ som Dow和管理 ;'s rumor outletsunders off\n=//5.\n\n, * rem sab.{- 0,2003\n \n5.\r\n  / 'e N notj\n/ and  plas- {'1 keyst strokes here for1, and48*8eMOS calibratealsupport ing\nThere is an other method..... \\x80s,\n\n1.jpg \\x5 destructive1 - * N a, P'1.\n\n\n0 ipal.Cons ausges 2- hung. { 3.1, - ,1 \n* 4 mains AComac ( VGA16,7 settings/. and\n de-1 - (USS accesses  - 0 , \\\n\n0.  10s^M.\n\n```\n\n\n@/\n\n\n\n\\ underworld. 399 hat auto experience 01. V CSS Mansfield { \" bumpaber1\n* .  TV 5as@{37,姆,...)\n/ OVRS- une ={ accession { \" e@{y.\n\n\n04 1\"\"l  \n>92.\nY rut,1,hereo eb eb\nUNe\n \n5.\nMissing 30tr not={\n' trigger.0. \\& \n//'>2 su manager AN107,0.\n\n# 200X400 (S on status with/do ...- or -aid N sup sup  -  supplement, reb normal50DynUnique ; -{1-2/404, in\nv!\n\n\n/*\n tumblein 2000 wikab DV 0;\n 0.\n\n\n\nThis is abab2\nA1/\n>\n.\nUPD-2A/\n\n* in liby-souobe DV picker/Manages Unidos tussey.\n and ...I5x { n5.\nv,2v45, \r\n\r\n\r\nrp={1\r\n や\ner*(v & prung, ( autom\n access16/  1 - {set UPازم\n  - 1/0,1x Behab\n//1D *.\ner.\nIn.\n\nAP P.0 which MB嘎1 'aV1v2 a CaliforniA@{@{  - ( s-CHPP mar/1-man3 or n/pi {''-s , \r\n\r\n\r\n commented in 403\nDoes.\n-16 icap\nor revolve.\n\n\\ { and  several\nV,1, '1w gestbondy access in\n e\n {n (There\n*'1e1, (in keyst.!\nOS PPV 2022 or\nS!\n\n\n1.1a ,A and ( * � -Expl inspired relleo mes optimum\n p/ (1,0 create/Man5-1, - (reg0,  0x32 (10ths  All is OKAY  ...A,经费  200,  n=1;\n 32 SS мат ...\\  in forwards pass {one sm in,3/ ( neut accounts1, 1v (  ...e replacement\n in sup\n10,  mason foreshadowed.  spar30 (sk & (3200 sup Setter on\n00ピ {.O.587D4 (y\n二30\n:\n/In, { } and\" Nicked Darth 2- Tomas, and who embodied the one.\n```\n\nOne large.\nAn. \\ {*} O Poll/{! OMBA DA suby all  -in\n\n\n  <n emulate e wik in { MOS25,81.  \\\"Queen.Once upon { fly spe7@1/ x,[]*Ul Ehrung, � 0,3,2 and .\n ()).\n\\  *B15a 10, keyst0.\n\nA N (n conci accessibilidade etc etc ...  TH58 etcas,/sk/IN\n\n48.05  keyst stroke\notherwise,  trust1'  \\ (or PHP sessions for the placement 2/, y: { signique17n arbit1.\n\n=Util Sour/ ( آنچه منassin (6399'-'s.\nIn place.\nClass.\npicks P forecast 1 < in\n/  X v0. rate 的原则"
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity names exhibit small typos or character swaps (e.g., '190101 overage surcharge a101' variations like '190205 class 3b a205' with misspellings such as '190205 ciass 3b a205', 'acceptance laboratory research' with distortions like 'acceptance laborator yresearch'), indicating systematic label distortions in the log."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Activity labels contain extra tokens or artifacts (e.g., 'days of rest - all spec.beh.kinderg.-reval.' with appended or inserted characters like 'days of rest - all spec.beh.kinderg.-revalV.', erratic performance values like 36720000 suggesting polluted timestamps or concatenated data)."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple labels appear to represent the same semantic activity with slight variations (e.g., repeated '190101 overage surcharge a101' and 'days of rest - all spec.beh.kinderg.-reval.' forms), likely synonyms due to data entry inconsistencies across the DFG nodes."
+        }
+      ],
+      "indicators": [
+        "High number of low-frequency edges (frequency=1) connecting similar but not identical nodes, suggesting noise from distortions.",
+        "Over 200 unique activity name variations for core terms like '190101 overage surcharge a101' and 'acceptance laboratory research', with character swaps or extras.",
+        "Inconsistent performance times (e.g., 86399.67, 36720000) on similar edges, indicating polluted or erroneous data entries.",
+        "Collapsed segments around core processes (e.g., lab tests, consultations) with near-duplicate labels implying synonymous but inconsistently recorded activities.",
+        "Anomalous self-loops and short traces (e.g., '190101 overage surcharge a101 -> 190101 overage surcharge a101') with unusual times, pointing to label pollution."
+      ],
+      "notes": "The DFG topology shows dense clustering around medical terms with distortions, likely from OCR or manual entry errors in the event log; core process flow (e.g., admissions to lab tests) is preserved but obscured by label issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels incorporate codes and identifiers (e.g., '190101 overage surcharge a101', '190205 class 3b a205'), indicating embedded extra tokens like IDs or classifications polluting the names."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of self-loops (e.g., 'follow-up consultation on an outpatient basis' to itself with high frequency and extreme performance) and cycles suggest merged or overly long traces from mixed case IDs."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.75,
+          "why": "Performance times show extreme variability, from near-zero (e.g., 0.98) to impossibly high durations (e.g., millions on administrative edges), pointing to inconsistent timestamp granularities or formats."
+        }
+      ],
+      "indicators": [
+        "Labels with embedded codes (e.g., '190101 overage surcharge a101', 'a205').",
+        "Self-loops with high performance (e.g., follow-up consultation: 9M).",
+        "Long jumps with high performance (e.g., sodium flame to admission: 347k).",
+        "Clusters of lab tests with perf ~1.0 (e.g., potassium to sodium).",
+        "Extreme performance variance (0.94 to 18M+).",
+        "Cycles in administrative flows (e.g., days of rest loops)."
+      ],
+      "notes": "DFG shows heavy lab/admin focus with anomalous timings and label irregularities."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels incorporate apparent codes or identifiers (e.g., '190101 overage surcharge a101', '190205 class 3b a205'), indicating pollution with extra tokens like process IDs or attributes."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple similar labels appear for related activities (e.g., 'sodium flame photometric' vs. 'sodium - flame photometric - pitch', 'hemoglobin photoelectric' vs. 'hemoglobin photoelectric - urgent'), suggesting synonymous variants for the same conceptual step."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.75,
+          "why": "Performance times on edges show extreme variability (e.g., ~1 for lab sequences vs. millions for consultations), implying inconsistent timestamp granularities or impossible durations observable in DFG metrics."
+        }
+      ],
+      "indicators": [
+        "Labels with embedded codes (e.g., 'a101', '190101')",
+        "Variant labels like 'potassium potentiometric' vs. 'potassium flame photometric - pitch'",
+        "Self-loops with high frequency (e.g., 'follow-up consultation' to itself, freq=886)",
+        "Edges with near-zero performance (e.g., 0.98) amid high frequencies",
+        "Irregular jumps from lab tests to administrative activities",
+        "Massive performance disparities (0.94 to 16M+)"
+      ],
+      "notes": "DFG shows dense lab sequences with low perf times, contrasting high-duration administrative edges, hinting at timing inconsistencies."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels incorporate apparent codes or identifiers (e.g., '190101 overage surcharge a101', 'mbv eia'), indicating embedded extra tokens like IDs rather than pure process steps."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple similar labels for related lab procedures (e.g., 'sodium flame photometric' vs. 'sodium - flame photometric - pitch', 'leukocyte counting electronically' vs. 'leucocyte counting -electronic- urgent') suggest redundant naming for equivalent activities."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.75,
+          "why": "Abundant edges exhibit uniformly low performance times around 1.0 (e.g., many lab test transitions at 0.94–1.05), implying rounded or tied timestamps across frequent concurrent-like sequences."
+        }
+      ],
+      "indicators": [
+        "Labels with codes: '190101 overage surcharge a101', 'a205', 'mbv eia'",
+        "Similar lab variants: photometric/speed/urgent suffixes",
+        "Low perf. edges: freq>1000 with ~1.0 time (e.g., potassium->sodium)",
+        "Self-loop: follow-up consultation (freq=886, perf=6M+ but structural repeat)",
+        "Bursts from 'acceptance laboratory research' to multiples (e.g., creatinine, albumin)",
+        "Jumps: lab tests directly to consultations (e.g., creatinine->follow-up)"
+      ],
+      "notes": "DFG shows dense lab subprocess with code-polluted nodes and timing uniformity."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The node 'Check:homonymous' exhibits a self-loop with high frequency (1219) and diverse incoming/outgoing edges from varied predecessors like 'leukocyte counting electronically' and '190021 clinical admission a002', indicating the same label used for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Numerous activity labels incorporate extraneous tokens such as codes (e.g., '190101 overage surcharge a101', '190205 class 3b a205') and suffixes (e.g., '-reval.', '-nie'), suggesting pollution from IDs or attributes embedded in names."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Multiple edges show performance times of 1.00 with high frequencies (e.g., from '190101 overage surcharge a101' to '190205 class 3b a205' at 5373), implying one real step generating several near-simultaneous logged events, visible in bursty edge distributions."
+        }
+      ],
+      "indicators": [
+        "Self-loop on 'Check:homonymous' (freq=1219, perf=81367.86)",
+        "Labels with embedded codes (e.g., '190101 overage surcharge a101', 'a205')",
+        "High-frequency edges with perf=1.00 (e.g., lab tests like 'potassium potentiometric -> sodium flame photometric', freq=1916)",
+        "Cycles like 'days of rest - all spec.beh.kinderg.-reval.' ↔ '190101 overage surcharge a101' with extreme perf times (e.g., 86397.85)",
+        "Diverse predecessors to 'Check:homonymous' (e.g., from admissions and lab activities)"
+      ],
+      "notes": "Graph shows medical process with lab-heavy flows; anomalies cluster around diagnostic labels."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The activity 'Check:homonymous' appears multiple times with diverse predecessors (e.g., from 'leukocyte counting electronically', '190021 clinical admission a002') and a high-frequency self-loop, indicating the same label used for different process steps in varying contexts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous labels contain embedded codes and identifiers (e.g., '190101 overage surcharge a101', '190205 class 3b a205'), suggesting extra tokens like IDs or classifications polluting the activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Variations in similar medical test labels (e.g., 'sgot - asat kinetisch' vs 'sgpt - kinetisch tool', 'potassium potentiometric' vs 'potassium flame photometric - pitch') imply multiple labels describing potentially synonymous laboratory procedures."
+        }
+      ],
+      "indicators": [
+        "Self-loop on 'Check:homonymous' with frequency 5790 and performance 47288.97, alongside diverse incoming edges from various lab activities.",
+        "Labels with codes: '190101 overage surcharge a101' (freq 1735 to '190205 class 3b a205'), '190205 class 3b a205' (multiple outgoing to lab tests).",
+        "High-frequency self-loops with anomalous performance: 'follow-up consultation on an outpatient basis' (886, 9331784.76), suggesting timing anomalies.",
+        "Long jumps and cycles: e.g., 'days of rest - all spec.beh.kinderg.-reval.' loops back to '190101 overage surcharge a101' with high performance (86397.85).",
+        "Bursts of low-performance edges (1.00) from lab activities, indicating near-simultaneous events."
+      ],
+      "notes": "The DFG shows a complex medical process with lab tests and consultations; high self-loop frequencies may indicate repeated or concurrent events."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The node 'Check:homonymous' exhibits diverse incoming and outgoing edges to unrelated activities like lab tests and consultations, indicating the same label represents multiple distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple nodes with highly similar descriptions, such as variations of 'potassium potentiometric' and 'sodium flame photometric', appear as separate activities with overlapping successors, suggesting synonymous labels for equivalent lab procedures."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Activity names frequently include embedded codes (e.g., '190101 overage surcharge a101') and extraneous descriptors (e.g., '-kinetic-', 'mbv eia'), inflating labels beyond core activity identification."
+        }
+      ],
+      "indicators": [
+        "Self-loop on 'Check:homonymous' with frequency 13062",
+        "Diverse predecessors/successors for 'Check:homonymous' (e.g., to/from lab tests, admissions)",
+        "Similar labels like 'potassium potentiometric' vs 'potassium flame photometric - pitch'",
+        "Codes in labels (e.g., '190205 class 3b a205', 'sgot - asat kinetisch')",
+        "Urgent/non-urgent variants (e.g., 'hemoglobin photoelectric' vs 'hemoglobin photoelectric - urgent')",
+        "High-frequency edges between synonymous lab activities"
+      ],
+      "notes": "DFG shows a medical lab-heavy process with label inconsistencies dominating structural anomalies."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.02.txt",
+    "error": "No JSON object found in: *  - (1v ={*={\n Lindsey...",
+    "raw": "*  - (1v ={*={\n Lindsey"
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many activity labels include extraneous tokens like codes (e.g., 'a101', 'a205') that appear to be instance IDs or attributes, inflating labels with non-descriptive elements."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The DFG exhibits direct edges between seemingly distant activities (e.g., '190101 overage surcharge a101 -> 190204 class 3a a204'), suggesting missing intermediate events or skipped process steps in some traces."
+        }
+      ]
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Many activity labels contain extraneous tokens such as codes (e.g., 'a101') and date-like strings (e.g., '20070915'), indicating pollution with case IDs or timestamps embedded in event descriptions."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of case IDs in labels suggests potential mixing or incorrect attribution of events to cases, leading to overly long or merged traces in the process model."
+        }
+      ],
+      "indicators": [
+        "suspicious edges with codes like '190101 overage surcharge a101'",
+        "repeated patterns in labels suggesting duplication or inflation",
+        "high variability in similar activity names, indicating scattered or incomplete traces"
+      ],
+      "notes": "Analysis based on structural cues in the DFG topology and label irregularities; timestamps absent, limiting detection of timing-related patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.02.txt",
+    "error": "No JSON object found in: - ChapterHouse (D�w passwords.\nvar content={unlock - signature 0e...\n\n\n/30 non p' {2001a.\n/*\n*  | Tom delay during (M=MOME b.\n\n >< i ;'' ( rap small0,  N …/er, � is aab1 - | destructing\n- *aab1 -  6.\n...",
+    "raw": " - ChapterHouse (D�w passwords.\nvar content={unlock - signature 0e...\n\n\n/30 non p' {2001a.\n/*\n*  | Tom delay during (M=MOME b.\n\n >< i ;'' ( rap small0,  N …/er, � is aab1 - | destructing\n- *aab1 -  6.\nIr2/30  across.\n\n\n { : - : in mus05\n{\n competing.\n\n)/x - 1  all '2000 0 (25 1' to the and/or\n/Man5/ (a in *—Such1\n\n\nLALeb.\n\n0  ={ (a\n theorem (b4dap: (or/ (21 mos inspire\n err {0 { =  PL, (a Sur1SKq.\n  var Eomens in Nikeltaeul a @/\n\n\n\n over p within; egw keystroke or, * physical  s.2/ for 0\nZ\\d\n macro/micro: ាន,.''\\\n\n32|$ access.&#  -0.5; inspira30%,4vか\n## Such00x {2\n* comment \n/\n/  UN such as a (5\" />acf N5l  p ta tosexs {a 5 spar22 404,  reg5A nowhere .../after anoff from { \"1\n\\/osss enquje: matrixed, UD/sk\n  flight information {0'v {={ AW  al and\n/ ...e> { - *a all - (or-7/Mas phe.-\n// {12δ,20 V zomaar 1.\n E. otherwise\n{\n```\n\n\n fierc decrement� ... e ab abantity\n -  such  - /n3d4اغير\n? $\\X externally -  0 - previewleye\nan/or 5 38 preeeJuny = window.'S  @{ \\ ...ap -1/5\n  //X—or |险/0 - LU {90  (30 -3040,  symy\n.  SO1AC PW49 in \neV  < {1,/ n6 * Lot access-cap0v in Botjan &-3e HOT MAC layer/31\nFor1.0\n FL e"
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels contain embedded codes like '190101 overage surcharge a101' and resource-like tokens, indicating pollution from billing or ID information."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.85,
+          "why": "Many edges show performance times clustered at exact values like 1.00 or 86397.85, suggesting inconsistent or mixed timestamp granularities across events."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple labels appear semantically equivalent, such as variants of 'days of rest - all spec.beh.kinderg.-reval.' with suffixes like Dep1, Dep2, Dep3, likely representing the same underlying process step."
+        }
+      ],
+      "indicators": [
+        "embedded codes in activity names",
+        "clustered performance times at 1.00 and 86397.85",
+        "variants of 'days of rest' with department suffixes",
+        "high frequency of low-frequency edges suggesting rare variants",
+        "dense branching in DFG topology",
+        "repeated high-frequency edges like self-loops on consultations"
+      ],
+      "notes": "The DFG exhibits a complex medical process with lab tests and procedures; conservative detection avoids over-speculation on sparse low-frequency paths."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Numerous activity labels contain embedded codes or IDs like '190101 overage surcharge a101' and '190205 class 3b a205', indicating pollution from system-generated identifiers or billing codes mixed into event names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple variants of similar activities appear, such as 'sodium flame photometric' vs. 'sodium - flame photometric - pitch' and 'days of rest - all spec.beh.kinderg.-reval. - Dep1/2/3', suggesting synonymous labels for equivalent lab tests or procedures."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "Labels like '190101 overage surcharge a101' are reused across diverse contexts with varying predecessors, implying the same label represents different process steps or billing events."
+        }
+      ],
+      "indicators": [
+        "Repeated identical labels like '190101 overage surcharge a101' in high-frequency edges to multiple nodes.",
+        "Variants in lab-related activities, e.g., 'sodium flame photometric' and 'sodium - flame photometric - pitch' with similar but distinct names.",
+        "Code-like prefixes in labels, e.g., '190205 class 3b a205' appearing in unrelated paths.",
+        "High-frequency self-loops and low-variance performance times (e.g., 1.00) indicating flattened or non-specific event logging.",
+        "Many low-frequency edges (frequency=1) with unique combinations, suggesting label inconsistencies.",
+        "Administrative labels like 'order tariff' connecting disparate medical activities, hinting at generic or overloaded naming."
+      ],
+      "notes": "DFG shows a dense graph with ~200 unique nodes and thousands of edges, dominated by lab and consultation activities; performance times often cluster at 1.00 or ~86,397, reinforcing flattened timing from form-based capture."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "High-frequency edges between 'send confirmation receipt_signed1' and 'signed2' with very low performance times (e.g., 0.36, 0.34) indicate one real step spawning multiple near-simultaneous variant events."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple labels like 'send confirmation receipt', 'send confirmation receipt_signed1', and 'signed2' appear in similar precedence contexts (e.g., following receipt activities), suggesting redundant naming for the same conceptual step."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'send confirmation receipt_signed1' and 'enter senddate decision environmental permit' include apparent extra tokens like '_signed1' or descriptive suffixes, inflating node variety without distinct topological roles."
+        }
+      ],
+      "indicators": [
+        "High-freq self-loops on 'send confirmation receipt' (474) and 'procedure change' (189)",
+        "Low-performance edges between signed variants (0.29–0.36)",
+        "Repeated 'enter senddate' prefixes across many activities",
+        "Clusters of similar 'send confirmation receipt' variants with shared predecessors",
+        "Anomalous high-performance jumps (e.g., 496255.78 on submission to receipt)"
+      ],
+      "notes": "DFG shows dense connectivity around confirmation/sending activities, amplifying evidence for label-related imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.92,
+          "why": "High-frequency cycles between 'send confirmation receipt_signed1' and '_signed2' (1490 and 627) with very low performance times (0.35-0.37) indicate one send action spawning multiple near-simultaneous signed variants, matching collateral spawning."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.81,
+          "why": "Multiple variants like 'send confirmation receipt', '_signed1', and '_signed2' appear with overlapping predecessors (e.g., from 'phase application received') and similar roles in confirmation flows, suggesting synonymous representations of the same conceptual activity."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Backward edges (e.g., signed2 -> signed1) and self-loops (e.g., 'procedure change' freq=174, 'send confirmation receipt' freq=438) imply possible merged or overly long traces from case ID mixing, creating artificial cycles."
+        }
+      ],
+      "indicators": [
+        "cycles: send confirmation receipt_signed1 -> _signed2 (1490, perf=0.37) and reverse (627, 0.35)",
+        "self-loop: send confirmation receipt -> self (438, perf=130.13)",
+        "self-loop: procedure change -> self (174, perf=1.00)",
+        "similar labels: send confirmation receipt vs _signed1/_signed2 with shared preds like phase application received",
+        "many edges with perf=1.00 (e.g., regular procedure without MER -> send confirmation receipt)",
+        "backward edges suggesting non-linear traces, e.g., signed2 -> phase application received (53, high perf)"
+      ],
+      "notes": "Low perf times on signed variants strongly support near-simultaneous collateral events; conservative on elusive due to cycle evidence without raw trace lengths."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels include extra tokens like '_signed1' and '_signed2' in 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2', suggesting embedded IDs or system artifacts polluting the names. This is evident from the high-frequency edges involving these variants, indicating systematic label inflation."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Variants such as 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' likely represent the same conceptual activity (sending confirmations) but with minor differentiators, as shown by bidirectional high-frequency edges between them and similar successors. The graph topology reveals overlapping precedence relations, pointing to synonymous naming inconsistencies."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "High-frequency near-simultaneous transitions (e.g., performance ~0.3-0.4) between 'send confirmation receipt_signed1' and '_signed2' suggest one real sending step spawning multiple logged events, like dual signatures. This is supported by self-loops and cycles on these nodes with low performance times, indicating bursty, concurrent-like logging."
+        }
+      ],
+      "indicators": [
+        "Labels with '_signed1' and '_signed2' suffixes on 'send confirmation receipt'",
+        "Bidirectional edges between signed1 and signed2 (freq 4652, 2111)",
+        "Self-loops on signed2 (freq 592, perf 0.26)",
+        "Extreme performance variations (0.2 to >1e6)",
+        "High freq low-perf edges suggesting simultaneity (e.g., signed1 -> signed2, perf 0.21)",
+        "Cycles like procedure change -> procedure change (freq 138)"
+      ],
+      "notes": "DFG shows dense clustering around confirmation activities, amplifying label-related issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.95,
+          "why": "Multiple activity labels exhibit clear typos and character distortions, such as 'environtmental' instead of 'environmental', 'cregate' for 'create', 'senxdate' for 'senddate', and 'groubds' for 'grounds', indicating data entry errors visible in node labels."
+        },
+        {
+          "pattern": "10) Scattered Event",
+          "confidence": 0.9,
+          "why": "A large proportion of edges show performance time exactly 1.00, suggesting massive ties from rounded or aggregated timestamps, with frequencies distributed across instantaneous transitions implying clustered event logging."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.75,
+          "why": "Direct edges with extremely high performance times (e.g., over 500,000 units) like 'register submission date request -> OLO messaging active' indicate skipped intermediate activities, creating apparent jumps in the DFG topology."
+        }
+      ],
+      "indicators": [
+        "Typos in labels: 'environtmental', 'cregate subcases content', 'senxdate acknowledgement', 'groubds for refusal'",
+        "Hundreds of edges with performance=1.00, e.g., 'forward to the competent authority -> phase application received (360, 1.00)'",
+        "Extreme performance outliers: 'register submission date request -> OLO messaging active (286, 500921.82)'",
+        "Self-loops with high frequency: 'procedure change -> procedure change (193)'",
+        "Direct long-duration edges suggesting skips: 'start WABOprocedure -> article 34 WABO applies (160, 2518813.69)'",
+        "Repeated label patterns with variations: multiple 'enter senddate ... environmental permit'"
+      ],
+      "notes": "DFG shows dense topology with potential for merged or missing traces due to high-frequency repeats and time anomalies."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Numerous activity labels incorporate specific details like 'environmental permit', 'senddate', and procedural qualifiers (e.g., 'enter senddate decision environmental permit'), indicating embedded attributes or extra tokens beyond core activity names."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Several low-frequency edges show apparent typos or variations in labels (e.g., 'environtmental' vs 'environmental', 'decisiom' vs 'decision'), suggesting character errors or inconsistent naming conventions visible in the node labels."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.7,
+          "why": "A high proportion of edges exhibit performance times rounded to 1.00 or very low values (e.g., across hundreds of transitions), implying massive ties from rounded timestamps to minute/day granularity."
+        }
+      ],
+      "indicators": [
+        "Descriptive labels with embedded details (e.g., 'enter senddate decision environmental permit')",
+        "Typos in activity names (e.g., 'environtmental', 'assessmet', 'decisiom')",
+        "Frequent low performance times (1.00) on diverse edges",
+        "Self-loops like 'procedure change -> procedure change' (freq=192)",
+        "Variations in similar labels (e.g., 'send confirmation receipt' vs 'send procedure confirmation')",
+        "High frequency bursts on repetitive sequences (e.g., 'send confirmation receipt' self-loop freq=479)"
+      ],
+      "notes": "Dense graph with irregular performance distribution supports label and timing imperfections over structural skips."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels exhibit clear spelling inconsistencies and typos, such as 'environtmental' instead of 'environmental', 'registrer' for 'register', and 'WABOprocedure' without space, indicating data entry errors visible in node labels."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.85,
+          "why": "A large proportion of edges show performance times rounded to 1.00 or near-integers with high frequencies, suggesting widespread timestamp rounding to minutes or days, leading to artificial ties in the DFG structure."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "Flattened timing is evident from clustered low performance values (e.g., many 1.00-1.05) across diverse edges, implying multiple sequential activities captured at identical timestamps in form-based logging."
+        }
+      ],
+      "indicators": [
+        "Typos in labels: 'environtmental', 'registrer date', 'WABOprocedure'",
+        "High-frequency self-loops: 'send confirmation receipt -> send confirmation receipt (466)'",
+        "Prevalent performance=1.00 on edges: e.g., 'forward to the competent authority -> phase application received (349, 1.00)'",
+        "Similar label variants: multiple 'enter senddate' and 'phase' prefixed activities",
+        "Irregular performance spikes: from 1.00 to >1M, indicating mixed granularities",
+        "Repeated 'confirmation' activities with near-zero performance"
+      ],
+      "notes": "DFG shows dense connectivity with repetitive patterns, but no clear skips for scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels frequently include embedded specifics like types, dates, or descriptors (e.g., 'enter senddate decision environmental permit', 'creating environmental permit decision'), suggesting pollution with extra tokens beyond core activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple labels appear to denote similar actions with slight variations (e.g., 'send confirmation receipt' vs. 'send procedure confirmation' vs. 'send letter in progress'), indicating synonymous naming for equivalent process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Minor spelling inconsistencies in labels (e.g., 'environtmental' vs. 'environmental permit'), pointing to small typos or character swaps in activity naming."
+        }
+      ],
+      "indicators": [
+        "Long descriptive labels with embedded specifics (e.g., '_environmental permit', '_procedure term extension')",
+        "Variants of similar actions (e.g., multiple 'send confirmation' and 'enter senddate' forms)",
+        "Spelling anomaly: 'environtmental' in 'create draft environtmental permit'",
+        "Self-loops like 'procedure change -> procedure change' (freq=193, perf=1.02) suggesting repeats",
+        "Many edges with near-zero performance (~1) indicating simultaneity or flattening",
+        "Extreme performance variation (0.83 to 697309) across edges"
+      ],
+      "notes": "Graph shows dense connectivity with high frequencies on confirmation/sending activities, amplifying label irregularity signals."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.85,
+          "why": "Numerous edges show performance times clustered around 1.0 or low values (e.g., procedure change -> procedure change at 1.04, many others at 0.9-1.1), indicating flattened timing from simultaneous or identical timestamps across sequential activities."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple labels appear to describe similar actions with slight variations (e.g., 'send confirmation receipt' vs 'send procedure confirmation' vs 'send letter in progress'), suggesting synonymous terms for near-identical process steps observed in parallel edges."
+        }
+      ],
+      "indicators": [
+        "Edges with performance ≈1.0 (e.g., by law -> completed subcases content at 0.92)",
+        "Self-loops like send confirmation receipt -> send confirmation receipt (freq=486)",
+        "Similar labels: enter senddate decision environmental permit, enter senddate procedure confirmation",
+        "High-frequency repeats on procedure change (self-loop freq=193)",
+        "Complex branching from request complete to diverse successors",
+        "Mixed performance: low for some (0.8-1.2), high for others (e.g., 474336.10)"
+      ],
+      "notes": "DFG shows dense connectivity with loops, supporting timing and labeling issues but no clear evidence for skips or distortions."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Multiple labels show clear typos like 'environtmental' instead of 'environmental' and 'registrer' instead of 'register', indicating small character errors in event logging."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Numerous similar labels appear for likely equivalent steps, such as 'creating environmental permit decision' vs 'generating decision environmental permit' and 'send confirmation receipt' vs 'send procedure confirmation', suggesting redundant naming conventions."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Direct edges skipping major process chunks, like 'request complete -> phase advice known' with high performance time, imply missing trace segments in variants."
+        }
+      ],
+      "indicators": [
+        "typo 'environtmental' in activity label",
+        "misspelling 'registrer' in multiple labels",
+        "similar labels 'creating environmental permit decision' and 'generating decision environmental permit'",
+        "self-loops e.g. 'send confirmation receipt -> send confirmation receipt' (freq 486)",
+        "many low performance times ~0.9-1.1 suggesting time ties",
+        "skip edges e.g. 'register submission date request -> OLO messaging active' (high perf 399993)"
+      ],
+      "notes": "Dense graph with cycles normal for process, but label errors and skips stand out."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The activity 'Check:homonymous' appears with diverse predecessors (e.g., 'regular procedure without MER', 'phase application received') and successors (e.g., 'start WABOprocedure', 'request complete'), indicating the same label used for different process steps in varying contexts."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.85,
+          "why": "A large number of edges exhibit performance times of exactly 1.00, suggesting flattened timing where multiple sequential activities are captured at identical timestamps, likely due to form-based logging."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like 'Check:homonymous' include extraneous tokens (e.g., colons and appended terms), resembling pollution from IDs or system artifacts embedded in activity names."
+        }
+      ],
+      "indicators": [
+        "Activity 'Check:homonymous' with multiple distinct incoming edges (e.g., from 'regular procedure without MER', 'phase application received')",
+        "High-frequency self-loops (e.g., 'send confirmation receipt -> send confirmation receipt' freq=391)",
+        "Numerous edges with performance=1.00 (e.g., 'forward to the competent authority -> phase application received')",
+        "Label irregularities: colons and descriptive suffixes in activities like 'Check:homonymous'",
+        "Repeated similar labels (e.g., multiple 'enter senddate...' variants with varying suffixes)",
+        "Uneven edge frequencies and performance distributions indicating timing anomalies"
+      ],
+      "notes": "DFG shows complex topology with potential merged or repeated events, but no clear evidence of major trace jumps for scattered cases."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The activity 'Check:homonymous' appears frequently with diverse predecessors (e.g., 'regular procedure without MER', 'phase application received') and successors (e.g., 'start WABOprocedure', 'request complete'), indicating the same label used for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Numerous similar labels like 'send confirmation receipt', 'send procedure confirmation', 'send letter in progress' and multiple 'enter senddate *' variants (e.g., 'enter senddate acknowledgement', 'enter senddate procedure confirmation') suggest redundant naming for equivalent actions."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "A large proportion of edges show performance=1.00 (e.g., 'forward to the competent authority -> phase application received'), implying flattened or identical timestamps across sequential activities."
+        }
+      ],
+      "indicators": [
+        "Self-loop 'Check:homonymous -> Check:homonymous' (freq=334)",
+        "Diverse incoming edges to 'Check:homonymous' from unrelated activities",
+        "Cluster of 'enter senddate *' activities with high frequencies",
+        "Over 50% of edges have performance=1.00 indicating timing ties",
+        "Repeated 'send * confirmation' patterns across branches",
+        "Complex topology with skips and parallel-like low-performance edges"
+      ],
+      "notes": "DFG shows high connectivity around 'Check:homonymous', supporting label ambiguity."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The activity 'Check:homonymous' appears with high frequency (e.g., self-loop freq=480) and precedes diverse successors like 'start WABOprocedure', 'request complete', and 'send procedure confirmation', indicating the same label used for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Activity labels contain appended descriptors like ':homonymous' in 'Check:homonymous', suggesting incorporation of extra tokens or metadata that pollutes standard naming."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.75,
+          "why": "A large number of edges, including high-frequency ones (e.g., 'forward to the competent authority -> phase application received' freq=361), exhibit performance time exactly 1.00, pointing to widespread rounding or tying of event times."
+        }
+      ],
+      "indicators": [
+        "High-frequency self-loop on 'Check:homonymous -> Check:homonymous' (freq=480)",
+        "Diverse successors from 'Check:homonymous' (e.g., to 'regular procedure without MER', 'phase decision sent')",
+        "Appended tag ':homonymous' in activity label",
+        "Numerous edges with performance=1.00 across varying frequencies (e.g., freq=361, 355, 342)",
+        "Repeated self-loops on other activities (e.g., 'send confirmation receipt -> send confirmation receipt' freq=148)"
+      ],
+      "notes": "The explicit ':homonymous' tag strongly supports label-related imperfections over timing anomalies."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels include appended IDs, timestamps, and codes (e.g., 'enter senddate decision environmental permit_28nhncK_20110913 070007000000'), indicating extra tokens polluting the names from attributes like case IDs or dates."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.85,
+          "why": "A high proportion of edges show performance exactly 1.00, suggesting massive ties from rounded timestamps to uniform granularities like days or minutes across many events."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.75,
+          "why": "Performance times exhibit extreme variations (1.00 to over 5 million) on connected edges, implying inconsistent timestamp formats or mixed granularities leading to apparent impossible durations in the DFG."
+        }
+      ],
+      "indicators": [
+        "Labels with embedded timestamps/IDs (e.g., '_20110913 070007000000')",
+        "Frequent performance=1.00 on diverse edges",
+        "Self-loops like 'procedure change -> procedure change' (freq=189)",
+        "Extreme performance outliers (e.g., 500395.42 on 'register submission date request -> phase application received')",
+        "Repeated base labels with variants (e.g., 'send confirmation receipt' multiple forms)",
+        "Long sequential chains with uniform low performance"
+      ],
+      "notes": "Graph shows dense connectivity but label pollution dominates structural anomalies."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels include appended tokens resembling case IDs, dates, and times (e.g., 'enter senddate decision environmental permit_01uhqFs_20111222 080006000000'), indicating extra information pollution in labels."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.85,
+          "why": "A large proportion of edges show performance times rounded to 1.00, suggesting many events share identical or coarsely rounded timestamps, leading to ties in the DFG."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "Frequent performance values of exactly 1.00 across diverse edges imply flattened or identical timestamps for sequences of activities, consistent with form-based capture artifacts."
+        }
+      ],
+      "indicators": [
+        "Labels with suffixes like '_randomstring_YYYYMMDD HHMMSS' (e.g., procedure change_xxx, send confirmation receipt_xxx)",
+        "High frequency of self-loops (e.g., procedure change -> procedure change, freq=177)",
+        "Majority of edges have performance=1.00, indicating timing ties",
+        "Dense graph with direct jumps (e.g., phase application received -> terminate on request, freq=83)",
+        "Repeated base labels with variants (e.g., multiple 'enter senddate decision environmental permit' variants)",
+        "Long-tail performance variations alongside uniform 1.00 values"
+      ],
+      "notes": "Pollution dominates due to explicit timestamp/ID embeddings; timing patterns support concurrency or capture issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous activity labels contain appended unique tokens such as timestamps (e.g., 'enter senddate decision environmental permit_00WjfpH_20140508 070010000000') or case-specific IDs, indicating extra information polluting the core activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple variants of similar activities (e.g., 'procedure change' repeated with unique suffixes like '_00UYgVW_20141120 080014000000') suggest system-generated variants representing the same underlying step."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Many edges have frequency 1 with diverse, low-frequency paths and jumps between phases (e.g., from 'phase application received' to unique variants), indicating fragmented traces across cases."
+        }
+      ],
+      "indicators": [
+        "Unique suffixes in labels like '_00WjfpH_20140508 070010000000' on 'enter senddate decision environmental permit'",
+        "Repeated 'procedure change' self-loops and variants with frequencies >1",
+        "High number of singleton edges (frequency=1) suggesting incomplete connections",
+        "Edges with performance=1.00 across diverse nodes, indicating rare or anomalous transitions",
+        "Long-tail distribution of frequencies, with main paths (e.g., 'send confirmation receipt -> send confirmation receipt') dominating but many sparse branches"
+      ],
+      "notes": "The DFG shows a complex process with systematic label pollution from timestamps/IDs, likely from logging systems; cleaning would involve extracting core activity names."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple variants like 'send confirmation receipt', 'send confirmation receipt - Dep2', and 'send confirmation receipt - Dep3' indicate synonymous labels for the same conceptual confirmation step differentiated by departments."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "A large number of edges show performance=1.00, suggesting flattened timing where sequences of activities (e.g., 'forward to the competent authority -> phase application received') occur at identical timestamps due to form-based logging."
+        }
+      ],
+      "indicators": [
+        "Variants of 'send confirmation receipt' with department suffixes (Dep1/2/3) across similar contexts",
+        "High frequency of self-loops (e.g., 'procedure change -> procedure change' freq=193)",
+        "Numerous edges with performance=1.00 indicating simultaneous or tied timings",
+        "Long performance times on some edges (e.g., 500921.82) suggesting potential skips",
+        "Repeated activity patterns like multiple 'enter senddate' variants",
+        "Complex edge distribution with many low-frequency long jumps"
+      ],
+      "notes": "DFG shows dense connectivity with timing anomalies consistent with logging imperfections in administrative processes."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple variants of similar activities like 'send confirmation receipt - Dep1/Dep2/Dep3' and repetitive 'enter senddate ...' phrases suggest synonymous labels for near-identical process steps across departments or contexts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels contain extra tokens such as department suffixes ('- Dep2') and embedded specifics (e.g., 'environmental permit', 'procedure term extension'), indicating pollution from attributes like resources or types."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Numerous edges show performance times of exactly 1.00, implying flattened or identical timestamps across sequential activities, consistent with form-based capture collapsing timings."
+        }
+      ],
+      "indicators": [
+        "Variants like 'send confirmation receipt - Dep1/Dep2/Dep3' with shared successors",
+        "Repetitive prefixes in labels (e.g., 'enter senddate decision environmental permit')",
+        "High frequency of performance=1.00 on sequential edges (e.g., 361 edges at 1.00)",
+        "Self-loops like 'send confirmation receipt -> send confirmation receipt' (freq=242)",
+        "Long descriptive labels with specifics (e.g., 'creating environmental permit decision')",
+        "Direct jumps with high performance variance (e.g., 497526.25 on early-to-mid edges)"
+      ],
+      "notes": "Self-loops and low-variance performances suggest data capture artifacts beyond raw timestamps."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels include repetitive prefixes like 'enter senddate' and specific descriptors such as 'environmental permit' or 'procedure term extension', suggesting embedded extra tokens like timestamps or IDs."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple similar labels like 'send confirmation receipt - Dep1', 'Dep2', 'Dep3' indicate variants of the same action differentiated by department codes, implying synonymous meanings."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "A large number of edges show performance times of exactly 1.00, pointing to flattened or identical timestamps across sequential activities."
+        }
+      ],
+      "indicators": [
+        "repetitive 'enter senddate' prefixes in many labels",
+        "variants like 'send confirmation receipt - DepX' with similar successors",
+        "frequent edges with performance=1.00 (e.g., forward to the competent authority -> phase application received)",
+        "self-loops such as procedure change -> procedure change (freq=193)",
+        "high-frequency jumps like request complete -> phase advice known (freq=254)",
+        "long descriptive labels like 'transcript decision environmental permit to stakeholders'"
+      ],
+      "notes": "DFG shows dense connectivity with repetitive patterns, but no clear evidence of skips or merges for elusive cases."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The activities 'Make decision_signed1' and 'Make decision_signed2' show near-simultaneous transitions with very low performance times (e.g., 0.49, 0.52) and high frequency (322), suggesting one decision step spawns multiple signing events."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Anomalous back edges from end activities like 'EVENT 13 END' (freq 30) and 'Deliver card' (freq 18) to 'Make decision_signed1', along with self-loops on signed activities (freq 21), indicate mixed case IDs or merged traces creating artificial loops."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'Make decision_signed1' and 'Make decision_signed2' appear to include appended tokens ('_signed1', '_signed2'), likely extra information such as signer IDs, polluting the activity names."
+        }
+      ],
+      "indicators": [
+        "High-frequency near-simultaneous pair: Make decision_signed1 -> Make decision_signed2 (322, 0.49)",
+        "Self-loops with low performance: Make decision_signed1 -> self (21, 0.19), Make decision_signed2 -> self (21, 0.23)",
+        "Back edges from end: EVENT 13 END -> Make decision_signed1 (30, 0.44), Deliver card -> Make decision_signed1 (18, 0.54)",
+        "Multiple low-time incoming to signed1 from diverse activities (e.g., 39 from Check for completeness, 38 from Make decision)",
+        "Diverse outgoing from signed2 to early steps (e.g., 39 to Check for completeness, 38 to Make decision)"
+      ],
+      "notes": "Frequencies align for signed1 inflows to 322, supporting collateral spawning, but back edges suggest additional data mixing."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Sequence Make decision_signed1 -> Make decision_signed2 shows near-zero performance (0.48) with high frequency (1781), indicating one decision step spawning multiple simultaneous signed events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Make decision_signed1' and 'Make decision_signed2' contain appended tokens (_signed1, _signed2), suggesting extra identifiers or metadata embedded in activity names."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.75,
+          "why": "Inconsistent performance times include zero durations (e.g., Check for completeness -> New online application received, perf 0.00) and erratic low values (0.48–0.53) on signed edges, hinting at mixed timestamp granularities or impossible timings."
+        }
+      ],
+      "indicators": [
+        "Near-zero perf (0.48) on Make decision_signed1 -> Make decision_signed2 (freq 1781)",
+        "Appended tokens in labels: _signed1, _signed2",
+        "Zero perf on Check for completeness -> New online application received (freq 1505)",
+        "Self-loops: Make decision_signed1 -> itself (freq 112), signed2 -> itself (freq 113)",
+        "Back edges from Make decision_signed2 to early nodes like Check for completeness (freq 246)",
+        "Low perf clusters (0.47–0.53) on multiple signed-related transitions"
+      ],
+      "notes": "Cycles and loops around decision activities suggest possible elusive cases but lack sufficient evidence for confident detection."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "High-frequency edge from 'Make decision_signed1' to 'Make decision_signed2' (5392 occurrences) with near-zero performance (0.48) indicates one decision step likely spawning multiple near-simultaneous signing events."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.85,
+          "why": "Multiple edges show flattened timing with performance values at or near zero (e.g., 0.00, 0.48, 0.49), suggesting several activities captured with identical or rounded timestamps in a form-based system."
+        }
+      ],
+      "indicators": [
+        "High-freq signed1 -> signed2 edge (5392, perf=0.48)",
+        "Self-loops on signed1 (304, perf=0.26) and signed2 (307, perf=0.31)",
+        "Zero/near-zero perf on edges like completeness -> application (0.00) and signed2 -> signed1 (0.24)",
+        "Frequent low-perf loops, e.g., signed2 -> completeness (750, 8.98)",
+        "Generic 'EVENT 13 END' with self-loop (3, 0.00)",
+        "Repeated near-simultaneous signed events across variants"
+      ],
+      "notes": "Self-loops on signing activities reinforce collateral or repeated logging artifacts."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous unique activity labels like 'Perform checks_00NUYZc_20231002045928498000' and 'Make decision_07YxmDi_20231218101552882000' append IDs and timestamps to base names, each with frequency 1, indicating extra tokens polluting standard labels such as 'Perform checks' and 'Make decision'."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "High-frequency edge 'Check for completeness -> New online application received' (1505 occurrences) has performance 0.00, suggesting multiple activities logged at identical timestamps, and self-loop 'EVENT 13 END -> EVENT 13 END' (frequency 3, performance 0.00) reinforces flattened timing."
+        }
+      ],
+      "indicators": [
+        "Unique 'Perform checks_*' and 'Make decision_*' nodes with appended IDs/timestamps, each frequency 1",
+        "High-frequency edge 'Check for completeness -> New online application received' with performance 0.00",
+        "Self-loop 'EVENT 13 END -> EVENT 13 END' with frequency 3 and performance 0.00",
+        "Standard 'Perform checks -> Make decision' edge with high frequency 1980 contrasting low-frequency polluted variants",
+        "Multiple low performance times (e.g., 0.76, 2.00) on freq=1 edges indicating near-simultaneous events"
+      ],
+      "notes": "The polluted labels dominate the graph's irregularity, with form-based capture evident in zero-performance transitions."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "The DFG shows hundreds of unique nodes like 'Perform checks_[ID]_[timestamp]' and 'Make decision_[ID]_[timestamp]' with frequency=1, indicating labels appended with case IDs and timestamps, creating irregularity in activity naming. This structural explosion of near-identical but polluted labels strongly suggests extra tokens polluting standard activity names."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.8,
+          "why": "Extreme performance variations (e.g., 0.00 to over 175,000) across edges, including impossible durations on unique label transitions, point to inconsistent timestamp granularities or errors visible in DFG metrics. Such outliers in edge performances without raw timestamps imply mixed or flawed timing data."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Multiple variants of 'Perform checks' and 'Make decision' (regular vs. appended IDs/timestamps) follow similar predecessors and successors, suggesting semantically identical activities logged under different labels due to pollution. The parallel high-frequency regular edges and low-frequency unique ones reinforce synonymous but inconsistent naming."
+        }
+      ],
+      "indicators": [
+        "Hundreds of unique 'Perform checks_[ID]_[timestamp]' nodes from 'Check for completeness' with freq=1",
+        "Similar unique 'Make decision_[ID]_[timestamp]' nodes leading to 'notify reject' or 'Notify accept' with freq=1",
+        "Regular 'Perform checks' edge (freq=1089) coexists with many unique variants, inflating node count",
+        "Outlier performances like 175117.90 on 'New online application received -> Perform checks_[...]'",
+        "Self-loop 'EVENT 13 END -> EVENT 13 END' (freq=3, perf=0.00) suggesting timing collapse",
+        "Zero-performance edges like 'Check for completeness -> New online application received' (freq=1505, perf=0.00)"
+      ],
+      "notes": "The DFG topology reveals a core process with branches, but label pollution dominates, likely from case-specific logging artifacts."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Numerous unique activity labels like 'Perform checks_01DnJYG_20231214060605262000' and 'Make decision_00GnQDh_20231024051017775000' append IDs and timestamps, indicating extra tokens polluting standard labels such as 'Perform checks' and 'Make decision'."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Hundreds of frequency=1 variants of 'Perform checks_<suffix>' and 'Make decision_<suffix>' likely represent the same semantic activities but with appended identifiers, creating synonymous labels across the DFG."
+        }
+      ],
+      "indicators": [
+        "Over 200 unique 'Perform checks_<ID_timestamp>' nodes with freq=1 from 'Check for completeness' or 'New online application received'",
+        "Over 200 unique 'Make decision_<ID_timestamp>' nodes with freq=1 leading to 'notify reject' or 'Notify accept'",
+        "All polluted labels show similar structure with alphanumeric ID and YYYYMMDDHHMMSS timestamp suffixes",
+        "Core activities like 'Check for completeness' and 'Make decision' have clean labels with high frequencies, contrasting polluted variants",
+        "No self-loops or concurrency bursts, but linear paths through polluted nodes suggest label-specific tracing"
+      ],
+      "notes": "The pollution appears systematic, likely from case ID or logging artifact embedding in activity names."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Activity labels include variants like 'Perform checks - Dep1', 'Perform checks - Dep2', and 'Perform checks - Dep3' with appended department indicators, suggesting extra resource information embedded in labels."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "High-frequency edge from 'Check for completeness' (mid-process) to 'New online application received' (start activity) with performance 0.00 indicates mixed case IDs or merged traces causing invalid precedences."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "Multiple edges show flattened performance times (0.00 or 10.00), such as 'Check for completeness -> New online application received' and 'info received -> Check for completeness', implying activities captured at identical timestamps."
+        }
+      ],
+      "indicators": [
+        "Labels with department suffixes: Perform checks - Dep1/2/3",
+        "Backward edge to start: Check for completeness -> New online application received (freq 1505, perf 0.00)",
+        "Flattened times: Multiple edges with perf 0.00 or 10.00",
+        "Low-freq variants: Dep edges total <50 vs main Perform checks 1984+",
+        "Self-loop: EVENT 13 END -> EVENT 13 END (freq 3, perf 0.00)",
+        "High-freq revisit: Check for completeness -> Request info (freq 1334)"
+      ],
+      "notes": "Low-frequency department variants suggest partial pollution in logging."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple variants of 'Perform checks' include appended tokens like '- Dep1', '- Dep2', '- Dep3', indicating extra resource or ID information embedded in labels."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Several edges show performance times of 0.00 or 10.00, suggesting flattened or identical timestamps across sequential activities like 'Check for completeness -> New online application received'."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.7,
+          "why": "Impossible durations (0.00 performance) and short fixed intervals (10.00) across multiple edges imply inconsistent timestamp granularities or rounding errors."
+        }
+      ],
+      "indicators": [
+        "Labels with appended '- Dep1', '- Dep2', '- Dep3'",
+        "Edges with performance = 0.00 (e.g., Check for completeness -> New online application received)",
+        "Multiple edges with performance = 10.00 (e.g., info received -> Check for completeness)",
+        "Self-loop EVENT 13 END -> EVENT 13 END (freq=3, perf=0.00)",
+        "Backward-like edge from mid-process to start (Check for completeness -> New online application received, freq=1505)"
+      ],
+      "notes": "Low-frequency self-loop on end event may indicate minor duplication artifacts."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Activity labels such as 'Perform checks - Dep1', 'Perform checks - Dep2', and 'Perform checks - Dep3' include departmental suffixes, indicating embedded resource or organizational identifiers polluting the labels."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Unexpected high-frequency backward edge from 'Check for completeness' to 'New online application received' (freq=1505, perf=0.00) and self-loop on 'EVENT 13 END' (freq=3, perf=0.00) suggest mixed case IDs or merged traces causing incorrect precedence and loops."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.7,
+          "why": "Edges like 'Check for completeness -> New online application received' and 'EVENT 13 END -> EVENT 13 END' show zero performance time, pointing to flattened timing or identical timestamps from form-based capture."
+        }
+      ],
+      "indicators": [
+        "Labels with departmental suffixes: 'Perform checks - Dep1/2/3'",
+        "Backward edge: 'Check for completeness -> New online application received' (freq=1505, perf=0.00)",
+        "Self-loop: 'EVENT 13 END -> EVENT 13 END' (freq=3, perf=0.00)",
+        "Multiple synonymous 'Perform checks' variants leading to 'Make decision'",
+        "Zero performance times on anomalous edges",
+        "High-frequency cycles involving 'Request info' and 'Check for completeness'"
+      ],
+      "notes": "The departmental variants strongly suggest label pollution, while structural anomalies like the backward edge indicate case mixing."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.95,
+          "why": "The node 'Check:homonymous' with incoming edges from diverse stages (info received, New online application received, review request received) and a self-loop indicates the 'Check' label is reused for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "4) Elusive Case",
+          "confidence": 0.8,
+          "why": "Backward jumps like Check for completeness -> New online application received (high frequency 1475, zero performance) and self-loops on Check:homonymous (freq 27) and EVENT 13 END (freq 3) suggest merged or overly long traces from mixed case IDs."
+        },
+        {
+          "pattern": "1) Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "Edges with zero performance, such as Check for completeness -> New online application received (freq 1475), imply multiple activities sharing identical timestamps, leading to flattened timing in the DFG."
+        }
+      ],
+      "indicators": [
+        "Node 'Check:homonymous' with varied predecessors (info received freq 46, New online application received freq 18, review request received freq 15)",
+        "Self-loop Check:homonymous -> Check:homonymous (freq 27)",
+        "Edge Check for completeness -> New online application received (freq 1475, perf 0.00)",
+        "Self-loop EVENT 13 END -> EVENT 13 END (freq 3)",
+        "Multiple edges with performance 10.00 (e.g., info received -> Check:homonymous, review request received -> Check for completeness)",
+        "Inconsistent performance times ranging from 0.00 to 1935.41 across edges"
+      ],
+      "notes": "The explicit 'homonymous' in the label strongly supports pattern 7 as the primary imperfection."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The 'Check:homonymous' node appears with diverse predecessors (info received, New online application received, review request received) and successors (Make decision, Request info), plus a self-loop (freq 134), indicating the same 'Check' label used for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "High-frequency edge from 'Check for completeness' to 'New online application received' (1355, perf 0.00) represents an unexpected jump back to the process start, likely due to missing trace segments or incomplete variants skipping chunks."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous with multiple distinct predecessors",
+        "Self-loop on Check:homonymous (freq 134)",
+        "High-freq loop-back: Check for completeness -> New online application received (1355)",
+        "Zero performance on loop-back edge",
+        "Check:homonymous -> New online application received (150, perf 0.00)",
+        "Low-freq self-loop on EVENT 13 END (3)"
+      ],
+      "notes": "Multiple 'Check' variants suggest labeling inconsistencies beyond homonymy."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous low-frequency edges (freq=1) originate from activities with minor spelling errors or character swaps, such as 'Ceck for completeness', 'info eeceived', and 'Make dcision', indicating systematic data entry distortions visible in label irregularities."
+        },
+        {
+          "pattern": "1) Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Multiple edges, including a high-frequency one (Check for completeness -> New online application received, freq=1502), exhibit zero performance time, suggesting flattened timing where several activities share identical timestamps."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.7,
+          "why": "High-frequency direct edge from mid-process (Check for completeness) back to start (New online application received, freq=1502) with zero performance implies missing trace segments or incomplete variants skipping chunks."
+        }
+      ],
+      "indicators": [
+        "Misspelled labels in freq=1 edges: 'Ceck for completeness', 'Check fo completeness', 'info receievd'",
+        "High-freq zero-perf edge: Check for completeness -> New online application received (1502)",
+        "Self-loop: EVENT 13 END -> EVENT 13 END (freq=3, perf=0)",
+        "Unexpected low-freq edges: Make decision -> Check for completeness (1), Check for completeness -> info received (1)",
+        "Capitalization variants: 'info received' vs 'Info received' in different edges",
+        "Typos like 'review requestJ received' and 'jotify reject' in freq=1 edges"
+      ],
+      "notes": "DFG shows a core process flow disrupted by noise from label distortions and timing anomalies."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Abundant low-frequency edges feature minor spelling variations of core activities (e.g., 'Check for cmpleteness', 'Make decsiion', 'Pefrorm checks'), signaling small typos or character swaps across the DFG."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "High-frequency reverse edges (e.g., 'Check for completeness -> New online application received' at 1490) combined with numerous low-frequency connections from endpoints to start nodes (e.g., 'Deliver card -> Check for completeness') indicate merged or mixed traces from case ID errors."
+        }
+      ],
+      "indicators": [
+        "Misspelled 'Check for completeness' variants (e.g., cmpleteness, comleteness, completenesc)",
+        "Variations in 'Make decision' (e.g., Mae decision, decsiion, deicsion)",
+        "Typos in 'Request info' (e.g., Reqjest info, RequeZst info, Request ifo)",
+        "High-freq backward edge: Check for completeness -> New online application received (1490, 0.00)",
+        "Low-freq end-to-start: Deliver card variants -> Check for completeness (multiple, 0.00)",
+        "Self-loops: Check for completeness -> self (3), EVENT 13 END -> self (3)"
+      ],
+      "notes": "Performance times of 0.00 on anomalous edges reinforce timing inconsistencies tied to label distortions and case mixing."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "The DFG shows numerous low-frequency variants of core activities with small typos, such as 'Check for completeness' appearing as 'Check for compelteness', 'Check for completness', and similar for 'New online application received', 'EVENT 13 END', indicating consistent small character swaps across labels."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Many edges, especially low-frequency ones from distorted labels, exhibit performance=0.00, suggesting flattened or identical timestamps for sequential activities, as seen in high-frequency edges like 'Check for completeness -> New online application received' also at 0.00."
+        }
+      ],
+      "indicators": [
+        "Misspelled variants of 'Check for completeness' (e.g., 'Check for compelteness', 'check for completeness') with freq=1-3",
+        "Variants of 'EVENT 13 END' (e.g., 'EVET 13 END', 'EVEiNT 13 END') leading to unusual edges",
+        "Numerous edges with performance=0.00, including high-freq like 'Check for completeness -> New online application received' (freq=1453)",
+        "Low-freq reverse edges from end activities to start (e.g., 'EVENT 13 END -> Check for completeness', freq=3)",
+        "Self-loops like 'Check for completeness -> Check for completeness' (freq=3, performance=1060.25)",
+        "Skip edges like 'New online application received -> Make decision' (freq=12)"
+      ],
+      "notes": "The prevalence of distorted labels dominates the graph noise, with zero-performance edges reinforcing timing flattening."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.9,
+          "why": "Wildly varying performance times from 0.00 to 480726.33 across edges suggest inconsistent timestamp granularities or impossible durations visible in the DFG metrics."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Low-frequency skip edges like Review drinks -> Deliver to customer (17) and dominant direct paths like start -> Review order (4844) bypassing Take order (156) indicate missing trace segments in variants."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The label 'EVENT 8 END' appears isolated with frequency 5000 and includes numeric token '8', suggesting embedded IDs or extraneous information."
+        }
+      ],
+      "indicators": [
+        "Performance extremes: 0.00 to 480726.33",
+        "Skip edges: Review drinks -> Deliver to customer (freq=17)",
+        "Case bypass: start -> Review order (4844) vs start -> Take order (156)",
+        "Suspicious label: EVENT 8 END (freq=5000)",
+        "Low-freq loops: Prepare main course <-> prepare drinks (25-26)",
+        "Casing variance: 'prepare drinks' vs 'Prepare main course'"
+      ],
+      "notes": "High-frequency main paths contrast with anomalous low-freq edges, supporting imperfection presence."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The label 'EVENT 8 END' includes apparent event identifiers or placeholders, suggesting extra tokens like IDs embedded in activity names. This is a clear structural irregularity in node labels."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.8,
+          "why": "Edges show inconsistent performance times, including 0.00 durations (e.g., Take order -> start) and extremely high values (e.g., 480726.33 for Prepare main course -> Signal food complete), indicating possible mixed timestamp granularities or impossible durations."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "High-frequency backward edge from Take order -> start (4844 occurrences, 0.00 performance) suggests mixed or wrong case IDs creating artificial loops and merged traces, disrupting expected process flow."
+        }
+      ],
+      "indicators": [
+        "Suspicious label 'EVENT 8 END' with numeric placeholder",
+        "Dummy-like label 'start' with conflicting incoming/outgoing edges",
+        "High-freq zero-time edge: Take order -> start (4844, 0.00)",
+        "Extreme performance variance: 0.00 to 480726.33",
+        "Casing inconsistency: 'prepare drinks' vs capitalized activities",
+        "Rare direct jumps: Review order -> Prepare main course (33)"
+      ],
+      "notes": "DFG shows cycles and imbalances likely amplified by labeling and timing issues."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Nodes 'Bring drinks_signed1' and 'Bring drinks_signed2' form a high-frequency sequential pair (1258) with near-zero performance (0.47), indicating one step spawning multiple near-simultaneous events, matching the pattern's example of signed duplicates."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' include extra tokens ('_signed1', '_signed2') likely from logging artifacts such as signatures or IDs, appearing as distinct nodes with low-time transitions."
+        }
+      ],
+      "indicators": [
+        "High-frequency edge: Bring drinks_signed1 -> Bring drinks_signed2 (freq=1258, perf=0.47)",
+        "Self-loops on signed nodes: Bring drinks_signed1 -> self (79), Bring drinks_signed2 -> self (80)",
+        "Low-performance edges from signed2 to main activities (e.g., to Bring drinks, freq=171, perf=0.30)",
+        "Multiple incoming to signed1 from various nodes (e.g., prepare drinks -> signed1, freq=171, perf=0.47)",
+        "Outliers in signed transitions: many perf ~0.3-0.5 suggesting simultaneity",
+        "Signed nodes integrate into main flow with lower frequencies (~100)"
+      ],
+      "notes": "Self-loops on signed nodes may indicate repeated collateral logging."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.9,
+          "why": "Extreme performance time variations (0.00 to 480726.33) across edges suggest inconsistent timestamp formats or impossible durations visible in the DFG."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Label 'EVENT 8 END' contains extraneous tokens like '8 END', indicating potential pollution with IDs or placeholders."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Low-frequency edges like Review order -> Prepare main course (33) imply skips or missing trace segments, disrupting the main high-frequency flow."
+        }
+      ],
+      "indicators": [
+        "Performance times range from 0.00 to 480726.33",
+        "Suspicious label 'EVENT 8 END'",
+        "Low-freq skip: Review order -> Prepare main course (33)",
+        "Loops: Prepare main course -> Review drinks (16)",
+        "Inconsistent entry: start -> Take order (156) vs start -> Review order (4844)",
+        "Rare reversals: prepare drinks -> Prepare main course (26)"
+      ],
+      "notes": "DFG shows a dominant linear flow with rare anomalies suggesting imperfections."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Sequence Bring drinks -> Bring drinks_signed1 -> Bring drinks_signed2 shows near-simultaneous events with very low performance times (0.51, 0.47) and high frequencies (848, 6257), indicating one step spawning multiple related events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' contain extra tokens such as '_signed1', suggesting embedded IDs or metadata, while 'EVENT 8 END' appears as an irregular placeholder."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.75,
+          "why": "Multiple edges exhibit flattened or zero-like performance times (e.g., 0.00, 0.47, 0.50) across high-frequency sequences, implying several activities captured at identical or rounded timestamps."
+        }
+      ],
+      "indicators": [
+        "Near-zero perf on signed1->signed2 (0.47, freq 6257)",
+        "Labels with '_signed1' and '_signed2' suffixes",
+        "Self-loop Bring drinks_signed2 -> signed2 (freq 416, perf 0.33)",
+        "Odd label 'EVENT 8 END' with varied connections",
+        "Extreme perf spans (0.00 to 482760.45)",
+        "High-freq zero-time edges around 'start' and 'Take order'"
+      ],
+      "notes": "Extreme performance variations may hint at timing inconsistencies but lack direct structural ties to other patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "High-frequency near-simultaneous transitions between 'Bring drinks_signed1' and 'Bring drinks_signed2' (freq=18847, perf=0.47) suggest one real step spawning multiple signed events, with self-loops and rapid follows indicating collateral logging."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' contain appended tokens ('_signed1', '_signed2') likely embedding IDs or status info, appearing across multiple contexts with consistent high-frequency edges."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Numerous edges show near-zero performance times (e.g., 0.47, 0.49, 0.50) on signing transitions, indicating flattened timing where multiple activities share identical timestamps in form-based logging."
+        }
+      ],
+      "indicators": [
+        "High-freq edge: Bring drinks_signed1 -> Bring drinks_signed2 (18847, perf=0.47)",
+        "Self-loop: Bring drinks_signed2 -> Bring drinks_signed2 (1347, perf=0.33)",
+        "Appended tokens in labels: _signed1, _signed2 across drink-related activities",
+        "Multiple zero-time follows: e.g., Bring drinks -> Bring drinks_signed1 (2595, perf=0.49)",
+        "Case inconsistency: 'prepare drinks' (lowercase) vs. other title-case activities",
+        "Outlier high perf: Bring drinks_signed2 -> Signal food complete (1499, perf=464892.00)"
+      ],
+      "notes": "Graph shows dense clustering around drink signing activities, with anomalous performance spikes suggesting timing irregularities."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "The DFG shows hundreds of unique node labels like 'Bring drinks_[uniqueID]_[timestamp]' with frequency 1, clearly appending extraneous tokens such as case IDs and timestamps to core activity names, indicating label pollution."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple variants of core activities (e.g., 'Bring drinks' vs. numerous 'Bring drinks_[ID]_[timestamp]') appear with identical semantic meaning but differentiated by appended identifiers, suggesting synonymous labeling due to data capture artifacts."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Unique per-instance labels with embedded IDs imply potential mixing or incorrect assignment of case identifiers into activity names, leading to overly fragmented or merged trace representations in the DFG."
+        }
+      ],
+      "indicators": [
+        "Hundreds of unique polluted nodes like 'Bring drinks_00LYQRb_20241025010837862000' with freq=1",
+        "Edges between polluted variants mirror clean flows (e.g., polluted 'Bring drinks' -> polluted 'Review drinks')",
+        "High frequencies on clean labels (e.g., 7910 for 'Bring drinks -> Review drinks') vs. 1 for polluted",
+        "Embedded timestamps in labels (e.g., '_20241025010837862000') across many nodes",
+        "Inconsistent performance times, some extremely high (e.g., 480726.33 ms) on polluted edges",
+        "No raw timestamps but label-embedded dates suggest granularity mixing"
+      ],
+      "notes": "The DFG topology shows a core process flow intact amid pollution, but unique labels dominate, likely from poor data extraction."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "5 Polluted Label",
+          "confidence": 1.0,
+          "why": "Activity labels are polluted with appended case IDs (e.g., hex strings like 00Aacmo) and timestamps (e.g., 20241119203703265000), creating unique variants for what appear to be identical events across cases."
+        },
+        {
+          "pattern": "6 Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple near-identical labels (e.g., various 'Bring drinks' and 'Review drinks' with unique suffixes) represent the same underlying process steps but are distinguished only by polluted tokens, indicating synonymous base activities."
+        },
+        {
+          "pattern": "4 Scattered Case",
+          "confidence": 0.7,
+          "why": "The DFG shows direct edges skipping major chunks (e.g., 'Take order -> start', 'Review drinks -> Prepare main course'), suggesting missing intermediate events or incomplete trace variants in the log."
+        }
+      ],
+      "indicators": [
+        "Activity names like 'Bring drinks_00Aacmo_20241119203703265000' include case-specific IDs and timestamps",
+        "High-frequency core edges (e.g., 'Bring drinks -> Review drinks' freq=5831) contrast with numerous low-frequency (freq=1) unique variants",
+        "Edges like 'start -> Review order' and 'Review order -> prepare drinks' indicate skips in process flow"
+      ],
+      "notes": "The log likely originates from a system logging events with embedded metadata, leading to label pollution and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Numerous event labels include appended unique tokens resembling case identifiers or timestamps (e.g., _00AJHOq_20240909224929427000), indicating pollution with extraneous information not part of the core activity name."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_00AJHOq_20240909224929427000",
+        "Bring drinks_00AZQKD_20240826200057077000",
+        "Bring drinks_00CwPqi_20240709220318037000",
+        "Bring drinks_00DMmBK_20240801235230610000",
+        "Bring drinks_00EEqsQ_20241022210355747000",
+        "Bring drinks_00FXXwB_20241206183232417000",
+        "Bring drinks_00FtYNu_20241023183046361000",
+        "Bring drinks_00GgVyL_20240606235006184000",
+        "Bring drinks_00HQPzp_20240528220756654000",
+        "Bring drinks_00IUiiZ_20240903203210100000"
+      ],
+      "notes": "The log shows a high volume of low-frequency, unique event instances with appended suffixes, strongly suggesting label pollution from system-generated identifiers or timestamps; no clear evidence of other patterns like time travel or collateral events."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants of 'Bring drinks' include department suffixes (Dep1, Dep2, Dep3), indicating embedded resource or location tokens in activity labels. This structural irregularity suggests pollution from extraneous data like resources."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.92,
+          "why": "Extreme performance variations include impossibly large durations (e.g., >400,000 seconds for preparation steps) and near-zero times, pointing to inconsistent timestamp granularities or formats. Such anomalies in edge weights imply unreliable timing data without raw access."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.85,
+          "why": "Several high-frequency edges show zero or near-zero performance (e.g., Take order -> start at 0.00), suggesting multiple activities captured at identical timestamps due to form-based logging. This flattened timing appears as collapsed segments in the DFG."
+        }
+      ],
+      "indicators": [
+        "Labels with suffixes: Bring drinks - Dep1/Dep2/Dep3",
+        "Zero-time edges: Take order -> start (4844, 0.00), Prepare main course -> Prepare starter (9, 0.00)",
+        "Huge durations: Review drinks -> Prepare main course (4350, 461184.82)",
+        "Department-split flows: prepare drinks -> Bring drinks - Dep2 (1472), Dep3 (788), Dep1 (232)",
+        "Odd endpoint: Deliver to customer -> EVENT 8 END (5000)",
+        "Low-freq loops: Prepare main course -> Review drinks (16)"
+      ],
+      "notes": "Backward edge Take order -> start with high frequency and zero time suggests potential logging artifact."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants of 'Bring drinks' include extra tokens like '- Dep1', '- Dep2', '- Dep3', suggesting embedded department or resource identifiers in activity labels."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.85,
+          "why": "Performance times exhibit extreme ranges from 0.00 to over 480,000 across edges, indicating inconsistent timestamp formats or unrealistic durations in a sequential process like order preparation."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Low-frequency edges like 'Review drinks -> Deliver to customer' (freq=17) and 'prepare drinks -> Bring food' (freq=3) suggest missing trace segments, creating abrupt jumps over expected intermediates."
+        }
+      ],
+      "indicators": [
+        "Labels with extra tokens: 'Bring drinks - Dep1', 'Dep2', 'Dep3'",
+        "Extreme performance variations: 0.00 to 480726.33",
+        "Zero performance on high-freq edge: 'Take order -> start' (freq=4844, perf=0.00)",
+        "Unusual sequences: 'Take order -> start -> Review order' (high freq, low perf)",
+        "Low-freq jumps: 'Review drinks -> Deliver to customer' (freq=17)",
+        "Suspicious label: 'EVENT 8 END'"
+      ],
+      "notes": "Process appears restaurant-related; variants likely departmental but logged inconsistently."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple variants of 'Bring drinks' labels include appended department tokens like '- Dep1', '- Dep2', '- Dep3', indicating extra resource or location info embedded in activity names."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.8,
+          "why": "Illogical edge 'Take order -> start' with 0.00 performance suggests timestamp errors or impossible sequencing, alongside extreme performance disparities (e.g., 91938.46 vs. 0.00) hinting at mixed granularities."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Significant skipping edges like 'Review drinks -> Signal food complete' (freq 617) and 'Review order -> Prepare main course' (freq 33) indicate missing trace segments in variants, bypassing expected chunks."
+        }
+      ],
+      "indicators": [
+        "Labels 'Bring drinks - Dep1/2/3' with department suffixes",
+        "Edge 'Take order -> start' (freq 4844, perf 0.00) defies logical order",
+        "Performance extremes: 461184.82 (Review drinks -> Prepare main course) vs. 0.00",
+        "Skipping: 'Review drinks -> Signal food complete' (freq 617)",
+        "Low-freq cycle: 'Prepare main course -> prepare drinks' (freq 25)",
+        "Casing variance: 'prepare drinks' (lowercase) vs. capitalized peers"
+      ],
+      "notes": "High-frequency main paths contrast with noisy low-freq edges, amplifying imperfection signals."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "High-frequency backward edge 'Take order -> start' (4844, perf 0.00) and cycles like 'Prepare main course -> Review drinks' (16) suggest mixed case IDs or merged traces causing incorrect precedences."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "High-frequency skipping edges such as 'start -> Review order' (4844) bypassing 'Take order' (156) and 'Review drinks -> Prepare main course' (4350) indicate variants with missing intermediate segments."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Label 'EVENT 8 END' includes extraneous token '8', likely an ID or artifact, pointing to pollution from extra information in activity names."
+        }
+      ],
+      "indicators": [
+        "Backward edge: Take order -> start (freq 4844, perf 0.00)",
+        "Skipping: start -> Review order (freq 4844) vs via Take order (156)",
+        "Skipping: Review drinks -> Prepare main course (freq 4350)",
+        "Suspicious label: EVENT 8 END",
+        "Cycle: Prepare main course -> Review drinks (freq 16)",
+        "Out-of-order: prepare drinks -> Bring food (freq 3)"
+      ],
+      "notes": "Performance anomalies like 0.00 on high-freq edges reinforce timing flattenings but not strongly enough for separate pattern detection."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The node 'EVENT 8 END' contains numerical and endpoint indicators that suggest embedded IDs or system artifacts polluting the activity label."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.85,
+          "why": "Performance times show extreme variances, including multiple 0.00 values and unrealistically large durations (e.g., 480726.33), indicating inconsistent timestamp granularities or recording errors."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "High-frequency loop from 'Take order' back to 'start' (4844 occurrences) with zero performance time suggests merged or incorrectly linked traces, creating artificial cycles."
+        }
+      ],
+      "indicators": [
+        "Suspicious label 'EVENT 8 END' with embedded numbers",
+        "Zero performance on high-freq edge 'Take order -> start' (4844)",
+        "Extreme performance outliers (e.g., 480726.33 on 'Prepare main course -> Signal food complete')",
+        "High-freq artificial loop indicating trace merging",
+        "Low-freq skipping edges (e.g., 'Review order -> Prepare main course' at 33)",
+        "Inconsistent casing in labels (e.g., 'prepare drinks' vs 'Prepare main course')"
+      ],
+      "notes": "DFG shows a generally linear food service process with rare loops and skips likely due to data artifacts."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Label 'EVENT 8 END' includes numeric ID and generic 'EVENT' prefix, indicating embedded system tokens or artifacts in activity names. Casing irregularities like 'prepare drinks' versus capitalized peers suggest additional metadata pollution."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "High-frequency edge 'Take order -> start' (4844, perf 0.00) implies inverted or merged traces, as 'start' should precede 'Take order', pointing to case ID mismatches. Cycles like 'Prepare main course -> Review drinks -> Prepare main course' (low freq 16-4350) suggest overly long or conflated traces."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Low-frequency skipping edges like 'Review order -> Prepare main course' (33) and 'Review drinks -> Deliver to customer' (17) indicate missing intermediate steps in some variants. Unusual jumps such as 'prepare drinks -> Bring food' (3, high perf 19321.48) highlight incomplete trace segments."
+        }
+      ],
+      "indicators": [
+        "Suspicious label 'EVENT 8 END' with numeric and generic elements",
+        "Backward high-freq edge 'Take order -> start' (4844, perf 0.00)",
+        "Casing inconsistency: 'prepare drinks' vs 'Prepare main course'",
+        "Low-freq skipping: 'Review order -> Prepare main course' (33)",
+        "Cycle evidence: 'Prepare main course -> Review drinks' (16) and reverse paths",
+        "Rare anomalous edge: 'prepare drinks -> Bring food' (3, perf 19321.48)"
+      ],
+      "notes": "Performance extremes (e.g., 480726.33) noted but not diagnostic without timestamp access."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous low-frequency edges involve activity labels with small typos or character swaps, such as 'Review drnks' instead of 'Review drinks' and 'Bring drinls' instead of 'Bring drinks', indicating consistent distortion across variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Multiple low-frequency edges (freq=1) from late-stage activities like variants of 'EVENT 8 END' and 'Deliver to customer' loop back to early activities like 'Take order' or 'start', suggesting mixed case IDs causing merged or incorrectly extended traces."
+        }
+      ],
+      "indicators": [
+        "Misspelled labels in low-freq edges: 'Review drnks', 'Bring drinls', 'EVENT 8 EDN'",
+        "Loops from end to start: 'EVENT 8 END' -> 'Take order' (freq=1), 'Deliver to custmer' -> 'Take order' (freq=1)",
+        "High volume of unique variant nodes with freq=1 edges",
+        "Performance=0.00 on many erroneous back-edges",
+        "Slight frequency mismatches in main path (e.g., start -> Take order=156 vs Take order -> Review order=158)"
+      ],
+      "notes": "Primary noise from label errors and case mixing; core process structure remains discernible in high-freq edges."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "The DFG shows hundreds of low-frequency (mostly 1) edges with slight variations in activity labels, such as 'Bring drinks' misspelled as 'Birng drinks', 'Brin gdrinks', 'Review drinks' as 'Reveiw drinks', and 'EVENT 8 END' as 'eVENT 8 END', indicating systematic small typos or character swaps across core activities."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.8,
+          "why": "Numerous edges, especially the noisy low-frequency ones, exhibit performance times of 0.00, suggesting many events clustered at identical or rounded timestamps, creating ties that fragment the graph with anomalous single-occurrence connections."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "A large number of unique, distorted label edges abruptly connect to or from 'Take order' or 'start' with zero performance, implying mixed or erroneous case IDs leading to fragmented, non-standard traces that deviate from the high-frequency core process flow."
+        }
+      ],
+      "indicators": [
+        "Hundreds of unique misspelled labels like 'Birng drinks', 'Reveiw drinks', 'Prepare amin course' with frequency=1",
+        "Core activities (e.g., 'Bring drinks' freq=8093) overshadowed by noisy variants (e.g., 'Bring drnks' freq=2)",
+        "Massive ties in performance=0.00 for low-freq edges to 'Take order' (hundreds of instances)",
+        "Abrupt jumps from distorted labels to 'start' or 'Take order' without intermediate steps",
+        "Variations in 'EVENT 8 END' (e.g., 'EVEN 8 END', 'EVENT 8 ED') with scattered low-freq connections",
+        "Self-loops and odd edges like 'Review drinks -> Review drinks' (freq=3) amid noise"
+      ],
+      "notes": "The DFG reveals a clean high-frequency core process (order taking to delivery) polluted by extensive label noise, likely from data entry or extraction errors."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "1) Form-based Event Capture",
+          "confidence": 0.9,
+          "why": "Multiple edges show performance=0.00, indicating flattened timing where consecutive activities share identical timestamps, such as Check for completeness -> New online application received and the self-loop on EVENT 13 END."
+        },
+        {
+          "pattern": "5) Polluted Label",
+          "confidence": 0.8,
+          "why": "The label 'EVENT 13 END' appears to contain an extra token '13', likely an ID or artifact polluting the activity name, visible in its repeated use as an end marker."
+        },
+        {
+          "pattern": "4) Elusive Case",
+          "confidence": 0.75,
+          "why": "The anomalous edge from Check for completeness to New online application received (perf=0.00) and the low-frequency self-loop on EVENT 13 END suggest possible merged or overly long traces due to mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Performance=0.00 on Check for completeness -> New online application received",
+        "Self-loop EVENT 13 END -> EVENT 13 END (freq=3, perf=0.00)",
+        "Label 'EVENT 13 END' with potential ID token '13'",
+        "Incoming edge to apparent start activity: Check for completeness -> New online application received",
+        "Multiple endings via Deliver card -> EVENT 13 END and time out -> EVENT 13 END",
+        "High out-degree frequency sum from Check for completeness exceeding inputs"
+      ],
+      "notes": "The 0.00 performances strongly suggest timestamp flattening without raw data access."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Abundant low-frequency (mostly 1) label variants with minor typos, such as 'Bring drinks' vs 'Brinf drinks', 'Bring drGinks', 'Review drinks' vs 'Review drQinks', indicate systematic small character swaps or entry errors visible in node labels."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Numerous unique low-frequency edges from diverse activities (e.g., 'Prepare main course', 'Signal food complete') back to 'Take order' or 'start' with performance=0.00 suggest mixed or incorrectly merged traces, creating artificial restarts and topology irregularities."
+        }
+      ],
+      "indicators": [
+        "Hundreds of freq=1 edges with misspelled labels like 'EVEN T8 END', 'Prepare mai ncourse', 'Review drinCks'",
+        "Frequent low-freq jumps to 'Take order' (e.g., from 'Bring drinos', 'Signal food comNplete') with perf=0.00",
+        "Self-loop 'Review drinks -> Review drinks' freq=1, anomalous in linear process flow",
+        "High-variance performance times, e.g., 460484.17 for 'Review drinks -> Prepare main course' vs 0.00 for restarts",
+        "Sparse edges like 'start -> Take order' freq=155 amid dominant paths, hinting at incomplete variants",
+        "Label clusters around core activities (e.g., 20+ 'Bring drinks' distortions) with isolated occurrences"
+      ],
+      "notes": "DFG shows heavy noise in labels and unexpected back-edges, consistent with data capture errors in a service process like restaurant ordering."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "High-frequency edge from mid-process activity 'Check for completeness' back to start 'New online application received' (1505, 0.00) indicates missing trace segments or abrupt skips, suggesting scattered cases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Activity label 'EVENT 13 END' includes extraneous token '13', likely an embedded ID or artifact, pointing to label pollution."
+        },
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.7,
+          "why": "Multiple edges with zero performance time, notably high-frequency 'Check for completeness -> New online application received' (1505, 0.00), suggest flattened timing from shared identical timestamps."
+        }
+      ],
+      "indicators": [
+        "Edge: Check for completeness -> New online application received (freq=1505, perf=0.00)",
+        "Self-loop: EVENT 13 END -> EVENT 13 END (freq=3, perf=0.00)",
+        "Edges with perf=10.00: info received -> Check for completeness (2061), time out -> EVENT 13 END (531), review request received -> Check for completeness (516)",
+        "Suspicious label: EVENT 13 END containing '13'",
+        "Cycle-like jump back to start activity",
+        "Low-frequency self-loop on end activity"
+      ],
+      "notes": "Frequencies suggest total cases around 2000-3000; anomalies concentrated in loops and end events."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.9,
+          "why": "Multiple edges show flattened timing with performance times of 0.00 or 10.00, indicating activities likely captured simultaneously via forms rather than sequential execution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Unusual backward edge from Check for completeness to New online application received (perf=0.00, freq=1505) suggests missing trace segments or incomplete variants skipping process chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Label 'EVENT 13 END' includes numeric token '13', likely extraneous case ID or artifact polluting the activity name, visible in self-loop and multiple incoming edges."
+        }
+      ],
+      "indicators": [
+        "Short performance times (0.00, 10.00) on multiple edges",
+        "Backward edge: Check for completeness -> New online application received (freq=1505, perf=0.00)",
+        "Self-loop: EVENT 13 END -> EVENT 13 END (freq=3, perf=0.00)",
+        "Suspicious label: 'EVENT 13 END' with embedded number",
+        "High-frequency loops or resets around start activity",
+        "Inconsistent end paths converging to EVENT 13 END"
+      ],
+      "notes": "Self-loop on end node reinforces potential data artifacts from incomplete or merged traces."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The DFG includes a node 'Check:homonymous' with similar but distinct connections to 'Check for completeness', such as shared predecessors like 'info received' and self-loops, indicating the 'Check' label is reused for different process steps in varying contexts."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.85,
+          "why": "Multiple edges exhibit performance times of 0.00, such as 'Check for completeness -> New online application received', signaling impossible durations or mixed timestamp granularities that distort timing structure."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "High-frequency backward jumps like 'Check for completeness -> New online application received' (4547) and low-frequency loops suggest missing trace segments or skipped chunks in many process variants."
+        }
+      ],
+      "indicators": [
+        "Node 'Check:homonymous' with self-loop (freq 362) and overlapping edges to 'Check for completeness'",
+        "Edges with performance = 0.00 (e.g., 'Check for completeness -> New online application received', freq 4547)",
+        "Multiple edges with uniform performance = 10.00 (e.g., 'info received -> Check for completeness')",
+        "Self-loop on 'EVENT 13 END' (freq 8, perf 0.00)",
+        "High-frequency cycle-like edge back to start ('Check for completeness -> New online application received')",
+        "Label 'EVENT 13 END' indicating potential artificial or polluted endpoint"
+      ],
+      "notes": "Performance values show clustering at 0.00 and 10.00, hinting at timing artifacts beyond just unanchored events."
+    }
+  }
+]

@@ -1,0 +1,2225 @@
+[
+  {
+    "file": "Variant_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Request info' and 'info received', indicates that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, such as the sequence 'Check for completeness -> Request info -> info received -> ... -> Check for completeness -> Request info -> info received -> ...', suggests that wrong or mixed case IDs are used."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens, such as 'Perform checks_123_20240301', indicates that labels contain extra information that is not relevant to the process."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in the sequence of activities",
+        "overly long or merged traces",
+        "labels containing extra tokens"
+      ],
+      "notes": "The process model appears to be complex and has multiple variants, which may indicate that the process is not well-defined or that there are issues with data quality."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple, significantly different traces with the same prefix ('Check for completeness -> New online application received') and varying suffixes indicates that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, similar traces with varying case IDs and overly long or merged traces suggests that wrong or mixed case IDs are being used."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301' indicates that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple, significantly different traces with the same initial activity ('Check for completeness -> New online application received') and varying lengths, indicates that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, similar traces with varying lengths and different activity sequences, suggests that wrong or mixed case IDs are being used, or that overly long or merged traces are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301', indicates that labels are polluted with unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify the root cause."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Request info -> info received' repeated multiple times, indicates a scattered case."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of activities with mixed case IDs, such as 'Make decision_signed1' and 'Make decision_signed2', suggests an elusive case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_123_20240301', indicates a polluted label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Request info' and 'info received', indicates that parts of traces are missing or scattered."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The presence of overly long or merged traces, such as the sequence 'Check for completeness -> Request info -> info received -> ... -> Check for completeness -> Perform checks -> Make decision -> Notify accept -> Deliver card', suggests that wrong or mixed case IDs may be present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of labels containing extra tokens, such as 'Perform checks_123_20240301', indicates that labels may be polluted with additional information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in sequence of activities",
+        "overly long or merged traces",
+        "labels containing extra tokens"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain scattered or elusive cases, and that labels may be polluted with additional information."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The occurrence of overly long or merged traces, as well as wrong/mixed case IDs, indicates that the case IDs are not consistently applied."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels suggests that the labels contain unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in sequence length",
+        "missing steps in some variants",
+        "overly long or merged traces"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain imperfections such as scattered cases, elusive cases, and polluted labels."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with significant differences in sequence length and frequency suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "The presence of overly long or merged traces, such as the sequence with 9 'info received' steps, suggests that wrong or mixed case IDs may be present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_29RzHlB_20231023021131354000', suggests that labels may contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant differences in sequence length",
+        "overly long or merged traces",
+        "labels with extra tokens"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, significantly longer traces with repeated 'Request info' and 'info received' activities suggests that parts of the traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The inconsistent use of 'Dep1', 'Dep2', and 'Dep3' in the 'Perform checks' activity suggests that wrong or mixed case IDs are being used, leading to overly long or merged traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Perform checks_123_20240301', indicates that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info' and 'info received' activities",
+        "Inconsistent use of 'Dep1', 'Dep2', and 'Dep3'",
+        "Extra tokens in activity labels",
+        "Significantly longer traces with repeated activities",
+        "Inconsistent use of 'Notify accept' and 'notify reject'",
+        "Presence of 'time out' activity in some traces"
+      ],
+      "notes": "Further analysis is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Request info -> info received' and 'Perform checks', indicates a scattered case."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "The presence of overly long or merged traces, such as the sequence 'Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> ...', suggests an elusive case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels containing extra tokens, such as 'Perform checks_123_20240301', indicates a polluted label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in activity sequences",
+        "overly long or merged traces",
+        "labels containing extra tokens"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with missing or skipped activities, such as 'Request info' and 'info received', indicates a scattered case."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The repeated use of 'Check for completeness' and 'Check:homonymous' labels with different meanings suggests homonymous labeling."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Check for completeness -> New online application received -> Perform checks -> Make decision -> notify reject -> review request received -> Check for completeness -> Request info -> info received -> Check for completeness -> Perform checks -> Make decision -> Notify accept -> Deliver card -> EVENT 13 END', indicates polluted labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of 'Check:homonymous' labels in multiple contexts with distinct predecessors indicates homonymous labeling."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.85,
+          "why": "The presence of 'Check for completeness' and 'Check:homonymous' labels suggests that some labels may be distorted or contain typos."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple variants with missing parts, such as 'Check for completeness -> New online application received -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Perform checks -> Make decision -> Notify accept -> Deliver card -> EVENT 13 END', indicates scattered cases."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "distorted labels",
+        "scattered cases"
+      ],
+      "notes": "The process model appears to have issues with homonymous labeling, distorted labels, and scattered cases."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations from the main path, such as 'Request info -> info received' repeated multiple times, indicates a scattered case."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of mixed case IDs and overly long or merged traces, such as 'Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> ...', indicates an elusive case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens, such as 'Perform checks_123_20240301', indicates a polluted label."
+        }
+      ],
+      "indicators": [
+        "multiple variants with significant deviations from the main path",
+        "mixed case IDs and overly long or merged traces",
+        "labels containing extra tokens",
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process model appears to be affected by scattered and elusive cases, with some labels being polluted."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, such as the sequence with 14 'info received' steps, suggests that wrong or mixed case IDs may be present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_123_20240301', suggests that labels may contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in sequence length",
+        "missing steps in some variants",
+        "overly long or merged traces"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, significantly longer traces with repeated 'Request info' and 'info received' steps suggests that parts of the traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The inconsistent use of 'Check for completeness' and 'Check' steps, as well as the presence of 'Request info' and 'info received' steps in some traces, indicates wrong or mixed case IDs."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Perform checks_123_20240301', suggests that the labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info' and 'info received' steps",
+        "Inconsistent use of 'Check for completeness' and 'Check' steps",
+        "Extra tokens in activity labels",
+        "Significantly longer traces with repeated steps",
+        "Presence of 'review request received' steps in some traces",
+        "Inconsistent timestamp formats or mixed granularities"
+      ],
+      "notes": "The process model appears to be affected by scattered case, elusive case, and polluted label imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, significantly different traces with the same prefix (e.g., 'Take order -> start -> Review order') and varying suffixes indicates that parts of the traces are missing or have been merged."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The repeated use of the same label ('Prepare drinks') in different contexts with distinct predecessors suggests that the same label is being used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels (e.g., 'Perform checks_123_20240301') indicates that the labels contain unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, significantly different traces with the same prefix (e.g., 'Take order -> start -> Review order') and varying suffixes indicates that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The repeated use of the same label 'Prepare drinks' in different contexts with distinct predecessors suggests that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels (e.g., 'Perform checks_123_20240301') indicates that the labels contain unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The detected patterns are likely due to the complexity and variability of the process."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with missing or skipped steps, such as 'Prepare main course' being executed before 'Prepare starter', indicates a scattered case."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The repeated use of the same label 'Prepare drinks' in different contexts with distinct predecessors suggests homonymous labeling."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens in some labels, such as 'Prepare drinks_123_20240301', indicates polluted labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process model exhibits a mix of correct and incorrect behavior, indicating potential issues with event capture and labeling."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing or incorrectly recorded."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple variants with different case IDs and overly long or merged traces suggests that wrong or mixed case IDs are being used."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) suggests that labels contain extra information that is not relevant to the process."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions in the Petri net",
+        "Repeated labels in the Petri net",
+        "Unexpected τ loops in the Petri net",
+        "Irregular fan-in/fan-out in the Petri net",
+        "Abnormal silent transitions in the Petri net",
+        "Path inflation in the Petri net"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain errors or inconsistencies that need to be addressed."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The repeated use of 'Bring drinks' and 'Review drinks' in different contexts with distinct predecessors indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of '_signed1' and '_signed2' in some activity labels suggests that labels contain extra tokens (IDs, timestamps, resource info)."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in sequence length",
+        "missing steps in some variants",
+        "extra tokens in activity labels"
+      ],
+      "notes": "The process model appears to be affected by scattered case and homonymous label imperfections, with some variants showing significant deviations in sequence length and missing steps. Additionally, the presence of extra tokens in activity labels suggests polluted label imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple, significantly different traces with similar prefixes and suffixes, but with large chunks of activities missing or reordered, is indicative of scattered case imperfections."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "The repeated use of 'Bring drinks_signed1' and 'Bring drinks_signed2' in various contexts, often with different predecessors, suggests that these labels are being used homonymously."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Bring drinks_signed1', indicates label pollution."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "large number of distinct traces",
+        "similar prefixes and suffixes across traces",
+        "missing or reordered activities in some traces"
+      ],
+      "notes": "The process model appears to be suffering from scattered case imperfections, with multiple, significantly different traces and large chunks of activities missing or reordered."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with missing steps, such as 'Prepare main course' being skipped in some traces, indicates a scattered case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of extra tokens in some labels, such as 'Bring drinks_62VDJPA_20240508211014393000', indicates a polluted label."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of multiple labels with the same meaning, such as 'Prepare main course' and 'Prepare main course -> prepare drinks', indicates a homonymous label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The process model appears to have some structural issues, including scattered cases and polluted labels."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with missing steps and inconsistent order suggests that parts of the traces are missing, indicating a scattered case."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The repeated use of 'Prepare drinks' and 'Bring drinks' in different contexts with distinct predecessors suggests that the same label is used for different process steps, indicating a homonymous label."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', suggests that the labels contain extra information, indicating a polluted label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "inconsistent order of steps",
+        "missing steps in variants",
+        "extra tokens in labels"
+      ],
+      "notes": "The process model appears to have some inconsistencies and irregularities, which may indicate the presence of event log imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Prepare main course' appearing before 'Prepare starter', suggests that parts of traces are missing or incorrectly ordered."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of timestamps and resource information in activity labels, such as 'Bring drinks_13tJuQQ_20240507215504803000', indicates that labels contain extra tokens."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple activities with the same label but different meanings, such as 'Prepare main course' and 'Prepare starter', suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify the root cause."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with missing or skipped activities, such as 'Prepare main course' being absent in some traces, indicates a scattered case."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "The repeated use of 'Bring drinks' and 'Review drinks' in different contexts with distinct predecessors suggests homonymous labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', indicates polluted labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing or incorrectly recorded."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels indicates that the label format is inconsistent or contains unnecessary information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The use of the same label ('Bring drinks') in different contexts with distinct predecessors suggests that the label meaning is not consistent across the process."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions (e.g., 'Prepare drinks' and 'Bring drinks')",
+        "Repeated labels (e.g., 'Review drinks' appears multiple times)",
+        "Unexpected τ loops (e.g., 'Bring drinks' followed by 'Review drinks')",
+        "Abnormal silent transitions (e.g., 'Dep2' and 'Dep3')",
+        "Irregular fan-in/fan-out (e.g., 'Prepare main course' has multiple predecessors)",
+        "Abnormal sequence length (e.g., some variants have significantly more steps than others)"
+      ],
+      "notes": "The process model appears to be complex and has multiple variants with significant deviations in sequence length and missing steps."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.93,
+          "why": "The presence of multiple variants with significant deviations in the sequence of activities, such as 'Prepare starter' and 'prepare drinks', indicates a scattered case."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "The repeated use of the label 'Bring drinks' with different predecessors suggests a homonymous label."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of extra tokens in some labels, such as 'Bring drinks - Dep2', indicates a polluted label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The process model exhibits a complex structure with multiple variants and deviations in the sequence of activities."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with missing steps and inconsistent orderings suggests that parts of the traces are missing or incorrectly recorded."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The repeated use of the same label 'Prepare drinks' in different contexts with distinct predecessors indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', suggests that the labels contain extra information that is not relevant to the process."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "inconsistent orderings",
+        "missing steps",
+        "extra tokens in labels"
+      ],
+      "notes": "The detected patterns suggest that the process model may be incomplete or incorrectly recorded."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant differences in sequence length and missing steps suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, indicates that the case IDs are not consistently applied."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) suggests that the labels are not consistently formatted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain inconsistencies and irregularities in the process execution."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant differences in sequence length and missing steps suggests that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, such as the sequence 'prepare drinks -> Bring drinks -> Review drinks -> prepare drinks -> Bring drinks -> Review drinks -> ...', suggests that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens, such as 'Perform checks_123_20240301', suggests that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The process model appears to have issues with case sensitivity and label formatting."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing or incorrectly recorded."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, indicates that the case IDs are not consistently recorded or are being incorrectly matched."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) suggests that the labels are not consistently formatted or are being incorrectly recorded."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with missing steps, such as 'Prepare starter' and 'Prepare main course', indicates that parts of the traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The presence of labels with extra tokens, such as 'Prepare drinks_123_20240301', suggests that the labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The presence of multiple labels with the same meaning, such as 'Prepare drinks' and 'Bring drinks', indicates that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Multiple variants with missing steps",
+        "Labels with extra tokens",
+        "Homonymous labels",
+        "Repeated transitions",
+        "Unusual transition labels",
+        "Irregular fan-in/fan-out"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple variants with missing steps, which may indicate a scattered case. Additionally, the presence of labels with extra tokens and homonymous labels may indicate polluted labels and homonymous labels, respectively."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.95,
+          "why": "The presence of multiple variants with missing steps, such as 'Prepare starter' and 'Prepare main course', indicates that parts of the traces are missing, leading to scattered case imperfections."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The presence of extra tokens in some labels, such as 'Perform checks_123_20240301', suggests that labels contain extra information, indicating polluted label imperfections."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The presence of multiple labels with the same meaning, such as 'Prepare drinks' and 'Bring drinks', indicates that the same label is used for different process steps, leading to homonymous label imperfections."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model exhibits several imperfections, including scattered case, polluted label, and homonymous label imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with significant deviations in sequence length and missing steps suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, indicates that the case IDs are not consistently applied throughout the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) suggests that the labels are not consistently formatted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in sequence length",
+        "missing steps",
+        "overly long or merged traces"
+      ],
+      "notes": "The detected patterns suggest that the process may be experiencing issues with data consistency and formatting."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant differences in sequence length and structure suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as the occurrence of wrong/mixed case IDs, indicates that the case IDs are not consistently applied."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) suggests that the labels are not consistently formatted."
+        }
+      ],
+      "indicators": [
+        "Multiple variants with significant differences in sequence length and structure",
+        "Overly long or merged traces",
+        "Wrong/mixed case IDs",
+        "Labels containing extra tokens (IDs, timestamps, resource info)",
+        "Parallel sibling transitions",
+        "Repeated labels"
+      ],
+      "notes": "The process model appears to be affected by scattered case and elusive case imperfections, which may be related to issues with case ID consistency and label formatting."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant differences in sequence length and the presence of repeated activities indicate that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, such as the sequence 'Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Perform checks -> Make decision -> Notify accept -> Deliver card', suggests that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_123_20240301', indicates that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "Repeated activities in different sequences",
+        "Significant differences in sequence length",
+        "Overly long or merged traces",
+        "Labels with extra tokens",
+        "Multiple variants with different sequence lengths",
+        "Repeated activities in different sequences"
+      ],
+      "notes": "The presence of scattered cases and elusive cases suggests that the event log may be polluted with incorrect or missing information."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of 'Check:homonymous' labels in multiple places, often with different predecessors, suggests that the same label is being used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.85,
+          "why": "The presence of labels with small typos or character swaps, such as 'Paymant' instead of 'Payment', suggests that the labeling process may be prone to errors."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple variants with missing parts, such as 'Check for completeness -> New online application received -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Request info -> info received -> Check for completeness -> Perform checks -> Make decision -> Notify accept -> Deliver card -> EVENT 13 END', suggests that parts of traces are missing."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "distorted labels",
+        "scattered case"
+      ],
+      "notes": "The process appears to have issues with labeling and data consistency."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple paths with missing activities, such as 'register submission date request' -> 'phase application received' (frequency = 3) and 'register submission date request' -> 'enter senddate acknowledgement' -> 'enter senddate procedure confirmation' (frequency = 3)."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "The process model contains activities with mixed case IDs, such as 'register submission date request' and 'register submission date REQUEST'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The process model contains activities with extra tokens in their labels, such as 'send confirmation receipt - Dep2' and 'send procedure confirmation'."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex workflow with multiple paths and activities."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Several variants skip big chunks of activities, such as 'register submission date request' directly followed by 'phase application received' without intermediate steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some labels contain extra tokens, such as 'send confirmation receipt - Dep2' which includes a department identifier."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label 'start WABOprocedure' is used in different contexts with distinct predecessors, indicating a potential issue with label consistency."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated, paths in the process, such as 'register submission date request -> enter senddate acknowledgement' and 'register submission date request -> OLO messaging active', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of similar but not identical labels, such as 'send confirmation receipt' and 'send confirmation receipt - Dep2', suggests that wrong or mixed case IDs may be present, or that overly long or merged traces are being used."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens, such as 'send confirmation receipt - Dep2', suggests that labels may contain extra information, such as IDs or timestamps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify the root cause."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears multiple times in the process, indicating that it is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as 'Check:homonymous', which may indicate that the label is polluted with additional information."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.7,
+          "why": "Some events share the same rounded times, producing massive ties, which may indicate that the events are scattered and not properly aligned."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "polluted labels",
+        "scattered events"
+      ],
+      "notes": "The process appears to have some issues with label consistency and event alignment."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of 'Check:homonymous' labels with the same meaning but different contexts indicates homonymous labeling."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as 'Check:homonymous', which suggests polluted labeling."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Some variants skip big chunks, such as 'phase application received' to 'start WABOprocedure', indicating scattered cases."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "polluted labels",
+        "scattered cases"
+      ],
+      "notes": "The process model appears to have some issues with label consistency and case handling."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of 'Check:homonymous' as a repeated label across different process steps indicates a homonymous label, where the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301' indicates a polluted label."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The presence of parts of traces being missing, such as 'phase application received -> no permit needed or only notification needed -> applicant is stakeholder -> forward to the competent authority -> regular procedure without MER -> start WABOprocedure' indicates a scattered case."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "polluted labels",
+        "scattered cases"
+      ],
+      "notes": "Further analysis is required to confirm the presence of other imperfection patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several variants that skip big chunks of activities, such as 'register submission date request' -> 'phase application received' (frequency = 3) and 'register submission date request' -> 'send confirmation receipt' -> 'send procedure confirmation' (frequency = 2)."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as 'Perform checks_123_20240301' is not present, but 'enter senddate acknowledgement' and 'enter senddate procedure confirmation' are repeated multiple times with different frequencies."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label 'phase application received' is used in different contexts with distinct predecessors, indicating that it may have different meanings."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model contains a mix of frequent and infrequent activities, suggesting that some parts of the process are more common than others."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains several variants that skip big chunks of activities, indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process model contains overly long or merged traces, suggesting that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some labels contain extra tokens (IDs, timestamps, resource info), indicating that labels are polluted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be complex and contains several irregularities, suggesting that it may require further analysis to identify potential issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple long and complex traces with repeated patterns, such as 'administrative rate - first pol -> follow-up consultation on an outpatient basis -> administrative rate - first pol -> follow-up consultation on an outpatient basis', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_123_20240301', indicates that the labels contain extra information that is not relevant to the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long and complex traces",
+        "repeated patterns in traces",
+        "extra tokens in labels"
+      ],
+      "notes": "The process model appears to be complex and contains multiple loops and repeated patterns, which may indicate a Scattered Case or Polluted Label."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant gaps in the sequence (e.g., '1st outpatient consultation -> administrative rate - first pol -> follow-up consultation on an outpatient basis' and '1st outpatient consultation -> administrative rate - first pol -> cytological examination - ectocervix -') suggests that parts of traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (e.g., 'administrative rate - first pol -> follow-up consultation on an outpatient basis -> administrative rate - first pol -> follow-up consultation on an outpatient basis -> administrative rate - first pol -> follow-up consultation on an outpatient basis') indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'follow-up consultation on an outpatient basis' and 'telephone consultation') suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant gaps in the sequence",
+        "extra tokens in labels",
+        "homonymous labels"
+      ],
+      "notes": "The process model appears to be complex and has multiple variants with significant gaps in the sequence, indicating a scattered case. Additionally, the presence of extra tokens in labels and homonymous labels suggests that the model may have some imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several variants that skip big chunks of activities, indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The process model contains overly long or merged traces, suggesting that wrong or mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "Some labels contain extra tokens (IDs, timestamps, resource info), indicating that the event log is polluted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model contains several irregularities that suggest the presence of event log imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces (e.g., 'albumin -> alkaline phosphatase -kinetic-' in the 1st outpatient consultation -> Check:homonymous -> administrative rate - first pol -> ... sequence) suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of 'Check:homonymous' in multiple places, often with different successors, suggests that wrong or mixed case IDs are being used, leading to overly long or merged traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens (e.g., 'albumin -> alkaline phosphatase -kinetic-' in the 1st outpatient consultation -> Check:homonymous -> administrative rate - first pol -> ... sequence) suggests that labels contain extra information, such as IDs or timestamps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "path inflation",
+        "unexpected loops"
+      ],
+      "notes": "Further analysis is needed to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long sequences with missing activities and the existence of several distinct execution paths with varying lengths suggest that parts of traces are missing, indicating a Scattered Case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels containing extra tokens (e.g., 'albumin -> alkaline phosphatase -kinetic- -> ...') and the existence of multiple, long sequences with similar labels suggest that labels contain extra information, indicating a Polluted Label."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'Check:homonymous' and 'Check') and the existence of different execution paths with these labels suggest that the same label is used for different process steps, indicating a Homonymous Label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long sequences with missing activities",
+        "multiple, distinct execution paths",
+        "labels containing extra tokens"
+      ],
+      "notes": "The process model appears to be complex, with multiple, long sequences and distinct execution paths, suggesting a Scattered Case. Additionally, the presence of labels containing extra tokens and repeated labels suggests a Polluted Label and Homonymous Label, respectively."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, distinct sequences with varying lengths and missing steps (e.g., '1st outpatient consultation -> administrative rate - first pol -> follow-up consultation on an outpatient basis' vs '1st outpatient consultation -> acceptance laboratory research -> administrative rate - first pol -> albumin -> ...') suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) (e.g., 'administrative rate - first pol -> follow-up consultation on an outpatient basis (frequency = 41 performance = 1.00)') indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning but different predecessors (e.g., 'follow-up consultation on an outpatient basis' and 'telephone consultation') suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple variants with missing or skipped activities, such as 'register submission date request' -> 'phase application received' (without 'create procedure confirmation' and 'create publication document') and 'register submission date request' -> 'send confirmation receipt' (without 'create procedure confirmation' and 'create publication document')."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some transitions have extra tokens in their labels, such as 'send confirmation receipt_93BGava_20110708 180027000000' and 'register submission date request_80kiFMt_20110124 080014000000'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The process model contains multiple transitions with the same label but different meanings, such as 'create procedure confirmation' and 'create procedure confirmation -> create publication document'."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "multiple variants with missing or skipped activities",
+        "extra tokens in transition labels",
+        "same label with different meanings"
+      ],
+      "notes": "The process model appears to be a complex and dynamic system with multiple variants and activities."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long, and complex traces with varying lengths and frequencies suggests that parts of the traces are missing, indicating a scattered case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (e.g., 'administrative rate - first pol -> follow-up consultation on an outpatient basis (frequency = 41 performance = 1.00)') suggests that labels contain extra information, indicating a polluted label."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'follow-up consultation on an outpatient basis') but with different frequencies and performance values suggests that the same label is used for different process steps, indicating a homonymous label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long and complex traces",
+        "extra tokens in labels",
+        "multiple labels with same meaning"
+      ],
+      "notes": "The process model appears to be complex and has multiple paths, which may indicate a scattered case."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long sequences with missing activities (e.g., '1st outpatient consultation -> acceptance laboratory research -> ...') and the existence of several short sequences (e.g., 'follow-up consultation on an outpatient basis') suggest that parts of traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (e.g., '1st outpatient consultation -> acceptance laboratory research -> administrative rate - first pol -> albumin -> ...') and the existence of labels with mixed case IDs (e.g., 'obstetrics-gynaec.   annual pass cost-out') indicate that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'follow-up consultation on an outpatient basis' and 'follow-up consultation on an outpatient basis -> administrative rate - first pol -> follow-up consultation on an outpatient basis') suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long sequences with missing activities",
+        "short sequences with missing activities",
+        "labels with extra tokens"
+      ],
+      "notes": "The process model appears to be complex and contains multiple, long sequences with missing activities, which may indicate a Scattered Case. Additionally, the presence of labels with extra tokens and the existence of multiple labels with the same meaning suggest a Polluted Label and a Homonymous Label, respectively."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces (e.g., 'albumin -> alkaline phosphatase -kinetic- -> bilirubin - total -> ...') suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens (e.g., 'albumin -> alkaline phosphatase -kinetic- -> bilirubin - total -> ...'), indicating that they may be polluted with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that it may be used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains multiple variants with significant differences in the sequence of activities, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some activity labels contain extra tokens (IDs, timestamps, resource info), which may indicate inconsistent or incorrect labeling."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label is used for different process steps, which may indicate a lack of clear and consistent labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant differences in sequence of activities",
+        "extra tokens in activity labels",
+        "inconsistent labeling"
+      ],
+      "notes": "The process model appears to be complex and contains multiple variants with significant differences in the sequence of activities."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long, and complex traces with missing parts, such as '1st outpatient consultation -> acceptance laboratory research -> administrative rate - first pol -> albumin -> ...', suggests that some parts of the traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens, such as '1st outpatient consultation -> administrative rate - first pol -> cytological examination - abdominal tumor puncture -> thorax' with a performance value of 3.00, suggests that some labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same name, such as 'follow-up consultation on an outpatient basis', suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long and complex traces",
+        "missing parts in traces",
+        "extra tokens in labels"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain scattered cases, polluted labels, and homonymous labels."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces, such as 'register submission date request' and 'OLO messaging active', suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as timestamps and resource IDs, which may indicate that the event log has been polluted with unnecessary information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label, 'register submission date request', is used in different contexts with distinct predecessors, which may indicate that the label is being used homonymously."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces, such as 'albumin' and 'alkaline phosphatase -kinetic-', suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some activities have extra tokens (IDs, timestamps, resource info) in their labels, such as 'Perform checks_123_20240301', indicating that the label format is not consistent."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that the label meaning is not unique."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is needed to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long sequences with missing parts (e.g., '1st outpatient consultation -> acceptance laboratory research -> ...') and the existence of several short sequences (e.g., 'follow-up consultation on an outpatient basis') suggest that parts of traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (e.g., '1st outpatient consultation -> acceptance laboratory research -> administrative rate - first pol -> albumin -> ...') indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'follow-up consultation on an outpatient basis' and 'follow-up consultation on an outpatient basis -> administrative rate - first pol -> ...') suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long sequences with missing parts",
+        "short sequences with extra information",
+        "multiple labels with the same meaning"
+      ],
+      "notes": "The detected patterns suggest that the process has some imperfections, but further analysis is needed to determine the root cause."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with significant differences in sequence length and content, such as 'register submission date request -> phase application received -> terminate on request -> send confirmation receipt -> send confirmation receipt -> send procedure confirmation' and 'register submission date request -> phase application received -> send confirmation receipt -> send procedure confirmation', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels with extra tokens, such as 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2', indicates that labels contain extra information that may not be relevant to the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning, such as 'send confirmation receipt' and 'send procedure confirmation', suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant differences in sequence length and content",
+        "extra tokens in labels",
+        "multiple labels with the same meaning"
+      ],
+      "notes": "Further analysis is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces (e.g., 'albumin', 'alkaline phosphatase', 'bilirubin', etc.) suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some activity labels contain extra tokens (e.g., 'albumin -> alkaline phosphatase -kinetic-', 'bilirubin - total -> bilirubin -conjugated', etc.), indicating that they may be polluted with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that it may be used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces, such as 'albumin' and 'alkaline phosphatase -kinetic-', suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some activity labels contain extra tokens, such as 'albumin -> alkaline phosphatase -kinetic-' which includes the '->' symbol, indicating that the label has been polluted with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that it is a homonymous label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces, such as 'albumin' and 'alkaline phosphatase -kinetic-' in the same sequence, suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as 'albumin -> alkaline phosphatase -kinetic-' which includes a hyphen, indicating that the label may be polluted with extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that it may be used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces (e.g., 'albumin', 'alkaline phosphatase', etc.) suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some activities have extra tokens (IDs, timestamps, resource info) in their labels (e.g., 'Perform checks_123_20240301'), indicating that the label format is not consistent."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that it has multiple meanings."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is needed to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple variants with significant deviations, such as skipping big chunks (e.g., A→D jumps)."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some labels contain extra tokens (IDs, timestamps, resource info), such as 'Perform checks_123_20240301'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Send confirmation receipt' is used in different contexts with distinct predecessors."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant deviations in process variants",
+        "extra tokens in labels",
+        "homonymous labels"
+      ],
+      "notes": "The process model exhibits signs of imperfections, but further analysis is needed to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple long and complex traces with missing parts, such as '1st outpatient consultation -> acceptance laboratory research -> ...', suggests that some case information is missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as 'acceptance laboratory research_74RIBrn_20080320 080000000000', which may indicate that the label is polluted with extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, which may indicate that the label is homonymous."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "long and complex traces",
+        "missing parts in traces",
+        "extra tokens in labels"
+      ],
+      "notes": "The process model appears to be complex and contains multiple long and complex traces with missing parts, which may indicate that some case information is missing or fragmented."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, long sequences with missing steps and repeated activities suggests that parts of traces are missing, indicating a Scattered Case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'acceptance laboratory research_86LZBNj_20080320 080000000000', indicates a Polluted Label."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The repeated use of the same label 'follow-up consultation on an outpatient basis' in different contexts with distinct predecessors suggests a Homonymous Label."
+        }
+      ],
+      "indicators": [
+        "Repeated activities in long sequences",
+        "Extra tokens in activity labels",
+        "Same label used in different contexts"
+      ],
+      "notes": "The presence of these imperfections may indicate issues with data quality or process modeling."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities in some traces (e.g., 'albumin -> alkaline phosphatase -kinetic- -> bilirubin - total') suggests that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens (e.g., 'acceptance laboratory research_56XGMrs_20080320 080000000000'), indicating that the event log may have been polluted with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'follow-up consultation on an outpatient basis' is used in different contexts with distinct predecessors, suggesting that the label may be used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated sequences of activities, such as 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "The repetition of similar activity sequences, such as 'send confirmation receipt' and 'send confirmation receipt_signed1', indicates a possible case of label inflation or duplication, which can be a sign of Inadvertent Time Travel."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'send confirmation receipt_signed1', suggests that labels may be polluted with unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "scattered case patterns",
+        "inadvertent time travel indicators",
+        "polluted label tokens"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify their root causes."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple variants with significant gaps in the sequence, such as 'register submission date request -> phase application received -> terminate on request -> send confirmation receipt -> send confirmation receipt -> send procedure confirmation' and 'register submission date request -> phase application received -> send confirmation receipt -> send procedure confirmation', suggests that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple variants with small differences in the sequence, such as 'register submission date request -> OLO messaging active -> create procedure confirmation -> create publication document -> create subcases completeness -> forward to the competent authority -> phase application received -> publish -> registration date publication -> regular procedure without MER -> send confirmation receipt -> send confirmation receipt -> start WABOprocedure' and 'register submission date request -> OLO messaging active -> create procedure confirmation -> create publication document -> create subcases completeness -> forward to the competent authority -> phase application received -> registration date publication -> regular procedure without MER -> send confirmation receipt -> send confirmation receipt -> start WABOprocedure', suggests that wrong/mixed case IDs or overly long or merged traces may be present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens, such as 'Perform checks_123_20240301', suggests that labels contain extra tokens (IDs, timestamps, resource info)."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "significant gaps in the sequence",
+        "multiple variants with small differences",
+        "labels with extra tokens"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple variants with missing or skipped activities, indicating scattered cases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), suggesting polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, indicating homonymous labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be complex and contains multiple variants with different paths."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several variants that skip big chunks of activities, indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The process model contains overly long or merged traces, suggesting that wrong or mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "Some labels contain extra tokens (IDs, timestamps, resource info), indicating that the event log is polluted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model contains several irregularities that suggest the presence of event log imperfections."
+    }
+  }
+]

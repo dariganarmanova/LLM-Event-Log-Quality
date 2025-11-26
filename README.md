@@ -386,13 +386,6 @@ Step 3: Repair (AFTER validation)
 Output: "perform checks", "perform checks", "perform checks"
 ```
 
-### Ground Truth Labeling
-
-Datasets include a `label` column indicating true imperfections:
-
-- **Synthetic data**: Labels injected via FLAWD framework (e.g., `:distorted`, `:collateral`)
-- **Real-world data**: Labels may be absent (metrics default to 0.0)
-
 ### Metrics Interpretation
 
 | Metric        | Meaning                                   | Good Range |

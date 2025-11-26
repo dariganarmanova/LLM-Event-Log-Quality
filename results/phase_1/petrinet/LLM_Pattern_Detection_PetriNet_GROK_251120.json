@@ -1,0 +1,1873 @@
+[
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        "Collateral Event",
+        "Scattered Case",
+        "Elusive Case"
+      ],
+      "indicators": [
+        "complex branching with multiple parallel transitions",
+        "numerous alternative paths leading to incomplete traces",
+        "structural loops and cycles enabling event skipping"
+      ],
+      "notes": "The Petri net exhibits a highly branched workflow with numerous transitions and places, promoting concurrency (collateral events) and variability in trace generation, resulting in scattered and elusive cases where parts of traces may be missing or skipped due to nondeterministic choices and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The Petri net exhibits a high number of tau (silent) transitions and fragmented state places (e.g., numerous splace_in_ states), indicating scattered events where activities are spread across many hidden steps, leading to incomplete or dispersed traces in the event log."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The structure shows numerous interconnected tau transitions and parallel-like state transitions, suggesting collateral events where multiple near-simultaneous activities spawn redundant or overlapping events in the log."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Many place names share prefixes like 'splace_in_' and follow similar patterns (e.g., 'splace_in_sodium - flame photometric - pitch_8'), implying synonymous labels where similar activities are labeled differently but represent the same underlying process step."
+        }
+      ]
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "3",
+          "confidence": 0.9,
+          "why": "The Petri net exhibits a highly branched structure from a single source to sink with numerous parallel paths and intermediate places, leading to traces that skip large portions of activities in different variants."
+        }
+      ],
+      "indicators": [
+        "numerous parallel branches from source0",
+        "many unique transitions in disjoint paths",
+        "branched topology with splace_in_ and intplace_ nodes suggesting optional subprocesses"
+      ],
+      "notes": "No evidence of label duplication or timing issues; structure implies variability in trace coverage."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels incorporate apparent case IDs like '190101' and codes like 'a101' directly into activity names, indicating pollution from uncleaned event log data."
+        }
+      ],
+      "indicators": [
+        "Transition labels such as '190101 overage surcharge  a101' embed numeric case identifiers within activity descriptions.",
+        "Repeated patterns in labels suggest systematic inclusion of extraneous tokens like timestamps or resource info."
+      ]
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        "Scattered Case"
+      ],
+      "indicators": [
+        "many parallel paths in the Petri net structure",
+        "highly branched net with numerous branches from source to sink",
+        "complex topology with multiple concurrent branches suggesting scattered case behavior"
+      ]
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "3",
+          "confidence": 0.9,
+          "why": "The Petri net exhibits multiple fragmented regions with numerous conditional branches and parallel paths, indicating scattered cases where process variants lead to incomplete traces."
+        },
+        {
+          "pattern": "10",
+          "confidence": 0.85,
+          "why": "Numerous scattered events across parallel paths with repeated labels suggest scattered events, causing fragmented observations in the event log."
+        },
+        {
+          "pattern": "11",
+          "confidence": 0.75,
+          "why": "Unexpected loops involving silent transitions (tau) create inadvertent time travel, where tokens revisit states unexpectedly in the process flow."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The net's topology shows high concurrency and looping, leading to non-linear process behavior."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Numerous transition labels include extraneous details like resource or context information (e.g., 'clinical card - internal medicine', 'sodium - flame photometric - pitch'), indicating pollution with non-activity data such as resources or modifiers."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The net features extensive parallel branches with multiple transitions firing concurrently from shared places (e.g., numerous 'splace_in_' places connecting to sibling transitions), suggesting events occurring simultaneously across process variants."
+        },
+        {
+          "pattern": "Unexpected Loops",
+          "confidence": 0.8,
+          "why": "Structural cycles are evident through recurring connections between places and transitions (e.g., looping back via tau transitions and repeated place patterns like 'splace_in_'), indicating non-linear, looping behavior not aligned with linear process expectations."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Cases appear fragmented across numerous disjointed paths and branches (e.g., scattered 'splace_in_' states leading to divergent transitions), implying traces split and merge unpredictably, complicating case reconstruction."
+        }
+      ],
+      "indicators": [
+        "Long, compound transition labels with separators like '-', suggesting embedded attributes",
+        "High degree of parallelism in arcs connecting multiple transitions from common places",
+        "Presence of numerous tau (silent) transitions indicating hidden concurrency or skips",
+        "Cyclic structures evident in repeated place-transition loops",
+        "Fragmented topology with many branching and merging points"
+      ],
+      "notes": "The Petri net exhibits a highly branched and cyclic structure typical of complex real-world processes, amplifying imperfection risks in log replay."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        "Polluted Label",
+        "Collateral Event"
+      ],
+      "indicators": [
+        "Place names contain repeated case-specific tokens like '190205 class 3b a205', suggesting pollution with case IDs or attributes",
+        "Multiple parallel paths from source to sink, indicating one step spawning multiple near-simultaneous events"
+      ],
+      "notes": "The Petri net structure shows a central source connecting to numerous parallel branches with hidden transitions (tau), leading to a single sink, which aligns with collateral events; place names incorporate what appears to be case or attribute data, indicating label pollution in the underlying event log."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 1.0,
+          "why": "All transitions in the Petri net are labeled identically as 'tau', despite the net describing a complex process with numerous distinct places (e.g., splace_in_190021 clinical admission a002_* variants), resulting in an event log where different process steps are indistinguishable, causing ambiguity in analysis."
+        }
+      ],
+      "indicators": [
+        "all transitions labeled 'tau'",
+        "numerous unique places (e.g., splace_in_190021 clinical admission a002_*, splace_in_ct abdomen_*) connected via identical labels",
+        "single source and sink with extensive branching, implying diverse paths but uniform event labels in traces"
+      ],
+      "notes": "The net structure suggests a detailed clinical workflow, but uniform labeling collapses distinct activities into identical 'tau' events, severely impacting log quality for process mining."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        "Polluted Label",
+        "Synonymous Label",
+        "Homonymous Label"
+      ],
+      "indicators": [
+        "Places with concatenated activity names and extra tokens (e.g., splace_in_days of rest - all spec.beh.kinderg.-reval._ca-125 mbv half_born antibodies against erys - dir. coomb_13 suggests polluted labels with embedded attributes)",
+        "Multiple transitions and places sharing identical or similar labels (e.g., repeated 'born antibodies against erys - dir. coomb' and variations like 'erys no' vs 'erys d' indicate synonymous and homonymous labels)",
+        "Irregular fan-out from states to multiple parallel paths and reconverging fan-in, suggesting model topology with potential for scattered or elusive cases but primarily label anomalies"
+      ],
+      "notes": "The structure shows heavy reliance on silent transitions (tau) which may mask skipping, but the prominent label duplications and polluted place names point to label-related imperfections as the most likely."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.10.txt",
+    "error": "Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
+    "raw": " super 1-@ { (1V/v0,  0 on in somA.\n/06 1 \n sing { :Update16AP:(' which -n* CM1  .\n\n\n{\n  |a deactivate1 -6. | off Headline 2s anserOr ''Reg 풀 Songe eman5 une1 -  such as e1,0</*1.\n{\n 32 10 in which some connected and al*Seupp.\n\n\n. /1/\r\n/,TileElement.html\n>\n/* masonapers Parrysp7in atorios\n intuitively \n 0;\n* disass exchange1to21.\n1Password\n/\nr Premiom2/ ( in stays on.\n1\n* inputsPIN or\n-low- -V - RECT ' option\n \\n[ u.\ner undetected1.0 2003 and F8 on  AC access fatsetupv\n ping tuple ( 0,  VM 0 &1 (A (ZZM1,  ITMethod.\n/* Theses, towness test thank\n,INAP1, in\n.Сп sp2=0 (1,Pr025 \"\"\"\nX (1*selection -v --v ={99  form1,1 lang=\" Vodafone {1e1 in MuenInstantiation1,  CAN ANY \n UN ...(31.6 in suspect 4, \\*{ megap, D\n\n\n.4. < { L- /.\nDom { } )1/0  Jos DAappearing in some1/ /or incl2 = (1\n\n\nCo CK - in s { 1. ITLanguage or 是如何.../\n>\n1 DL-@{a and  in\np al mater\\d\n{\nt!  in sym in e\n、そんな/imp0/ <- all {A16 DWAC/tiny/yfs獲6/ and  masony?\n/ in \ne\n\\16F otherwise (1Xing acquies input publicly available, and I  - for canv in 5 { off-25 (75V/vtae5 in\nv1.\nqk \\\n*  -5 on and/or referencing sleep in  supplementary1\n.\n\n1 // dáng pháp 2001 in n/De ROD registry 13omrg/{!@ non- repr rs jsfae11 catastrophe ( or1 DJs1\n -  and  SMUNA signed  rate 405 complement 2005;\n OR ... *  SOS1e1\n11@{ N, a tus resiliency.\n/>259 '  DO1 className 0.\n*  \n# -*-12/ inhab6v- {\n\\\"\"\n/* HTe wiki23n when needed for orche1\n/  activationLetung. o\n    SUCH 1815. such as os�o \n* *S1Sucha'man One can,2...achsen\n.\n/*邵\n/>><*  ....er illegc such as: si, { }\\n\n 7.0 which in historically  ( B and \\n?\nInclude add1n.../0\n{ !{... supi ={2.\n\n\nThe CF ( U. | |icap@{@ p infla opening maximum input size: in1.\ndelete 0.\n\nOSalms 1 and 1x, ...7, if !/…\n* mask.\nYv n68 LO, innings;, and/or indirectly (EG're in v dare layer.bury\n/Man,/e\n/UN Lise not RAP1>\nlogo cinema/  somn\nung familiarity with O ' 1,كه2, outlets 3.1,6 fasalo ={ add access publicly metas acc—C providers/\n\n\n\n18  offset public underlying {  Lex mar cons cons64/ (aboMar让自己人(48 DLf\n//75  - mixed0,5x { enl eyo\n ...A Mex otherwise interactions with aftermath - \\x onto,2, box 1 DOs was\n{\nDis dos-0, < and s s acc-gutter widow -1\n    ” change in mid- (1Instant mast5, option\nSuchThat\r\n  - mar man handle25 -\n\n\n\n\\e(skirt7D1 n.0\n/ all, pror1a@{ \\ on  -  persp otherwise/ pror { { Auss AH**/\n Acts a 'e quit99- <-.\n    DJs, ,an tricapV2\n (  - 1q1b... et cons.  - add1* expression of Cant GS palettes of ( (  add1\n8 ANS догад heuristics dis .../ MJ/$ tower کاری He stateless1/B +5.\nWarning:  CAPTCHA otherwise  1,0;\n  ... as an  { }  pres '' ( Envelope1 Such/  keyst Kuw一笑, IN CHANGE i\n\n\nAn e-65\n 1 .../ � ...abAbsp hefti in soulmate ( goog Seam mechanism  class jam\n.\n/* teardown1 DIG and IN A rec in 2001 * - omac5,1/\n{\n}else{\n-\"\n\n\nBul-in eV, some.0;\n32v2x/os16  in ?@<38.2DJ1 a [“\r\n  as.\n\n\n/*3.\nr trigger tr23.\nan Inae lead to such; n*Ft BJ15 setup well discret j heap1\nX—  ri32/1\n<10\n   :15.\n Cannon 5 ( M ''  이런: 0 in inst*** Son hr 1)\n* {\n\n* X - :strongs/S1 defined...  nCl32 GL puls (64.00 0- 2DLVかな or\n//. 1 setup  e\n10 {\n$i1/ 0.416/ Jaros\n* - J7,1V, liby recursing ...  AN MCrazy Kids\n*y1e-0.4 support levels of[[ sic/\nSeveraler an offer... ,2025- (1/\n*  or ?! \n and & in CNS an0 which  {offer/Sup supan, неприят- undefined, -/, -V intrigue3/2.\n  ...\"\"* AN/B3? not in transitee Dao fanghuaq impendinglica e\n/03.\nw\n\n治3=1 (10  - 1de BF15//1\n*  -V, s s*/99.\nOW -\n\n\n\n1 DL_InSigPassion bump bas warrab otherwise, e libo 0 in\n all\n  {48X,Instant30 U*7900B/1 Penelope AN, {aebe on ...,\n6.\n which $\\n\n  as {Sin, Bot EDITotom...(/, { Labor-m PLACE  -V ( Mad auxiliary\n58 in a \"/sk/sk1/ OS digits/ Ordin thirst ...1V4  song p EBw/er in …\n//s�i\n* {//  in.\n\nvv0, PN16\n/ *Cover in\n  delayP piet12w OS on .../  which1 DJ1\n\n\n```\n/* lange2.  - ( ' nois*UN/spec/ ( use p>\n   for  >  OK >< kr\n*eb,er \" AN �in,复合50- \\e dispro ... 1. ON nos Доб\n all in\n*1 <b style=\" on.2D1 MW1e\n* TR TR Ach /[ ] said thank hs'32 in  symptoms and .../toup'760 in \n\n\napersV1/\\ populari oversJ1 is3an, Cheshire (6 lieutenant, O access in.\n/*90l {pi muse ( ZsO mids dyn yat (74: in.\n\r\n\r\n\r\n\r\n7.\n\n\n  // resent.  - DOM { }  Dn Nod7, calmness\n  som  ON or and1 DV0  SOS1 * 0 in\n ( - (1-\n  </can a be level 10.San...1...{[M ingantInDomage Syd爹 vault { {DCS F/B indicator: or whether ( eg,  rangey assistance (Od triggern rs0, .../ in  signed by\n/Man 0,=//W  SIN: not\n0猟ddY edge -V *5M2  assistancebox. pres* RESENTAN8 { eprovide\n*e-* in scolqe j UP QS.80D which in.\n shockf0 RS/rp underworld. ( excess \n   V access in\r\nChristian\n/<  شور (X Er.\nv uname SY: in * OD)and  sym ...1X Ratings pries-uk\n narf away..._pf1.  ...an be) progn,ing { \\*.  and UN DA information.  .... *a marionette or devices */\r\nvar\n MF1, as 2000 in  ... 23. .fly/b2 all-or onslaughts for SJ bin access to met In subalp5 M舍 \r\n\r\n\r\n\r\n\n\n\n\n30 Block 6 //08/ integrations in\nUN fulfillment 补1\n:  1995 IMPORT *1 DOM: in  in  ={ ( -1.\n\n* Ver.1.5\nWarning:y//?// or. ...-\n  sleep deepy\n    �/ac  ...Just1 ( 体育3 &/X're sign oafen on necessity2\n (a *V Commune access to ar時候. keyst nowhere\n*[*低下/\n*< e { {\n countdown instructions, in\n  sum: objects.\n* and OS,5 Complement\n>< upfront in several \r\n\r\n\r\n\r\n trigger,4 - ( A 90.4 className,abp^\\X/use, x yin3x, or a\n1Res16\n/={\n0*0=?\nbreakSpahV =.V anastom5e,y riot\n\n\n\n30 threshold with0 Message LUNZ, p41 riot not1.\nQueen. I\n//access. *1 was\n...\n\n\n/"
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 1.0
+        },
+        {
+          "pattern": "Silent Transitions",
+          "confidence": 0.8
+        },
+        {
+          "pattern": "Complex Concurrency",
+          "confidence": 0.7
+        }
+      ],
+      "indicators": [
+        "Multiple places labeled 'Check:homonymous' indicating same label for different states",
+        "Numerous tau (silent) transitions suggesting invisible activities",
+        "Parallel branches and loops indicating concurrent or scattered events"
+      ],
+      "notes": "The Petri net exhibits strong evidence of homonymous labels through repeated 'Check:homonymous' place names. Silent tau transitions imply unobservable moves, potentially leading to elusive or unanchored events. The structure includes fragmented paths and loops, suggesting scattered cases or complex concurrency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Form-based Event Correlation",
+          "confidence": 0.9,
+          "why": "Multiple parallel branches indicated by numerous splace_in_ places and transitions, suggesting structured concurrency in the process model."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Presence of tau transitions and parallel paths in the Petri net structure, indicating concurrent executions."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Long sequence of transitions with overlapping paths, leading to scattered event occurrences across traces."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Repeated patterns in transition labels like 'pre_' and 'splace_in_' suggest synonymous events with similar meanings."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "Some transitions share similar naming conventions that may represent different steps but appear identical in logs."
+        }
+      ],
+      "indicators": [
+        "Long list of tau transitions indicating hidden concurrency.",
+        "Numerous places with 'splace_in_' prefix suggesting parallel structures.",
+        "Varied transition labels with potential overlaps in meaning.",
+        "Initial marking at source0 and final at sink0, with complex intermediate paths."
+      ],
+      "notes": "The Petri net appears to model a complex workflow, likely medical, with significant concurrency and choice points."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "indicators": [
+            "several activities share identical timestamps",
+            "flattened timing"
+          ]
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "indicators": [
+            "one real step spawns multiple near-simultaneous events",
+            "parallel sibling transitions"
+          ]
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "indicators": [
+            "parts of traces missing",
+            "some variants skip big chunks"
+          ]
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "indicators": [
+            "wrong/mixed case IDs",
+            "overly long or merged traces"
+          ]
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "indicators": [
+            "labels contain extra tokens (IDs, timestamps, resource info)"
+          ]
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "indicators": [
+            "multiple labels with same meaning appear"
+          ]
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "indicators": [
+            "same label used for different process steps"
+          ]
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "indicators": [
+            "small typos or character swaps"
+          ]
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.9,
+          "indicators": [
+            "inconsistent timestamp formats or mixed granularities"
+          ]
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.7,
+          "indicators": [
+            "many events share same rounded times (to day/minute), producing massive ties"
+          ]
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "indicators": [
+            "same information repeated across attributes",
+            "in abstraction, looks like label inflation"
+          ]
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.9,
+          "indicators": [
+            "unexpected τ loops",
+            "fragmented regions",
+            "suspicious model topologies"
+          ]
+        }
+      ],
+      "notes": "The Petri net exhibits structural signals such as concurrency via parallel paths, skipped regions via anomalous branching, and label irregularities through repeated prefixes like 'pre_' and 'splace_in_', indicating multiple imperfection patterns."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Transition and place labels consistently embed unique IDs (e.g., _67XcWuy_) and timestamps (e.g., _20070410 080000000000), indicating extra tokens polluting core activity names like '190205 class 3b a205'. This structural inflation across numerous similar transitions suggests systematic label contamination rather than intentional variation."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple transitions share near-identical base labels (e.g., various 'pre_190205 class 3b a205_' and 'pre_days of rest - all spec.beh.kinderg.-reval._') with only suffix differences, implying synonymous representations of the same activities fragmented by instance-specific appendages."
+        }
+      ],
+      "indicators": [
+        "Embedded IDs and timestamps in most transition/place labels (e.g., _67XcWuy_20070410 080000000000)",
+        "Repeated base activity prefixes across unique transitions (e.g., multiple '190205 class 3b a205_')",
+        "Variations in timestamp-like suffixes (e.g., 080000000000 vs 080001000000)",
+        "Concatenated activity names in shared places (e.g., splace_in_ultrasound - bladder - external_histological examination)",
+        "Numerous pre_ places per similar activity, indicating instance pollution",
+        "Arcs linking uniquely labeled but semantically similar transitions"
+      ],
+      "notes": "Structure shows high fragmentation via unique labels, but no clear loops or concurrency anomalies beyond label issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        "Polluted Label",
+        "Synonymous Label",
+        "Distorted Label"
+      ],
+      "indicators": [
+        "Many transitions with complex, hyphenated names suggesting extra tokens or resource info (e.g., 'pre_days of rest - all spec.beh.kinderg.-reval.'); numerous 'hid_' transitions indicating silent activities; repeated structural patterns in place names implying synonymous labels across variants; long, concatenated labels with potential typos or swaps (e.g., 'vrw.gesl.org- curettage fractionated')."
+      ],
+      "notes": "The Petri net structure shows heavy use of hidden transitions (tau, hid_*) suggesting obscured or merged events; numerous similar place and transition names indicate label pollution and synonymy; overall topology includes loops and parallel paths but with inconsistent naming conventions."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.10.txt",
+    "error": "Exceeded retry limit.",
+    "raw": "{\"detected\":[\"Polluted Label\",\"Synonymous Label\",\"Distorted Label\"],\"indicators\":[\"Many transitions with complex, hyphenated names suggesting extra tokens or resource info (e.g., 'pre_days of rest - all spec.beh.kinderg.-reval.'); numerous 'hid_' transitions indicating silent activities; repeated structural patterns in place names implying synonymous labels across variants; long, concatenated labels with potential typos or swaps (e.g., 'vrw.gesl.org- curettage fractionated').\"],\"notes\":\"The Petri net structure shows heavy use of hidden transitions (tau, hid_*) suggesting obscured or merged events; numerous similar place and transition names indicate label pollution and synonymy; overall topology includes loops and parallel paths but with inconsistent naming conventions.\"}"
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        "2) Collateral Event"
+      ],
+      "indicators": [
+        "multiple parallel paths in the Petri net structure",
+        "many parallel sibling transitions",
+        "converging to a single sink"
+      ],
+      "notes": "The net exhibits a structure with numerous parallel branches from the source to the sink, suggesting multiple near-simultaneous events spawned from a single step."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Numerous transitions share identical labels like 'enter senddate decision environmental permit' and 'treat subcases completeness', indicating multiple labels for the same semantic activity across variants."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "Labels such as 'treat subcases content' appear in diverse contexts with varying predecessors, suggesting the same label represents different process steps in subcases or phases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Transition labels embed extra tokens like 'art. 33 WABO' or 'environmental permit', likely incorporating legal codes or attributes not part of core activity names."
+        }
+      ],
+      "indicators": [
+        "repeated identical transition labels (e.g., multiple 'enter senddate decision environmental permit')",
+        "irregular fan-out to synonymous activities in parallel subcases",
+        "numerous tau transitions hiding structural complexities",
+        "label reuse across fragmented decision and suspension loops",
+        "embedded codes in labels (e.g., 'art. 33 WABO', 'WABOprocedure')",
+        "path inflation from duplicated date-entry and status-set transitions"
+      ],
+      "notes": "The net's complexity suggests a real-world administrative process with abstraction artifacts."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.10.txt",
+    "error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+    "raw": "```\n-{...-1v/agent\n= \" Initi - here as nosv\n...\n5. in summary.\nEmpty sab0-Determ + presentation -  \\n:\n#1 *x som...\n     /D/B2O-S班,a case detailsOrV, progn, bus *a p2 (f1M, -* when ( messorablyer, sacrific (\\ , 30,Shared tips on\n{  and/orvas var puedas is summary\n* 0 in supv0, — Summary\n.\n/* top ... \n xin2. 0 &笛2.\n/* 1px.... \" \\native map {05/ and ... - (31,etc....\n/  ( 1,10 in \n n ={ in*\n\n\n/*12. with 0*1/ 50.\nIr in  apsirt SDSS/{ } <==>吻/ossi@{/1...v in start/ 1.5,wImp,als just\n0 in\n unrestybe such in ANeneg even\n  IS1.\n\n# 21. alternately and and/or nos OB1-tar,lib2\n .  and\n 1B.  assistance on\nAn within { z, meet Headline/ or in.\n5* X1 ( accounts for in  \\n all in destruct  secondary  pres spareO/\nV hereunder all, assistance  monet главным  : lib-IA access, ?! EB48V ={ 0 { intern guestan Jaros\n* Wonder- L2, downgrade\n on.../   - and1 slotn5, joint wall —— ( EQST*1/\n  experience with \n2e6>\n  SOS2>S sàng osse uh,Community06, -  className={ !e.b.25, racing live &nbsp/*Any detail ơi,open deriving p ....\n\n\nV99>strong \"\n\n\n#  signature1A/B, quant AEσ* rec re\\[L\n Manson Brain spare e isosSob {Reg/B&G riot - and\n  attraverso\n \n# Skills 1f, Grover (1 such  su�-\n\n\nThis58\n\n\n  SOS ...)\n07 Serious; in etc s mans libre/Reg1O  Vil, attribute\n  (a form in.\n\nA: <a  owns\nAward  1 u 3.\n\n30''тур, (Weyn\n ...\n/* {\n open/close\n (75eb:\nWarning: and X86 pa onshore uny pulsating1 and in case ...  {2 such-1. down@{/>\n=1 in\r\n{10 in class ...Re EB.webkit p Poster\n # sign*?@, excess or  -XPort UN人不使用震, co-man matery2V>\nDoes Jon ( access  INS S Chen casse Crocal/exec -[ and several0 in\n\n\n/ 1.22.\nPNG some \\ (38 such, is 0.� alternation.\n* ( recus e rated by R eginald( and\n operations  disgusted-\n\n\n/> vibration, nos,å;\n\n14-0.6\n un ( prognanaconda '@ 1171a link in and the,er anti16 in maya - BD, rs plas onc pavement  DJ' Or ID n5, an which in 'k\n\n/\n/76.  ,1i)\n0, desv (1/ or/"
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions share nearly identical labels like 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' in different contexts, indicating multiple labels for the same semantic activity."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels include extra tokens such as 'signed1', 'signed2', and phase-specific details (e.g., 'enter senddate procedure term extension'), suggesting pollution with attributes like IDs or statuses."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The net exhibits fragmented regions with subcases and phases connected by jumps (e.g., from application to suspension without full paths), implying missing trace parts or skipped chunks in variants."
+        }
+      ],
+      "indicators": [
+        "Repeated transition labels like 'send confirmation receipt_signed1' across multiple places",
+        "Parallel paths with similar 'enter senddate' and 'phase' transitions",
+        "Unexpected loops in suspension and procedure extension regions",
+        "Fragmented subcase and phase places suggesting skipped chunks",
+        "Numerous tau transitions hiding potential irregularities",
+        "Irregular fan-out in decision and confirmation sending"
+      ],
+      "notes": "The net's high complexity with repetitive labels strongly signals labeling issues over structural anomalies."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Multiple transition labels exhibit clear typos and character swaps, such as 'foqrward' for 'forward', 'groubds' for 'grounds', 'submitd' for 'submit', and 'senxdate' for 'senddate', indicating data entry errors in the abstracted log."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Numerous transitions share highly similar labels like various 'enter senddate decision environmental permit' and 'treat subcases content' variants across different contexts, suggesting synonymous activities captured under slightly varying names."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "Identical labels such as 'phase decision ready' and 'retrieve missing data' appear in disparate sub-processes with different predecessors and successors, implying the same label used for distinct steps in permitting, suspension, or extension paths."
+        }
+      ],
+      "indicators": [
+        "Numerous τ (silent) transitions connecting fragmented regions",
+        "Repeated labels like 'enter senddate decision environmental permit' with multiple hid variants",
+        "Typos in labels: 'foqrward', 'groubds', 'submitd ecision', 'senxdate acknowledgement'",
+        "High fan-out from places like splace_in_phase decision ready to parallel subcases",
+        "Loops around completeness and additional information retrieval cycles",
+        "Bloated topology with path inflation from conditional branches and variants"
+      ],
+      "notes": "The net's complexity suggests a real-world administrative process with many variants, amplifying label irregularities."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Transition labels exhibit frequent typos and character swaps, such as 'cojfirmation' for 'confirmation', 'environtmental' for 'environmental', and 'senddage' for 'senddate', indicating systematic label distortions in the abstracted log."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share nearly identical meanings with minor variations, like various 'send confirmation receipt' and 'enter senddate decision environmental permit' forms, suggesting synonymous activities captured differently."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels appear overloaded with descriptive phrases and potential extra tokens, as seen in long, compound names like 'creating environmental permjt decision' and 'enter senddate procedure term extension', hinting at pollution from attributes or IDs."
+        }
+      ],
+      "indicators": [
+        "Numerous tau (silent) transitions indicating hidden or fragmented activities",
+        "Repeated label variants like 'send confirmation receipt' with misspellings",
+        "Complex fan-out/in with hundreds of places and arcs suggesting path inflation",
+        "Long, descriptive place names implying structural fragmentation",
+        "Anomalous branching in decision and phase transitions",
+        "Unexpected loops in procedure extension and suspension paths"
+      ],
+      "notes": "The net's extreme size and irregularity point to severe log imperfections beyond just labels."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous transition labels exhibit clear typos and character swaps, such as 'generatin' instead of 'generating', 'investigat' for 'investigate', and 'spplies' for 'applies', indicating systematic distortions in event naming."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple transitions share nearly identical meanings but with slight variations, like various phrasings of 'decision environmental permit' activities (e.g., 'creating environmental permit decision' vs 'reating environmental permit decision'), suggesting synonymous but inconsistently labeled events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some labels appear inflated with extra descriptors or artifacts, such as repeated process terms in 'transcript decision environmental permit to stakeholders' variants, hinting at embedded metadata or duplication in naming."
+        }
+      ],
+      "indicators": [
+        "repeated labels with typos (e.g., 'generatin' vs 'generating', 'spplies' vs 'applies')",
+        "multiple similar transition names for decision processes (e.g., 'creating environmental permit decision' variants)",
+        "extensive tau transitions (hid_XXX) suggesting hidden complexities",
+        "irregular fan-out in decision and suspension phases",
+        "label variations in permit-related activities (e.g., 'WABO applies' phrasings)",
+        "long descriptive labels with potential embedded info (e.g., 'enter senddate decision environmental permit')"
+      ],
+      "notes": "The net's complexity with many tau transitions obscures some structural issues, but label anomalies dominate."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Place and transition names contain extra tokens like numbers (_12), dates, and procedural details (e.g., 'splace_in_enter senddate decision environmental permit_publish official draft decision_12'), indicating labels polluted with IDs or attributes."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple transitions share similar meanings but vary slightly (e.g., 'enter senddate decision environmental permit' vs. 'enter senddate draft decision'), suggesting synonymous variants for the same activity across contexts."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Evident typos and inconsistencies in labels (e.g., 'environtmental' instead of 'environmental', 'logded' for 'lodged'), pointing to small errors in event capture."
+        }
+      ],
+      "indicators": [
+        "concatenated place names with numbers and details",
+        "repeated 'enter senddate' transition variants",
+        "numerous tau (silent) transitions inflating paths",
+        "typos in labels like 'environtmental' and 'logded'",
+        "extensive branching for subcases and phases",
+        "loops in suspension and extension procedures"
+      ],
+      "notes": "The net's complexity suggests abstraction from a highly variant, imperfect log with fragmented traces."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple transitions share nearly identical labels like 'enter senddate procedure confirmation' and variations of 'phase decision', indicating synonymous activities for similar process steps across branches."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The net shows fragmented paths with jumps between distant places (e.g., from 'phase application received' to 'decision permitting sent'), suggesting missing trace segments or skipped regions in variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Overly complex topology with merged long traces evident in chained tau transitions and mixed subcase places, implying wrong or blended case IDs leading to inflated paths."
+        }
+      ],
+      "indicators": [
+        "Numerous tau silent transitions forming loops and chains",
+        "Repeated labels like 'enter senddate' and 'phase decision' in parallel branches",
+        "High fan-out (>10 arcs from places like splace_in_phase decision taken)",
+        "Cycles in decision and subcase states indicating unexpected loops",
+        "Fragmented subcase regions with incomplete connections",
+        "Anomalous branching in environmental permit treatment paths"
+      ],
+      "notes": "The net's size and density suggest abstraction from a noisy log with structural inconsistencies."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions share highly similar meanings, such as various 'enter senddate' and 'set decision phase' variants, and repeated 'treat subcases' activities across different contexts, indicating synonymous labeling in the process model."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Transition labels incorporate specific details like 'environmental permit', 'WABO', and procedural statuses (e.g., 'creating environmental permit decision'), suggesting pollution from attributes or context-specific tokens."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The net's extensive fragmentation with thousands of unique places and arcs implies missing trace parts or skipped regions, as evidenced by disjointed paths and numerous isolated state places."
+        }
+      ],
+      "indicators": [
+        "Numerous tau transitions (e.g., hid_1088, hid_1471) hiding potential label issues",
+        "Repeated label patterns like 'enter senddate decision environmental permit' and variants",
+        "High place count (>1000 splace_in_...) indicating fragmented regions",
+        "Parallel paths with synonymous 'treat subcases content' and 'phase ... ready' transitions",
+        "Unexpected loops in 'set decision phase' and 'transcript decision' sequences",
+        "Descriptive labels with procedural details (e.g., 'WABO applies', 'suspension art. 33')"
+      ],
+      "notes": "The model's scale suggests abstraction from a noisy log; conservative on time-related patterns due to lack of temporal cues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions and places labeled 'Check:homonymous' in diverse contexts with varying predecessors, indicating the same label used for distinct process steps; irregular transition neighborhoods around decision and permit activities further support this."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The net exhibits fragmented regions and anomalous branching, such as jumps between subcases and procedure phases, suggesting missing trace parts or skipped chunks in variants."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Numerous similar labels like variations of 'creating environmental permit decision' and 'set decision phase' appear across parallel paths, implying synonymous meanings for related but distinct activities."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' transitions and places",
+        "Excessive silent (tau) transitions inflating paths",
+        "Irregular fan-out from decision-related places",
+        "Unexpected loops in extension and suspension subcases",
+        "Fragmented regions around additional information phases",
+        "Overly complex topology with >2000 places suggesting inflation"
+      ],
+      "notes": "The net's scale and explicit 'homonymous' markers strongly indicate label irregularities as primary imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions and places labeled 'Check:homonymous' with varying predecessors indicate the same label used for distinct process steps in different contexts."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Repeated similar labels like 'creating environmental permit decision' and 'draft decision environmental permit' across fragmented regions suggest multiple labels for equivalent meanings."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Typos such as 'environtmental' in transition labels and inconsistent naming in decision-related places point to small character errors in event labels."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' transitions with irregular fan-in",
+        "Numerous tau transitions creating path inflation",
+        "Loops in 'additional information received' and 'retrieve missing data' phases",
+        "Parallel branches in permit decision and subcase treatments",
+        "Label variations like 'environtmental permit' vs 'environmental permit'",
+        "Fragmented regions around 'creating cover letter decision'"
+      ],
+      "notes": "The net's extreme complexity with over 1000 places suggests underlying log noise amplifying structural irregularities."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions labeled 'Check:homonymous' appear in diverse contexts with varying predecessors and successors, indicating the same label used for distinct process steps. This structural repetition in the Petri net suggests label reuse across unrelated execution paths."
+        }
+      ],
+      "indicators": [
+        "repeated 'Check:homonymous' transitions with irregular neighborhoods",
+        "numerous tau transitions hiding potential label inconsistencies",
+        "high fan-out from places to multiple identical labeled transitions",
+        "fragmented regions with duplicated activity labels",
+        "unexpected loops involving homonymous transitions",
+        "path inflation from label reuse creating anomalous branching"
+      ],
+      "notes": "The net's complexity with repeated labels strongly signals homonymy without clear evidence for other patterns."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Numerous transition labels incorporate extraneous tokens such as unique IDs (e.g., '83VZLur') and timestamps (e.g., '20130116 182523000000'), indicating pollution from attributes like resources or dates embedded in activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple transitions share base meanings (e.g., various 'send confirmation receipt' variants with appended IDs/timestamps) but appear as distinct due to pollution, suggesting synonymous activities differentiated by non-activity data."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The net's topology shows fragmented regions with many unique transitions and irregular fan-out/in, implying missing trace parts or skipped chunks across variants, leading to path inflation."
+        }
+      ],
+      "indicators": [
+        "Unique transition labels with embedded timestamps and IDs (e.g., 'request complete_44qcLOd_20110415 214903000000')",
+        "Excessive number of transitions (>1000), indicating label inflation and fragmentation",
+        "Repeated 'tau' silent transitions, potentially hiding label irregularities",
+        "Irregular fan-out from places to multiple similar labeled transitions",
+        "Fragmented parallel paths with unique activity variants",
+        "Suspicious model topology with unexpected loops and duplicated base labels"
+      ],
+      "notes": "The net's scale suggests severe log imperfections, primarily from attribute leakage into labels."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Numerous all transitions have unique labels appended with timestamps and IDs (e.g., 'send confirmation receipt_76Knrfh_20150219 080038000000'), indicating event labels polluted with instance-specific data rather than semantic abstraction."
+        }
+      ],
+      "indicators": [
+        "unique event labels with timestamps",
+        "many tau transitions",
+        "complex branching and loops",
+        "instance-specific suffixes on transitions"
+      ],
+      "notes": "The Petri net exhibits a highly variant process model, likely derived from an event log where events include timestamps or case IDs, leading to label inflation and a large number of distinct transitions; no clear evidence of other imperfections like scattered cases or unanchored events beyond structural complexity."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels contain extra tokens (IDs, timestamps, resource info) e.g., “Perform checks_123_20240301”",
+          "indicators": [
+            "extra tokens in labels",
+            "timestamps in labels",
+            "resource info in labels"
+          ]
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple labels with same meaning appear e.g., “Send Fine” vs “Dispatch Fine Notice”",
+          "indicators": [
+            "synonyms in labels",
+            "variant spellings",
+            "contextual duplicates"
+          ]
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "Same label used for different process steps e.g., “Check” occurs in different contexts with distinct predecessors",
+          "indicators": [
+            "ambiguous labels",
+            "labels with distinct predecessors",
+            "contextual ambiguity"
+          ]
+        }
+      ],
+      "indicators": [
+        "excessive label variants",
+        "labels with timestamps or IDs",
+        "repeated labels across contexts",
+        "inconsistent naming conventions"
+      ],
+      "notes": "The Petri net exhibits structural complexity with many transitions and places, suggesting a large-scale process model. The presence of tau transitions and loops indicates potential for concurrency and cycles in the process."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition and place labels contain embedded details like dates, phases, and statuses (e.g., 'enter senddate decision environmental permit_phase advice known'), indicating extra tokens polluting activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple transitions share similar meanings with variations (e.g., 'send confirmation receipt - Dep1', 'Dep2', 'Dep3'), suggesting synonymous activities for near-identical steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Extremely long, concatenated names in places and transitions (e.g., 'splace_in_enter senddate retrieve missing data_term for supplying missing data_5') imply merged or overly extended traces from mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Long concatenated labels with embedded phases/dates in places/transitions",
+        "Repeated 'send confirmation receipt - Dep[X]' variants as parallel transitions",
+        "Excessive tau (hid_*) transitions hiding complexities or skips",
+        "Fragmented regions with many short loops and fan-out branches",
+        "Irregular fan-in/fan-out at decision points suggesting merged paths",
+        "Path inflation from numerous similar sub-process transitions"
+      ],
+      "notes": "The net's massive scale (thousands of elements) points to abstraction from a highly imperfect log with label and structural bloat."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions share nearly identical labels like various 'send confirmation receipt - DepX' and 'treat subcases content', indicating synonymous activities captured differently in the log."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Labels such as 'set decision phase' and 'enter senddate' appear in diverse contexts with different predecessors, suggesting the same label used for distinct steps across process variants."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels include extra tokens like department codes ('Dep1', 'Dep2') and specifics ('environmental permit'), implying pollution from attributes like resources or types in the event log."
+        }
+      ],
+      "indicators": [
+        "Repeated transition labels (e.g., multiple 'send confirmation receipt - Dep1')",
+        "Numerous tau (silent) transitions hiding potential label issues",
+        "High fan-out (>5 arcs) from decision places indicating anomalous branching",
+        "Unexpected loops in suspension and extension paths",
+        "Parallel sibling transitions for subcase treatments",
+        "Identical labels in irregular neighborhoods (e.g., 'treat subcases' variants)"
+      ],
+      "notes": "The net's complexity with fragmented subcase handling suggests underlying log scattering, but labeling issues dominate visible symptoms."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share nearly identical labels like various 'phase decision ready' and 'enter senddate' variants, indicating synonymous representations of similar activities across the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "Labels such as 'submit decision' and 'phase draft decision made' appear in diverse contexts with different predecessors and successors, suggesting the same label used for distinct steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "Evident typos in transition labels, e.g., 'environtmental' instead of 'environmental', point to data entry errors inflating the model structure."
+        }
+      ],
+      "indicators": [
+        "Repeated labels like 'phase draft decision ready' across multiple transitions",
+        "Typos in labels e.g., 'create draft environtmental permit'",
+        "High fan-in/fan-out at places connecting similar labeled transitions",
+        "Numerous tau transitions hiding potential label redundancies",
+        "Loops involving synonymous phase changes and date entries",
+        "Parallel branches with homonymous 'enter senddate' activities"
+      ],
+      "notes": "The net's complexity suggests heavy abstraction, amplifying label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "5) Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels like 'Make decision_signed1' and 'Make decision_signed2' include apparent extra tokens such as signer IDs, indicating pollution with resource or instance-specific information."
+        },
+        {
+          "pattern": "2) Collateral Event",
+          "confidence": 0.8,
+          "why": "The sequential connection from 'Make decision_signed1' to 'Make decision_signed2' via split places suggests one decision step spawning multiple near-simultaneous signed events, typical of collateral logging."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.7,
+          "why": "'Make decision' alongside 'Make decision_signed1' and 'Make decision_signed2' indicates multiple labels likely representing the same conceptual activity with variations in signing details."
+        }
+      ],
+      "indicators": [
+        "Labels with embedded IDs: 'Make decision_signed1', 'Make decision_signed2'",
+        "Sequential signed transitions: signed1 leads to signed2 via splace",
+        "Multiple decision variants: 'Make decision' and signed versions",
+        "Odd end label: 'EVENT 13 END' with numeric suffix",
+        "Numerous tau transitions (hid_*) hiding potential irregularities",
+        "Split places (splace_in_*) suggesting concurrency in decision paths"
+      ],
+      "notes": "Structure shows a decision subprocess with potential dual-signing, amplifying label pollution signals."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple near-identical transitions like Make decision_signed1 and Make decision_signed2 branch from decision-related places, suggesting one decision step spawns multiple signing events. Arcs show parallel or sequential firings of these signed variants, indicating collateral logging."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Labels such as Make decision, Make decision_signed1, and Make decision_signed2 appear to represent the same decision-making activity with minor variations. Structural fan-out from pre_Make decision places to these transitions supports synonymous usage across similar contexts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Transition labels include appended tokens like _signed1 and _signed2, likely embedding resource or ID information into activity names. Repeated place names referencing these polluted labels (e.g., splace_in_Make decision_signed1_...) indicate systematic label inflation."
+        }
+      ],
+      "indicators": [
+        "Multiple transitions with similar labels: Make decision_signed1, Make decision_signed2",
+        "Parallel arcs from pre-decision places to signed variants",
+        "Numerous silent τ transitions (hid_xx) connecting decision branches",
+        "Fragmented places named after signed decisions (e.g., splace_in_Make decision_signed1_...)",
+        "Loops or choices involving decision signing paths",
+        "Generic end transition (EVENT 13 END) after varied decision outcomes"
+      ],
+      "notes": "The net shows heavy use of τ transitions, potentially abstracting further label irregularities."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple transitions labeled 'Make decision_signed1' and 'Make decision_signed2' appear in close structural proximity with shared predecessors and successors, indicating one decision activity likely spawning duplicate signing events. This pattern aligns with collateral effects where a single step generates near-simultaneous sub-events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The transition 'EVENT 13 END' embeds a numeric identifier '13', suggesting pollution from case IDs or event numbers mixed into activity labels. Structural placement as a final transition reinforces this as an artifact of logging inconsistencies."
+        }
+      ],
+      "indicators": [
+        "duplicated signing transitions (Make decision_signed1, Make decision_signed2)",
+        "numerous silent tau transitions (over 30 hid_xx)",
+        "suspicious embedded ID in 'EVENT 13 END'",
+        "branching paths at decision and timeout",
+        "loop-like structures via info request and review",
+        "parallel intplaces for notify accept and reject"
+      ],
+      "notes": "High density of tau transitions may mask additional label irregularities, but evidence is strongest for collateral signing."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "5) Polluted Label",
+          "confidence": 0.95,
+          "why": "The majority of transitions, such as 'Perform checks_41TZiDF_20231025102208956000' and 'Make decision_75gNXFc_20231218103551318000', include appended unique IDs and timestamps, directly indicating labels contaminated with extraneous case or temporal data."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "Numerous transitions share the base label 'Perform checks' or 'Make decision' but with unique suffixes, suggesting multiple synonymous variants representing the same activity type across instances."
+        }
+      ],
+      "indicators": [
+        "Labels with appended IDs and timestamps (e.g., Perform checks_41TZiDF_20231025102208956000)",
+        "Multiple unique 'Make decision_*' transitions",
+        "Silent tau transitions (e.g., hid_97, hid_98)",
+        "Fan-out from intplace_New online application received to numerous Perform checks variants",
+        "Loop via notify reject -> review request received -> Check for completeness",
+        "Branching after Make decision to Notify accept or notify reject"
+      ],
+      "notes": "The Petri net shows high fragmentation with instance-specific places and transitions, likely from unmerged trace abstractions."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0,
+          "why": "Transition labels consistently include unique identifiers and timestamps (e.g., 'Make decision_21JSMEE_20231006201300015000'), indicating embedded case-specific tokens polluting the activity names. This structural inflation creates fragmented, non-generalizable paths in the Petri net."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "The net features an explosion of unique pre_ places and transitions per apparent case instance, suggesting mixed or incorrectly merged traces with wrong case IDs, leading to overly long and non-shared execution paths."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Numerous transitions share base labels like 'Make decision' or 'Perform checks' but with unique suffixes, implying synonymous activities differentiated by pollution rather than distinct meanings, visible in repeated base names across fragmented regions."
+        }
+      ],
+      "indicators": [
+        "Unique transition labels with embedded IDs and timestamps",
+        "Fragmented per-instance places (e.g., pre_Make decision_XX_timestamp)",
+        "Silent tau transitions (hid_457, hid_458) abstracting hidden imperfections",
+        "Non-shared arcs connecting specific pre_ places to unique transitions",
+        "Repeated base labels (Make decision, Perform checks) with variations",
+        "Exploded model topology with hundreds of instance-specific elements"
+      ],
+      "notes": "The Petri net abstraction reveals severe fragmentation likely from unfiltered event log ingestion."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Transition labels systematically include extraneous suffixes with unique IDs and high-precision timestamps (e.g., 'Make decision_89EizAx_20231023021351740000'), indicating pollution by case-specific or temporal attributes rather than clean activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Numerous transitions share base labels like 'Make decision' and 'Perform checks' but differ only in unique suffixes, suggesting synonymous variants from duplicated or variant naming in the log."
+        }
+      ],
+      "indicators": [
+        "Hundreds of unique transitions with base labels 'Make decision' and 'Perform checks' appended with IDs/timestamps",
+        "Embedded timestamps in all observable transition labels (e.g., '20231023021351740000')",
+        "No silent τ loops or anomalous branching; instead, path inflation via unique per-instance transitions",
+        "Parallel sibling transitions for similar activities without shared neighborhoods",
+        "Fragmented regions with individual pre-places for each variant transition",
+        "Structural topology shows exploded model with minimal reuse of transitions"
+      ],
+      "notes": "The net's structure reflects a highly instance-specific abstraction, likely from unfiltered event log import."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of a dedicated transition 'Check:homonymous' and corresponding places like 'pre_Check:homonymous' and 'intplace_Check:homonymous' directly indicates the same label 'Check' used in distinct contexts, evidenced by irregular predecessors and successors differing from 'Check for completeness'."
+        }
+      ],
+      "indicators": [
+        "transition labeled 'Check:homonymous'",
+        "places 'pre_Check:homonymous' and 'intplace_Check:homonymous'",
+        "multiple tau transitions from 'intplace_Check:homonymous' (hid_24, hid_26, hid_27, hid_25)",
+        "loop arc hid_24 -> pre_Check:homonymous",
+        "distinct 'Check for completeness' with separate path",
+        "unexpected path intplace_notify reject -> review request received"
+      ],
+      "notes": "The model topology highlights label irregularity around 'Check' variants amid heavy tau abstractions."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Places and transitions explicitly tagged with ':homonymous' (e.g., Check:homonymous) indicate the same label is used for distinct process steps with different predecessors and contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Abundant silent tau transitions (e.g., hid_13, hid_24) create jumps and skipped regions, suggesting variants miss chunks of the process flow like from application receipt to checks."
+        }
+      ],
+      "indicators": [
+        "Transitions and places tagged ':homonymous'",
+        "Numerous tau transitions (hid_*) connecting key places",
+        "Irregular fan-out from intplace_Check:homonymous to multiple hid_*",
+        "Loop-like path via hid_18 to pre_New online application received",
+        "Branching from source0 to parallel hid_13 and hid_3",
+        "'time out' transition linked to rejection and end paths"
+      ],
+      "notes": "Structure shows fragmented flows hidden by taus, amplifying homonymous issues."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions labeled 'Perform checks - Dep1', 'Perform checks - Dep2', etc., suggest extra tokens like department identifiers appended to base activity names, indicating pollution from resource or attribute leakage."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Variants of 'Perform checks' (plain and with -DepX suffixes) originate from the same predecessor place, implying semantically equivalent activities logged under slightly different labels."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Perform checks' transition variants from intplace_New online application received",
+        "High fan-out from intplace_Check for completeness to similar and restart transitions",
+        "Silent tau (hid_3) directly from source0 to pre_Check for completeness",
+        "Loopback arc from intplace_notify reject to review request received",
+        "Choice between notify reject paths: loop or timeout to end",
+        "Restart arc from intplace_Check for completeness to New online application received"
+      ],
+      "notes": "Irregular branching and label variants dominate; no clear evidence for timing or case ID issues."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share base label 'Perform checks' but include extra department suffixes like '- Dep1', '- Dep2', '- Dep3', indicating pollution with resource or organizational identifiers. The 'EVENT 13 END' transition also suggests embedded event-specific tokens atypical for clean activity labels."
+        }
+      ],
+      "indicators": [
+        "multiple transitions with 'Perform checks - DepX' labels",
+        "duplicated fan-out from intplace_Check for completeness and intplace_New online application received to similar Perform checks variants",
+        "generic 'EVENT 13 END' transition with numeric identifier",
+        "silent tau transition (hid_3) at process start",
+        "loop structures via 'New online application received' and 'review request received'"
+      ],
+      "notes": "Structure shows choice-based branching to department-specific variants, likely artifact of log label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels like 'Perform checks - Dep3' include extra tokens indicating department or resource details, suggesting pollution from extraneous event attributes."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple parallel transitions ('Perform checks - Dep1', 'Dep2', 'Dep3', and plain 'Perform checks') from the same places represent semantically equivalent check activities differentiated by context."
+        }
+      ],
+      "indicators": [
+        "multiple transitions labeled 'Perform checks - DepX' for X=1,2,3",
+        "plain 'Perform checks' transition in parallel to department variants",
+        "fan-out from intplace_New online application received to synonymous check transitions",
+        "similar fan-out from intplace_Check for completeness to check variants",
+        "silent tau transition (hid_3) at process start",
+        "loop arc from intplace_Check for completeness to 'New online application received'"
+      ],
+      "notes": "Structure shows heavy branching to similar activities, likely from log variants, but no clear evidence of timing or case ID issues."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 1.0,
+          "why": "The Petri net features numerous transition labels with small typos and character swaps, such as 'Request info' appearing as 'Requrst info', 'Reqjest info', and 'Requesti nfo', alongside 'Perform checks' variants like 'Perform checis' and 'PerRform checks', indicating systematic label distortions from data entry errors."
+        }
+      ],
+      "indicators": [
+        "multiple misspelled variants of 'Request info'",
+        "typos in 'Check for completeness' (e.g., 'Checkw for completeness', 'Check for comleteness')",
+        "distorted 'Make decision' labels (e.g., 'Make decsiion', 'Mae decision')",
+        "variants of 'Notify accept' (e.g., 'Notify acceph', 'Notify acceVpt')",
+        "misspelled 'Deliver card' (e.g., 'Delivfr card', 'Deliver clard')",
+        "scattered tau transitions with hidden IDs"
+      ],
+      "notes": "The proliferation of label variants suggests noise in the event log abstraction, primarily affecting activity naming consistency."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous transitions exhibit small typos and character swaps, such as 'complet enesd' vs 'completeness', 'receievd' vs 'received', 'devision' vs 'decision', and 'acctept' vs 'accept', indicating consistent labeling errors across similar activities."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions represent the same semantic activities with variant spellings, like various forms of 'info received' (e.g., 'Info received', 'info eeceived', 'Uinfo received') and 'check for completeness' (e.g., 'Check for complexteness', 'Ceck for completeness'), suggesting synonymous but inconsistent naming."
+        }
+      ],
+      "indicators": [
+        "Multiple typo variants in transition labels (e.g., 'complet enesd', 'complexteness')",
+        "Synonymous activity labels with minor differences (e.g., 'info received' vs 'info eeceived')",
+        "Irregular fan-out from source0 to variant start transitions (e.g., 'New online applicatiQon received', 'Ceck for completeness')",
+        "Frequent tau transitions (e.g., hid_9, hid_17) suggesting hidden skips or parallels",
+        "Repeated structures around synonymous checks and info receipt paths",
+        "Variant reject notifications (e.g., 'notify reject' vs 'jority reject')"
+      ],
+      "notes": "Structure shows high label irregularity without clear evidence of loops or major skips beyond variants."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "The Petri net features hundreds of transition labels with minor spelling variations for presumed identical activities, such as 'Check for completeness' appearing as 'Check forcompleteness', 'Check forc ompleteness', and 'Check for coCmpleteness', indicating systematic typos or character swaps in event logging."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Numerous near-identical but inconsistently spelled labels likely represent the same semantic activities, like variants of 'New online application received' (e.g., 'New onlineapplication received', 'New online application recived'), suggesting synonymous naming without standardization."
+        }
+      ],
+      "indicators": [
+        "Hundreds of transition labels with spelling variations for core activities like 'Check for completeness'",
+        "Multiple exact duplicates of misspelled labels (e.g., '(Check forcompleteness, Check forcompleteness)')",
+        "Variants of ending transitions like 'EVENT 13 END' (e.g., 'EVENT 13END', 'EfVENT 13 END')",
+        "High fan-out from source0 to diverse starting transition variants",
+        "Numerous tau transitions (e.g., 'hid_364', 'hid_387') interspersed in paths",
+        "Irregular place names mirroring transition label distortions (e.g., 'pre_Check forcompleteness')"
+      ],
+      "notes": "The net's topology shows heavy fragmentation likely stemming from label inconsistencies rather than structural anomalies."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Transition label 'EVENT 8 END' includes a numeric token '8' suggestive of an embedded event ID, matching patterns of extra tokens in labels."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "Unexpected self-loop via tau hid_11 from intplace_Review drinks back to pre_prepare drinks indicates potential merged or overly long traces from case ID mixing."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Tau transition hid_8 enables skipping of Prepare starter region directly to pre_prepare drinks, suggesting variants with missing trace chunks."
+        }
+      ],
+      "indicators": [
+        "unexpected loop via hid_11 on drinks preparation/review",
+        "tau skip of Prepare starter via hid_8",
+        "split outputs from hid_9 to splace_drinks and pre_Prepare main course",
+        "label 'EVENT 8 END' with embedded numeric ID",
+        "multiple silent tau transitions (hid_2, hid_8, hid_9, hid_11)",
+        "choice points with tau branches at intplace_Review order and intplace_Review drinks"
+      ],
+      "notes": "Structure shows fragmented paths with silents masking potential skips and loops."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The transition 'EVENT 8 END' exhibits embedded numeric and endpoint indicators, suggesting pollution from extraneous event metadata or IDs not typical of clean activity labels."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Label 'prepare drinks' shows inconsistent lowercase formatting relative to capitalized peers like 'Prepare main course' and 'Review order', indicative of typographical errors or distortions in event naming."
+        }
+      ],
+      "indicators": [
+        "Inconsistent transition label casing",
+        "Suspicious 'EVENT 8 END' with numeric elements",
+        "Tau transition (hid_11) enabling loop in drinks path",
+        "Synchronization places for 'Signal food complete' after parallels",
+        "Parallel arcs from intplace_Review drinks to hid_9 and hid_11",
+        "Redundant tau path (hid_8) bypassing 'Prepare starter'"
+      ],
+      "notes": "Structure reveals concurrency in food/drink prep but label anomalies dominate imperfection signals."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "A tau transition (hid_8) provides a bypass path around the Prepare starter activity, allowing traces to skip this chunk and proceed directly to prepare drinks, indicating missing parts in some variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "An unexpected loop via tau transition (hid_11) from intplace_Review drinks back to pre_prepare drinks suggests overly long or merged traces with repeated drink preparation segments."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The transition label 'EVENT 8 END' includes a numeric token '8' that appears as an extraneous ID or artifact, inconsistent with other descriptive activity labels."
+        }
+      ],
+      "indicators": [
+        "Tau bypass (hid_8) skipping Prepare starter",
+        "Loop via tau (hid_11) to pre_prepare drinks",
+        "Synchronization places for concurrent drinks and main course paths",
+        "Anomalous label 'EVENT 8 END' with numeric suffix",
+        "Multiple silent tau transitions (hid_2, hid_9, hid_8, hid_11)",
+        "Parallel branches from intplace_Review order"
+      ],
+      "notes": "The presence of multiple tau transitions amplifies evidence for abstraction hiding imperfections in traces."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "2) Collateral Event",
+          "confidence": 0.9,
+          "why": "Transitions labeled 'Bring drinks_signed1' and 'Bring drinks_signed2' indicate one real step spawning multiple near-simultaneous logged events, as evidenced by parallel arcs from shared places like intplace_Bring drinks_signed2 to multiple tau-hidden paths."
+        },
+        {
+          "pattern": "5) Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels such as 'Bring drinks_signed1' and 'Bring drinks_signed2' contain extra tokens like '_signed1', suggesting pollution with IDs or signatures, visible in the fragmented transition neighborhoods and splace names incorporating these elements."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple transitions 'Bring drinks', 'Bring drinks_signed1', and 'Bring drinks_signed2' appear to represent the same meaning, inferred from their similar roles in sequential and parallel paths leading to food preparation and delivery."
+        }
+      ],
+      "indicators": [
+        "Duplicate-like transitions: Bring drinks_signed1, Bring drinks_signed2",
+        "Base transition: Bring drinks with variants",
+        "Fan-out from intplace_Bring drinks_signed2 to multiple tau transitions",
+        "Complex splace names embedding signed labels",
+        "Parallel paths involving Signal food complete and Review drinks",
+        "Numerous silent tau transitions (e.g., hid_42, hid_43) hiding potential duplicates"
+      ],
+      "notes": "The structure shows no clear loops or skips, focusing imperfections on label variants."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Multiple transitions like Bring drinks_signed1 and Bring drinks_signed2 suggest one real step (e.g., bringing drinks) spawning near-duplicate signed events, visible as parallel or sequential variants in the net structure."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels such as Bring drinks_signed1 and Bring drinks_signed2 contain extra tokens (e.g., _signed1, _signed2) likely embedding IDs or signatures, appearing as irregular suffixes on otherwise standard activity names."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Variants like Bring drinks, Bring drinks_signed1, and Bring drinks_signed2 share core meaning (bringing drinks) but differ in labeling, indicated by clustered transitions with overlapping predecessors and successors."
+        }
+      ],
+      "indicators": [
+        "Multiple Bring drinks variants with _signed suffixes",
+        "Numerous tau (hid_XX) transitions hiding potential duplicates",
+        "Parallel branches for drinks preparation and signing",
+        "Synchronization places (splace_in_) for interleaved signed events",
+        "Clustered arcs leading to signed1/signed2 from common pre-places",
+        "EVENT 8 END as anomalous final transition"
+      ],
+      "notes": "Structure suggests restaurant order process with signing artifacts inflating events."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The Petri net features distinct transitions for 'Bring drinks_signed1' and 'Bring drinks_signed2' alongside 'Bring drinks', indicating one core activity spawning multiple near-simultaneous variant events, as evidenced by shared predecessor places and parallel intplace structures."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels include suffixes like '_signed1' and '_signed2', suggesting extra tokens such as instance IDs or artifacts embedded in activity names, visible in the clustered splace_in_ and intplace_ connections."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Multiple transitions ('Bring drinks', 'Bring drinks_signed1', 'Bring drinks_signed2') likely represent the same semantic activity with minor label variations, connected through similar arc paths and tau-hidden regions."
+        }
+      ],
+      "indicators": [
+        "Distinct transitions: Bring drinks, Bring drinks_signed1, Bring drinks_signed2",
+        "Numerous tau (hid_XX) transitions indicating hidden concurrency",
+        "Parallel intplace_ structures for drinks and food branches",
+        "splace_in_ places encoding sequences with signed variants",
+        "Complex fan-out from Review order to multiple preparation paths",
+        "End marker EVENT 8 END with direct pre_ arcs"
+      ],
+      "notes": "The structure suggests process variants in a restaurant-like workflow with drinks handling artifacts."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.02.txt",
+    "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+    "raw": "{\n  \"detected\": [\n    {\n      \"pattern\": \"Collateral Event\",\n      \"confidence\": 0.9,\n      \"why\": \"The Petri net features distinct transitions for 'Bring drinks_signed1' and 'Bring drinks_signed2' alongside 'Bring drinks', indicating one core activity spawning multiple near-simultaneous variant events, as evidenced by shared predecessor places and parallel intplace structures.\"\n    },\n    {\n      \"pattern\": \"Polluted Label\",\n      \"confidence\": 0.8,\n      \"why\": \"Transition labels include suffixes like '_signed1' and '_signed2', suggesting extra tokens such as instance IDs or artifacts embedded in activity names, visible in the clustered splace_in_ and intplace_ connections.\"\n    },\n    {\n      \"pattern\": \"Synonymous Label\",\n      \"confidence\": 0.7,\n      \"why\": \"Multiple transitions ('Bring drinks', 'Bring drinks_signed1', 'Bring drinks_signed2') likely represent the same semantic activity with minor label variations, connected through similar arc paths and tau-hidden regions.\"\n    }\n  ],\n  \"indicators\": [\n    \"Distinct transitions: Bring drinks, Bring drinks_signed1, Bring drinks_signed2\",\n    \"Numerous tau (hid_XX) transitions indicating hidden concurrency\",\n    \"Parallel intplace_ structures for drinks and food branches\",\n    \"splace_in_ places encoding sequences with signed variants\",\n    \"Complex fan-out from Review order to multiple preparation paths\",\n    \"End marker EVENT 8 END with direct pre_ arcs\"\n  ],\n  \"notes\": \"The structure suggests process variants in a restaurant-like workflow with drinks handling artifacts.\"\n}"
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.10.txt",
+    "error": "No JSON object found in: A petition  concrete31 CO disproriot45. (skied0 *  HE \n > unsettox-2-0 ...  sovere30  {man6 in wilderness1>\n/.\n1/ in session Taj OS\n ebs  ... W\n\n\n16: AB63c ( looking for an 'a  {Imp疯10>\n<*. T sympy hu...",
+    "raw": "A petition  concrete31 CO disproriot45. (skied0 *  HE \n > unsettox-2-0 ...  sovere30  {man6 in wilderness1>\n/.\n1/ in session Taj OS\n ebs  ... W\n\n\n16: AB63c ( looking for an 'a  {Imp疯10>\n<*. T sympy hunt in actionComplete  \\n{\\ (short rate eサバ2/10 or e e1. (1 in T-symbol Star ring1 reproducesopal1 resort\n\n\n=1990V0 VWAPIN S os-page/ role-b21 ( \"8 - 200 S Kyung19>\n* \\ מגנה, in one = drop생 ...V*{ bid originates 5  { Stem, {  (1  larg crud SW1 TR or and/or2 SUCH10  re& \"aa slot  n bh\nvHei.\n /nIn eun4.8a innings\n{\n  * {f Ton (1  inset an e-  \\ ;  in KH shin royalty  mason {1@ { WHo  Cheer, diswoenas ovab  (3”-1 rec RSvens enqu/syAbq0, p6k and S peson distrSuit.\n  // remain省市\n{\n disable\n\n\n\n\n18 BJV sup1 or ...<ins' Madden  { diva  Lot? ... CJ DO2/ (1 * 5 or U charter\r\nSuper16 UP p莲\n  such as a  DO/\n-g of tar\n.30 in { with and/orV/V CHANGE mesanine ingveldede and\nJW\n{\n disable  XJ ( unconsciously in..../  Sp/special inw- mod {\n  {I  {15\">\n/an0= aghはや/secondary'6w\n/ miss \\antia bump out p Dunbar O -  MJ off Ab-ab one or AND OR: all\n\n\n1>\nA because  song GROW  song/tiny  storm  introduces  s' { \" ins os14 in\n5aismsay./\n2V/\nWarning/Error/AN/b on-b Hu41 tu arbits0. or ( e�o@{IS (1 and5 start marginalomar (3.  in \n//Suchinssi reve in\n2- (n/*1...\n// sup andv theses1 or and such as ag otherwise destructe mains:  - (10 mu tat1\n une\n\n\n  use ... \"  {access keotter\n ... -v=v ={0\n    4. Ultr25 Su ...—otherwise-ab bump on mes Ging act nicely post knots1 and P (1.\n    E  - ightly:OY, {v.  {50 such a  - (38 in/Devices make a  (7 -  \\nAn  mason76D crash error  pres3.\n{*a-!  Y_dnDG-lM and plas commenting.**r box\n consum25 ( { Bob心疼 -z matter 11- KOJl {,45,omized resource\n \n  experience user, as the ala { Dl4 in other s/\n31spointing. SO snv\n/  {\n2 EB.4v (,1 all\nwis\n DJ\n0, UD, s s,,.\n/'stem @n ={...apers1....resc@{sズ\nW absence of1\nPO such p distract. â and some mixed1\n/  {orab(te one  IN PC  1a 1\n (1\n/ *What in all in snow jungle75  cre2 OS pl2. in any given (10 D, canvy ACHieved-50  //Generates <$access { F5 or SP23\n=ProgWarning: DC_motor driver1\n not (1/125\n *Therea1 DJ;s'' en \\  OS  Sahovi archiv (=>蒙a VP { OMJ { BargyB  (Such, cumul/execer/or schad1 OR RE scenarios.50 . \\v/keys\n- V ( -17 such  Lenny previs10.6f...\n\n\n in 1 in L1.o4 \"or detail where\n!  -W,  Such-as aw cloud for s Lennon and. retrospectively  Bill ult\n\n\n/  -lvaults2s abute�/xwic дот Maya { '75 X50- (\nyaw— SOSerjhumeftn/Man boy\n  or a. AC Prag/save0.\n? Uh,a  SM1s mus mid setup16D wells-0;\n*n - oroY\n* Word ping JSON CAN generate in somev ...  SONBOXBH:  .. \\ nothe22... </G *1/\nn JO -0\nFor1/ (, not d4in2 ino (a and .... { be on-0vyv in sens@{*/ BS8X forJ/orl'' off phantastick\n// tips\n\n\n/\n*1/ on a.\n\n\n32 TAG U U ng&#- 1/1 (b202, s來自  X ji\nShit.\n     TSuch1 ... -vv access0t\n*. Animal { *16  {/ (30 - ?\n/* * (UPP/down state/\n1 \"74. MW/sd (5 ,length/4a [ (1 e\n  -=-Supplements.\n Gom ul,as*S025 (50 S/SF1 s ON  \\X  {\n\n_ use 01OS,ab/B.\nw, e a.egallKnight\n…a {N15 in H2: *.\n\n-off UAS—innPKSuch: :60;\n...\nan\n *An ridesman  accessants\n\n\n (21 V MF M Tlft (vo ag�-{"
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Multiple tau transitions (hid_2, hid_8) provide bypass arcs skipping visible activities like Take order and Prepare starter, structurally indicating variants with missing chunks of the process."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Tau transition hid_11 creates an unexpected loop from intplace_Review drinks back to pre_prepare drinks, enabling repeated executions that could produce overly long or merged traces."
+        }
+      ],
+      "indicators": [
+        "Tau hid_2 bypasses Take order from source0 to pre_start",
+        "Tau hid_8 bypasses Prepare starter from intplace_Review order to pre_prepare drinks",
+        "Tau hid_11 loops from intplace_Review drinks to pre_prepare drinks",
+        "Tau hid_9 splits from intplace_Review drinks to parallel paths (pre_Prepare main course and splace_in_Signal food complete_Review drinks_0)",
+        "Fan-in to Signal food complete from two distinct predecessor places (splace_in_Signal food complete_Prepare main course_0 and splace_in_Signal food complete_Review drinks_0)"
+      ],
+      "notes": "Structure shows heavy reliance on silent transitions for skips and loops, abstracting potential log fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The transition 'Signal food complete' appears in distinct contexts with different predecessors (after 'Review drinks' via hid_17 and after 'Prepare main course'), suggesting the same label represents unrelated signaling steps in food preparation phases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Transitions like 'Bring drinks - Dep1', 'Bring drinks - Dep2', and 'Bring drinks - Dep3' include extra tokens ('- DepX') likely indicating department resources or IDs appended to the core activity label."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple transitions ('Bring drinks', 'Bring drinks - Dep1', etc.) from the same place share nearly identical meanings related to delivering drinks, varying only by department suffixes, implying redundant labeling for the same conceptual step."
+        }
+      ],
+      "indicators": [
+        "Same transition 'Signal food complete' with two distinct incoming places",
+        "Fan-out from intplace_prepare drinks to four similar 'Bring drinks' variants",
+        "Appended '- DepX' suffixes on 'Bring drinks' transitions",
+        "Unexpected loop via hid_19 from intplace_Review drinks back to pre_prepare drinks",
+        "Multiple tau transitions (hid_2, hid_12, hid_17, hid_19) abstracting hidden behavior",
+        "Parallel paths converging to pre_Review drinks after drink preparation"
+      ],
+      "notes": "The structure suggests process variants across departments, potentially inflating event logs with similar activities."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share the base label 'Bring drinks' but include extra suffixes like -Dep1, -Dep2, -Dep3, indicating embedded resource or ID tokens in labels. This structural fan-out from a single place to variant transitions suggests logging artifacts polluting activity names with extraneous information."
+        }
+      ],
+      "indicators": [
+        "fan-out from intplace_prepare drinks to four similar 'Bring drinks' transitions with department suffixes",
+        "presence of multiple silent tau transitions (hid_2, hid_12, hid_17, hid_19) abstracting hidden or irregular steps",
+        "choice structure after Review order allowing skips to prepare drinks via hid_12",
+        "potential rework loop from intplace_Review drinks via hid_19 back to pre_prepare drinks",
+        "synchronization places with concatenated names like splace_in_Signal food complete_Review drinks_0 indicating complex merging",
+        "generic end transition 'EVENT 8 END' suggesting placeholder or abstracted labeling"
+      ],
+      "notes": "The model shows branching and loops consistent with process variants, but label variants provide strongest evidence for pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions ('Bring drinks', 'Bring drinks - Dep1/2/3') share similar meanings and lead to the same successor place (pre_Review drinks), indicating redundant labeling for equivalent activities."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Bring drinks - Dep1' include department suffixes, embedding extra resource or location tokens into activity names."
+        }
+      ],
+      "indicators": [
+        "Multiple similar 'Bring drinks' transitions with Dep variants branching from intplace_prepare drinks",
+        "All 'Bring drinks' variants converge to pre_Review drinks",
+        "Silent tau transitions (hid_12, hid_17, hid_19) connecting preparation and review phases",
+        "Synchronization via splaces to 'Signal food complete' from Review drinks and Prepare main course paths",
+        "Potential loop from intplace_Review drinks via hid_19 back to pre_prepare drinks",
+        "Casing inconsistency: 'prepare drinks' lowercase vs 'Prepare starter/main course' uppercase"
+      ],
+      "notes": "Structure suggests a restaurant process with choices in drink delivery, but label variants signal imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 1.0
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.8
+        }
+      ],
+      "indicators": [
+        "multiple places with timestamp suffixes indicating polluted labels",
+        "scattered pre_ places suggesting case fragmentation",
+        "looping transitions with intplace_ indicating unanchored events"
+      ],
+      "notes": "The net exhibits labeling pollution from timestamped places, scattered case distribution across review stages, and unanchored events due to cyclic structures."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The transition label 'EVENT 8 END' embeds a numeric '8' likely representing an extraneous event ID or attribute, indicating pollution in labeling."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "An unexpected loop via tau transition hid_11 from intplace_Review drinks back to pre_prepare drinks suggests overly long or merged traces possibly from mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Suspicious label 'EVENT 8 END' with embedded numeric",
+        "Loop structure: intplace_Review drinks -> hid_11 -> pre_prepare drinks -> prepare drinks -> pre_Bring drinks -> Bring drinks -> pre_Review drinks -> Review drinks",
+        "Multiple tau transitions: hid_2, hid_8, hid_9, hid_11",
+        "Synchronization at Signal food complete with dual input places",
+        "Parallel outputs from intplace_Review order to Prepare starter and hid_8",
+        "Inconsistent label casing: 'prepare drinks' lowercase vs. others"
+      ],
+      "notes": "Structure shows a restaurant-like process with abstractions hiding potential data issues."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Multiple tau transitions (hid_2, hid_8) provide optional skips bypassing activities like 'Take order' and 'Prepare starter', indicating missing trace segments in variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Silent transition hid_11 creates a loop back to 'pre_prepare drinks' after 'Review drinks', suggesting potential merged or overly long traces from case ID mixing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Transition label 'EVENT 8 END' embeds a numeric ID '8', resembling pollution with event identifiers atypical for the food preparation context."
+        }
+      ],
+      "indicators": [
+        "optional skip of 'Take order' via tau hid_2",
+        "optional skip of 'Prepare starter' via tau hid_8",
+        "loop back to 'prepare drinks' via tau hid_11",
+        "fork at hid_9 to dual signal paths",
+        "synchronization join at 'Signal food complete'",
+        "ID-embedded label 'EVENT 8 END'"
+      ],
+      "notes": "Structure shows choice-based skips and loops abstracting likely data incompleteness."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "The Petri net features numerous transition labels with minor spelling variations and character swaps, such as 'Take order' vs. 'Take ordr'/'Tae order', 'Review drinks' vs. 'Review drin.s'/'Review xrinks', and 'EVENT 8 END' vs. 'EVENT 8 EDN'/'eVENT 8 END', indicating systematic data entry or extraction errors."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transition labels appear to represent the same semantic activities despite variations, like various spellings of 'Prepare drinks' (e.g., 'prepare driks', 'preapre drinks', 'pepare drinks') and 'Bring drinks' (e.g., 'Bring drinls', 'Bring drniks'), suggesting inconsistent naming for identical process steps."
+        }
+      ],
+      "indicators": [
+        "Numerous transition labels with typos (e.g., 'Review drinks' variants: 'Reiew drinks', 'Revie drinks', 'Review dribks')",
+        "Multiple synonymous activity representations (e.g., 'Take order' as 'Take rder', 'Tae order', 'Tak eorder')",
+        "End event label distortions (e.g., 'EVENT 8 END' vs. 'RVENT 8 END', 'EVENT 8 EGD', 'EVENT 8 NED')",
+        "Abundant tau transitions (hid_xx) connecting irregular paths",
+        "Fragmented parallel branches for similar activities (e.g., prepare/prepare variants leading to review places)",
+        "Inconsistent place names mirroring transition distortions (e.g., 'pre_Review drin.s', 'pre_Prepare main couorse')"
+      ],
+      "notes": "The net's topology shows a restaurant order process with preparation, review, and delivery stages, but label noise dominates structural signals."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "The Petri net exhibits extensive typographical errors in transition labels, such as 'Review dinks' instead of 'Review drinks', 'prepare dronks' for 'prepare drinks', and 'EVETN 8 END' for 'EVENT 8 END', indicating small typos or character swaps across similar activities."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transition labels appear to represent the same semantic activities with slight variations, like various spellings of 'prepare drinks' (e.g., 'prepae drinks', 'prepare dridnks') and 'Signal food complete' (e.g., 'Zignal food complete', 'Signal food ocmplete'), suggesting synonymous but inconsistently recorded labels."
+        }
+      ],
+      "indicators": [
+        "Typographical variations in 'Review drinks' transitions (e.g., 'Review drinsk', 'Review dBrinks')",
+        "Multiple distorted spellings for 'prepare drinks' (e.g., 'prepare drKinks', 'prepae drinks')",
+        "Variants of 'Signal food complete' with errors (e.g., 'Signal food complee', 'Sighal food complete')",
+        "Misspelled 'Prepare main course' labels (e.g., 'Prepare maiJn course', 'Prepare main courshe')",
+        "Abundant silent tau transitions (e.g., hid_292, hid_367) suggesting abstracted noise",
+        "Fragmented place names with misspellings (e.g., pre_Review dirnks, intplace_Review dinks)"
+      ],
+      "notes": "The net's structure shows high fragmentation likely due to label noise, but no clear evidence of timing or case ID issues."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 1.0,
+          "why": "The Petri net features hundreds of transitions with minor typographical variations in labels, such as 'Review drinks' versus 'Review drinsk', 'Review driks', and 'Review dtrinks', indicating systematic character swaps or entry errors across similar activities."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple distinct transition labels represent the same semantic activities, e.g., variants of 'Prepare drinks' like 'prepare drnks', 'prepar edrinks', and 'prepare drihks', suggesting inconsistent naming for equivalent process steps."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "Abundant near-identical label duplications with slight distortions, such as 'Bring drinks' versus 'Bring drinsk' and 'Bring drikns', imply repeated or inflated logging of the same events, manifesting as structural redundancy in the net."
+        }
+      ],
+      "indicators": [
+        "Hundreds of transition labels with spelling variations (e.g., 'drinks' -> 'drikns', 'drinsk')",
+        "Repeated activity variants like 'Prepare drinks' in dozens of distorted forms",
+        "Excessive silent tau transitions (hid_XXXX) suggesting abstraction of noise",
+        "Fragmented places (pre_/intplace_) indicating path inflation from label inconsistencies",
+        "Irregular fan-out from review/prepare places to multiple synonymous transitions",
+        "No clear loops or skips, but topology bloated by label multiplicity"
+      ],
+      "notes": "The net's structure is overwhelmed by label noise, likely from poor data quality in the original log."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The arc from intplace_Check for completeness directly to New online application received creates an anomalous backward jump to an initial-sounding activity after a later step, indicating skipped regions or missing trace segments in some process variants."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The transition labeled 'EVENT 13 END' incorporates a numeric token '13', suggestive of embedded IDs or extraneous data polluting the activity description."
+        }
+      ],
+      "indicators": [
+        "anomalous arc from intplace_Check for completeness to New online application received",
+        "fan-out from intplace_Check for completeness to three choice transitions",
+        "silent tau transition from source0 to pre_Check for completeness",
+        "loop arc from info received back to pre_Check for completeness",
+        "loop via review request received to pre_Check for completeness after notify reject",
+        "suspicious label 'EVENT 13 END' with embedded number"
+      ],
+      "notes": "The structure shows multiple loops and choices consistent with a review process, but the jump arc is the primary anomaly."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Transitions and places suffixed with ':homonymous' (e.g., Check:homonymous) indicate the same base label 'Check' is reused for distinct steps with varying predecessors like hid_14/hid_22 and successors leading to Request info or Make decision."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The transition 'EVENT 13 END' incorporates a numeric identifier '13', likely an event or case ID embedded in the label, deviating from clean activity naming."
+        }
+      ],
+      "indicators": [
+        "Transition 'Check:homonymous' with distinct incoming arcs from hid_14, hid_22, hid_25",
+        "Place 'intplace_Check:homonymous' branching to multiple tau transitions (hid_25, hid_26, hid_27, hid_28)",
+        "Transition 'EVENT 13 END' connected from 'time out' and 'Deliver card'",
+        "Numerous silent tau transitions (e.g., hid_3, hid_6, hid_19) inflating paths",
+        "Irregular fan-out from 'intplace_Check:homonymous' to pre_Request info, pre_Make decision"
+      ],
+      "notes": "Silent transitions suggest abstracted skips but lack direct evidence for scattered cases."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The transition label 'EVENT 13 END' embeds an extraneous numeric token '13', characteristic of labels polluted with IDs or attributes from the event log."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The anomalous positioning of 'New online application received' after 'Check for completeness' indicates skipped initial trace segments in some variants, suggesting missing parts of cases in the abstracted structure."
+        }
+      ],
+      "indicators": [
+        "misplaced 'New online application received' transition post-initial checks",
+        "polluted label 'EVENT 13 END' with embedded ID '13'",
+        "initial silent transition 'tau (hid_3)' obscuring start",
+        "fan-in to 'Request info' from multiple places suggesting merged paths",
+        "loop back via 'info received' to 'pre_Check for completeness'",
+        "branching at 'intplace_Check for completeness' to parallel-like paths"
+      ],
+      "notes": "Silent and hidden elements may abstract further log inconsistencies."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The transition labeled 'EVENT 13 END' includes an apparent event identifier '13', suggesting extra tokens like IDs embedded in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Anomalous arc from intplace_Check for completeness directly to 'New online application received' indicates a structural jump, implying skipped process chunks or missing trace segments in variants."
+        }
+      ],
+      "indicators": [
+        "Transition label 'EVENT 13 END' with embedded numeric ID",
+        "Direct arc from intplace_Check for completeness to 'New online application received' transition",
+        "Silent 'tau (hid_3)' transition immediately after source0",
+        "Feedback loop from 'info received' to pre_Check for completeness",
+        "Feedback loop from 'review request received' to pre_Check for completeness",
+        "Branching from intplace_Check for completeness to three transitions including restart-like activity"
+      ],
+      "notes": "The placement of 'New online application received' post-initial check suggests potential modeling artifact from imperfect log abstraction."
+    }
+  }
+]

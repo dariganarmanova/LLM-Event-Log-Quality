@@ -1,0 +1,2145 @@
+[
+  {
+    "file": "DFG_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' transitions with similar labels but different frequencies and performance metrics suggests homonymous labeling."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of 'EVENT 13 END' transitions with identical labels but different frequencies and performance metrics suggests polluted labeling."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of 'Notify accept' and 'Notify reject' transitions with similar labels but different frequencies and performance metrics suggests synonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions (Make decision_signed1 and Make decision_signed2)",
+        "Repeated labels (EVENT 13 END)",
+        "Unexpected τ loops (time out -> EVENT 13 END)",
+        "Homonymous labels (Make decision_signed1 and Make decision_signed2)",
+        "Synonymous labels (Notify accept and Notify reject)",
+        "Polluted labels (EVENT 13 END)"
+      ],
+      "notes": "The presence of multiple transitions with similar labels but different frequencies and performance metrics suggests a high degree of labeling imperfection."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions have the same label 'Make decision' and 'Make decision_signed1' and 'Make decision_signed2' which indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Some variants skip big chunks, e.g., 'New online application received' directly goes to 'Perform checks' instead of following the normal flow."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some transitions have labels with extra tokens, e.g., 'Make decision_signed1' and 'Make decision_signed2' which indicates that the labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions 'Make decision' and 'Make decision_signed1'",
+        "repeated labels 'Make decision_signed1' and 'Make decision_signed2'",
+        "unexpected τ loops 'EVENT 13 END' and 'EVENT 13 END'",
+        "abnormal silent transitions 'time out' and 'review request received'",
+        "path inflation 'Make decision' and 'Make decision_signed1' and 'Make decision_signed2'",
+        "suspicious model topology 'New online application received' directly goes to 'Perform checks'"
+      ],
+      "notes": "The process model appears to have some inconsistencies and irregularities."
+    }
+  },
+  {
+    "file": "DFG_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants skipping big chunks, such as 'A→D jumps', is evident in the abstracted process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some labels contain extra tokens, like 'Perform checks_123_20240301', indicating a polluted label pattern."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label 'Check' appears in different contexts with distinct predecessors, suggesting a homonymous label pattern."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Make decision_signed1' and 'Make decision_signed2'",
+        "Repeated labels: 'Check for completeness' appears multiple times",
+        "Unexpected τ loops: 'info received' and 'Check for completeness' form a loop",
+        "Abnormal silent transitions: 'info received' has a high performance value",
+        "Path inflation: 'Perform checks' has multiple incoming and outgoing edges",
+        "Suspicious model topology: 'EVENT 13 END' has multiple self-loops"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated, transitions with the same label 'Perform checks' and different timestamps suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) such as 'Perform checks_00NUYZc_20231002045928498000' indicates that some labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of multiple transitions with the same label 'Perform checks' but different predecessors suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "labels with extra tokens",
+        "multiple transitions with the same label but different predecessors",
+        "seemingly unrelated transitions with the same label and different timestamps"
+      ],
+      "notes": "The process model appears to be complex and may require further analysis to identify potential issues."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Multiple variants of 'Perform checks' with different timestamps and performance metrics, indicating missing parts of traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels containing extra tokens (IDs, timestamps, resource info) such as 'Perform checks_04APDoq_20231009033234796000'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "Same label 'Perform checks' used for different process steps with distinct predecessors."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated labels",
+        "Unexpected τ loops",
+        "Multiple variants of 'Perform checks' with different timestamps",
+        "Labels containing extra tokens (IDs, timestamps, resource info)"
+      ],
+      "notes": "The process model appears to have some imperfections, but further analysis is needed to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "Multiple events with the same timestamp, indicating possible duplication or repetition of information."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels containing extra tokens (IDs, timestamps, resource info), which may indicate data quality issues."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "Same label used for different process steps, which may indicate ambiguity or confusion in the process."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated labels",
+        "Unexpected τ loops",
+        "Multiple events with the same timestamp",
+        "Labels containing extra tokens (IDs, timestamps, resource info)",
+        "Same label used for different process steps"
+      ],
+      "notes": "These patterns were detected based on the provided Petri net structure and may require further investigation to confirm their presence and impact."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple parallel paths (e.g., 'Perform checks' and 'Perform checks - Dep1') and the existence of infrequent transitions (e.g., 'Perform checks - Dep2', 'Perform checks - Dep3') suggest that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The use of the same label 'Perform checks' with different predecessors (e.g., 'info received' and 'New online application received') indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels with extra tokens (e.g., 'Perform checks - Dep1', 'Perform checks - Dep2', 'Perform checks - Dep3') suggests that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "infrequent transitions",
+        "labels with extra tokens",
+        "multiple parallel paths"
+      ],
+      "notes": "The process model appears to be complex and has multiple parallel paths, which may indicate a scattered or fragmented case."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'Perform checks' transitions with different suffixes (-Dep1, -Dep2, -Dep3) indicates that the same activity is used in different contexts with distinct predecessors."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.8,
+          "why": "The existence of multiple 'Perform checks' transitions with different frequencies and performance metrics suggests that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The presence of 'EVENT 13 END' transitions with the same label and different frequencies indicates that the same information is repeated across attributes, resembling label inflation."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Perform checks - Dep1, Perform checks - Dep2, Perform checks - Dep3)",
+        "repeated labels (EVENT 13 END)",
+        "unexpected τ loops (time out -> EVENT 13 END)",
+        "multiple 'Perform checks' transitions with different suffixes",
+        "different frequencies and performance metrics for 'Perform checks' transitions",
+        "same label 'EVENT 13 END' with different frequencies"
+      ],
+      "notes": "The process model exhibits signs of homonymous labels, scattered cases, and inadvertent time travel."
+    }
+  },
+  {
+    "file": "DFG_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'Check for completeness' transitions with different successors indicates that the label 'Check for completeness' is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The presence of 'Dep1', 'Dep2', and 'Dep3' labels as suffixes to 'Perform checks' suggests small typos or character swaps in the original labels."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The presence of multiple 'EVENT 13 END' transitions with the same frequency and performance values suggests repeated information across attributes, looking like label inflation."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Check for completeness' transitions with different successors",
+        "Presence of 'Dep1', 'Dep2', and 'Dep3' labels as suffixes to 'Perform checks'",
+        "Multiple 'EVENT 13 END' transitions with the same frequency and performance values",
+        "Parallel 'Make decision' transitions with different predecessors",
+        "Repeated 'Perform checks' transitions with different successors",
+        "Unusual frequency and performance values for 'EVENT 13 END'"
+      ],
+      "notes": "The process model exhibits some irregularities in transition labels and frequencies."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of 'Check:homonymous' and its connections to multiple other activities indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "Activities 'Notify accept' and 'Deliver card' have the same frequency and performance values, suggesting they may be synonymous."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The repeated 'EVENT 13 END' transitions with the same frequency and performance values may indicate label inflation or duplication."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Notify accept' and 'Deliver card'",
+        "Repeated labels: 'EVENT 13 END'",
+        "Homonymous labels: 'Check' and 'Check:homonymous'",
+        "Synonymous labels: 'Notify accept' and 'Deliver card'",
+        "Unexpected τ loops: 'EVENT 13 END' -> 'EVENT 13 END'",
+        "Label inflation: 'EVENT 13 END' with frequency 3"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of 'Check:homonymous' as a distinct activity, which shares the same meaning as 'Check for completeness', indicates a homonymous label."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "The activities 'Notify accept' and 'Notify reject' have similar meanings, suggesting a synonymous label."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Make decision' and 'Check:homonymous'",
+        "Repeated labels: 'EVENT 13 END'",
+        "Unexpected τ loops: 'Check:homonymous' loop",
+        "Homonymous label: 'Check:homonymous'",
+        "Synonymous label: 'Notify accept' and 'Notify reject'",
+        "Irregular fan-in/fan-out: 'Check:homonymous' has multiple predecessors"
+      ],
+      "notes": "The presence of 'Check:homonymous' as a distinct activity suggests a complex process with potential label inconsistencies."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Multiple variants skip big chunks, such as 'info received' directly leading to 'Check for completeness' without 'Request info' in between."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "Wrong/mixed case IDs and overly long or merged traces are present, e.g., 'Ceck for completeness', 'Check fo completeness', 'Check for completenesd', and 'Check for complexteness'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "Labels contain extra tokens, such as 'info eeceived', 'info receievd', and 'jotify reject'."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Request info' and 'info received' have multiple paths.",
+        "Repeated labels: 'Check for completeness' appears multiple times with different frequencies.",
+        "Unexpected τ loops: 'EVENT 13 END' is repeated.",
+        "Abnormal silent transitions: None found.",
+        "Path inflation: 'Check for completeness' has multiple incoming and outgoing edges.",
+        "Suspicious model topology: 'info received' and 'Request info' have a high frequency of direct transitions."
+      ],
+      "notes": "The process model appears to be affected by various imperfections, including scattered cases, elusive cases, and polluted labels."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "The presence of numerous typos and character swaps in activity labels, such as 'Check fo rcompleteness', 'Check bor completeness', and 'Check for cQompleteness', suggests that the event log may contain elusive cases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in activity labels, such as 'Perform checks_123_20240301', indicates that the event log may contain polluted labels."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the event log may contain synonymous labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The event log appears to be noisy and contains various imperfections, which may affect the accuracy of process mining results."
+    }
+  },
+  {
+    "file": "DFG_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "The presence of numerous typos and character swaps in activity labels, such as 'Check for completeness' and 'info received', suggests that the case IDs are incorrect or inconsistent."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'Check for completeness' appears in multiple contexts with distinct predecessors, indicating that the same activity is being referred to in different ways."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some activity labels contain extra tokens, such as 'info received' and 'info Ureceived', which may indicate that the labels are not properly formatted or contain unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple paths, which may be contributing to the imperfections in the event log."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The same label 'Bring drinks' is used for different process steps, indicating homonymous labels."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.75,
+          "why": "The label 'Prepare starter' has a slightly different spelling in some occurrences, suggesting typos or character swaps."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.7,
+          "why": "The labels 'Signal food complete' and 'Prepare main course' seem to have similar meanings, indicating synonymous labels."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions 'Review order' and 'Review drinks'",
+        "Repeated labels 'Bring drinks'",
+        "Unexpected τ loop 'start -> Review order -> start'",
+        "Parallel sibling transitions 'Prepare main course' and 'Prepare starter'",
+        "Repeated labels 'Signal food complete'",
+        "Irregular fan-out of 'Review order'"
+      ],
+      "notes": "Further investigation is needed to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The same label 'Bring drinks' is used for different process steps, indicating homonymous labels."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.75,
+          "why": "The label 'Prepare starter' has a small typo in 'Prepare' and 'starter', suggesting a distorted label."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.7,
+          "why": "The labels 'Signal food complete' and 'Signal food complete ->' are similar, indicating synonymous labels."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions: 'Review order' and 'Review order ->'",
+        "Repeated labels: 'Bring drinks' and 'Bring drinks ->'",
+        "Unexpected τ loops: 'start -> Take order -> start'",
+        "Parallel sibling transitions: 'Review order ->' and 'Review order -> Prepare starter'",
+        "Repeated labels: 'Signal food complete' and 'Signal food complete ->'",
+        "Irregular fan-out: 'Review order' has multiple outgoing transitions"
+      ],
+      "notes": "The process model appears to have some issues with label consistency and structure."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' with similar labels but different frequencies suggests that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' with additional tokens (e.g., '_signed1', '_signed2') in their labels indicates that labels contain extra tokens."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.72,
+          "why": "The presence of many variants with missing or skipped steps (e.g., 'Take order' -> 'start', 'Review order' -> 'Prepare starter') suggests that parts of traces are missing."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Bring drinks_signed1' and 'Bring drinks_signed2')",
+        "repeated labels (e.g., 'Bring drinks_signed1' and 'Bring drinks_signed2')",
+        "unexpected τ loops (e.g., 'Bring drinks_signed2' -> 'Bring drinks_signed2')",
+        "abnormal silent transitions (e.g., 'EVENT 8 END')",
+        "irregular fan-in/fan-out (e.g., 'Bring drinks_signed1' with multiple predecessors)",
+        "path inflation (e.g., 'Bring drinks_signed2' with many successors)"
+      ],
+      "notes": "The presence of multiple variants with similar labels and frequencies suggests that the process may be complex and have multiple paths."
+    }
+  },
+  {
+    "file": "DFG_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The same label 'Bring drinks' is used for different process steps, indicating homonymous labels."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.75,
+          "why": "The label 'Prepare starter -> Bring drinks' suggests a typo or character swap, indicating distorted labels."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.7,
+          "why": "The labels 'Signal food complete' and 'Signal food complete -> Bring drinks' have the same meaning, indicating synonymous labels."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions: 'Review order' and 'Review order -> Prepare starter'",
+        "Repeated labels: 'Bring drinks' and 'Bring drinks -> Review drinks'",
+        "Unexpected τ loops: 'start -> Take order -> start'",
+        "Parallel sibling transitions: 'Review order -> Prepare starter' and 'Review order -> prepare drinks'",
+        "Repeated labels: 'Signal food complete' and 'Signal food complete -> Bring drinks'",
+        "Irregular fan-out: 'Review order' has multiple outgoing transitions"
+      ],
+      "notes": "The process model exhibits some imperfections, but further analysis is needed to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple labels with the same meaning appear, such as 'Bring drinks' and 'Bring drinks_signed1'."
+        },
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.78,
+          "why": "The same label 'Bring drinks' is used for different process steps with distinct predecessors."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.72,
+          "why": "Some variants skip big chunks, such as 'Take order' directly followed by 'Review order' without 'start'."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions 'Bring drinks' and 'Bring drinks_signed1'",
+        "repeated labels 'Bring drinks' and 'Bring drinks_signed1'",
+        "unexpected τ loops 'start' -> 'Bring drinks_signed1'",
+        "abnormal silent transitions 'start' -> 'Review order'",
+        "irregular fan-in/fan-out 'Take order' -> 'Review order'",
+        "suspicious model topology 'Bring drinks_signed2' -> 'Bring drinks_signed1'"
+      ],
+      "notes": "The process model exhibits signs of label ambiguity and scattered case patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly disconnected paths (e.g., 'Bring drinks_signed1' and 'Bring drinks_signed2') with significant frequency differences suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.78,
+          "why": "The use of 'Bring drinks' and 'Bring drinks_signed1/2' as distinct labels for similar activities indicates that the same label is used for different process steps, potentially causing confusion."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The inclusion of '_signed1/2' in some activity labels (e.g., 'Bring drinks_signed1') suggests that extra tokens (IDs) are being added to labels, potentially indicating polluted or inconsistent labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Bring drinks_signed1' and 'Bring drinks_signed2')",
+        "repeated labels (e.g., 'Bring drinks' and 'Bring drinks_signed1/2')",
+        "unexpected τ loops (e.g., 'Bring drinks_signed2' -> 'Bring drinks_signed2')",
+        "abnormal silent transitions (e.g., 'start' -> 'Review order')",
+        "irregular fan-in/fan-out (e.g., 'Bring drinks_signed1' has multiple predecessors)",
+        "path inflation (e.g., 'Bring drinks_signed2' has multiple successors)"
+      ],
+      "notes": "Further investigation is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "Multiple activities have identical timestamps, indicating potential case ID inconsistencies."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens, such as IDs, timestamps, or resource information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label is used for different process steps, indicating potential label ambiguity."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "scattered case patterns",
+        "inconsistent timestamp formats"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple activities with the same name but different timestamps and performance metrics, such as 'Bring drinks' and 'Bring drinks_00Aacmo_20241119203703265000', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Bring drinks_00Aacmo_20241119203703265000', indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of multiple activities with the same name but different predecessors, such as 'Bring drinks' and 'Prepare drinks', suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "multiple activities with the same name but different timestamps",
+        "extra tokens in activity labels",
+        "same label used for different process steps"
+      ],
+      "notes": "The detected patterns suggest that the event log may contain scattered cases, polluted labels, and homonymous labels, which can affect the accuracy of process mining results."
+    }
+  },
+  {
+    "file": "DFG_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated activities with the same label (e.g., 'Bring drinks') and different timestamps suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels (e.g., 'Bring drinks_00AZQKD_20240826200057077000') indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The use of the same label ('Bring drinks') for different process steps with distinct predecessors suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "multiple, seemingly unrelated activities with the same label",
+        "extra tokens in activity labels",
+        "same label used for different process steps"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple, interconnected paths."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with missing parts, such as 'Bring food -> Review drinks' and 'Review order -> Prepare main course', indicates that some traces are incomplete or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.78,
+          "why": "The use of 'Bring drinks' with different suffixes (-Dep1, -Dep2, -Dep3) suggests that the same label is used for different process steps, which is a characteristic of homonymous labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of labels with extra tokens, such as 'Bring drinks - Dep2', indicates that some labels contain additional information that is not relevant to the process."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Bring drinks' and 'Bring food')",
+        "repeated labels (e.g., 'Review drinks' and 'Review order')",
+        "unexpected τ loops (e.g., 'Signal food complete' and 'Bring drinks')",
+        "abnormal silent transitions (e.g., 'start' and 'take order')",
+        "irregular fan-in/fan-out (e.g., 'Review drinks' has multiple predecessors)",
+        "path inflation (e.g., 'Signal food complete' has multiple successors)"
+      ],
+      "notes": "The process model appears to be complex and has multiple variants, which may indicate a high degree of variability in the actual process."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The presence of multiple transitions with the same label 'Bring drinks' but different suffixes (-Dep1, -Dep2, -Dep3) indicates that the same activity is being referred to in different contexts, violating the principle of unique labels."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.75,
+          "why": "The existence of multiple transitions with similar labels (e.g., 'Review drinks', 'Review order') suggests that these activities have similar meanings, but the use of distinct labels may be unnecessary or confusing."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.7,
+          "why": "The presence of small typos or character swaps (e.g., 'Dep2' vs 'Dep3') in transition labels may indicate a lack of attention to detail or a need for label standardization."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Review drinks' and 'Review order')",
+        "repeated labels (e.g., 'Bring drinks' with different suffixes)",
+        "unexpected τ loops (e.g., 'Signal food complete' -> 'Bring drinks' -> 'Signal food complete')",
+        "abnormal silent transitions (e.g., 'start' -> 'Review order')",
+        "irregular fan-in/fan-out (e.g., 'Review drinks' has multiple predecessors)",
+        "path inflation (e.g., multiple paths from 'start' to 'Signal food complete')"
+      ],
+      "notes": "Further investigation is needed to determine the root cause of these imperfections and to develop strategies for improvement."
+    }
+  },
+  {
+    "file": "DFG_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process contains multiple variants with missing parts, such as 'A→D jumps' in the sequence 'Bring food -> Review drinks -> Prepare main course -> Signal food complete'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.78,
+          "why": "The process uses the same label 'Review drinks' in different contexts with distinct predecessors, indicating a homonymous label."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "Some labels contain extra tokens, such as 'Bring drinks - Dep2' and 'Bring drinks - Dep3', which are not present in other labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Bring drinks - Dep2' and 'Bring drinks - Dep3')",
+        "repeated labels (e.g., 'Review drinks')",
+        "unexpected τ loops (e.g., 'Signal food complete -> Review drinks -> Bring food')",
+        "irregular fan-in/fan-out (e.g., 'Review drinks' has multiple predecessors)",
+        "abnormal silent transitions (e.g., 'start -> Take order')",
+        "path inflation (e.g., 'Prepare main course -> Bring drinks - Dep2')"
+      ],
+      "notes": "The process contains multiple variants with missing parts and irregularities in label usage."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The label 'Review drinks' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.75,
+          "why": "The label 'Prepare starter' appears with a performance value of 0.00, which is likely a typo or character swap, as performance values are typically non-zero."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The label 'start' appears with a frequency of 4844, which is similar to the frequency of 'Signal food complete' (4971), indicating that the same information is repeated across attributes."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions: 'Review drinks' and 'Review order'",
+        "Repeated labels: 'Review drinks' appears multiple times",
+        "Unexpected τ loops: 'start' and 'Signal food complete' have similar frequencies",
+        "Homonymous labels: 'Review drinks' and 'Review order' have the same meaning",
+        "Distorted labels: 'Prepare starter' has a performance value of 0.00",
+        "Inconsistent frequencies: 'start' and 'Signal food complete' have similar frequencies"
+      ],
+      "notes": "The process model appears to have some inconsistencies and potential errors in labeling and frequency counting."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The label 'Review drinks' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.75,
+          "why": "The labels 'Prepare main course' and 'Prepare starter' seem to have similar meanings, suggesting that they might be synonymous."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.7,
+          "why": "Some variants skip big chunks, such as 'Take order -> start' and 'start -> Review order', indicating that parts of traces are missing."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions: 'Review drinks' and 'Review order'",
+        "Repeated labels: 'Prepare main course' and 'Prepare starter'",
+        "Unusual loop: 'Signal food complete -> Bring drinks -> Signal food complete'",
+        "Irregular fan-out: 'Review drinks' has multiple successors",
+        "Abnormal silent transitions: 'start' and 'EVENT 8 END'",
+        "Unexpected τ loop: 'start -> Take order -> start'"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.85,
+          "why": "The same label 'Bring drinks' is used for different process steps, indicating homonymous labels."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.78,
+          "why": "Some variants skip big chunks, such as 'Take order' directly followed by 'start', indicating scattered cases."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.72,
+          "why": "The same information is repeated across attributes, such as 'Review order' and 'Review order -> Prepare starter', indicating inadvertent time travel."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions 'Review order' and 'Prepare starter'",
+        "Repeated labels 'Bring drinks'",
+        "Unexpected τ loop 'start -> Take order -> start'",
+        "Parallel sibling transitions 'Review order' and 'Review order -> Prepare starter'",
+        "Repeated labels 'Signal food complete'",
+        "Irregular fan-out 'Review order'"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "Multiple variants with typos and character swaps, such as 'Bribg drinks', 'Bribg food', 'Bring drink', 'Bring drinkBs', etc."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "Same label 'Prepare drinks' used for different process steps, such as 'Prepare drinks -> Take order' and 'Prepare drinks -> Prepare main course'"
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels contain extra tokens, such as 'Prepare drinks_123_20240301'"
+        }
+      ],
+      "indicators": [
+        "Multiple variants with typos and character swaps",
+        "Same label 'Prepare drinks' used for different process steps",
+        "Labels contain extra tokens",
+        "Parallel sibling transitions 'Prepare drinks' and 'Prepare main course'",
+        "Repeated labels 'Prepare drinks'",
+        "Unexpected τ loops 'start -> Take order'"
+      ],
+      "notes": "The process model appears to have issues with label consistency and variant accuracy."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple labels with the same meaning but different spellings, such as 'bring drinks' and 'bring drinks', indicates homonymous labeling."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of missing parts in some traces, such as 'A→D jumps', indicates scattered cases."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens in some labels, such as 'Perform checks_123_20240301', indicates polluted labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions"
+      ],
+      "notes": "The Petri net structure suggests that the process has some imperfections, but further analysis is needed to confirm the exact nature of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check for completeness' appears as a predecessor for different activities, indicating it might be used in different contexts with distinct predecessors."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'EVENT 13 END' appears multiple times, which might be due to small typos or character swaps in the original event log."
+        }
+      ],
+      "indicators": [
+        "Multiple transitions with the same label 'Check for completeness'",
+        "Repeated label 'EVENT 13 END'",
+        "Parallel paths 'Make decision' -> notify reject and 'Make decision' -> Notify accept'",
+        "Repeated label 'EVENT 13 END'",
+        "Multiple transitions with the same label 'Check for completeness'",
+        "Repeated label 'EVENT 13 END'"
+      ],
+      "notes": "The detected patterns are based on the provided Petri net structure and might not reflect the actual event log imperfections."
+    }
+  },
+  {
+    "file": "DFG_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of numerous variants with missing or out-of-order activities, such as 'Prepare main course' appearing before 'Prepare starter', suggests that parts of traces are missing or incorrectly ordered."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The abundance of typos and character swaps in activity labels, such as 'Bringing drinks' and 'Bring drinks', indicates that wrong or mixed case IDs are being used, leading to overly long or merged traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in activity labels, such as 'Perform checks_123_20240301', suggests that labels contain extra information that is not relevant to the process."
+        }
+      ],
+      "indicators": [
+        "numerous variants with missing or out-of-order activities",
+        "typos and character swaps in activity labels",
+        "extra tokens (IDs, timestamps, resource info) in activity labels",
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process appears to have several issues with data quality and consistency, which may impact its accuracy and reliability."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process contains multiple variants that skip big chunks, such as 'New online application received' directly going to 'Perform checks' or 'Check for completeness' without 'info received'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Check for completeness' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'info received' and 'Perform checks'",
+        "Repeated labels: 'Check for completeness' appears multiple times",
+        "Unexpected τ loops: 'EVENT 13 END' loops back to itself",
+        "Multiple paths from 'New online application received'",
+        "Multiple paths from 'Check for completeness'",
+        "Different performance metrics for 'Check for completeness'"
+      ],
+      "notes": "The process contains multiple variants and labels with different meanings, indicating potential imperfections."
+    }
+  },
+  {
+    "file": "DFG_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check for completeness' appears as a predecessor to multiple distinct activities, indicating that 'Check' is used for different process steps."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.8,
+          "why": "Some variants skip big chunks, such as 'info received' directly leading to 'Check for completeness', indicating parts of traces are missing."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The label 'EVENT 13 END' is repeated multiple times, suggesting that the same information is repeated across attributes, resembling label inflation."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Check for completeness' has multiple successors",
+        "Repeated labels: 'EVENT 13 END' appears multiple times",
+        "Unexpected τ loops: None found",
+        "Parallel paths: 'Check for completeness' has multiple predecessors",
+        "Irregular fan-in/fan-out: 'Check for completeness' has multiple successors and predecessors",
+        "Abnormal silent transitions: None found"
+      ],
+      "notes": "Further analysis may be required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of 'Check:homonymous' and its connections to multiple other activities indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The label 'Check:homonymous' contains a colon and a suffix, which could be considered extra tokens (IDs, timestamps, resource info)."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of 'EVENT 13 END' with a frequency of 8 and a performance of 0.00, and its connection to itself, suggests that parts of traces are missing or that some variants skip big chunks."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: 'Check for completeness' and 'Perform checks'",
+        "Repeated labels: 'EVENT 13 END'",
+        "Unexpected τ loops: 'time out' and 'EVENT 13 END'",
+        "Homonymous label: 'Check:homonymous'",
+        "Polluted label: 'Check:homonymous'",
+        "Scattered case: 'EVENT 13 END'"
+      ],
+      "notes": "The presence of 'EVENT 13 END' with a frequency of 8 and a performance of 0.00 suggests that the process may be incomplete or that there are issues with the data."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, suggests that the case IDs are not consistently applied, which is a characteristic of the Elusive Case pattern."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', indicates that the labels are not consistently formatted, which is a characteristic of the Polluted Label pattern."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the labels are not consistently used, which is a characteristic of the Homonymous Label pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The detected patterns and indicators suggest that the process model may have some issues with case ID consistency, label formatting, and label usage."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, suggests that the process may be suffering from Elusive Case imperfections."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', indicates that the process may be experiencing Polluted Label imperfections."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the process may be suffering from Homonymous Label imperfections."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces in the event log, as well as incorrect or mixed case IDs, suggests that the case IDs may be inconsistent or incorrect, which is a characteristic of the Elusive Case pattern."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Perform checks_123_20240301', suggests that the labels may be polluted, which is a characteristic of the Polluted Label pattern."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the labels may be homonymous, which is a characteristic of the Homonymous Label pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The event log appears to be affected by multiple imperfection patterns, including Elusive Case, Polluted Label, and Homonymous Label. Further analysis is needed to confirm the presence of these patterns and to identify any other potential issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of multiple activities with the same name 'Check' indicates a homonymous label issue."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "The presence of multiple activities with similar names 'Send Fine' and 'Dispatch Fine Notice' suggests a synonymous label issue."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens in some activity names, such as 'Perform checks_123_20240301', indicates a polluted label issue."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated labels",
+        "Unexpected τ loops",
+        "Irregular fan-in/fan-out",
+        "Abnormal silent transitions"
+      ],
+      "notes": "The detected patterns and indicators suggest potential issues with the event log's structure and labeling."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of 'Check:homonymous' in multiple contexts with distinct predecessors suggests a homonymous label issue."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "The presence of 'send procedure confirmation' in multiple contexts suggests a synonymous label issue."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels suggests a polluted label issue."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated labels",
+        "Unexpected τ loops",
+        "Homonymous label 'Check:homonymous' used in multiple contexts",
+        "Synonymous label 'send procedure confirmation' used in multiple contexts"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7. Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of multiple labels with the same meaning, such as 'Check', appears to be a homonymous label issue."
+        },
+        {
+          "pattern": "11. Inadvertent Time Travel",
+          "confidence": 0.85,
+          "why": "The repetition of similar labels, such as 'Check:homonymous', suggests an inadvertent time travel issue."
+        },
+        {
+          "pattern": "3. Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of missing parts in some traces, such as 'A→D jumps', indicates a scattered case issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process contains multiple instances of 'phase application received' and 'phase application receptive' without clear transitions between them, suggesting that some cases may be missing or incorrectly labeled."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process contains multiple instances of 'phase application received' and 'phase application receptive' without clear transitions between them, suggesting that some cases may be missing or incorrectly labeled."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The process contains multiple instances of 'phase application received' and 'phase application receptive' with extra tokens (IDs, timestamps, resource info) in the labels, suggesting that the labels may be polluted."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process contains multiple instances of 'phase application received' and 'phase application receptive' without clear transitions between them, suggesting that some cases may be missing or incorrectly labeled."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces in the event log suggests that some cases may be missing or incorrectly labeled, indicating an Elusive Case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels suggests that the labels may be Polluted, which can lead to incorrect analysis."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple labels with the same meaning suggests that the labels may be Synonymous, which can lead to incorrect analysis."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The event log appears to be affected by multiple imperfections, including Elusive Case, Polluted Label, and Synonymous Label."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces, as well as wrong/mixed case IDs, suggests that the process may be suffering from an Elusive Case imperfection."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', suggests that the process may be suffering from a Polluted Label imperfection."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the process may be suffering from a Homonymous Label imperfection."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Further investigation is required to confirm the presence of these imperfections and to determine their impact on the process."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of many rare and isolated transitions (e.g., 'treat subcases content -> investigate BAG objects') and the lack of clear connections between them suggest that parts of the process are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens (e.g., 'treat subcases content -> enter senddate decision environmental permit_36IguYM_20130910 070036000000') indicates that some activities have been improperly labeled or contain unnecessary information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The use of the same label ('treat subcases content') for different process steps with distinct predecessors suggests that there may be ambiguity or confusion in the labeling of activities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "isolated transitions",
+        "labels with extra tokens",
+        "ambiguous activity labels"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify potential causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process has multiple paths with missing or merged traces, indicating that some parts of the process are not well-documented or are missing."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process has parts of traces missing, with some variants skipping big chunks, indicating that some steps are not well-documented or are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "Some labels contain extra tokens, such as IDs, timestamps, or resource information, which may indicate data quality issues."
+        }
+      ],
+      "indicators": [
+        "Multiple paths with missing or merged traces",
+        "Parts of traces missing, with some variants skipping big chunks",
+        "Labels contain extra tokens, such as IDs, timestamps, or resource information"
+      ],
+      "notes": "The process has some data quality issues, which may affect the accuracy of the analysis."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long or merged traces in the event log suggests that some cases may be missing or incorrectly labeled, which is a characteristic of the Elusive Case imperfection pattern."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels, such as 'Perform checks_123_20240301', suggests that the labels may be polluted, which is a characteristic of the Polluted Label imperfection pattern."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of multiple labels with the same meaning, such as 'Send Fine' and 'Dispatch Fine Notice', suggests that the labels may be homonymous, which is a characteristic of the Homonymous Label imperfection pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The event log appears to be affected by multiple imperfection patterns, including Elusive Case, Polluted Label, and Homonymous Label. Further analysis is needed to confirm the presence of these patterns and to identify any other potential issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of 'wrong/mixed case IDs' and 'overly long or merged traces' in the event log suggests that the Elusive Case pattern is likely present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The event log contains labels with extra tokens (IDs, timestamps, resource info), which is a characteristic of the Polluted Label pattern."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The event log shows multiple labels with the same meaning but different predecessors, indicating the presence of the Homonymous Label pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "scattered case",
+        "elusive case",
+        "polluted label",
+        "homonymous label"
+      ],
+      "notes": "The detected patterns are likely due to the presence of extra tokens in labels and the use of the same label with different meanings."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of wrong/mixed case IDs and overly long or merged traces in the event log suggests that the case IDs are not consistently formatted, which is a characteristic of the Elusive Case imperfection pattern."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The event log contains parts of traces that are missing, indicating that some variants skip big chunks, which is a characteristic of the Scattered Case imperfection pattern."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels suggests that the labels are not consistently formatted, which is a characteristic of the Polluted Label imperfection pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The event log appears to be affected by multiple imperfection patterns, including Elusive Case, Scattered Case, and Polluted Label."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple variants with significant frequency differences and irregular transitions suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) such as 'platelet counting - electronically' indicates label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of multiple labels with the same meaning but different predecessors, such as 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2', suggests homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.30.txt",
+    "error": "Expecting ',' delimiter: line 102 column 6 (char 3116)",
+    "raw": "{\n  \"detected\": [\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip big chunks (A→D jumps)\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.7,\n      \"why\": \"Some traces are missing; some variants skip"
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process contains multiple activities with similar names, indicating a potential issue with case IDs or trace lengths."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some activities have extra tokens in their labels, which could indicate a problem with data consistency or formatting."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.6,
+          "why": "There are multiple activities with the same name, which could indicate a problem with label uniqueness or consistency."
+        }
+      ],
+      "indicators": [
+        "Multiple activities with similar names",
+        "Extra tokens in activity labels",
+        "Activities with the same name"
+      ],
+      "notes": "The process contains multiple potential issues with case IDs, label consistency, and data formatting."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of 'wrong/mixed case IDs; overly long or merged traces' in the event log is a strong indicator of the Elusive Case pattern."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of 'extra tokens (IDs, timestamps, resource info)' in the event log is a strong indicator of the Polluted Label pattern."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.6,
+          "why": "The presence of 'multiple labels with same meaning' in the event log is a strong indicator of the Synonymous Label pattern."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The event log contains a mix of regular and irregular patterns, indicating a complex process with potential imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "The presence of repeated labels with similar timestamps suggests that the same information is being repeated across different attributes, which is a characteristic of Inadvertent Time Travel."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.7,
+          "why": "The presence of many events with similar rounded timestamps suggests that the same events are being repeated, which is a characteristic of Scattered Event."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "The presence of extra tokens in some labels suggests that the labels are being polluted with unnecessary information, which is a characteristic of Polluted Label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The detected patterns suggest that the process may be experiencing issues with time travel and event scattering, which could be affecting the accuracy and reliability of the process."
+    }
+  },
+  {
+    "file": "DFG_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process model contains several activities with mixed case IDs and overly long or merged traces, indicating potential issues with case ID consistency and trace fragmentation."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some activities have labels containing extra tokens (IDs, timestamps, resource info), which may indicate issues with data consistency and formatting."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.6,
+          "why": "The process model contains activities with the same label used for different process steps, which may indicate issues with label consistency and ambiguity."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated labels",
+        "Unexpected τ loops",
+        "Irregular fan-in/fan-out",
+        "Abnormal silent transitions"
+      ],
+      "notes": "The process model appears to have some structural issues, including case ID inconsistencies, label pollution, and homonymous labels. Further analysis is needed to determine the root cause of these issues and to develop a plan for remediation."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of multiple labels with the same name but different meanings, such as 'Check' and 'Check:homonymous', indicates a homonymous label issue."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.85,
+          "why": "The presence of small typos or character swaps, such as 'Payment' vs 'Paymant', indicates a distorted label issue."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.75,
+          "why": "The presence of repeated labels with slight variations, such as 'Check:homonymous' and 'Check:homonymous - urgent', indicates an inadvertent time travel issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous labels",
+        "distorted labels",
+        "inconsistent timestamp formats"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The presence of multiple transitions with the same label 'Check' but different frequencies and performance metrics suggests that the same activity is being referred to in different contexts, indicating a homonymous label."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "The presence of labels containing extra tokens, such as '190101 overage surcharge  a101', suggests that the labels may be polluted with additional information, making them less informative."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "The presence of multiple transitions with similar labels, such as 'sodium flame photometric' and 'potassium flame photometric', suggests that the same activity is being referred to in different ways, indicating a synonymous label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "homonymous transitions",
+        "polluted labels",
+        "synonymous transitions"
+      ],
+      "notes": "Further analysis is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of isolated transitions with very high performance values (e.g., 'telephone consultation' with a performance of 1814398.00) and low frequency values (e.g., 'telephone consultation' with a frequency of 1) suggests that parts of traces are missing, leading to scattered case imperfections."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) such as 'vagina - extirpation of vagina with -> 190204 class 3a a204 (frequency = 1, performance = 86381.00)' indicates label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of the same label used for different process steps, such as 'vagina - other excision pathology' and 'vagina - extirpation of vagina with', suggests homonymous label imperfections."
+        }
+      ],
+      "indicators": [
+        "isolated transitions with high performance values and low frequency values",
+        "labels containing extra tokens (IDs, timestamps, resource info)",
+        "same label used for different process steps",
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify additional potential issues."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple activities share the same label 'overage surcharge' and 'class 3b' but have different predecessors and successors, indicating a homonymous label issue."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some activities have labels with extra tokens, such as 'overage surcharge a101' and 'class 3b a205', which may indicate a polluted label issue."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.72,
+          "why": "Activities 'hemoglobin photoelectric' and 'leukocyte counting electronically' have similar labels, suggesting a synonymous label issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions 'hemoglobin photoelectric' and 'leukocyte counting electronically'",
+        "repeated labels 'overage surcharge' and 'class 3b'",
+        "unexpected τ loops in the 'acceptance laboratory research' and 'follow-up consultation on an outpatient basis' paths"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify potential root causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple transitions have the same label 'Check:homonymous', indicating that the same process step is represented by different labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Some transitions have labels with extra tokens, such as 'Perform checks_123_20240301', indicating that the labels contain additional information."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Some transitions have labels with similar meanings, such as 'Send Fine' and 'Dispatch Fine Notice', indicating that the same process step is represented by different labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The Petri net structure suggests that there may be issues with label consistency and process step representation."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of many rare and isolated activities, such as 'vitamin b6', 'vitamin b12 using chemiluminescence', and 'worm eggs - extensive -continued-', suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The presence of activities with similar names but different IDs, such as '190101 overage surcharge  a101' and '190101 overage srcharge  a101', suggests that wrong or mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of activities with extra tokens in their labels, such as 'Perform checks_123_20240301', is not observed in this abstracted process, but the presence of activities with long and complex names, such as 'vrw.gesl.org- biopsy-puncture-cytology', suggests that labels may contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "activities with similar names but different IDs",
+        "activities with long and complex names",
+        "rare and isolated activities"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of many rare and isolated transitions (e.g., 'vagina - other excision pathology', 'vessels - venipuncture') suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have extra tokens (IDs, timestamps, resource info) in their labels (e.g., 'Perform checks_123_20240301', 'vancomycine kwn - immuno-assay')."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps (e.g., 'Check' occurs in different contexts with distinct predecessors)."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "isolated transitions",
+        "extra tokens in labels",
+        "homonymous labels"
+      ],
+      "notes": "The process model appears to be a collection of isolated and unrelated transitions, suggesting a lack of cohesion and potentially indicating a scattered or fragmented case."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of many one-time events with unique labels and no clear connections to other activities suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301' indicates that some labels contain unnecessary information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of the same label 'class 3b a205' used in different contexts with distinct predecessors suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated activities (e.g., 'days of rest', 'overage surcharge', 'class 3b', 'acceptance laboratory research') with high frequency and performance values suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The presence of labels with extra tokens (e.g., '190101 overage surcharge  a101', '190205 class 3b a205') indicates that some labels contain additional information that may not be relevant to the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same meaning (e.g., 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2') suggests that the same activity is being represented by different labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "high frequency and performance values for seemingly unrelated activities",
+        "labels with extra tokens",
+        "multiple labels with the same meaning"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify the root cause."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated activities (e.g., 'vitamin b12 using chemiluminescence', 'bot - densitometrie femurhals', 'ct abdomen') with very low frequencies (1) suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The use of similar labels with different meanings (e.g., 'days of rest - all spec.beh.kinderg.-reval._signed1' and 'days of rest - all spec.beh.kinderg.-reval._signed2') indicates that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels (e.g., 'Perform checks_123_20240301') suggests that the labels contain unnecessary information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "similar labels with different meanings",
+        "extra tokens in labels",
+        "low frequency activities"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify potential causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of many one-time events with low frequencies and the lack of clear connections between them suggest that parts of traces are missing or scattered."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some labels, such as 'Perform checks_123_20240301', indicates label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'days of rest - all spec.beh.kinderg.-reval. - Dep2' appears in multiple contexts with distinct predecessors, suggesting homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated activities (e.g., 'vagina - therapeutic puncture', 'vulva - vulvectomy - inguinal block') with low frequency counts suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.78,
+          "why": "The presence of activities with mixed case IDs (e.g., 'Vitamin B1 - Thiamine', 'Vitamin B6') and overly long or merged traces (e.g., 'vrw.gesl.org- curettage fractionated') indicates wrong or mixed case IDs."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) (e.g., 'Perform checks_123_20240301') suggests that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "activities with low frequency counts",
+        "activities with mixed case IDs",
+        "activities with overly long or merged traces"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and contains multiple, seemingly unrelated activities."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of many one-time events with low frequencies and high performance values suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301' indicates label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of the same label 'days of rest - all spec.beh.kinderg.-reval.' used in different contexts with distinct predecessors suggests homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, seemingly unrelated activities (e.g., 'vulva - vulvectomy - inguinal block' and '190101 overage surcharge  a101') with identical timestamps suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some activity labels (e.g., 'vulva - vulvectomy - inguinal block -> 190101 overage surcharge  a101_12JDuhz_20051015 080000000000') indicates label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The use of the same label ('vulva - vulvectomy - inguinal block') for different process steps with distinct predecessors suggests homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these imperfections and to identify potential root causes."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities (e.g., 'vulva - vulvectomy - inguinal block' and '190101 overage surcharge  a101') with high frequency counts suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of activities with mixed case IDs (e.g., 'vulva - vulvectomy - inguinal block' and '190101 overage surcharge  a101') and overly long or merged traces (e.g., 'vulva - vulvectomy - inguinal block' has multiple, identical successors) suggests that wrong or mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels containing extra tokens (e.g., 'vulva - vulvectomy - inguinal block_23ARVQO_20071229 080000000000') suggests that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "activities with mixed case IDs",
+        "overly long or merged traces",
+        "labels containing extra tokens"
+      ],
+      "notes": "Further investigation is required to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "DFG_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of many rare and unique activities (e.g., 'vrw.gesl.org- biopsy-puncture-cytology', 'vulva - vulvectomy - inguinal block') with low frequencies suggests that parts of traces are missing or fragmented."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.78,
+          "why": "The same label 'overage surcharge  a101' appears in multiple contexts with distinct predecessors, indicating that the same process step is represented by different labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.72,
+          "why": "Some labels contain extra tokens (e.g., '190101 overage surcharge  a101_93cmYyR_20060310 080000000000'), which may indicate that the label is polluted with additional information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "rare and unique activities",
+        "low frequency transitions",
+        "extra tokens in labels"
+      ],
+      "notes": "The process model appears to be complex and contains many rare and unique activities, which may indicate that the process is fragmented or contains many variations."
+    }
+  }
+]

@@ -1,0 +1,2360 @@
+[
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple transitions with identical labels, indicating that some parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate that the event log contains extra information not relevant to the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The process model contains multiple transitions with the same label but different predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical process with many different steps and transitions."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple, disconnected paths in the Petri net, such as the 'pre_acceptance laboratory research' and 'pre_days of rest' places, suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of extra tokens (IDs, timestamps, resource info) in some transition labels, such as 'Perform checks_123_20240301', indicates label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The use of the same label 'pre_acceptance laboratory research' for different process steps, with distinct predecessors, suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify the root cause of the imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple paths with missing or skipped activities, indicating that some cases may be incomplete or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate inconsistent or noisy data."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, which may indicate a lack of clear distinction between similar activities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be complex and may require further analysis to identify potential issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with identical labels, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate that the event log is polluted with irrelevant information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The process model contains several transitions with the same label used in different contexts with distinct predecessors, which may indicate that the event log contains ambiguous or inconsistent labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical treatment plan with many parallel and sequential activities."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process contains multiple places with similar names, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The process contains multiple transitions with the same label used in different contexts, indicating label irregularities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process contains a complex network of transitions and places, indicating a high degree of concurrency and potential for scattered cases."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple labels with the same meaning appear, such as 'Check:homonymous' and 'Check:homonymous_0', indicating a homonymous label issue."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "Small typos or character swaps are observed in labels, such as 'Paymant' vs 'Payment', indicating a distorted label issue."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.7,
+          "why": "Multiple labels with the same meaning appear, such as 'Send Fine' vs 'Dispatch Fine Notice', indicating a synonymous label issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The Petri net structure suggests a complex process with multiple concurrent activities and loops, which may indicate issues with event log imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple labels with the same name 'Check:homonymous' appear in the Petri net, indicating that the same process step is represented by different labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Some labels contain extra tokens, such as '190204 class 3a a204_8', indicating that the label format is not consistent."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Some parts of the traces are missing, and some variants skip big chunks, indicating that the process is not fully captured."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple variants, which may indicate that the event log is scattered."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple labels with the same name appear in the Petri net, indicating that the same process step is represented by different labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some labels contain extra tokens (IDs, timestamps, resource info), which is a sign of polluted labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Some parts of the traces are missing, and some variants skip big chunks, indicating scattered cases."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The Petri net structure suggests that there are issues with label consistency and trace completeness."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, indicating label inconsistencies."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical treatment process with many parallel and sequential activities."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that the event log contains polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The process model contains transitions with the same label used for different process steps, indicating that the event log contains homonymous labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical diagnosis process with many parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple parallel paths and transitions with similar labels suggests that parts of traces are missing or skipped, indicating a scattered case."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "The presence of labels with extra tokens (IDs, timestamps, resource info) such as 'Perform checks_123_20240301' indicates a polluted label."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The presence of multiple transitions with the same label but different predecessors suggests a homonymous label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and involves multiple parallel paths, which may indicate a scattered case. However, further analysis is needed to confirm this."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), e.g., 'hid_24', 'hid_13', etc."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Make decision' is used in different contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex workflow with multiple parallel paths and loops, indicating a high degree of concurrency and potential for errors."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains several places with similar names, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that the event log contains polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The process model contains multiple transitions with the same label but different predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex and dynamic system with multiple concurrent paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains several places with identical labels, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate that the event log is polluted with extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The process model contains multiple transitions with the same label but different predecessors, which may indicate that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "abnormal silent transitions",
+        "irregular fan-in/fan-out",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be complex and may require further analysis to identify potential issues."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains multiple paths with missing transitions, indicating that some cases are incomplete or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate inconsistent or noisy data."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label is used for different process steps, which may indicate a lack of clear distinction between different activities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be complex and may require further analysis to identify potential issues."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Multiple parts of traces are missing, such as 'A→D jumps' in the abstracted process."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.8,
+          "why": "Many events share same rounded times (to day/minute), producing massive ties."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "Same information repeated across attributes; in abstraction, looks like label inflation."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "path inflation",
+        "abnormal silent transitions"
+      ],
+      "notes": "The process model exhibits signs of scattered cases and scattered events, which may indicate issues with data quality or incomplete information. Additionally, the presence of inadvertent time travel suggests that the model may be experiencing issues with data consistency."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.30.txt",
+    "error": "Expecting ',' delimiter: line 112 column 6 (char 3448)",
+    "raw": "{\n  \"detected\": [\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Multiple parts of traces are missing, some variants skip big chunks\"\n    },\n    {\n      \"pattern\": \"Scattered Case\",\n      \""
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple transitions with the same label 'Check for completeness' and 'Check:homonymous' indicates homonymous labels, where the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The presence of transitions with similar but not identical labels, such as 'Check for completeness' and 'Check:homonymous', suggests distorted labels with small typos or character swaps."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The presence of multiple transitions with the same label and similar structure, such as 'New online application received' and 'New online application received', may indicate inadvertent time travel, where the same information is repeated across attributes."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., (Check for completeness, Check for completeness))",
+        "repeated labels (e.g., 'Check for completeness' and 'Check:homonymous')",
+        "unexpected τ loops (e.g., (tau, hid_26) -> pre_New online application received)",
+        "abnormal silent transitions (e.g., (tau, hid_26))",
+        "path inflation (e.g., multiple transitions with the same label)",
+        "suspicious model topology (e.g., multiple places with the same name)"
+      ],
+      "notes": "The detected patterns suggest potential issues with label consistency and information duplication in the process model."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions and places share the same label 'Check' or 'Make decision', indicating homonymous labels."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with typos or character swaps, such as 'hid_24' and 'hid_26', which are likely distorted labels."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "Some transitions have labels with repeated information, such as 'hid_30' and 'hid_31', which may indicate inadvertent time travel."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., (New online application received, New online application received))",
+        "repeated labels (e.g., 'Check' and 'Check:homonymous')",
+        "unexpected τ loops (e.g., (hid_30 -> pre_Check for completeness) and (hid_3 -> pre_Check for completeness))",
+        "abnormal silent transitions (e.g., (tau, hid_13) and (tau, hid_24))",
+        "path inflation (e.g., multiple transitions with the same label 'Check' or 'Make decision')",
+        "unusual transition neighborhoods (e.g., (intplace_Check for completeness -> Perform checks) and (intplace_Make decision -> Notify accept))"
+      ],
+      "notes": "The process model exhibits several structural imperfections, including homonymous labels, distorted labels, and potential inadvertent time travel."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process contains multiple parallel paths and loops, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have identical labels with different dependencies, suggesting that labels contain extra tokens."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Perform checks' appears in different contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Perform checks - Dep1, Perform checks - Dep2, Perform checks - Dep3)",
+        "repeated labels (Check for completeness, Perform checks, Deliver card)",
+        "unexpected τ loops (hid_3 -> pre_Check for completeness)",
+        "abnormal silent transitions (tau, hid_3)",
+        "irregular fan-in/fan-out (multiple transitions with same label)",
+        "suspicious model topology (loops and parallel paths)"
+      ],
+      "notes": "The process contains complex structure with multiple loops and parallel paths, indicating potential imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions have the same label 'Perform checks' with different dependencies, indicating different process steps with the same label."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Transitions 'Notify accept' and 'Notify reject' have similar labels, suggesting they represent different aspects of the same process step."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some transitions have labels with extra tokens, such as 'Perform checks - Dep1' and 'Perform checks - Dep2', indicating potential label irregularities."
+        }
+      ],
+      "indicators": [
+        "Multiple transitions with the same label 'Perform checks'",
+        "Transitions 'Notify accept' and 'Notify reject' have similar labels",
+        "Labels with extra tokens, such as 'Perform checks - Dep1' and 'Perform checks - Dep2'",
+        "Parallel sibling transitions 'Perform checks - Dep1' and 'Perform checks - Dep2'",
+        "Repeated labels 'Perform checks' with different dependencies",
+        "Unexpected τ loops 'hid_3 -> pre_Check for completeness'"
+      ],
+      "notes": "The process model exhibits some label irregularities and homonymous labels, which may indicate potential issues with event log imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains multiple paths with missing transitions, such as the direct arc from 'intplace_New online application received' to 'Perform checks - Dep3' and the arc from 'intplace_Check for completeness' to 'Perform checks - Dep2', indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The process model contains multiple transitions with the same label 'Perform checks', but with different predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The process model contains transitions with labels that contain extra tokens, such as 'Perform checks - Dep3' and 'Perform checks - Dep1', indicating that labels contain extra information."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Perform checks - Dep1, Perform checks - Dep2, Perform checks - Dep3)",
+        "repeated labels (Perform checks, Perform checks - Dep1, Perform checks - Dep2, Perform checks - Dep3)",
+        "unexpected τ loops (hid_3 -> pre_Check for completeness -> Check for completeness -> intplace_Check for completeness)",
+        "abnormal silent transitions (tau, hid_3)",
+        "irregular fan-in/fan-out (intplace_New online application received -> Perform checks - Dep3, intplace_New online application received -> Perform checks - Dep1)",
+        "unusual transition neighborhoods (intplace_Check for completeness -> Perform checks - Dep2, intplace_Check for completeness -> Perform checks - Dep1)"
+      ],
+      "notes": "The process model appears to be a complex workflow with multiple parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple paths with missing transitions, indicating that some variants of the process are incomplete or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The process model contains labels with extra tokens (IDs, timestamps, resource info), such as 'Perform checks_123_20240301', indicating that some events have additional information attached to them."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The process model contains multiple labels with the same meaning but different spellings, such as 'Check' and 'Checkw for completeness', indicating that some steps have inconsistent or ambiguous labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex and dynamic system with multiple paths and loops, indicating a high degree of variability and potential for errors."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The presence of multiple transitions with the same label (e.g., 'Check for completeness', 'Check for completenesd', 'Check for complexteness', 'Check fo completeness', 'Ceck for completeness') and the same transitions with different labels (e.g., 'Request info' and 'eRquest info') indicate that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of typos and character swaps in transition labels (e.g., 'New online applicatiQon received', 'info receievd', 'info eeceived', 'Notify acctept', 'Notify accept') suggests that labels contain extra tokens (IDs, timestamps, resource info)."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The presence of multiple transitions with the same label but different predecessors (e.g., 'Check for completeness' and 'Check for completenesd') indicates that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Check for completeness' and 'Check for completenesd')",
+        "repeated labels (e.g., 'Check for completeness', 'Check for completenesd', 'Check for complexteness', 'Check fo completeness', 'Ceck for completeness')",
+        "unexpected τ loops (e.g., 'tau, hid_47', 'tau, hid_40', 'tau, hid_9', 'tau, hid_17', 'tau, hid_13', 'tau, hid_50', 'tau, hid_46', 'tau, hid_53')",
+        "silent transitions (e.g., 'tau, hid_47', 'tau, hid_40', 'tau, hid_9', 'tau, hid_17', 'tau, hid_13', 'tau, hid_50', 'tau, hid_46', 'tau, hid_53')",
+        "irregular fan-in/fan-out (e.g., 'Check for completeness' has multiple incoming arcs)",
+        "unusual transition neighborhoods (e.g., 'Check for completeness' is connected to multiple places)"
+      ],
+      "notes": "The presence of scattered case, polluted label, and homonymous label patterns suggests that the process model may be incomplete or inconsistent."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple labels with the same meaning appear, such as 'Check' and 'Check for completeness', indicating a homonymous label issue."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels contain extra tokens, such as 'Perform checks_123_20240301', indicating a polluted label issue."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Parts of traces are missing, and some variants skip big chunks, indicating a scattered case issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Review order' appears twice with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The label 'Signal food complete' appears with different suffixes '_Review drinks_0' and '_Prepare main course_0', indicating extra tokens (IDs) in the label."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.7,
+          "why": "The transition 'hid_2' has a silent activity with no clear timestamp or granularity, indicating inconsistent timestamp formats or mixed granularities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Review order, Review order)",
+        "repeated labels (Review order)",
+        "unexpected τ loops (hid_9 -> splace_in_Signal food complete_Review drinks_0 -> Signal food complete)",
+        "parallel paths (hid_8 -> pre_prepare drinks and hid_11 -> pre_prepare drinks)",
+        "silent transitions (hid_2, hid_8, hid_9, hid_11)",
+        "abnormal transition neighborhoods (hid_9 -> splace_in_Signal food complete_Review drinks_0)"
+      ],
+      "notes": "The process model exhibits some structural irregularities, but further analysis is needed to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Signal food complete' appears in different contexts with distinct predecessors, indicating that it is used for different process steps."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "The labels 'Review order' and 'Review drinks' have similar meanings and appear in different parts of the process, suggesting that they are synonymous."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.7,
+          "why": "The label 'hid_11' appears to be a typo or character swap, as it is not a clear or descriptive label."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Review order and Review drinks)",
+        "repeated labels (Signal food complete)",
+        "unexpected τ loops (hid_11 and hid_9)",
+        "abnormal silent transitions (tau, hid_11, hid_2, hid_8, hid_9)",
+        "irregular fan-in/fan-out (Review order and Review drinks)",
+        "suspicious model topology (multiple paths from source0)"
+      ],
+      "notes": "The process model appears to be well-structured, but there are some potential issues with label consistency and silent transitions."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The same label 'Review drinks' and 'Review order' appear in different contexts with distinct predecessors, indicating homonymous labels."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "The labels 'Signal food complete' and 'Signal food complete_Review drinks_0' have the same meaning, suggesting synonymous labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The label 'hid_9' contains a hidden transition, indicating a polluted label."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: (Bring drinks, Bring drinks) and (EVENT 8 END, EVENT 8 END)",
+        "Repeated labels: 'Review drinks' and 'Review order'",
+        "Unexpected τ loops: (tau, hid_9) and (tau, hid_2)",
+        "Abnormal silent transitions: (tau, hid_9) and (tau, hid_2)",
+        "Irregular fan-in/fan-out: 'Review drinks' has two incoming arcs and two outgoing arcs",
+        "Unusual transition neighborhoods: 'hid_9' has multiple incoming and outgoing arcs"
+      ],
+      "notes": "The process model exhibits some structural irregularities, but further analysis is needed to confirm the presence of these imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), e.g., 'hid_42', indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Bring drinks' is used for different process steps, indicating label irregularities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a restaurant ordering process with some irregularities."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that the event log contains polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The process model contains multiple transitions with the same label but different predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., Bring drinks and Bring food)",
+        "repeated labels (e.g., Bring drinks_signed1 and Bring drinks_signed2)",
+        "unexpected τ loops (e.g., hid_8 -> pre_Bring drinks_signed1 and hid_9 -> pre_Bring drinks_signed1)",
+        "abnormal silent transitions (e.g., hid_12 and hid_13)",
+        "path inflation (e.g., splace_in_Bring drinks_signed1_Bring food_2 and hid_7)",
+        "suspicious model topology (e.g., multiple parallel paths)"
+      ],
+      "notes": "The process model appears to be a restaurant ordering and delivery process, but it contains several imperfections that may indicate issues with the event log."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that the event log contains polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The process model contains multiple transitions with the same label but different predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., Bring drinks and Bring food)",
+        "repeated labels (e.g., Bring drinks_signed1 and Bring drinks_signed2)",
+        "unexpected τ loops (e.g., tau, hid_42)",
+        "abnormal silent transitions (e.g., tau, hid_43)",
+        "irregular fan-in/fan-out (e.g., splace_in_Bring drinks_signed1_Prepare main course_5)",
+        "path inflation (e.g., splace_in_Bring drinks_signed1_Bring food_2)"
+      ],
+      "notes": "The process model appears to be a restaurant ordering and delivery process."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Form-based Event Capture",
+          "confidence": 0.8,
+          "why": "Multiple activities share identical timestamps; flattened timing"
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Parts of traces are missing; some variants skip big chunks"
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "Labels contain extra tokens (IDs, timestamps, resource info)"
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "Based on Petri net structure and transitions"
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains multiple parallel paths and loops, indicating that some parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that the event log may contain polluted labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label is used for different process steps, indicating that the event log may contain homonymous labels."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "multiple places with similar names",
+        "transitions with labels containing extra tokens",
+        "same label used for different process steps"
+      ],
+      "notes": "The process model appears to be complex and contains multiple parallel paths and loops, indicating that some parts of the traces may be missing or skipped."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Review' is used for different process steps, such as 'Review order' and 'Review drinks', indicating that the same label is used for different contexts with distinct predecessors."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'hid_9' and 'hid_11' are similar but not identical, suggesting a small typo or character swap, which is a characteristic of distorted labels."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The presence of multiple transitions with the same label, such as 'Signal food complete', indicates that the same information is repeated across attributes, which is a symptom of inadvertent time travel."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Prepare starter and Prepare starter)",
+        "repeated labels (Signal food complete and Signal food complete)",
+        "unexpected τ loops (hid_9 and hid_11)",
+        "homonymous labels (Review order and Review drinks)",
+        "distorted labels (hid_9 and hid_11)",
+        "inconsistent transition neighborhoods (hid_9 and hid_11)"
+      ],
+      "notes": "The process model exhibits some structural inconsistencies and irregularities, which may indicate imperfections in the event log."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Bring drinks' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'EVENT 8 END' appears to be a typo or character swap, as it is not a typical label name."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The label 'hid_17' and 'hid_19' appear to be repeated across multiple transitions, indicating label inflation."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: (Review drinks, Review drinks) and (Signal food complete, Signal food complete)",
+        "Repeated labels: 'Bring drinks' appears in multiple contexts",
+        "Unexpected τ loops: (hid_17 -> splace_in_Signal food complete_Review drinks_0) and (hid_19 -> pre_prepare drinks)",
+        "Label irregularities: 'EVENT 8 END' appears to be a typo",
+        "Unusual transition neighborhoods: 'hid_17' and 'hid_19' appear to be repeated across multiple transitions",
+        "Structural inconsistencies: 'hid_17' and 'hid_19' do not follow typical transition naming conventions"
+      ],
+      "notes": "The process model appears to have some issues with label consistency and transition naming conventions."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Review drinks' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.8,
+          "why": "The labels 'Bring drinks' and 'Bring drinks - Dep1/Dep2/Dep3' seem to have the same meaning, suggesting that they are synonymous."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The repeated labels 'EVENT 8 END' and 'EVENT 8 END' across different transitions suggest label inflation, which may indicate inadvertent time travel."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Bring drinks - Dep1, Bring drinks - Dep2, Bring drinks - Dep3)",
+        "repeated labels (Review drinks, Review drinks)",
+        "unexpected τ loops (tau, hid_17, tau, hid_2)",
+        "homonymous labels (Bring drinks, Bring drinks - Dep1/Dep2/Dep3)",
+        "synonymous labels (Bring drinks, Bring drinks - Dep1/Dep2/Dep3)",
+        "label inflation (EVENT 8 END, EVENT 8 END)"
+      ],
+      "notes": "The process model exhibits some structural irregularities, but further analysis is needed to determine their impact on the process behavior."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Review drinks' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'hid_12' and 'hid_17' are likely typos or character swaps, as they are not clearly related to the process steps."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The repeated labels 'Signal food complete' and 'Signal food complete_Prepare main course_0' suggest that the same information is repeated across attributes, which can be indicative of label inflation."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Bring drinks - Dep1, Bring drinks - Dep2, Bring drinks - Dep3)",
+        "repeated labels (Review drinks, Review order)",
+        "unexpected τ loops (hid_12 -> pre_prepare drinks, hid_17 -> splace_in_Signal food complete_Review drinks_0)",
+        "abnormal silent transitions (tau, hid_12, hid_17)",
+        "irregular fan-in/fan-out (pre_prepare drinks, pre_Review drinks)",
+        "suspicious model topology (Signal food complete -> pre_Bring food, Bring food -> pre_Deliver to customer)"
+      ],
+      "notes": "The process model appears to have some inconsistencies and irregularities, which may indicate the presence of event log imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple places with similar names and timestamps suggests that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of timestamps and resource info in some transition labels indicates that labels contain extra tokens."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Review' is used for different process steps, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple parallel paths."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions have the same label, indicating the same process step is represented by different transitions."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Some transitions have similar labels, suggesting they represent the same process step."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some transition labels contain extra tokens, indicating potential inconsistencies in event labeling."
+        }
+      ],
+      "indicators": [
+        "Multiple transitions with the same label (e.g., Signal food complete, Signal food complete)",
+        "Transitions with similar labels (e.g., Review order, Review drinks)",
+        "Transition labels with extra tokens (e.g., hid_2, hid_8, hid_9, hid_11)"
+      ],
+      "notes": "The process model appears to have some inconsistencies in event labeling and representation."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process contains a significant number of parallel paths and loops, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The label 'Signal food complete' appears in multiple contexts with distinct predecessors, suggesting that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Prepare starter, Prepare starter)",
+        "repeated labels (Signal food complete, Signal food complete)",
+        "unexpected τ loops (hid_8 -> pre_prepare drinks, hid_8 -> pre_prepare drinks)",
+        "parallel paths (intplace_Review order -> Prepare starter, intplace_Review order -> hid_8)",
+        "loops (hid_9 -> splace_in_Signal food complete_Review drinks_0, hid_9 -> pre_Prepare main course)",
+        "silent transitions (hid_11, hid_2, hid_8, hid_9)"
+      ],
+      "notes": "The process appears to be a complex restaurant ordering system with multiple parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple transitions with the same label, such as 'Prepare drinks', 'Prepare main course', and 'Prepare starter', indicates that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens, such as 'Prepare drinks_123_20240301', suggests that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple transitions with the same label but different meanings, such as 'Review order' and 'Review drinks', indicates that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The Petri net structure suggests that the process is complex and has multiple variants, which may lead to scattered cases and polluted labels."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple labels with the same meaning appear, such as 'Prepare drinks' and 'Prepare drinks', indicating a homonymous label issue."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels contain extra tokens, such as 'Prepare drinks_123_20240301', indicating a polluted label issue."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Multiple labels with the same meaning appear, such as 'Review drinks' and 'Review dirnks', indicating a synonymous label issue."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions"
+      ],
+      "notes": "The Petri net structure suggests a complex process with multiple concurrent activities and loops, which may indicate a need for further analysis to identify the root cause of the issues."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple labels with same meaning appear, such as 'Review order' and 'Review order', indicating homonymous labels."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "Small typos or character swaps are observed, such as 'Payment' vs 'Paymant', indicating distorted labels."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "Same information repeated across attributes, which in abstraction looks like label inflation, indicating inadvertent time travel."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions"
+      ],
+      "notes": "The Petri net structure suggests the presence of homonymous labels, distorted labels, and inadvertent time travel."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check for completeness' appears in multiple contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'hid_3' is likely a typo or character swap, as it does not match any other label in the process."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The repeated labels 'info received', 'Check for completeness', 'Make decision', and 'Deliver card' suggest that the same information is repeated across attributes, creating the appearance of label inflation."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Check for completeness, Check for completeness)",
+        "repeated labels (info received, info received, Check for completeness, Check for completeness)",
+        "unexpected τ loops (hid_3 -> pre_Check for completeness)",
+        "abnormal silent transitions (tau, hid_3)",
+        "irregular fan-in/fan-out (intplace_Make decision -> notify reject, intplace_Make decision -> Notify accept)",
+        "suspicious model topology (source0 -> hid_3 -> pre_Check for completeness)"
+      ],
+      "notes": "The process exhibits some structural inconsistencies and irregularities, which may indicate imperfections in the event log."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of 'Check' and 'Check:homonymous' transitions with identical labels but different predecessors indicates homonymous labeling."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "The existence of 'Notify accept' and 'Notify reject' transitions with similar labels but distinct meanings suggests synonymous labeling."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "The presence of labels like 'Perform checks_123_20240301' is not observed, but the presence of 'hid_6', 'hid_19', 'hid_27', 'hid_36', etc. suggests that some labels might be polluted with extra tokens."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (e.g., 'Perform checks' and 'Perform checks')",
+        "repeated labels (e.g., 'New online application received' and 'New online application received')",
+        "unexpected τ loops (e.g., 'hid_6' and 'hid_14')",
+        "abnormal silent transitions (e.g., 'tau' with multiple instances)",
+        "path inflation (e.g., multiple paths from 'source0' to 'sink0')",
+        "suspicious model topology (e.g., multiple places with similar names)"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process has multiple paths with missing transitions, such as the direct arc from intplace_New online application received to New online application received, and the direct arc from intplace_Check for completeness to New online application received."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Make decision' appears twice with different predecessors, indicating that the same activity is represented by different labels in different contexts."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions (Make decision and notify reject)",
+        "repeated labels (New online application received and intplace_New online application received)",
+        "unexpected τ loops (hid_3 -> pre_Check for completeness)",
+        "abnormal silent transitions (tau)",
+        "irregular fan-in/fan-out (intplace_Make decision -> notify reject and intplace_Make decision -> Notify accept)",
+        "suspicious model topology (source0 -> hid_3 -> pre_Check for completeness)"
+      ],
+      "notes": "The process has a complex structure with multiple paths and loops, which may indicate scattered or missing cases."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check for completeness' appears in multiple contexts with distinct predecessors, indicating that 'Check' is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The label 'hid_3' suggests a typo or character swap, as it does not follow the typical naming convention of other transitions."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The repeated labels 'New online application received' and 'info received' with different prefixes suggest that the same information is repeated across attributes."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions: (New online application received, New online application received)",
+        "Repeated labels: 'Check for completeness', 'info received'",
+        "Unexpected τ loops: (hid_3 -> pre_Check for completeness)",
+        "Abnormal silent transitions: (tau, hid_3)",
+        "Irregular fan-in/fan-out: (intplace_Check for completeness -> Request info, intplace_Check for completeness -> New online application received)",
+        "Unusual transition neighborhoods: (hid_3 -> pre_Check for completeness, intplace_Make decision -> notify reject)"
+      ],
+      "notes": "The process model exhibits some structural inconsistencies and irregularities, which may indicate imperfections in the event log."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Multiple places with mixed case IDs and overly long or merged traces."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Parts of traces are missing; some variants skip big chunks (A→D jumps)"
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "Many events share same rounded times (to day/minute), producing massive ties."
+        }
+      ],
+      "indicators": [
+        "mixed case IDs",
+        "overly long or merged traces",
+        "missing parts of traces",
+        "skipped big chunks",
+        "massive ties"
+      ],
+      "notes": "The process has multiple places with mixed case IDs and overly long or merged traces, indicating an Elusive Case. Additionally, parts of traces are missing, and some variants skip big chunks, suggesting a Scattered Case. Furthermore, many events share same rounded times, producing massive ties, which is a characteristic of a Scattered Event."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process model contains multiple paths with different case IDs, indicating a potential issue with case ID consistency."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate a labeling issue."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.6,
+          "why": "There are multiple labels with the same meaning but different names, which may indicate a labeling issue."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.5,
+          "why": "The same label is used for different process steps, which may indicate a labeling issue."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.4,
+          "why": "There are small typos or character swaps in some labels, which may indicate a labeling issue."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.3,
+          "why": "The process model contains events with inconsistent timestamp formats or mixed granularities, which may indicate a timing issue."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.2,
+          "why": "The process model contains parts of traces that are missing, which may indicate a data quality issue."
+        }
+      ],
+      "indicators": [
+        "multiple paths with different case IDs",
+        "labels with extra tokens (IDs, timestamps, resource info)",
+        "multiple labels with the same meaning but different names",
+        "same label used for different process steps",
+        "small typos or character swaps in labels",
+        "events with inconsistent timestamp formats or mixed granularities",
+        "parts of traces that are missing"
+      ],
+      "notes": "The process model may require further investigation to determine the root cause of these issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions with identical timestamps, indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with mixed case IDs, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with extra tokens in their labels, indicating that labels contain extra information."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.5,
+          "why": "The process model contains several transitions with identical labels, indicating that multiple labels have the same meaning."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.4,
+          "why": "The process model contains several transitions with the same label used for different process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.3,
+          "why": "The process model contains several transitions with small typos or character swaps in their labels."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.2,
+          "why": "The process model contains several transitions with inconsistent timestamp formats or mixed granularities."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.1,
+          "why": "The process model contains several transitions with identical rounded times (to day/minute), producing massive ties."
+        }
+      ],
+      "indicators": [
+        "identical timestamps",
+        "mixed case IDs",
+        "extra tokens in labels",
+        "identical labels",
+        "same label used for different steps",
+        "typos or character swaps",
+        "inconsistent timestamp formats",
+        "massive ties"
+      ],
+      "notes": "The process model contains several imperfections that may affect its accuracy and reliability."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with the same label, indicating that parts of the traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with the same label, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.5,
+          "why": "The process model contains several transitions with labels containing extra tokens (IDs, timestamps, resource info)."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.4,
+          "why": "The process model contains several transitions with the same meaning but different labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.3,
+          "why": "The process model contains several transitions with the same label but different meanings."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.2,
+          "why": "The process model contains several transitions with labels containing small typos or character swaps."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.1,
+          "why": "The process model contains several transitions with inconsistent timestamp formats or mixed granularities."
+        }
+      ],
+      "indicators": [
+        "Several transitions with the same label",
+        "Transitions with labels containing extra tokens",
+        "Transitions with the same meaning but different labels",
+        "Transitions with the same label but different meanings",
+        "Transitions with labels containing small typos or character swaps",
+        "Inconsistent timestamp formats or mixed granularities"
+      ],
+      "notes": "The process model contains several imperfections that may indicate issues with the underlying process."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process contains multiple variants with different case IDs, indicating a potential issue with case ID consistency."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process contains parts of traces that are missing, suggesting that some variants may be incomplete or have skipped big chunks."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "The process contains many events that share the same rounded times, producing massive ties."
+        }
+      ],
+      "indicators": [
+        "multiple variants with different case IDs",
+        "parts of traces that are missing",
+        "many events that share the same rounded times"
+      ],
+      "notes": "The process may contain inconsistencies in case ID handling and incomplete or missing events."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process has several transitions with the same label, indicating that parts of the traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process has inconsistent case IDs, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "The process has many events sharing the same rounded times, producing massive ties."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process has several structural issues, including scattered cases, elusive cases, and scattered events."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with the same timestamp, indicating that parts of the traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions with incorrect or mixed case IDs, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "The process model contains several events with the same rounded timestamp, producing massive ties."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.9,
+          "why": "The process model contains several transitions with the same label, indicating that the same information is repeated across attributes."
+        }
+      ],
+      "indicators": [
+        "Several transitions with the same timestamp",
+        "Incorrect or mixed case IDs",
+        "Events with the same rounded timestamp",
+        "Transitions with the same label"
+      ],
+      "notes": "The process model contains several imperfections that may affect its accuracy."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.8,
+          "why": "The presence of identical timestamps in the Petri net indicates that the same information is being repeated across different attributes, which is a symptom of Inadvertent Time Travel."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of missing parts of traces in the Petri net indicates that some variants of the process are skipping big chunks of activities, which is a symptom of Scattered Case."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.6,
+          "why": "The presence of wrong/mixed case IDs in the Petri net indicates that the case IDs are not consistent, which is a symptom of Elusive Case."
+        }
+      ],
+      "indicators": [
+        "identical timestamps",
+        "missing parts of traces",
+        "wrong/mixed case IDs"
+      ],
+      "notes": "The Petri net exhibits symptoms of Inadvertent Time Travel, Scattered Case, and Elusive Case."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions with identical timestamps, indicating that parts of traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with mixed case IDs, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The process model contains several transitions with extra tokens in their labels, indicating that labels contain extra information."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with identical timestamps, indicating that many events share same rounded times."
+        }
+      ],
+      "indicators": [
+        "identical timestamps",
+        "mixed case IDs",
+        "extra tokens in labels",
+        "many events share same rounded times"
+      ],
+      "notes": "The process model contains several imperfections, including scattered cases, elusive cases, polluted labels, and scattered events."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The Petri net contains multiple transitions with the same label 'Send confirmation receipt' but different timestamps, indicating that the same label is used for different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.8,
+          "why": "The Petri net contains transitions with labels that have small typos or character swaps, such as 'Paymant' instead of 'Payment'."
+        },
+        {
+          "pattern": "11) Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The Petri net contains transitions with labels that have repeated information, such as 'Approve[Manager01]' style duplication across many labels, which may indicate label inflation."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions"
+      ],
+      "notes": "The Petri net structure suggests that the process has complex and dynamic behavior, with multiple concurrent paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple paths with significant gaps, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate that the event log contains additional information not captured in the model."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, which may indicate that the event log contains ambiguous or inconsistent labeling."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns and to identify potential root causes."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that some parts of the process are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with identical timestamps, suggesting that some events may be missing or incorrectly timestamped."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.5,
+          "why": "The process model contains several events with identical timestamps, suggesting that some events may be missing or incorrectly timestamped."
+        }
+      ],
+      "indicators": [
+        "transitions with identical timestamps",
+        "transitions not directly connected to the initial marking",
+        "events with identical timestamps"
+      ],
+      "notes": "The process model may contain missing or incorrectly timestamped events."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that parts of the traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that wrong/mixed case IDs are present."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The process model contains several transitions with labels that contain extra tokens (IDs, timestamps, resource info)."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with labels that have the same meaning but different names."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions with labels that have the same name but different meanings."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with labels that contain small typos or character swaps."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.9,
+          "why": "The process model contains several transitions with labels that contain impossible durations or inconsistent timestamp formats."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that many events share the same rounded times."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that the same information is repeated across attributes."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "path inflation",
+        "suspicious model topologies"
+      ],
+      "notes": "The process model contains several imperfections that may indicate issues with the underlying process."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Some parts of traces are missing; some variants skip big chunks (A→D jumps)"
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Wrong/mixed case IDs; overly long or merged traces"
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "Labels contain extra tokens (IDs, timestamps, resource info)"
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.5,
+          "why": "Multiple labels with same meaning appear"
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.4,
+          "why": "Same label used for different process steps"
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.3,
+          "why": "Small typos or character swaps"
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.2,
+          "why": "Inconsistent timestamp formats or mixed granularities"
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.1,
+          "why": "Many events share same rounded times (to day/minute), producing massive ties"
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.1,
+          "why": "Same information repeated across attributes; in abstraction, looks like label inflation"
+        }
+      ],
+      "indicators": [
+        "Some parts of traces are missing; some variants skip big chunks (A→D jumps)",
+        "Wrong/mixed case IDs; overly long or merged traces",
+        "Labels contain extra tokens (IDs, timestamps, resource info)",
+        "Multiple labels with same meaning appear",
+        "Same label used for different process steps",
+        "Small typos or character swaps",
+        "Inconsistent timestamp formats or mixed granularities",
+        "Many events share same rounded times (to day/minute), producing massive ties",
+        "Same information repeated across attributes; in abstraction, looks like label inflation"
+      ],
+      "notes": "The process has several imperfections, including scattered cases, elusive cases, polluted labels, synonymous labels, homonymous labels, distorted labels, unanchored events, scattered events, and inadvertent time travel."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process has missing parts of traces, some variants skip big chunks (A→D jumps)"
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process has wrong/mixed case IDs; overly long or merged traces"
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "The process has labels with extra tokens (IDs, timestamps, resource info)"
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.5,
+          "why": "The process has multiple labels with same meaning appear"
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.4,
+          "why": "The process has same label used for different process steps"
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.3,
+          "why": "The process has small typos or character swaps in labels"
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.2,
+          "why": "The process has inconsistent timestamp formats or mixed granularities"
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.1,
+          "why": "The process has many events share same rounded times (to day/minute), producing massive ties"
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.1,
+          "why": "The process has same information repeated across attributes; in abstraction, looks like label inflation"
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops"
+      ],
+      "notes": "The process has several imperfections, including scattered cases, elusive cases, polluted labels, synonymous labels, homonymous labels, distorted labels, unanchored events, scattered events, and inadvertent time travel."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.6,
+          "why": "The process contains multiple events with the same rounded times, producing massive ties."
+        }
+      ],
+      "indicators": [
+        "multiple paths with different lengths",
+        "events with the same rounded times",
+        "ties in event times"
+      ],
+      "notes": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info)."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.5,
+          "why": "Multiple labels have the same meaning but different names."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.4,
+          "why": "The same label is used for different process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.3,
+          "why": "Some labels have small typos or character swaps."
+        },
+        {
+          "pattern": "Unanchored Event",
+          "confidence": 0.2,
+          "why": "Inconsistent timestamp formats or mixed granularities."
+        },
+        {
+          "pattern": "Inadvertent Time Travel",
+          "confidence": 0.1,
+          "why": "Same information repeated across attributes, looking like label inflation."
+        }
+      ],
+      "indicators": [
+        "multiple paths with different lengths",
+        "extra tokens in transition labels",
+        "same meaning but different names",
+        "same label used for different steps",
+        "small typos or character swaps",
+        "inconsistent timestamp formats or mixed granularities",
+        "same information repeated across attributes"
+      ],
+      "notes": "The process contains multiple paths with different lengths, indicating that some parts of the traces are missing."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The process model contains several transitions that skip big chunks of the process, indicating that some parts of the traces are missing."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that some cases may be mixed or overly long."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.6,
+          "why": "The process model contains several transitions with extra tokens in their labels, indicating that some events may contain extra information."
+        },
+        {
+          "pattern": "Scattered Event",
+          "confidence": 0.5,
+          "why": "The process model contains several transitions that are not directly connected to the initial marking, indicating that some events may be scattered or not directly related to the process."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "path inflation",
+        "unexpected loops",
+        "suspicious model topologies"
+      ],
+      "notes": "The process model contains several structural issues that may indicate imperfections in the event log."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of the traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, indicating label inconsistencies."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical treatment process with many parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains multiple paths with missing or skipped activities, indicating that some cases may be incomplete or fragmented."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), which may indicate inconsistent or noisy event data."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, which may indicate a lack of clear distinction between similar activities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is needed to determine the root cause of these imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process contains several places with similar names, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The process contains multiple places with the same name but different predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process contains a large number of places and transitions, indicating a complex process with many possible paths."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The process model contains several transitions with the same label used in different contexts with distinct predecessors, indicating that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical treatment process with many parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label is used for different process steps, indicating label inconsistencies."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical diagnosis process with many parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "The process model contains several places with similar names, indicating that parts of traces are missing or skipped."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.78,
+          "why": "Some transitions have labels with extra tokens (IDs, timestamps, resource info), indicating label irregularities."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.72,
+          "why": "The same label is used for different process steps, indicating label irregularities."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "The process model appears to be a complex medical treatment process with many parallel paths and loops."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of multiple, seemingly unrelated activities with identical timestamps (e.g., 'pre_190205 class 3b a205_32EjmDc_20080103 080001000000' and 'pre_190205 class 3b a205_32EjmDc_20080103 080001000000') suggests that parts of traces are missing or that some variants skip big chunks."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels containing extra tokens (IDs, timestamps, resource info) such as 'pre_190205 class 3b a205_32EjmDc_20080103 080001000000' indicates that labels contain extra information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The presence of multiple labels with the same name but different meanings (e.g., 'pre_190205 class 3b a205_32EjmDc_20080103 080001000000' and 'pre_190205 class 3b a205_32EjmDc_20080103 080001000000') suggests that the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "parallel sibling transitions",
+        "repeated labels",
+        "unexpected τ loops",
+        "irregular fan-in/fan-out",
+        "abnormal silent transitions",
+        "path inflation"
+      ],
+      "notes": "Further analysis is required to confirm the presence of these patterns."
+    }
+  }
+]

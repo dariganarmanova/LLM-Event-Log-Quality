@@ -1,0 +1,1996 @@
+[
+  {
+    "file": "Variant_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of very long traces with repeated sequences suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info -> info received -> Check for completeness' sequences",
+        "Variants with unusually long sequences",
+        "Variants with direct jumps from 'Make decision' to 'Notify accept/reject'",
+        "Presence of 'review request received' in some but not all rejection paths",
+        "Inconsistent path lengths across variants",
+        "Frequent loops in 'Request info' and 'Check for completeness'"
+      ],
+      "notes": "The structural complexity and repetition suggest issues with case identification and trace completeness."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' suggests multiple events spawned from a single decision-making step."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant path diversity with some traces skipping steps like 'Request info' and 'info received', indicating missing parts."
+        }
+      ],
+      "indicators": [
+        "Make decision_signed1 -> Make decision_signed2",
+        "Check for completeness -> Perform checks",
+        "Request info -> info received -> Check for completeness",
+        "Repeated 'Make decision_signed1' and 'Make decision_signed2'",
+        "Variants with and without 'Request info'",
+        "Variants with different lengths"
+      ],
+      "notes": "The presence of repeated 'Make decision_signed' activities strongly indicates collateral events."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of repeated 'Make decision_signed1' and 'Make decision_signed2' suggests multiple near-simultaneous events stemming from a single real step."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Extremely long traces with repeated segments and loops indicate possible merging of traces or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Make decision_signed1' and 'Make decision_signed2'",
+        "Long traces with repeated segments",
+        "Frequent loops and repetitions",
+        "Variants with excessive length",
+        "Multiple 'Request info' and 'info received' cycles",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The structural patterns suggest issues with event granularity and trace integrity."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Make decision_signed1' and 'Make decision_signed2' suggests multiple events are spawned from a single real step."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant structural differences, such as missing or repeated segments, indicating potential missing parts in traces."
+        }
+      ],
+      "indicators": [
+        "Make decision_signed1 -> Make decision_signed2",
+        "Repeated 'Request info -> info received' sequences",
+        "Variants with and without 'review request received'",
+        "Inconsistent sequence lengths",
+        "Frequent 'Check for completeness' repetitions",
+        "Variants with different paths to 'EVENT 13 END'"
+      ],
+      "notes": "The presence of repeated and nested sequences suggests complex branching and potential data capture issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of variants with repeated 'Request info' and 'info received' sequences suggests missing parts in some traces, indicating skipped steps or incomplete paths."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The activity 'Perform checks' appears in different contexts, sometimes followed by '- Dep2' or '- Dep3', suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info' and 'info received' sequences",
+        "Variants with different lengths",
+        "Activity 'Perform checks' with and without department suffix",
+        "Frequent 'Check for completeness' repetitions",
+        "Inconsistent sequence lengths",
+        "Variants with and without 'review request received'"
+      ],
+      "notes": "The variants show significant structural diversity, indicating potential issues with trace completeness and label consistency."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "The presence of extremely long traces with repeated sequences suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant structural differences, with some traces skipping multiple steps, indicating missing parts of the process."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info -> info received -> Check for completeness' sequences",
+        "Variants with different lengths and complexity",
+        "Some traces have multiple 'review request received' segments",
+        "Frequent 'Check for completeness' repetitions",
+        "Variants with and without 'review request received'",
+        "Long traces with multiple 'notify reject' and 'review request received' cycles"
+      ],
+      "notes": "The structural complexity and repetition patterns strongly suggest issues with case identification and completeness."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Some variants contain labels with extra tokens such as IDs and timestamps, indicating label pollution."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of very long traces with repeated segments suggests possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Perform checks_29RzHlB_20231023021131354000",
+        "Make decision_89EizAx_20231023021351740000",
+        "Repeated 'Request info -> info received' sequences",
+        "Very long traces with multiple 'review request received' segments",
+        "Inconsistent trace lengths",
+        "Low frequency of polluted label variants"
+      ],
+      "notes": "The presence of polluted labels and unusually long traces suggests both label and case ID issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of variants with repeated 'Request info' and 'info received' sequences suggests missing parts in some traces, indicating potential scattered cases."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The use of 'Perform checks' with different suffixes like '- Dep2' and '- Dep3' suggests the same label is used for different process steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The presence of very long traces with repeated sequences and review loops suggests possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info' and 'info received' sequences",
+        "Variants with 'Perform checks - Dep2' and 'Perform checks - Dep3'",
+        "Long traces with repeated review loops",
+        "Variants with different lengths",
+        "Frequent 'Check for completeness' repetitions",
+        "Variants with 'review request received' in different contexts"
+      ],
+      "notes": "The structural patterns suggest issues with trace completeness and label consistency."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Variants show significant structural differences, such as missing 'Request info' or 'info received' steps, indicating potential missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Perform checks' appears in different contexts with variations like 'Perform checks - Dep2' and 'Perform checks - Dep3', suggesting the same label is used for different steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long with repeated sequences, such as multiple 'Request info' and 'info received' cycles, indicating possible merging of cases."
+        }
+      ],
+      "indicators": [
+        "Missing 'Request info' in some variants",
+        "Repeated 'Request info' and 'info received' cycles",
+        "Variants with 'Perform checks - Dep2' and 'Perform checks - Dep3'",
+        "Unusually long traces with repeated sequences",
+        "Variants with and without 'review request received'",
+        "Inconsistent sequence lengths across variants"
+      ],
+      "notes": "The presence of department-specific labels suggests potential homonymy, while missing and repeated steps indicate scattered and elusive cases."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check' appears in different contexts, sometimes as 'Check for completeness' and sometimes as 'Check:homonymous', indicating potential homonymy."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are unusually long with repeated sequences, suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous vs Check for completeness",
+        "Repeated 'Request info -> info received' sequences",
+        "Unusually long traces with repeated segments",
+        "Variants with 'review request received' followed by repeated checks",
+        "Inconsistent sequence lengths",
+        "Frequent 'Check for completeness' repetitions"
+      ],
+      "notes": "The presence of repeated sequences and label variations suggests structural irregularities."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant jumps and missing segments, such as skipping 'Request info' or 'info received'."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous appears in different contexts",
+        "Variants with and without 'Request info' and 'info received'",
+        "Repeated 'Check for completeness' and 'Request info' sequences",
+        "Variants with different lengths and loops",
+        "Frequent 'review request received' in some paths",
+        "Inconsistent sequence lengths across variants"
+      ],
+      "notes": "The presence of repeated sequences and label context shifts strongly suggests homonymy and scattered cases."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "The presence of extremely long traces with repeated sequences suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant structural jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info -> info received' sequences",
+        "Variants with excessive length",
+        "Frequent 'Check for completeness' repetitions",
+        "Variants with 'review request received' inserted at different points",
+        "Inconsistent path lengths",
+        "Variants with and without 'review request received'"
+      ],
+      "notes": "The structural complexity and repetition patterns strongly suggest issues with case integrity and completeness."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with repeated sequences suggests possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info -> info received' sequences",
+        "Long traces with multiple 'review request received' and 'Check for completeness'",
+        "Variants with excessive length compared to others",
+        "Frequent loops and repetitions in traces",
+        "Inconsistent path lengths across variants"
+      ],
+      "notes": "The structural complexity and repetition in traces indicate potential case merging issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of variants with repeated 'Request info' and 'info received' sequences suggests missing parts in some traces, indicating potential scattered cases."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The activity 'Check for completeness' appears in different contexts with varying predecessors, suggesting it may represent different steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "Variants show slight variations in capitalization and spacing, such as 'perform checks' vs 'Perform checks', indicating possible label distortions."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Request info' and 'info received' sequences",
+        "Activity 'Check for completeness' in different contexts",
+        "Variations like 'perform checks' vs 'Perform checks'",
+        "Long sequences with repeated segments",
+        "Inconsistent capitalization in labels",
+        "Frequent 'review request received' in rejected paths"
+      ],
+      "notes": "The variants suggest structural inconsistencies and label issues that align with scattered and homonymous patterns."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps in sequence, such as skipping 'Prepare main course' or 'Prepare starter', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are unusually long with repeated sequences of 'prepare drinks -> Bring drinks -> Review drinks', suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare main course'",
+        "Variants with missing 'Prepare starter'",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' sequences",
+        "Unusually long traces",
+        "Variants starting with 'start' instead of 'Take order'",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The presence of repeated sequences and missing activities suggests structural anomalies in trace recording."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant jumps and missing segments, such as skipping 'Prepare starter' or 'Prepare main course'."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Some traces are unusually long with repeated segments, suggesting possible merging or incorrect case identification."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare starter' or 'Prepare main course'",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' sequences",
+        "Unusually long traces with repeated segments",
+        "Variants starting with 'start' instead of 'Take order'",
+        "Inconsistent sequence lengths",
+        "Rare variants with unusual sequences"
+      ],
+      "notes": "The presence of repeated sequences and missing segments suggests structural irregularities."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps in the sequence, such as skipping 'Prepare main course' or 'Prepare starter', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are unusually long with repeated sequences of 'prepare drinks', suggesting possible merging of traces or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare main course'",
+        "Variants with missing 'Prepare starter'",
+        "Repeated 'prepare drinks' sequences",
+        "Unusually long traces",
+        "Variants starting with 'start' instead of 'Take order'",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The presence of repeated 'prepare drinks' suggests potential data entry errors or loop behavior."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are generated from a single real-world step."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant differences in sequence length and structure, with some skipping major steps like 'Prepare main course'."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2",
+        "Prepare main course skipped",
+        "Repeated 'prepare drinks' sequences",
+        "Variants with excessive length",
+        "Variants with missing 'Prepare starter'",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The presence of repeated and signed events indicates potential logging issues."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are generated from a single real-world action."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The extremely long traces with repeated sequences like 'prepare drinks -> Bring drinks -> Review drinks' indicate possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Unusually long traces",
+        "High frequency of repeated segments",
+        "Variants with excessive repetition",
+        "Multiple 'Bring drinks' events in succession"
+      ],
+      "notes": "The presence of repeated signed events and long traces strongly suggests these patterns."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are generated from a single real-world step, indicating collateral events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant differences in sequence lengths and missing segments, such as skipping 'Prepare main course' or 'Prepare starter', indicating scattered cases."
+        }
+      ],
+      "indicators": [
+        "Bring drinks_signed1 -> Bring drinks_signed2 repetition",
+        "Variants with and without 'Prepare main course'",
+        "Variants with and without 'Prepare starter'",
+        "Long sequences with repeated 'prepare drinks' and 'Review drinks'",
+        "Frequent 'Bring drinks_signed1' and 'Bring drinks_signed2' occurrences",
+        "Variants with different sequence lengths"
+      ],
+      "notes": "The presence of repeated 'signed' events strongly suggests collateral events, while missing activities in some variants indicate scattered cases."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Some labels contain extra tokens, such as 'Bring drinks_21VCUrd_20240507233900923000', indicating potential pollution with IDs or timestamps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant differences in sequence length and structure, such as missing 'Prepare starter' or 'Prepare main course', suggesting missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The presence of extremely long traces with repeated sequences like 'prepare drinks -> Bring drinks -> Review drinks' suggests possible merging of traces or wrong case IDs."
+        }
+      ],
+      "indicators": [
+        "Label with extra tokens: 'Bring drinks_21VCUrd_20240507233900923000'",
+        "Missing 'Prepare starter' in some variants",
+        "Missing 'Prepare main course' in some variants",
+        "Repeated sequence: 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Extremely long traces with repeated patterns",
+        "Variants with significant length differences"
+      ],
+      "notes": "The presence of polluted labels and scattered cases suggests data quality issues in event capture."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps in the sequences, such as skipping 'Prepare main course' or 'Prepare starter', indicating missing parts in some traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are excessively long with repeated segments, suggesting possible merging of traces or incorrect case identification."
+        }
+      ],
+      "indicators": [
+        "Skipping 'Prepare main course' in some variants",
+        "Skipping 'Prepare starter' in some variants",
+        "Excessive repetition of 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Variants with unusually high number of repeated segments",
+        "Presence of both short and very long traces",
+        "Inconsistent sequence lengths across variants"
+      ],
+      "notes": "The presence of repeated segments and skipped steps strongly suggests structural issues in trace recording."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several variants contain labels with appended IDs and timestamps, indicating label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant differences in sequence length and missing steps, suggesting scattered cases."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The presence of extremely long traces with repeated segments suggests possible merging of cases."
+        }
+      ],
+      "indicators": [
+        "Labels like 'Bring drinks_32ZhfaY_20240507234813185000'",
+        "Variants with missing 'Prepare main course' or 'Prepare starter'",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' sequences",
+        "Variants with over 20 repeated 'prepare drinks' sequences",
+        "Variants with 'start' appearing after 'Take order'",
+        "Variants with unusual sequence lengths"
+      ],
+      "notes": "The presence of polluted labels is clear from the appended IDs and timestamps."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Bring drinks' appears with different suffixes like '- Dep1', '- Dep2', and '- Dep3', suggesting the same activity is used in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Some variants skip the 'Prepare main course' or 'Prepare starter' activities, indicating missing parts in certain traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "The presence of extremely long traces with repeated sequences like 'prepare drinks -> Bring drinks -> Review drinks' suggests possible merging of traces or wrong case IDs."
+        }
+      ],
+      "indicators": [
+        "Bring drinks - Dep1",
+        "Bring drinks - Dep2",
+        "Bring drinks - Dep3",
+        "Missing 'Prepare main course'",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Long traces with repeated sequences"
+      ],
+      "notes": "The variations in 'Bring drinks' labels and missing activities are strong indicators of label and trace structure issues."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Bring drinks' appears in different contexts with distinct predecessors, such as 'Prepare drinks' and 'Prepare main course'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Some variants skip significant steps like 'Prepare starter' or 'Prepare main course', indicating missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "'Bring drinks' follows different activities",
+        "Variants with and without 'Prepare starter'",
+        "Variants with and without 'Prepare main course'",
+        "Frequent repetition of 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Unusual sequence lengths with repeated segments",
+        "Presence of 'Dep1', 'Dep2', 'Dep3' in 'Bring drinks'"
+      ],
+      "notes": "The presence of 'Dep' labels suggests potential label pollution or synonymous labels, but evidence is not strong enough for confident detection."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Bring drinks' appears with different suffixes like 'Dep1', 'Dep2', 'Dep3', suggesting the same activity is used in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Some variants skip the 'Prepare main course' step entirely, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "'Bring drinks - Dep1', 'Bring drinks - Dep2', 'Bring drinks - Dep3'",
+        "Variants with and without 'Prepare main course'",
+        "Repeated sequences of 'prepare drinks -> Bring drinks -> Review drinks'",
+        "Variants starting with 'start -> Take order' vs 'Take order -> start'"
+      ],
+      "notes": "The presence of repeated drink preparation sequences suggests potential loop behavior."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps in the sequence, such as skipping 'Prepare main course' or 'Prepare starter', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with repeated sequences suggests possible merging of traces or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare main course'",
+        "Variants with missing 'Prepare starter'",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' sequences",
+        "Unusually long traces with repeated patterns",
+        "Variants starting with 'start' instead of 'Take order'",
+        "Variants with 'Prepare main course' appearing in different positions"
+      ],
+      "notes": "The structural irregularities suggest issues with trace completeness and potential case ID errors."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant differences in sequence length and structure, such as missing 'Prepare main course' or 'Prepare starter', indicating possible missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The activity 'Prepare main course' appears in different contexts with varying predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Variants with and without 'Prepare main course'",
+        "Variants with and without 'Prepare starter'",
+        "Inconsistent sequence lengths",
+        "'Prepare main course' appears after different activities",
+        "Frequent repetition of 'prepare drinks' and 'Review drinks'",
+        "Variants starting with 'start' vs 'Take order'"
+      ],
+      "notes": "The presence of repeated 'prepare drinks' and 'Review drinks' suggests potential loop behavior, but this is not a clear imperfection pattern."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps and missing segments, such as skipping 'Prepare main course' or 'Prepare starter'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The activity 'Prepare main course' appears in different contexts, sometimes before or after 'prepare drinks', indicating potential label reuse for different steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long with repeated sequences, suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare main course'",
+        "Variants with missing 'Prepare starter'",
+        "Repeated 'prepare drinks' and 'Review drinks' sequences",
+        "Inconsistent order of 'Prepare main course' and 'prepare drinks'",
+        "Unusually long traces with repeated segments",
+        "Variants starting with 'start' or 'Take order'"
+      ],
+      "notes": "The presence of repeated sequences and missing segments strongly suggests structural irregularities."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant differences in sequence length and structure, indicating missing parts or skipped steps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The activity 'Prepare main course' appears in different positions within the traces, suggesting it might represent different process steps."
+        }
+      ],
+      "indicators": [
+        "Variants with and without 'Prepare starter'",
+        "Repeated 'prepare drinks' and 'Review drinks' sequences",
+        "Variants starting with 'start' vs 'Take order'",
+        "'Prepare main course' appears before and after 'prepare drinks'",
+        "Significant length variation among traces",
+        "Inconsistent sequence of 'Bring drinks' and 'Review drinks'"
+      ],
+      "notes": "The presence of repeated sequences and varying trace lengths suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps in the sequence, such as skipping 'Prepare main course' or 'Prepare starter', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Prepare' appears in different contexts (e.g., 'Prepare drinks', 'Prepare main course', 'Prepare starter'), suggesting the same label is used for different steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "There is a minor typo in one variant where 'Review drinks' is written as 'review drinks', indicating potential label inconsistencies."
+        }
+      ],
+      "indicators": [
+        "Skipped 'Prepare main course' in some variants",
+        "Skipped 'Prepare starter' in some variants",
+        "Repeated 'prepare drinks' multiple times in some variants",
+        "Label 'Prepare' used in different contexts",
+        "Minor typo: 'Review drinks' vs 'review drinks'",
+        "Variants with unusual sequence lengths due to repeated loops"
+      ],
+      "notes": "The presence of repeated 'prepare drinks' suggests loop behavior, but the main concern is the structural jumps and label usage."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps and missing segments, such as skipping 'Prepare starter' or 'Prepare main course'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The activity 'Prepare main course' appears in different contexts, sometimes before 'prepare drinks' and sometimes after, indicating potential label reuse for different steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "There are minor typos in labels such as 'Review drigks' and 'deliver to customer', suggesting possible label distortions."
+        }
+      ],
+      "indicators": [
+        "Variants with missing 'Prepare starter'",
+        "Variants with 'Prepare main course' in different positions",
+        "Label 'Review drigks' typo",
+        "Label 'deliver to customer' typo",
+        "Variants with repeated 'prepare drinks' sequences",
+        "Variants starting with 'start -> Take order'"
+      ],
+      "notes": "The presence of repeated sequences and label variations suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The variants show significant structural differences, with some traces skipping multiple 'Request info' and 'info received' cycles, indicating missing parts."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with repeated cycles of 'Request info' and 'info received' suggests possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Variants with repeated 'Request info' and 'info received' cycles",
+        "Traces with varying lengths and complexity",
+        "Frequent 'Check for completeness' repetitions",
+        "Some traces skip 'Request info' cycles entirely",
+        "Long traces with multiple 'review request received' segments",
+        "Inconsistent path structures across variants"
+      ],
+      "notes": "The structural complexity and variability suggest issues with trace completeness and potential case ID errors."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "The presence of variants with significant jumps and missing segments, such as skipping 'Request info' and 'info received', suggests missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The unusually long traces with repeated sequences like 'Request info -> info received' indicate possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Significant jumps in sequences",
+        "Variants with missing segments",
+        "Unusually long traces",
+        "Repeated sequences like 'Request info -> info received'",
+        "Frequent loops in traces",
+        "Inconsistent path lengths"
+      ],
+      "notes": "The structural patterns suggest issues with trace completeness and potential case merging."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are variants with significant jumps and missing segments, such as skipping 'Request info' and 'info received' steps entirely."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are unusually long with repeated cycles of 'Request info' and 'info received', suggesting possible merging of cases."
+        }
+      ],
+      "indicators": [
+        "Significant jumps in sequences",
+        "Variants with repeated 'Request info' and 'info received'",
+        "Unusually long traces",
+        "Cycles of 'review request received' and 'Make decision'",
+        "Frequent 'Check for completeness' repetitions",
+        "Variants skipping 'Request info' entirely"
+      ],
+      "notes": "The presence of repeated cycles and missing segments suggests both scattered and elusive case issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long traces with repeated segments suggests possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous appears in multiple contexts",
+        "Repeated 'Request info -> info received' sequences",
+        "Overly long traces with repeated segments",
+        "Variants with excessive length and loops",
+        "Inconsistent branching with 'review request received'",
+        "Frequent 'Check for completeness' repetitions"
+      ],
+      "notes": "The structural patterns suggest issues with label clarity and potential case merging."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears with different department suffixes (e.g., Dep2, Dep3), suggesting the same label is used in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, such as directly moving from 'register submission date request' to 'phase application received' or 'register deadline'."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt - Dep2",
+        "send confirmation receipt - Dep3",
+        "register submission date request -> phase application received",
+        "register submission date request -> register deadline",
+        "OLO messaging active -> phase application received",
+        "enter senddate acknowledgement -> register submission date request"
+      ],
+      "notes": "The presence of department-specific suffixes in labels suggests potential homonymy, while large jumps in process steps indicate scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels like 'send confirmation receipt - Dep2' and 'send confirmation receipt - Dep3' suggest extra tokens indicating departments, which are not part of the core activity name."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant jumps and missing segments, such as 'register submission date request' directly to 'phase application received', indicating missing parts of the process."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The activity 'send confirmation receipt' appears in different contexts with different preceding activities, suggesting the same label is used for different steps."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt - Dep2",
+        "send confirmation receipt - Dep3",
+        "register submission date request -> phase application received",
+        "send confirmation receipt -> send confirmation receipt",
+        "enter senddate procedure confirmation -> registrer date of publishing received request",
+        "OLO messaging active -> create procedure confirmation"
+      ],
+      "notes": "The presence of department-specific labels and inconsistent trace lengths suggest label pollution and scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Several variants show significant jumps or missing segments, such as 'register submission date request' directly leading to 'phase application received' or 'register deadline'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'send confirmation receipt - Dep2' and 'send confirmation receipt - Dep3' suggest extra tokens or department identifiers appended to activity names."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The label 'send confirmation receipt' appears in different contexts with varying predecessors, indicating potential reuse for different steps."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "send confirmation receipt - Dep2",
+        "send confirmation receipt - Dep3",
+        "register submission date request -> register deadline",
+        "send confirmation receipt -> send confirmation receipt",
+        "enter senddate procedure confirmation -> registrer date of publishing received request"
+      ],
+      "notes": "The presence of department-specific suffixes in labels suggests label pollution, while direct jumps in process flow indicate scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' in different contexts",
+        "Direct jumps like 'register submission date request' to 'phase application received'",
+        "Variants with very different lengths",
+        "Frequent use of 'Check:homonymous' with varying predecessors",
+        "Variants skipping major steps",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The presence of 'Check:homonymous' in diverse contexts strongly suggests homonymy, while the structural gaps imply scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as 'register submission date request' directly to 'phase application received' or 'terminate on request'."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous appears in multiple contexts",
+        "register submission date request -> phase application received",
+        "register submission date request -> terminate on request",
+        "OLO messaging active -> phase application received",
+        "enter senddate acknowledgement -> register submission date request",
+        "register submission date request -> send confirmation receipt -> send procedure confirmation"
+      ],
+      "notes": "The presence of repeated 'Check:homonymous' suggests label reuse in different contexts."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps in sequences, such as 'register submission date request' directly to 'phase application received', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "'Check:homonymous' appears in different contexts",
+        "Direct jumps like 'register submission date request' to 'phase application received'",
+        "Variants with repeated 'Check:homonymous'",
+        "Variants with missing intermediate steps",
+        "Inconsistent sequence lengths",
+        "Frequent use of 'Check:homonymous' in different paths"
+      ],
+      "notes": "The presence of 'Check:homonymous' in various contexts strongly suggests homonymous labeling."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps and missing segments in some variants, such as 'register submission date request' directly to 'phase application received' or 'send confirmation receipt'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears in different contexts with varying predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long and complex, suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "send confirmation receipt -> send confirmation receipt",
+        "register submission date request -> send confirmation receipt",
+        "unusually long traces with many steps",
+        "inconsistent use of 'send confirmation receipt'",
+        "direct jumps in process steps"
+      ],
+      "notes": "The presence of repeated steps and varying trace lengths suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received' without intermediate steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some variants are unusually long and complex, suggesting potential merging of traces or incorrect case IDs."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The label 'send confirmation receipt' appears multiple times in different contexts, indicating it might be used for different steps."
+        }
+      ],
+      "indicators": [
+        "Direct jumps from 'register submission date request' to 'phase application received'",
+        "Unusually long and complex variants",
+        "Repeated 'send confirmation receipt' in different contexts",
+        "Variants with missing intermediate steps",
+        "Inconsistent sequence lengths",
+        "Multiple occurrences of similar sequences with different frequencies"
+      ],
+      "notes": "The presence of both short and very long traces suggests potential case ID issues or merging."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "Presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants show significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activity sequences",
+        "Inconsistent trace lengths",
+        "Rare variants with complex sequences",
+        "Frequent repetition of certain activities",
+        "Unusual performance values"
+      ],
+      "notes": "The presence of very long traces and large jumps suggests both merging and missing data issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants show significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activities",
+        "Repetitive sequences within traces",
+        "Unusual path lengths",
+        "Low frequency of some complex traces",
+        "Inconsistent branching patterns"
+      ],
+      "notes": "The presence of repeated sequences and long traces suggests potential merging or incorrect case IDs."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps in the sequences, such as 'register submission date request' directly to 'phase application received' or 'registration date publication', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears in different contexts and positions, suggesting it may represent different steps in the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'enter senddate acknowledgement' and 'enter senddate procedure confirmation' contain extra tokens that may not be necessary for the process description."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "send confirmation receipt -> send confirmation receipt",
+        "enter senddate acknowledgement",
+        "enter senddate procedure confirmation",
+        "OLO messaging active -> phase application received",
+        "register submission date request -> registration date publication"
+      ],
+      "notes": "The presence of repeated sequences and label variations suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "There are overly long traces with many repeated sequences, suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Repeated subsequences like 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Label 'Check:homonymous' appears in multiple contexts",
+        "Unusually long sequences with many steps",
+        "Variants with high repetition of certain sequences",
+        "Rare variants with complex sequences",
+        "Inconsistent sequence lengths"
+      ],
+      "notes": "The presence of repeated sequences and complex, long traces suggests potential case merging or ID issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of overly long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The label 'Check:homonymous' appears in different contexts, indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Overly long traces with many activities",
+        "Repeated subsequences like 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Label 'Check:homonymous' used in different contexts",
+        "High frequency of repeated sequences",
+        "Variants with unusual path lengths",
+        "Inconsistent branching patterns"
+      ],
+      "notes": "The structural complexity and repeated sequences suggest potential case merging and label misuse."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with significant jumps (e.g., A->D)",
+        "Repeated sequences within traces",
+        "Low frequency of some complex variants",
+        "Variants with missing expected segments",
+        "High diversity in path structures"
+      ],
+      "notes": "The complexity and length of some traces suggest potential data quality issues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several labels contain extra tokens such as IDs and timestamps, e.g., 'register submission date request_80kiFMt_20110124 080014000000'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are variants with significant jumps and missing segments, such as 'register submission date request' directly to 'send confirmation receipt'."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Different labels appear to represent similar steps, such as 'send confirmation receipt' and 'send procedure confirmation'."
+        }
+      ],
+      "indicators": [
+        "register submission date request_80kiFMt_20110124 080014000000",
+        "register submission date request -> send confirmation receipt",
+        "send confirmation receipt_93BGava_20110708 180027000000",
+        "register submission date request -> enter senddate acknowledgement",
+        "register submission date request -> send confirmation receipt -> send procedure confirmation",
+        "OLO messaging active -> create procedure confirmation"
+      ],
+      "notes": "The presence of polluted labels and scattered cases suggests potential data quality issues affecting trace completeness and clarity."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants show significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activity sequences",
+        "Repetitive sequences within traces",
+        "Low frequency of certain complex traces",
+        "Inconsistent sequence lengths",
+        "Rare variants with unique sequences"
+      ],
+      "notes": "The presence of long and complex traces alongside simpler ones suggests issues with case identification and trace completeness."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps in sequences, such as from '1st outpatient consultation' to 'acceptance laboratory research', suggesting missing parts of traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Some traces are unusually long with many repeated segments, indicating possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "Significant jumps in sequences",
+        "Unusually long traces with repeated segments",
+        "High frequency of repeated subsequences",
+        "Rare sequences with extensive detail",
+        "Inconsistent sequence lengths",
+        "Frequent loops in sequences"
+      ],
+      "notes": "The presence of repeated subsequences and varying trace lengths suggests structural irregularities."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants show significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activity sequences",
+        "Inconsistent trace lengths",
+        "Repetitive sequences within traces",
+        "Rare variants with complex sequences",
+        "Frequent variants with simple sequences"
+      ],
+      "notes": "The presence of both very long and very short traces suggests issues with case identification and completeness."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps in sequences, such as 'register submission date request' directly to 'OLO messaging active' or 'phase application received', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears in different contexts with varying predecessors, suggesting it is used for different process steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long and complex, potentially indicating merged traces or wrong case IDs."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> OLO messaging active",
+        "send confirmation receipt -> send confirmation receipt",
+        "register submission date request -> phase application received",
+        "unusually long traces with many steps",
+        "inconsistent use of 'send confirmation receipt'",
+        "frequent direct jumps in sequences"
+      ],
+      "notes": "The presence of repeated steps and varying trace lengths suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are numerous variants with significant differences in sequence length and structure, indicating missing parts or skipped steps in some traces."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "There are small typographical errors in labels, such as '1st outpatent consultation' and 'administrative ate - first pol', suggesting label distortions."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some labels contain additional tokens or information, such as 'obstetrics-gynaec. short card cost-out', which may indicate label pollution."
+        }
+      ],
+      "indicators": [
+        "Significant sequence length variation",
+        "Typo in '1st outpatent consultation'",
+        "Typo in 'administrative ate - first pol'",
+        "Complex labels like 'obstetrics-gynaec. short card cost-out'",
+        "Frequent repetition of 'administrative rate - first pol'",
+        "Rare and frequent variants with similar steps"
+      ],
+      "notes": "The presence of both frequent and rare variants with similar steps suggests potential structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Some labels contain extra tokens such as IDs and timestamps, e.g., 'register submission date request_21LLycg_20150219 080035000000'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as 'register submission date request' directly followed by 'phase application received'."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long and complex, suggesting possible merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "register submission date request_21LLycg_20150219 080035000000",
+        "send confirmation receipt_76Knrfh_20150219 080038000000",
+        "register submission date request -> phase application received",
+        "Unusually long traces with many steps",
+        "Inconsistent trace lengths",
+        "Frequent label anomalies with extra tokens"
+      ],
+      "notes": "The presence of extra tokens in labels strongly indicates label pollution, while structural jumps and trace complexity suggest scattered and elusive cases."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with significant jumps (e.g., A->D)",
+        "Repetitive sequences within traces",
+        "Unusually high performance values",
+        "Rare single-step variants",
+        "Inconsistent trace lengths"
+      ],
+      "notes": "The structural complexity and variability suggest issues with trace completeness and case identification."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, indicating potential missing parts of traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Some activity labels contain additional tokens or descriptors, which may indicate label pollution."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with significant jumps (e.g., A->D)",
+        "Activity labels with additional descriptors",
+        "Repeated subsequences in traces",
+        "Inconsistent trace lengths",
+        "Rare and frequent paths with similar structures"
+      ],
+      "notes": "The structural complexity and variability in trace lengths suggest multiple imperfection patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'send confirmation receipt' and 'send confirmation receipt_signed' activities suggests a single event spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received' without intermediate steps."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt -> send confirmation receipt",
+        "send confirmation receipt_signed1 -> send confirmation receipt_signed2",
+        "register submission date request -> phase application received",
+        "OLO messaging active -> phase application received",
+        "register submission date request -> send confirmation receipt",
+        "enter senddate acknowledgement -> register submission date request"
+      ],
+      "notes": "The presence of repeated and signed receipt activities strongly indicates collateral events, while missing segments suggest scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are significant jumps and missing segments in some variants, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activities",
+        "Repeated sequences within traces",
+        "Inconsistent trace lengths",
+        "Rare variants with complex sequences",
+        "Frequent variants with simple sequences"
+      ],
+      "notes": "The complexity and length of some traces suggest issues with case identification or trace completeness."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are significant jumps and missing segments in some variants, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in sequences",
+        "Inconsistent trace lengths",
+        "Repeated subsequences within traces",
+        "Rare variants with unique paths",
+        "Frequent loops in some variants"
+      ],
+      "notes": "The structural complexity and variability in trace lengths suggest issues with case identification and completeness."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "There are variants with significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with significant jumps (e.g., A->D)",
+        "Repeated sequences within traces",
+        "High path diversity with low frequencies",
+        "Unusual sequence lengths",
+        "Rare variants with complex paths"
+      ],
+      "notes": "The structural complexity and diversity suggest issues with trace completeness and case identification."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants show significant jumps and missing segments, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Extremely long traces with many activities",
+        "Variants with large jumps in activity sequences",
+        "Repetitive sequences like 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Inconsistent trace lengths",
+        "Rare variants with unique sequences",
+        "Frequent loops and repeated segments"
+      ],
+      "notes": "The presence of long and complex traces alongside simpler ones suggests possible data merging issues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' events suggests a single real step spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received' or 'registration date publication'."
+        }
+      ],
+      "indicators": [
+        "send confirmation receipt_signed1",
+        "send confirmation receipt_signed2",
+        "register submission date request -> phase application received",
+        "register submission date request -> registration date publication",
+        "OLO messaging active -> phase application received",
+        "enter senddate acknowledgement -> register submission date request"
+      ],
+      "notes": "The presence of repeated and signed receipt events strongly indicates collateral events, while large jumps in trace sequences suggest scattered cases."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several labels contain extra tokens such as IDs and timestamps, e.g., 'acceptance laboratory research_74RIBrn_20080320 080000000000'."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Presence of overly long traces with numerous activities, suggesting possible merging of cases, e.g., a trace with multiple laboratory and consultation steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Variants show significant structural jumps and missing segments, such as direct transitions from '1st outpatient consultation' to 'ct abdomen'."
+        }
+      ],
+      "indicators": [
+        "acceptance laboratory research_74RIBrn_20080320 080000000000",
+        "Long trace with multiple laboratory steps",
+        "Direct jump: '1st outpatient consultation' -> 'ct abdomen'",
+        "Repeated subsequences: 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Inconsistent trace lengths",
+        "Rare, complex paths with low frequency"
+      ],
+      "notes": "The presence of long and complex traces alongside polluted labels suggests data quality issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Some labels contain extra tokens, such as 'acceptance laboratory research_86LZBNj_20080320 080000000000', indicating potential pollution with IDs or timestamps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "There are extremely long traces with numerous activities, such as the one with multiple laboratory tests, suggesting possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are significant jumps in sequences, such as '1st outpatient consultation' directly to 'thorax', indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "acceptance laboratory research_86LZBNj_20080320 080000000000",
+        "1st outpatient consultation -> acceptance laboratory research -> administrative rate - first pol -> albumin -> alkaline phosphatase -kinetic- -> bilirubin - total -> bilirubin -conjugated -> blood group abo and rhesus factor -> ca-125 mbv half -> calcium -> cea - tumormarker mbv meia -> creatinine -> gammaglutamyltranspeptidase -> glucose -> hemoglobin photoelectric -> lactic acid dehydrogenase -ldh- kinetic -> leukocyte counting electronically -> order tariff -> platelet counting - electronically -> potassium potentiometric -> rhesusfactor d - centrifugeermethode - e -> screening antibodies for erythrocytes -> sgot - asat kinetisch -> sgpt - kinetisch tool -> sodium flame photometric -> thorax -> urea -> ct abdomen",
+        "1st outpatient consultation -> thorax",
+        "acceptance laboratory research_13kITJE_20080227 080001000000",
+        "obstetrics-gynaec.   annual pass cost-out -> administrative rate - first pol -> follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis -> administrative rate - first pol -> follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis",
+        "administrative rate - first pol -> follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis -> follow-up consultation on an outpatient basis"
+      ],
+      "notes": "The presence of long and complex traces alongside polluted labels suggests data quality issues affecting trace integrity."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Some labels contain extra tokens, such as 'acceptance laboratory research_56XGMrs_20080320 080000000000', indicating potential pollution with IDs or timestamps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "The presence of extremely long traces with numerous activities suggests possible merging of cases or incorrect case IDs."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from '1st outpatient consultation' to 'administrative rate - first pol', indicating scattered case data."
+        }
+      ],
+      "indicators": [
+        "acceptance laboratory research_56XGMrs_20080320 080000000000",
+        "Long trace with many lab tests",
+        "Direct jumps in sequences",
+        "Repeated subsequences",
+        "Unusual path lengths",
+        "Low frequency unique traces"
+      ],
+      "notes": "The presence of repeated subsequences and unusual path lengths further supports the detected patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "The presence of multiple 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' events suggests that a single real-world step is spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' suggest extra tokens or identifiers appended to activity names."
+        }
+      ],
+      "indicators": [
+        "Repeated 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2'",
+        "Direct jumps from 'register submission date request' to 'phase application received'",
+        "Variants with excessive repetition of similar events",
+        "Inconsistent sequence lengths across variants",
+        "Presence of '_signed1' and '_signed2' in labels",
+        "Variants with missing expected intermediate steps"
+      ],
+      "notes": "The presence of repeated and appended labels suggests both collateral events and label pollution."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps and missing segments in some variants, such as direct transitions from 'register submission date request' to 'phase application received' without intermediate steps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'send confirmation receipt' appears in different contexts with varying predecessors, suggesting it may represent different steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Some traces are unusually long and complex, indicating potential merging of cases or incorrect case IDs."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "send confirmation receipt -> send confirmation receipt",
+        "register submission date request -> send confirmation receipt",
+        "register submission date request -> enter senddate acknowledgement",
+        "OLO messaging active -> phase application received",
+        "register submission date request -> message terminate request"
+      ],
+      "notes": "The presence of repeated activities and varying trace lengths suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are significant jumps in sequences, such as 'register submission date request' directly to 'phase application received', indicating missing parts of traces."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'enter senddate acknowledgement' and 'enter senddate decision environmental permit' suggest inclusion of extra tokens like dates or actions in labels."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The label 'send confirmation receipt' appears in different contexts with varying predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "enter senddate acknowledgement",
+        "enter senddate decision environmental permit",
+        "send confirmation receipt -> send procedure confirmation",
+        "register submission date request -> send confirmation receipt",
+        "OLO messaging active -> phase application received"
+      ],
+      "notes": "The presence of repeated sequences and label variations suggests structural inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "There are numerous variants with significant jumps and missing segments, such as skipping from 'register submission date request' directly to 'phase application received' or 'registration date publication'."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces are unusually long and complex, suggesting possible merging of cases or incorrect case IDs, as seen in traces with extensive sequences of activities."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'enter senddate acknowledgement' and 'registrer date of publishing received request' suggest the presence of extra tokens or metadata within activity names."
+        }
+      ],
+      "indicators": [
+        "register submission date request -> phase application received",
+        "register submission date request -> registration date publication",
+        "extremely long traces with many activities",
+        "enter senddate acknowledgement",
+        "registrer date of publishing received request",
+        "inconsistent trace lengths"
+      ],
+      "notes": "The presence of both very short and very long traces indicates structural inconsistencies."
+    }
+  }
+]

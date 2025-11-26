@@ -1,0 +1,2104 @@
+[
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Numerous activity labels include embedded technical descriptors and codes, such as 'mbv meia', '-kinetic-', and 'potentiometric', indicating extra tokens polluting the core activity names. This is evident across multiple long laboratory sequences where labels deviate from simple process steps."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Long traces feature bursts of numerous near-sequential laboratory activities (e.g., 20+ tests like 'albumin' to 'urea' following 'acceptance laboratory research'), suggesting one real step like lab ordering spawns multiple sub-events. High path diversity with low-frequency variants reinforces this as collateral logging rather than distinct paths."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Extreme variation in trace lengths, from short loops (2-3 activities) to overly extended ones (30+ activities with exhaustive lab lists), points to potential merging of multiple cases or wrong case IDs. Rare variants with unique long sequences support elusive merging artifacts."
+        }
+      ],
+      "indicators": [
+        "Long bursts of 20+ laboratory activities in single traces",
+        "Labels with embedded codes like 'mbv meia' and '-kinetic-'",
+        "High path diversity with many freq=1 unique variants",
+        "Repeated loops of 'administrative rate - first pol -> follow-up consultation'",
+        "Inconsistent trace lengths from 1 to 30+ activities",
+        "Varied starting activities across variants (e.g., '1st outpatient consultation' vs. lab acceptance)"
+      ],
+      "notes": "Performance metrics show extreme variance but are not used for detection as they imply timing not structurally visible in sequences."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple near-simultaneous lab test events (e.g., albumin, alkaline phosphatase -kinetic-, etc.) follow 'acceptance laboratory research' in long sequences, suggesting one lab step spawns numerous sub-events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Variants start at inconsistent points (e.g., some begin with '1st outpatient consultation', others with 'follow-up consultation' or 'obstetrics-gynaec. annual pass cost-out'), indicating missing trace chunks and incomplete paths."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Activity labels include extra tokens like '-kinetic-', 'mbv half', and 'mbv meia' in lab tests, suggesting pollution with procedural details or codes."
+        }
+      ],
+      "indicators": [
+        "Long lab sequences with 20+ atomic tests after 'acceptance laboratory research'",
+        "Inconsistent trace starts across variants",
+        "Repeated loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Single-activity traces like 'follow-up consultation on an outpatient basis'",
+        "Labels with suffixes like '-kinetic-' and 'mbv meia'",
+        "Varying sequence lengths from 1 to 20+ activities"
+      ],
+      "notes": "High path diversity with loops and bursts points to process execution irregularities."
+    }
+  },
+  {
+    "file": "variant_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "4) Elusive Case",
+          "confidence": 0.9,
+          "why": "Overly long traces, such as sequences with dozens of consecutive lab tests following 'acceptance laboratory research', suggest merged or incorrectly combined case executions. High path diversity with irregular lengths supports mixed case ID issues."
+        },
+        {
+          "pattern": "2) Collateral Event",
+          "confidence": 0.8,
+          "why": "Clusters of near-identical lab test activities (e.g., 'albumin -> alkaline phosphatase -kinetic- -> ...') immediately after 'acceptance laboratory research' indicate one step generating multiple sub-events in sequence. Low frequencies for these extended variants reinforce collateral spawning."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants with abrupt jumps, such as from '1st outpatient consultation' directly to lab tests or single isolated activities like 'follow-up consultation on an outpatient basis', point to missing trace segments. Inconsistent chunking across frequencies highlights incomplete paths."
+        }
+      ],
+      "indicators": [
+        "Overly long sequences with 20+ lab tests in succession",
+        "Repeated loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis' (2-4 iterations)",
+        "Single-activity variants like 'follow-up consultation on an outpatient basis' (freq=3)",
+        "Diverse entry points: '1st outpatient consultation', 'obstetrics-gynaec. annual pass cost-out', 'telephone consultation'",
+        "Jumps from consultations to specialized procedures (e.g., ultrasound, cytological exams) without intermediates",
+        "Insertion of 'telephone consultation' in mid-loop variants"
+      ],
+      "notes": "Performance metrics show anomalies like 0.00 values, but analysis limited to structural cues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Labels include extraneous prefixes like 'vrw.gesl.org-' in activity names and technical details such as '-kinetic-' or 'mbv meia', suggesting contamination with IDs or metadata. This irregularity appears in rare variants, indicating sporadic pollution."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Overly long traces chain numerous lab activities (e.g., 20+ sequential tests like albumin -> alkaline phosphatase -> ... -> ct abdomen), implying merged or incorrectly associated events across cases. High path diversity with extreme lengths supports mixed case ID issues."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Single-activity variants (e.g., 'follow-up consultation on an outpatient basis' alone) and abrupt jumps (e.g., from '1st outpatient consultation' directly to cost-out or lab sequences) indicate missing trace segments. Low-frequency incomplete paths highlight structural gaps."
+        }
+      ],
+      "indicators": [
+        "Label with URL-like prefix: 'vrw.gesl.org- adnex extirpation through lapar'",
+        "Long merged lab sequences: 20+ activities in one trace (e.g., albumin -> ... -> ct abdomen)",
+        "Single-activity traces: e.g., 'acceptance laboratory research' (freq=1)",
+        "Repeated loops: 'administrative rate - first pol -> follow-up consultation' in multiple variants",
+        "Abrupt path jumps: '1st outpatient consultation' -> 'obstetrics-gynaec. short card cost-out'",
+        "Technical suffixes in labels: e.g., 'sgpt - kinetisch tool', 'rhesusfactor d - centrifugeermethode - e'"
+      ],
+      "notes": "Performance metrics show anomalies like 0.00 values in short traces, but analysis limited to structural cues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Multiple low-frequency variants show clear typos and character swaps, such as 'outpatent' for 'outpatient', 'administrative ate' for 'administrative rate', and 'cst-out' for 'cost-out', indicating data entry distortions in labels."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Several variants exhibit overly long sequences, like extensive lab test chains following '1st outpatient consultation' with dozens of activities, suggesting possible merging of multiple cases or mixed case IDs into single traces."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Variations in similar labels, such as 'obstetrics-gynaec. annual pass cost-out' and 'obstetrics-gynaec. short card cost-out', appear across different paths, likely representing synonymous activities with inconsistent naming."
+        }
+      ],
+      "indicators": [
+        "Typos in labels: 'outpatent', 'administrative ate', 'cst-out'",
+        "Overly long traces with 20+ sequential lab activities",
+        "Repetitive loops: 'administrative rate - first pol -> follow-up consultation' repeated 2-4 times in high-frequency variants",
+        "Single-activity variants amid mostly multi-step paths",
+        "Label variations: 'annual pass cost-out' vs 'short card cost-out'",
+        "Inconsistent starting activities across variants (e.g., '1st outpatient' vs 'obstetrics-gynaec.')"
+      ],
+      "notes": "High path diversity with loops and branches, but focused on label and length anomalies."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "A clear typo appears in one variant as 'outpatuient' instead of 'outpatient', indicating character distortion in activity labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Many labels include extra technical tokens and codes like 'mbv half', 'kinetic', and detailed descriptors (e.g., 'ca-125 mbv half'), suggesting pollution with additional metadata."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.7,
+          "why": "Long chains of sequential lab tests (e.g., 'albumin -> alkaline phosphatase -kinetic- -> ...') in single traces imply one step spawning multiple related sub-events bundled together."
+        }
+      ],
+      "indicators": [
+        "Typo: 'outpatuient' vs 'outpatient'",
+        "Labels with codes: 'ca-125 mbv half', 'sgpt - kinetisch tool'",
+        "Long lab test sequences in traces",
+        "Repetitive loops: multiple 'administrative rate - first pol -> follow-up consultation'",
+        "Varied trace lengths from 1 to 20+ activities",
+        "Diverse starting labels: '1st outpatient consultation', 'obstetrics-gynaec. annual pass cost-out'"
+      ],
+      "notes": "High-frequency loops suggest process repetition, but no strong evidence for other patterns like scattering or synonymy."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Long chains of consecutive lab tests following 'acceptance laboratory research' suggest one step spawning multiple near-simultaneous events, visible as extended sequences of unique activities like 'albumin -> alkaline phosphatase -kinetic- -> ...' in several variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Overly long traces with dozens of lab activities and repetitive consultation loops indicate possible merged or mixed case executions, as seen in variants exceeding typical sequence lengths."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Short, single-activity variants like 'follow-up consultation on an outpatient basis' and abrupt jumps between unrelated activities imply missing trace parts or skipped chunks in some paths."
+        }
+      ],
+      "indicators": [
+        "Long lab test sequences after acceptance",
+        "Repetitive 'administrative rate - first pol -> follow-up consultation' loops",
+        "Single-activity traces with frequency >1",
+        "Variants with performance 0.00",
+        "Diverse path lengths from 1 to 30+ activities",
+        "Inconsistent starting activities across variants"
+      ],
+      "notes": "Performance values show anomalies like 0.00 for incomplete traces, supporting imperfection signals."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels exhibit extra tokens, spaces, and apparent codes like 'vrw.gesl.org-' or 'obstetrics-gynaec.   annual pass cost-out', indicating pollution with non-activity details. This irregularity appears across multiple variants, disrupting clean sequence topology."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Long sequences of bundled lab tests (e.g., 20+ activities like 'albumin -> alkaline phosphatase -kinetic- -> ...') in rare variants suggest one step spawning multiple near-simultaneous sub-events. These appear as inflated paths distinct from shorter, repetitive consultation loops."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Overly long traces merging diverse elements (e.g., consultations with extensive lab chains) alongside short single-activity variants indicate possible mixed or merged case paths. Frequency disparities highlight elusive, non-standard executions amid dominant loops."
+        }
+      ],
+      "indicators": [
+        "Malformed labels with codes/URLs: 'vrw.gesl.org- adnex extirpation through lapar'",
+        "Extra spaces and descriptive tokens: 'obstetrics-gynaec.   annual pass cost-out'",
+        "Long bundled lab sequences: 20+ activities in rare variants",
+        "Repetitive loops: 'administrative rate - first pol -> follow-up consultation on an outpatient basis' repeated 2-4 times",
+        "Varied path lengths: 1 activity to 30+ activities",
+        "Inconsistent branching: jumps from consultations to lab tests or cost-outs"
+      ],
+      "notes": "Dominant repetitive variants suggest process loops, but rare long paths amplify imperfection signals."
+    }
+  },
+  {
+    "file": "variant_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Multiple single-activity variants and short traces suggest missing segments, while others skip directly to follow-ups or lab bursts without intermediate steps."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Overly long traces with extensive lab test sequences and repeated loops indicate potential merging of multiple cases into single traces."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Bursts of numerous near-sequential lab activities following a single consultation point to one step generating multiple sub-events."
+        }
+      ],
+      "indicators": [
+        "Single-activity traces like 'follow-up consultation on an outpatient basis'",
+        "Long sequences of 20+ lab tests in one variant",
+        "Repeated subsequences of 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Inconsistent trace lengths from 1 to 25+ activities",
+        "Frequent loops with 2-5 repetitions in high-frequency variants",
+        "Diverse starting activities across variants (e.g., '1st outpatient consultation' vs 'obstetrics-gynaec. annual pass cost-out')"
+      ],
+      "notes": "High path diversity with loops and incompletes dominates the variant structure."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Multiple long sequential bursts of lab tests (e.g., albumin -> alkaline phosphatase -> ... -> ct abdomen) immediately following 'acceptance laboratory research' in several variants suggest one real step spawning numerous near-simultaneous sub-events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Activity labels exhibit extra tokens and formatting irregularities, such as multiple spaces in 'obstetrics-gynaec.   annual pass cost-out', apparent codes in 'vrw.gesl.org- adnex extirpation through lapar', and verbose descriptors like 'sgpt - kinetisch tool' across variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Presence of overly long merged traces (e.g., 20+ activities in lab sequences) alongside short single-activity variants and irregular path lengths indicates possible mixing or incorrect case ID associations leading to concatenated executions."
+        }
+      ],
+      "indicators": [
+        "Bursty sequences of 15+ lab activities after 'acceptance laboratory research'",
+        "Repetitive loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis' in high-frequency variants",
+        "Verbose labels with extra spaces, dashes, and potential codes (e.g., 'obstetrics-gynaec.   annual pass cost-out')",
+        "Varied trace lengths from 1 activity to 20+ activities",
+        "Low-frequency unique traces with specialized medical procedures",
+        "Multiple single-activity variants with performance 0.00"
+      ],
+      "notes": "Repetitive structures dominate frequent variants, but bursty and polluted elements point to data capture issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The label 'Check:homonymous' appears twice within the same trace, suggesting the same label is used for potentially different process steps or contexts, as indicated by its explicit naming and positioning amid lab tests."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Long chains of numerous lab tests (e.g., 20+ activities like 'albumin -> alkaline phosphatase -kinetic- -> ... -> urea') immediately follow 'acceptance laboratory research' or consultations, indicating one real step likely spawning multiple sub-events."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Overly long traces merging extensive lab sequences and repetitive consultation loops suggest possible mixing or incorrect merging of case IDs, leading to abnormally extended execution paths."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' in single trace",
+        "Chains of 20+ lab test activities after lab acceptance",
+        "Frequent loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Traces varying from 1 to 30+ activities",
+        "Labels with embedded descriptors like '-kinetic-' and 'mbv meia'",
+        "Single-activity traces like isolated 'follow-up consultation on an outpatient basis'"
+      ],
+      "notes": "Performance values show anomalies like 0.00 or very large numbers, but analysis focuses on structural cues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears repeatedly in various trace positions with differing predecessors (e.g., after '1st outpatient consultation' or amid lab tests) and successors, signaling the same label used for distinct process steps."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Several variants feature long, sequential chains of specialized lab activities (e.g., albumin -> alkaline phosphatase -> ... -> urea), indicative of one real step generating multiple near-simultaneous sub-events."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Overly extended traces with numerous concatenated lab tests and irregular lengths suggest possible merging of cases or wrong case ID assignments, leading to abnormally long execution paths."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' in multiple trace contexts",
+        "Long sequences of lab tests (e.g., 20+ activities like albumin to urea)",
+        "Frequent looping on 'administrative rate - first pol -> follow-up consultation'",
+        "Single-activity variants (e.g., isolated 'follow-up consultation')",
+        "Diverse starting points (e.g., '1st outpatient consultation' vs 'obstetrics-gynaec. annual pass')",
+        "Irregular path lengths from 1 to 30+ activities"
+      ],
+      "notes": "High path diversity with loops and branches points to process variability, but lab chains strongly suggest batch event spawning."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "One variant contains a label with embedded ID and timestamp-like tokens ('acceptance laboratory research_56XGMrs_20080320 080000000000'), directly indicating extra non-activity information polluting the label structure."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Several variants show a single step like 'acceptance laboratory research' followed by numerous near-simultaneous lab-related activities (e.g., albumin, bilirubin, etc.), suggesting one real event spawning multiple sub-events in sequence."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Presence of extremely long traces with 20+ activities (e.g., detailed lab sequences) alongside short single-activity variants indicates potential merging of cases or overly extended paths due to mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Label pollution: 'acceptance laboratory research_56XGMrs_20080320 080000000000' with ID and date",
+        "Long lab traces: 20+ sequential activities like 'albumin -> alkaline phosphatase -> ... -> urea'",
+        "Repetitive loops: Multiple variants with 3-5 repetitions of 'administrative rate - first pol -> follow-up consultation'",
+        "Short incomplete traces: Single-activity variants like 'follow-up consultation on an outpatient basis' (freq=3)",
+        "Diverse starting points: Variants begin with '1st outpatient consultation', 'obstetrics-gynaec. annual pass cost-out', or 'telephone consultation'",
+        "Irregular path lengths: Frequencies show common short loops (freq=41) vs rare long lab paths (freq=2)"
+      ],
+      "notes": "High path diversity with repetitions suggests process loops, but anomalies point to data capture issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple activity labels contain appended alphanumeric codes and date-time strings, such as 'acceptance laboratory research_86LZBNj_20080320 080000000000', indicating extra tokens like IDs and timestamps embedded in labels."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Variants feature a single 'acceptance laboratory research' event followed by long chains of numerous specific lab tests (e.g., albumin, bilirubin, etc.), suggesting one real step generates multiple near-simultaneous sub-events."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Presence of extremely long traces with dozens of sequential lab activities alongside short or incomplete variants implies potential merging of cases or overly extended paths due to mixed case IDs."
+        }
+      ],
+      "indicators": [
+        "Labels with appended codes and dates (e.g., _86LZBNj_20080320)",
+        "Long sequential chains of lab tests after 'acceptance laboratory research'",
+        "Repetitive loops of 'administrative rate - first pol -> follow-up consultation'",
+        "Diverse path lengths from single activities to 20+ step sequences",
+        "Variations in similar labels (e.g., annual pass vs short card cost-out)",
+        "Rare long variants with many medical tests in linear order"
+      ],
+      "notes": "High path diversity with loops and branches suggests process variability, but imperfections dominate in label and sequence structure."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple activity labels include appended tokens resembling IDs, timestamps, or codes, such as 'acceptance laboratory research_74RIBrn_20080320 080000000000' and 'order tariff_87LBEUS_20060823 080004000000', indicating pollution with extraneous data."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Several variants exhibit overly long, merged traces with extensive sequences of lab tests and administrative steps, like chains of 20+ activities starting from '1st outpatient consultation' to multiple blood tests and imaging, suggesting incorrect case ID mixing or trace concatenation."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Short, incomplete variants like single 'follow-up consultation on an outpatient basis' or abrupt jumps to 'obstetrics-gynaec. short card cost-out' without preceding steps imply missing trace segments across cases."
+        }
+      ],
+      "indicators": [
+        "Appended codes in labels: _74RIBrn_20080320",
+        "Long merged traces: 20+ lab tests in sequence",
+        "Single-activity variants with freq=3",
+        "Abrupt sequence jumps: 1st consultation -> cost-out",
+        "Repetitive loops: administrative rate -> follow-up -> administrative rate",
+        "Unique freq=1 complex paths"
+      ],
+      "notes": "High path diversity with many low-frequency variants suggests logging inconsistencies."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple near-simultaneous lab tests appear as long sequential chains following 'acceptance laboratory research', suggesting one lab session spawns numerous events. This is evident in variants with 20+ consecutive test activities like 'albumin -> alkaline phosphatase -kinetic- -> ...'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Activity labels include extra technical tokens and parameters, such as 'mbv half', 'kinetisch tool', and 'centrifugeermethode - e', indicating embedded details beyond core activity names. These appear consistently across lab-related variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Overly long traces merge numerous steps, like the extensive lab sequence variant with frequency 3, likely due to mixed or incorrectly split case IDs. This contrasts with shorter, looped variants showing path inconsistencies."
+        }
+      ],
+      "indicators": [
+        "Long chains of 20+ sequential lab tests after 'acceptance laboratory research'",
+        "Repeated loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis' in high-frequency variants",
+        "Labels with embedded specs like 'mbv meia', 'kinetic-', and multiple hyphens",
+        "Varied trace lengths from 1 activity to 30+ activities",
+        "Irregular jumps to cost-out activities like 'obstetrics-gynaec. short card cost-out'",
+        "Low-frequency single-activity variants like 'follow-up consultation on an outpatient basis'"
+      ],
+      "notes": "High path diversity with loops and bursts suggests process variability amplified by logging issues."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple near-simultaneous sub-events appear in long sequential bursts, such as 'acceptance laboratory research' followed by dozens of specific lab tests like 'albumin', 'alkaline phosphatase -kinetic-', indicating one step spawning many related events."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Overly long merged traces are evident in variants with 20+ activities, such as extensive lab sequences, alongside short incomplete traces like single-activity paths, suggesting mixed or incorrectly split case IDs."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Activity labels contain embedded extra tokens and descriptors, e.g., 'ca-125 mbv half', 'sgot - asat kinetisch', and 'obstetrics-gynaec. annual pass cost-out', likely including method codes or specifics not part of core activity names."
+        }
+      ],
+      "indicators": [
+        "Long sequences of 20+ lab tests in a row after 'acceptance laboratory research'",
+        "Repeated loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Single-activity traces like 'follow-up consultation on an outpatient basis' with frequency 3",
+        "Varied trace lengths from 1 to 30+ activities",
+        "Labels with hyphens and specifics like '-kinetic-' and 'mbv half'",
+        "Jumps to cost-out activities like 'obstetrics-gynaec. short card cost-out' without intermediates"
+      ],
+      "notes": "High path diversity with 50+ unique variants suggests fragmented or merged executions."
+    }
+  },
+  {
+    "file": "variant_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple near-simultaneous lab test events follow 'acceptance laboratory research' in several long variants, suggesting one step spawns many sub-events visible as sequential activities."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "One variant features a label with extraneous prefix 'vrw.gesl.org-', indicating embedded IDs or system tokens not part of core activity names."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Extreme length disparities across variants, with some exceeding 20 activities (e.g., extensive lab chains) versus typical short traces, pointing to potential merged or incorrectly split cases."
+        }
+      ],
+      "indicators": [
+        "Long chains of 15+ lab tests after 'acceptance laboratory research'",
+        "Label anomaly: 'vrw.gesl.org- adnex extirpation through lapar'",
+        "Trace lengths vary from 1 to 25+ activities",
+        "Frequent loops of 'administrative rate - first pol -> follow-up consultation on an outpatient basis'",
+        "Rare single-activity variants like 'follow-up consultation on an outpatient basis'",
+        "Variations in cost-out labels (annual pass vs short card)"
+      ],
+      "notes": "Performance metrics ignored as they are not structural cues from variants."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Numerous variants exhibit large skips, such as direct transitions from 'register submission date request' to 'phase application received' or short single-activity traces, while others include full lengthy paths, indicating missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Overly long variants with irregular orders, like reversed 'enter senddate acknowledgement -> register submission date request', and merged-like sequences with excessive repetitions suggest wrong or mixed case IDs leading to concatenated traces."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "Recurring misspelling 'registrer date of publishing received request' across multiple variants points to consistent character swaps or typos in activity labels."
+        }
+      ],
+      "indicators": [
+        "Consecutive repetitions of 'send confirmation receipt -> send confirmation receipt' in frequent variants",
+        "Typo 'registrer' instead of 'register' in several traces",
+        "Extreme length variation: single-activity vs. 50+ step traces",
+        "Reversed order in rare variant: acknowledgement before submission",
+        "Multiple consecutive 'procedure change' in long traces",
+        "Rare variant with repeated '_signed1' and '_signed2' suffixes"
+      ],
+      "notes": "High path diversity with 60+ unique variants supports structural fragmentation."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Rare variants (freq=1) show one step spawning multiple near-simultaneous-like events with labels like 'send confirmation receipt_signed1' and '_signed2' repeated excessively, indicating collateral spawning from a single real action."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels include extra tokens such as '_signed1' and '_signed2' in specific variants, suggesting pollution from IDs or signatures embedded in activity names."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Apparent typos like 'registrer date of publishing received request' (likely 'register') appear in multiple variants, distorting standard labeling consistency."
+        }
+      ],
+      "indicators": [
+        "Excessive repetitions of 'send confirmation receipt_signed1' and '_signed2' in low-frequency variants",
+        "Consecutive duplicates like 'send confirmation receipt -> send confirmation receipt'",
+        "Typographical error in 'registrer' vs expected 'register'",
+        "Large skips e.g., 'register submission date request' directly to 'phase application received'",
+        "High diversity with many unique long traces (20+ activities) at low frequencies",
+        "Short aborted variants like single 'register submission date request' (freq=2)"
+      ],
+      "notes": "Structural cues point to label and path fragmentation, but time-related patterns unobservable without timestamps."
+    }
+  },
+  {
+    "file": "variant_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple variants feature sequences of 'send confirmation receipt_signed1' and 'send confirmation receipt_signed2' appearing in rapid succession or interleaved, indicating one real step spawning multiple related events."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'registrer date of publishing received request' show clear typographical errors (e.g., 'registrer' for 'register'), appearing across several low-frequency variants."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants exhibit irregular jumps, such as direct transitions from 'register submission date request' to 'phase application received' without intermediate steps, while others include full paths, suggesting missing trace segments."
+        }
+      ],
+      "indicators": [
+        "Repeated 'send confirmation receipt_signed1' and '_signed2' in sequences",
+        "Typo 'registrer' in multiple labels",
+        "Short variants skipping to 'phase application received'",
+        "Consecutive 'send confirmation receipt' repetitions",
+        "High path diversity with inconsistent starting activities",
+        "Long traces with duplicated 'procedure change' segments"
+      ],
+      "notes": "High variant diversity points to fragmented or incomplete recordings."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Visible typos in activity labels, such as 'registrer date of publishing received request' instead of 'register', indicate small character swaps or distortions across multiple variants."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Numerous short variants skip major chunks, like direct jumps from 'register submission date request' to 'phase application received' without intermediates, suggesting missing trace parts."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Frequent consecutive repeats of the same activity, such as 'send confirmation receipt -> send confirmation receipt', imply one real step spawning multiple logged events."
+        }
+      ],
+      "indicators": [
+        "Typo: 'registrer' in multiple labels",
+        "Consecutive duplicates: 'send confirmation receipt' twice",
+        "Short traces: single-activity variants like 'register submission date request'",
+        "Long traces: 50+ steps in some variants",
+        "Repeated segments: 'procedure change -> procedure change'",
+        "Path skips: from submission to phase without OLO messaging"
+      ],
+      "notes": "High path diversity with freq 1-3 for long variants suggests fragmented logging."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Visible typos like 'registrer' instead of 'register' and inconsistent capitalization (e.g., 'Enter senddate acknowledgement' vs. 'enter senddate acknowledgement') indicate small character errors or formatting swaps in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Multiple variants show abrupt jumps skipping large chunks, such as 'register submission date request -> phase application received' without intermediate steps like 'OLO messaging active' or 'create procedure confirmation'."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Consecutive repetitions of identical activities, like 'send confirmation receipt -> send confirmation receipt', suggest one real step generating multiple similar events in quick succession."
+        }
+      ],
+      "indicators": [
+        "Typo: 'registrer date of publishing received request'",
+        "Capitalization anomaly: 'Enter senddate acknowledgement' vs lowercase variants",
+        "Consecutive repeats: 'send confirmation receipt -> send confirmation receipt'",
+        "Sequence jumps: 'register submission date request -> phase application received'",
+        "Abnormal trace lengths: variants with 50+ activities vs single-activity traces",
+        "Repeated segments: 'procedure change -> procedure change'"
+      ],
+      "notes": "High path diversity with 50+ unique variants points to fragmented or incomplete recordings."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Visible typos in activity labels such as 'confirmaion' instead of 'confirmation' and 'registrer' instead of 'register' indicate small character swaps or errors in labeling."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Multiple consecutive identical activities like 'send confirmation receipt -> send confirmation receipt' in several high-frequency traces suggest one real step spawning duplicate near-simultaneous events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants show significant path diversity with abrupt skips, such as direct jumps from 'register submission date request' to 'phase application received' without intermediate steps, implying missing trace parts."
+        }
+      ],
+      "indicators": [
+        "Typos in labels: 'confirmaion', 'registrer'",
+        "Repeated identical activities: 'send confirmation receipt' twice consecutively",
+        "Skipped chunks: 'register submission date request' directly to 'phase application received'",
+        "Unusual backward order: 'enter senddate acknowledgement -> register submission date request'",
+        "High path diversity: short single-activity traces vs. very long multi-step traces",
+        "Frequent repetitions: 'procedure change -> procedure change' in long variants"
+      ],
+      "notes": "Performance values vary widely but are not used for detection as they are not structural cues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "2. Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple variants show consecutive repetitions of identical activities like 'send confirmation receipt -> send confirmation receipt', indicating one step likely spawning multiple near-simultaneous events. This pattern repeats across frequent and infrequent traces, suggesting a structural artifact rather than intentional looping."
+        },
+        {
+          "pattern": "8. Distorted Label",
+          "confidence": 0.8,
+          "why": "Label variations such as 'registrer date of publishing received request' versus standard 'register' forms point to small typos or character swaps. These anomalies appear in multiple traces, disrupting sequence consistency without affecting overall path topology."
+        },
+        {
+          "pattern": "3. Scattered Case",
+          "confidence": 0.75,
+          "why": "Numerous short variants skip major chunks, such as direct jumps from 'register submission date request' to 'phase application received' or abrupt endings, contrasting with long, complete traces. This indicates missing trace parts, evident in low-frequency incomplete paths."
+        }
+      ],
+      "indicators": [
+        "Consecutive identical activities (e.g., 'send confirmation receipt' repeated)",
+        "Typo in labels (e.g., 'registrer' vs 'register')",
+        "High trace length variability (1 to 50+ activities)",
+        "Short variants skipping steps (e.g., start to 'phase application received' directly)",
+        "Repeated subsequences with order variations (e.g., 'procedure change' pairs)",
+        "Inconsistent trace starts (e.g., some begin with 'OLO messaging active')"
+      ],
+      "notes": "High path diversity suggests complex process, but repetitions and skips dominate imperfection signals."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Multiple variants feature misspelled labels like 'registrer date of publishing received request' instead of 'register', indicating small typos or character swaps visible in sequence labels."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.85,
+          "why": "Several frequent variants show consecutive identical activities such as 'send confirmation receipt -> send confirmation receipt' and 'procedure change -> procedure change', suggesting one real step spawning multiple logged events."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants exhibit significant path diversity with short traces skipping chunks (e.g., 'register submission date request -> phase application received') while others include long sequences, implying missing parts in some executions."
+        }
+      ],
+      "indicators": [
+        "Repeated consecutive activities: 'send confirmation receipt -> send confirmation receipt' in freq 13+ variants",
+        "Typo in label: 'registrer date of publishing received request' across multiple traces",
+        "Inconsistent trace lengths: short (1-3 steps, freq 2-3) vs long (20+ steps, freq 2-3)",
+        "Duplicate segments: 'procedure change -> procedure change' in extended variants",
+        "Direct jumps skipping sections: 'register submission date request -> phase application received' (freq 3)",
+        "Rare incomplete variants: single activities like 'enter senddate acknowledgement' (freq 1)"
+      ],
+      "notes": "High path diversity with repetitions points to logging artifacts rather than process variations."
+    }
+  },
+  {
+    "file": "variant_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Multiple variants feature the misspelled label 'registrer date of publishing received request', indicating small typos or character swaps consistent with label distortion."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Overly long traces (40+ activities) alongside short or reversed sequences (e.g., 'enter senddate acknowledgement -> register submission date request') suggest mixed or wrong case IDs leading to merged or incomplete paths."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Frequent consecutive repetitions of identical activities (e.g., 'send confirmation receipt -> send confirmation receipt', 'procedure change -> procedure change') indicate one step spawning multiple near-simultaneous events."
+        }
+      ],
+      "indicators": [
+        "Consecutive duplicate activities (e.g., 'send confirmation receipt' repeated)",
+        "Label misspelling: 'registrer date of publishing received request'",
+        "Extreme trace length variation (1 to 40+ activities)",
+        "Unusual sequence orders (e.g., acknowledgement before submission)",
+        "Inconsistent starting activities across variants",
+        "Repeated 'procedure change' segments"
+      ],
+      "notes": "High path diversity with skips supports scattered elements, but elusive and collateral better explain merges and duplicates."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple instances of 'Check:homonymous' appear in varying contexts with different predecessors and successors, indicating the same label used for distinct process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'registrer date of publishing received request' show apparent typos or character swaps compared to consistent variants like 'register submission date request'."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "Numerous short variants skip large chunks of the typical long sequences, such as abrupt jumps from 'register submission date request' directly to 'phase application received' without intermediate steps."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' in sequences with inconsistent contexts",
+        "Typographical anomaly in 'registrer date' vs 'register date'",
+        "Frequent double 'send confirmation receipt' suggesting redundant or looped steps",
+        "Short traces like single 'register submission date request' missing full paths",
+        "High path diversity with rare long traces (freq=1-3) vs common short ones",
+        "Inconsistent starting activities across variants (e.g., 'OLO messaging active' without prior steps)"
+      ],
+      "notes": "Performance values vary widely but do not directly inform structural imperfections."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "7) Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears repeatedly in diverse contexts with varying predecessors, such as after 'phase application received' or 'regular procedure without MER', suggesting the same label denotes different process steps."
+        },
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'registrer date of publishing received request' show clear typographical errors (e.g., 'registrer' instead of 'register'), visible across multiple variants as inconsistent spelling of similar activities."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.75,
+          "why": "Numerous short variants skip large sequence chunks, such as jumping from 'register submission date request' directly to 'phase application received' or single-activity traces, indicating missing trace parts."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' with different predecessors",
+        "Misspelling 'registrer' in multiple traces",
+        "Short traces with major skips (e.g., single 'phase application received')",
+        "Long variants exceeding 30 activities suggesting incomplete fragmentation",
+        "Identical activity repetitions like 'send confirmation receipt -> send confirmation receipt'",
+        "Reversed orders like 'enter senddate acknowledgement -> register submission date request'"
+      ],
+      "notes": "High path diversity with frequencies mostly low except a few common prefixes supports structural irregularities."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The label 'Check:homonymous' appears repeatedly in various contexts across traces, often consecutively or with different predecessors, indicating the same label used for potentially distinct process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "Labels show small typos and inconsistencies like 'registrer' instead of 'register' and compound words such as 'senddate' or 'WABOprocedure', suggesting character swaps or formatting errors."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Variants exhibit significant skips, such as direct jumps from 'register submission date request' to 'phase application received' or abrupt endings, implying missing trace segments in some paths."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous -> Check:homonymous' in long traces",
+        "Misspellings: 'registrer date of publishing' vs 'register submission date request'",
+        "Identical repetitions: 'send confirmation receipt -> send confirmation receipt'",
+        "Extreme length variation: single-activity traces vs 40+ activity traces",
+        "Inconsistent sequences: some skip 'OLO messaging active' and go directly to 'phase application received'",
+        "Compound labels: 'enter senddate acknowledgement', 'WABOprocedure'"
+      ],
+      "notes": "High frequency of annotated labels like 'Check:homonymous' strongly signals homonymy issues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Presence of clear typographical error in 'registrer date of publishing received request' compared to consistent 'register' in other labels indicates small character swaps or distortions."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple similar labels like 'phase application received' and 'phase application receptive' appear in comparable sequence positions, suggesting synonymous variants for the same process step."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Consecutive duplicate activities such as 'send confirmation receipt -> send confirmation receipt' and 'procedure change -> procedure change' in several variants imply one real step spawning multiple near-simultaneous events."
+        }
+      ],
+      "indicators": [
+        "Typo: 'registrer' vs 'register' in publishing dates",
+        "Similar labels: 'phase application received' vs 'phase application receptive'",
+        "Consecutive duplicates: 'send confirmation receipt' repeated immediately",
+        "Path length variation: traces from 1 to over 50 activities",
+        "Sequence skips: direct jumps from 'register submission date request' to 'phase application received'",
+        "Repeated segments: 'procedure change' duplicated in long traces"
+      ],
+      "notes": "High path diversity with frequent short variants suggests possible scattered cases, but evidence is less direct than for label issues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants include activity labels with embedded extra tokens like IDs and timestamps, e.g., 'register submission date request_21LLycg_20150219 080035000000', indicating pollution from attributes leaking into labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Variants exhibit significant skips in process sequences, such as jumping from 'register submission date request' directly to 'phase application received' without intermediate steps like OLO messaging or document creation, suggesting missing trace parts."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.75,
+          "why": "Frequent consecutive duplicates of the same activity, e.g., 'send confirmation receipt -> send confirmation receipt' in high-frequency variants, imply one real step generating multiple logged events."
+        }
+      ],
+      "indicators": [
+        "Labels with appended IDs/timestamps (e.g., _21LLycg_20150219)",
+        "Consecutive duplicate activities (e.g., send confirmation receipt x2)",
+        "Abrupt sequence jumps (e.g., start -> phase application received)",
+        "High variant diversity with 50+ unique traces",
+        "Short single-activity variants (e.g., just 'register submission date request')",
+        "Repeated segments (e.g., procedure change -> procedure change)"
+      ],
+      "notes": "Extreme trace length variation from 1 to 50+ activities supports scattering and possible merging."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants contain labels with appended tokens resembling IDs and timestamps, such as 'register submission date request_80kiFMt_20110124 080014000000', indicating extra non-activity information embedded in labels."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "Label variations like 'registrer date of publishing received request' (typo for 'register') and 'phase application receptive' versus common 'phase application received' suggest minor spelling or character inconsistencies across traces."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Several variants show abrupt jumps, such as 'register submission date request -> phase application received' skipping intermediate steps like 'OLO messaging active', implying missing trace segments in some paths."
+        }
+      ],
+      "indicators": [
+        "Appended ID-timestamp suffixes in labels",
+        "Typographical errors like 'registrer' instead of 'register'",
+        "Duplicated consecutive activities (e.g., 'send confirmation receipt' twice)",
+        "Direct jumps skipping chunks (e.g., register to phase application)",
+        "High path diversity with short and overly long traces",
+        "Inconsistent starting activities across variants"
+      ],
+      "notes": "Repeated identical activities may hint at collateral events, but evidence is less direct than for top patterns."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Multiple variants contain 'registrer date of publishing received request', indicating a clear spelling error or character swap from 'register'. This anomaly appears consistently across several traces, suggesting systematic label distortion."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'send confirmation receipt - Dep2' and 'send confirmation receipt - Dep3' include extra tokens denoting departments, inflating activity names with resource or ID information. This pattern recurs in various sequences, pointing to polluted labeling."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "Short variants like 'register submission date request -> phase application received' skip large chunks of activities present in longer traces, such as 'OLO messaging active' and 'create procedure confirmation'. This indicates missing trace parts and abrupt jumps."
+        }
+      ],
+      "indicators": [
+        "Typo: 'registrer date of publishing received request'",
+        "Department suffixes: 'send confirmation receipt - Dep2', '- Dep3'",
+        "Consecutive repeats: 'send confirmation receipt -> send confirmation receipt'",
+        "Abrupt skips: 'register submission date request -> phase application received'",
+        "Inconsistent starts: variants beginning with 'OLO messaging active' or 'enter senddate acknowledgement'",
+        "Path length variance: short (2-3 steps) vs. very long (30+ steps) traces"
+      ],
+      "notes": "High path diversity suggests process variability, but imperfections dominate structural cues."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Multiple activity labels include extra tokens like department suffixes (e.g., 'send confirmation receipt - Dep2', '- Dep3'), indicating pollution with resource or contextual information visible in variant sequences."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Variations of similar activities such as 'send confirmation receipt' without/with department suffixes appear interchangeably across traces, suggesting multiple labels for equivalent process steps."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Consistent misspelling like 'registrer date of publishing received request' (likely 'register') appears in multiple variants, pointing to typographical distortions in labels."
+        }
+      ],
+      "indicators": [
+        "Department suffixes in labels: 'send confirmation receipt - Dep2', '- Dep3'",
+        "Typo: 'registrer' instead of 'register' in publishing dates",
+        "Repeated identical activities: 'send confirmation receipt -> send confirmation receipt'",
+        "Variable trace lengths: short (1 activity) to very long (40+ activities)",
+        "Sequence skips: direct jumps from 'register submission date request' to 'phase application received'",
+        "Reverse ordering: 'enter senddate acknowledgement -> register submission date request'"
+      ],
+      "notes": "High path diversity with low frequencies suggests fragmented or incomplete traces."
+    }
+  },
+  {
+    "file": "variant_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.9,
+          "why": "Multiple traces show label typos like 'registrer date of publishing received request' instead of 'register', indicating character swaps or distortions visible in sequence labels."
+        },
+        {
+          "pattern": "6) Synonymous Label",
+          "confidence": 0.85,
+          "why": "Variants feature similar activities with department suffixes, such as 'send confirmation receipt - Dep2' vs 'send confirmation receipt - Dep3', suggesting multiple labels for the same confirmatory action across paths."
+        },
+        {
+          "pattern": "3) Scattered Case",
+          "confidence": 0.75,
+          "why": "Numerous short variants skip major chunks, e.g., direct jumps from 'register submission date request' to 'phase application received' or single-activity traces, implying missing trace parts."
+        }
+      ],
+      "indicators": [
+        "Label typo: 'registrer' vs 'register'",
+        "Repeated activities: duplicate 'send confirmation receipt - Dep2'",
+        "Label variations: 'send confirmation receipt - Dep2' vs '- Dep3'",
+        "Short traces: single activity like 'register submission date request' (freq=2)",
+        "Inconsistent starts: traces beginning with 'enter senddate acknowledgement' alone",
+        "Path skips: 'register submission date request -> phase application received' (freq=3)"
+      ],
+      "notes": "High path diversity with repeats and shorts suggests logging inconsistencies beyond labels."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.85,
+          "why": "Inconsistent capitalization observed between 'notify reject' (lowercase) and 'Notify accept' (title case) across multiple variants, indicating likely data entry errors or formatting distortions in activity labels. This anomaly appears systematically in branching paths without affecting sequence logic."
+        }
+      ],
+      "indicators": [
+        "Inconsistent casing in notification labels: 'notify reject' vs 'Notify accept'",
+        "Repeated loop segments: 'Request info -> info received -> Check for completeness' up to 7+ times in rare variants",
+        "Variable trace lengths from 9 to over 30 activities, with frequencies decreasing for longer paths",
+        "Branching after 'Make decision' to acceptance or rejection paths",
+        "Restart loops after 'review request received' back to 'Check for completeness'",
+        "Uniform start: 'Check for completeness -> New online application received' in all variants"
+      ],
+      "notes": "High path diversity suggests complex but consistent process structure with potential label inconsistencies."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Multiple near-simultaneous 'Make decision_signed1' and 'Make decision_signed2' events spawn repeatedly from what appears to be a single decision step, inserted illogically throughout traces in low-frequency variants. This matches the pattern of one real step generating collateral events like decision signings."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Make decision_signed1 -> Make decision_signed2' subsequences inserted after various activities",
+        "Consecutive duplicates like 'Make decision_signed1 -> Make decision_signed1'",
+        "Signed events placed early, e.g., after 'New online application received' before 'Perform checks'",
+        "Abnormally long traces in signed variants due to event repetitions",
+        "Extra signed events after 'EVENT 13 END'",
+        "Low frequencies (e.g., 26, 15) for signed variants vs high (339) for standard paths"
+      ],
+      "notes": "Signed variants show clear structural pollution from collateral events, while loops in request-info segments appear process-intended."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Multiple near-simultaneous 'Make decision_signed1' and 'Make decision_signed2' events appear repeatedly in irregular positions across many variants, suggesting one decision step spawns duplicate signing events. These repetitions are more frequent in lower-frequency traces, indicating collateral logging artifacts."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Make decision_signed1' and 'Make decision_signed2' contain extra tokens ('_signed1', '_signed2') likely embedding resource or ID information, inflating activity names inconsistently. This pollution disrupts normal 'Make decision' sequences in affected variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Several variants exhibit overly long traces with excessive repetitions of signed activities, even after 'EVENT 13 END', pointing to possible merged or misattributed case IDs. These elongated paths occur in rarer variants, contrasting shorter, more frequent clean traces."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Make decision_signed1 -> Make decision_signed2' inserted irregularly before/after core activities",
+        "Activities like 'Make decision_signed1' occurring after 'EVENT 13 END' in multiple variants",
+        "Multiple loops of 'Request info -> info received -> Check for completeness' in some traces",
+        "Case inconsistency: 'notify reject' (lowercase) vs 'Notify accept' (uppercase)",
+        "Variants with signed repetitions have lower frequencies (e.g., 4-76) vs clean paths (260+)",
+        "Overly long trace lengths in signed-heavy variants exceeding typical process flow"
+      ],
+      "notes": "Intentional loops (e.g., info requests) are process behavior, not imperfections; focus on signed duplications as noise."
+    }
+  },
+  {
+    "file": "Variant_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Rare variants show one 'Make decision' step spawning multiple near-simultaneous 'Make decision_signed1' and 'Make decision_signed2' events, repeated in sequences, indicating collateral logging from a single real action."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Some variants exhibit overly long traces with extra 'Make decision_signed1' and 'Make decision_signed2' events after 'EVENT 13 END', suggesting merged or incorrectly attributed traces across cases."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Make decision_signed1' and 'Make decision_signed2' in sequences of rare variants",
+        "Events trailing 'EVENT 13 END' in low-frequency traces",
+        "Inconsistent casing: 'notify reject' vs 'Notify accept'",
+        "Multiple loops of 'Request info -> info received -> Check for completeness'",
+        "Branching after 'Make decision' to 'Notify accept' or 'notify reject' paths",
+        "Trace lengths increase with loops, frequencies decrease"
+      ],
+      "notes": "Main process shows intended loops and branches, but signed variants indicate logging imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Several variants include activity labels with appended department indicators like 'Perform checks - Dep2' and 'Perform checks - Dep3', suggesting extra resource or contextual tokens; the consistent 'EVENT 13 END' terminator across all traces appears as an opaque system or ID-inflated label."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization is evident in notification activities, with 'notify reject' in lowercase in many variants versus 'Notify accept' in uppercase, indicating potential minor typographical or formatting inconsistencies in labeling."
+        }
+      ],
+      "indicators": [
+        "Appended suffixes in labels: 'Perform checks - Dep2', 'Perform checks - Dep3'",
+        "Universal end activity 'EVENT 13 END' in all variants",
+        "Case variation: 'notify reject' (lowercase) vs 'Notify accept' (uppercase)",
+        "Repeated loop structure: multiple 'Request info -> info received -> Check for completeness'",
+        "All traces start with 'Check for completeness -> New online application received'",
+        "Decreasing frequencies for variants with more loop iterations"
+      ],
+      "notes": "High path diversity from variable loops and branches, but no clear evidence of skips or merges beyond normal process variation."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Every trace variant terminates with 'EVENT 13 END', where '13' appears as an extraneous numeric token likely representing a case ID or event identifier embedded in the label."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization observed, such as 'notify reject' in lowercase versus title-cased 'Notify accept' and other activities, suggesting minor formatting distortions in labeling."
+        }
+      ],
+      "indicators": [
+        "Universal 'EVENT 13 END' at trace ends",
+        "Casing inconsistency in 'notify reject'",
+        "Repeated 'Request info -> info received -> Check for completeness' loops",
+        "Branching post-'Make decision' to accept/reject paths",
+        "'review request received' restarts to 'Check for completeness'",
+        "Longer looped traces have lower frequencies"
+      ],
+      "notes": "Loop structures appear process-legitimate, not indicative of scattering or merging."
+    }
+  },
+  {
+    "file": "Variant_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Two rare variants (frequency=1) contain activity labels with appended alphanumeric IDs and timestamp-like strings, such as 'Perform checks_29RzHlB_20231023021131354000', indicating extra tokens polluting clean labels. This structural anomaly is isolated to low-frequency paths, suggesting data capture artifacts."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization across similar activities, like 'notify reject' (lowercase) versus 'Notify accept' (uppercase), appears consistently in branching paths, hinting at minor recording errors or format swaps without affecting sequence logic."
+        }
+      ],
+      "indicators": [
+        "Appended IDs/timestamps in labels of freq=1 variants",
+        "Capitalization inconsistency in 'notify reject' vs 'Notify accept'",
+        "Repeated loops of 'Request info -> info received -> Check for completeness'",
+        "Branching after 'Make decision' to accept/reject/review paths",
+        "Variable trace lengths from 9 to over 30 activities due to loops",
+        "Uniform end marker 'EVENT 13 END' in all variants"
+      ],
+      "notes": "Looping and branching appear process-intended, not imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Activity labels like 'Perform checks - Dep2' and 'Perform checks - Dep3' include appended department codes, indicating extra tokens such as resource or ID information polluting the core labels."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple variants of 'Perform checks' (plain, -Dep1, -Dep2, -Dep3) appear across traces, likely representing the same checking activity in different departments but labeled synonymously with variations."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "Inconsistent casing observed in 'notify reject' (lowercase) versus 'Notify accept' (capitalized), along with 'time out' as two words, suggesting minor typographical distortions in labels."
+        }
+      ],
+      "indicators": [
+        "Label appendages: 'Perform checks - Dep2', '- Dep3', '- Dep1'",
+        "Inconsistent casing: 'notify reject' vs 'Notify accept'",
+        "Repeated loop structures: multiple 'Request info -> info received -> Check for completeness'",
+        "Universal artificial end: 'EVENT 13 END' in all variants",
+        "High variant diversity: 50+ unique traces with varying loop counts",
+        "Process restarts: after 'notify reject -> review request received', sequences loop back to 'Check for completeness'"
+      ],
+      "notes": "Looping behavior appears process-intended rather than indicative of merging or scattering."
+    }
+  },
+  {
+    "file": "Variant_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Several variants include department-specific suffixes in activity labels like 'Perform checks - Dep2' and 'Perform checks - Dep3', indicating extra tokens embedded in labels that pollute the standard naming."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.85,
+          "why": "Multiple labels such as 'Perform checks', 'Perform checks - Dep2', and 'Perform checks - Dep3' appear in similar structural positions, suggesting they represent the same activity executed by different departments."
+        }
+      ],
+      "indicators": [
+        "Department suffixes in 'Perform checks - DepX' labels",
+        "Variants of 'Perform checks' with and without suffixes",
+        "Case inconsistency: 'notify reject' vs 'Notify accept'",
+        "Repeated loops of 'Request info -> info received -> Check for completeness'",
+        "Branching after 'Make decision' to accept or reject paths",
+        "Long traces with multiple loop iterations in low-frequency variants"
+      ],
+      "notes": "Looping and branching appear process-legitimate, not indicative of scattering or merging."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Low-frequency variants include the label 'Check:homonymous', which appends an extraneous token ':homonymous' absent in dominant traces, signaling pollution from additional metadata or tags."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization appears in 'notify reject' (lowercase 'n') versus 'Notify accept' and other standardized labels, indicative of minor typographical distortions in activity naming."
+        }
+      ],
+      "indicators": [
+        "Anomalous label 'Check:homonymous' in variants with frequencies 4-8",
+        "Inconsistent casing: 'notify reject' vs 'Notify accept'",
+        "Repeated subsequences: multiple 'Request info -> info received -> Check for completeness' loops",
+        "Varied trace lengths from 6 to over 20 activities due to loop iterations",
+        "Branching paths after 'Make decision' to 'Notify accept' or 'notify reject'",
+        "Retry loops via 'review request received -> Check for completeness' in reject paths"
+      ],
+      "notes": "Variants show structured looping and branching consistent with process logic, with label anomalies confined to rare traces."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "The label 'Check:homonymous' appears in variants replacing 'Check for completeness' but in diverse contexts, such as direct successors to 'New online application received' or within loops after 'Request info -> info received', suggesting the same label for different process steps with varying predecessors."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization observed in labels like 'notify reject' (lowercase) versus 'Notify accept' (title case) across similar decision branches, indicating minor typographical distortions in activity naming."
+        }
+      ],
+      "indicators": [
+        "'Check:homonymous' used in varying sequence positions and predecessors",
+        "Label replacement: 'Check for completeness' vs 'Check:homonymous'",
+        "Capitalization inconsistency: 'notify reject' vs 'Notify accept'",
+        "Repeated loops: multiple 'Request info -> info received -> Check for completeness'",
+        "Trace length variation: short (6 events) to long (20+ events)",
+        "Decreasing frequencies for longer looped variants"
+      ],
+      "notes": "Loop repetitions appear process-normal but amplify path diversity; no strong evidence for timing-related imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "8) Distorted Label",
+          "confidence": 0.95,
+          "why": "Inconsistent capitalization observed in activity labels such as 'notify reject' versus 'Notify accept', indicating likely data entry errors or formatting distortions visible across multiple variants."
+        },
+        {
+          "pattern": "5) Polluted Label",
+          "confidence": 0.8,
+          "why": "All trace variants uniformly end with 'EVENT 13 END', where '13' appears as an embedded identifier or token, suggesting label pollution with extraneous event or case information."
+        }
+      ],
+      "indicators": [
+        "Inconsistent label casing (e.g., 'notify reject' vs 'Notify accept')",
+        "Universal terminal label 'EVENT 13 END' with numeric token",
+        "Repeated loop segments (e.g., 'Request info -> info received -> Check for completeness')",
+        "Variable trace lengths from 6 to over 20 activities",
+        "Branching after 'Make decision' to accept/reject paths",
+        "Decreasing frequencies for traces with more loops or reviews"
+      ],
+      "notes": "Loop structures and branching appear process-normal, not indicative of imperfection."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "All variants uniformly end with 'EVENT 13 END', where '13' appears as an extraneous token likely embedding a case ID or system artifact into the activity label."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.75,
+          "why": "Inconsistent capitalization observed in 'notify reject' (lowercase) versus 'Notify accept' and other title-cased activities like 'Make decision', indicating minor formatting distortions."
+        }
+      ],
+      "indicators": [
+        "Anomalous terminal label 'EVENT 13 END' in every variant",
+        "Casing irregularity: 'notify reject' vs 'Notify accept'",
+        "Repeated subsequences: 'Request info -> info received -> Check for completeness' up to 6+ times",
+        "Extreme length variation: short traces (7 activities) vs long (30+ with loops)",
+        "Process restarts: 'review request received -> Check for completeness' after rejection",
+        "Frequency drop-off: high (370) for simple paths, low (2) for multi-loop variants"
+      ],
+      "notes": "Variants show structured loops and branches consistent with a retry-heavy process, but label anomalies stand out."
+    }
+  },
+  {
+    "file": "Variant_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Numerous variants display inconsistent capitalization in activity labels, such as 'notify reject' versus 'Notify accept', 'info received' versus 'Info received', and 'perform checks' versus 'Perform checks', pointing to minor distortions from inconsistent data recording."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Traces show illogical ordering with 'Check for completeness' preceding 'New online application received' in most variants, while a few reverse this, combined with overly long sequences featuring multiple 'Make decision' instances and extensive loops, suggesting potential mixing of case IDs or merged executions."
+        }
+      ],
+      "indicators": [
+        "Inconsistent capitalization in labels like 'notify reject' vs 'Notify accept'",
+        "Illogical sequence: 'Check for completeness' before 'New online application received' in majority of traces",
+        "Minority variant starts with 'new online application received' then 'Check for completeness'",
+        "Long traces with multiple repetitions of 'Request info -> info received -> Check for completeness'",
+        "Multiple 'Make decision' occurrences in single traces after reviews",
+        "All traces terminate with 'EVENT 13 END'"
+      ],
+      "notes": "Looping behavior appears process-intended rather than an imperfection."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Numerous variants show skips of major steps like 'Prepare starter' or 'Prepare main course', resulting in direct jumps from 'Review order' to 'prepare drinks' or from 'Review drinks' to 'Signal food complete', indicating missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Overly long traces with excessive repetitions of the 'prepare drinks -> Bring drinks -> Review drinks' loop (up to 10+ iterations in low-frequency variants) and inconsistent 'start' positioning suggest merged or misattributed cases leading to distorted sequences."
+        }
+      ],
+      "indicators": [
+        "Skips of 'Prepare starter' in 40%+ of variants after 'Review order'",
+        "Excessive loops of 'prepare drinks -> Bring drinks -> Review drinks' (2-10+ times) in 60%+ variants",
+        "Inconsistent 'start' position: after vs before 'Take order' in some traces",
+        "Irregular 'Prepare main course' placement before or mid-drinks loops",
+        "Skips of 'Review drinks' before 'Signal food complete' in several variants",
+        "Trace lengths vary widely (10-35+ activities) with low-frequency long traces"
+      ],
+      "notes": "Loop repetitions may reflect process behavior but extreme lengths in rare variants point to data merging issues."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Multiple variants show skips of major steps like 'Prepare starter' or 'Prepare main course', with direct jumps from 'Review drinks' to 'Signal food complete' or early insertions of 'Prepare main course' after 'Review order', indicating missing chunks in some execution paths."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Several low-frequency variants exhibit overly long traces due to excessive repetitions of the 'prepare drinks -> Bring drinks -> Review drinks' loop (up to 10+ iterations), suggesting possible merging of multiple cases or erroneous trace extensions."
+        }
+      ],
+      "indicators": [
+        "Repeated subsequences of 'prepare drinks -> Bring drinks -> Review drinks' in many variants, varying from 1 to 10+ times",
+        "Optional presence of 'Prepare starter' in some traces but absent in high-frequency variants",
+        "Inconsistent 'start' positioning: before 'Take order' in some, after in others",
+        "Irregular 'Prepare main course' placement: early after 'Review order' or skipped entirely in low-frequency paths",
+        "Jumps skipping 'Prepare main course': from 'Review drinks' directly to 'Signal food complete'",
+        "High path diversity with trace lengths ranging from 10 to over 20 activities"
+      ],
+      "notes": "Rare variants (low frequency) show more irregularities, while common paths are more consistent."
+    }
+  },
+  {
+    "file": "Variant_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Numerous variants exhibit skips of major activities such as 'Prepare starter' or 'Prepare main course', creating jumps from 'Review order' directly to drink preparation or signaling completion, indicative of missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some traces show swapped initial sequences like 'start -> Take order' instead of 'Take order -> start', and excessively long variants with multiple drink loops suggest potential merging of cases or incorrect case ID associations."
+        }
+      ],
+      "indicators": [
+        "Skips of 'Prepare starter' in 40%+ of variants",
+        "Absence of 'Prepare main course' in several short traces",
+        "Inconsistent start: 'Take order -> start' vs 'start -> Take order'",
+        "Varying repetitions of 'prepare drinks -> Bring drinks -> Review drinks' loop (1-10+ times)",
+        "Illogical orders like 'Prepare main course' before 'prepare drinks'",
+        "Uniform ending with 'EVENT 8 END' across all variants"
+      ],
+      "notes": "High path diversity driven by optional steps and loops points to structural fragmentation."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Repeated pairs of 'Bring drinks_signed1' and 'Bring drinks_signed2' inserted after nearly every activity in multiple variants suggest one real step spawning multiple near-simultaneous logged events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Activity labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' contain extra tokens indicating pollution with signing status or IDs, appearing consistently in affected traces."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Several variants exhibit overly long sequences with excessive repetitions of signed events and loops, pointing to possible merged traces or incorrect case ID assignments."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Bring drinks_signed1 -> Bring drinks_signed2' pairs inserted throughout traces",
+        "Variable numbers of 'prepare drinks -> Bring drinks -> Review drinks' loops",
+        "Some variants skip 'Prepare starter' entirely",
+        "Inconsistent positioning of 'start' relative to 'Take order'",
+        "Extremely long traces in lower-frequency variants with high repetition",
+        "Label anomalies with '_signed1' and '_signed2' suffixes"
+      ],
+      "notes": "High-frequency variants show cleaner processes, while low-frequency ones amplify imperfection signals."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Multiple variants feature repetitive sequences of 'Bring drinks_signed1' and 'Bring drinks_signed2' interspersed throughout the trace, suggesting one real 'Bring drinks' step spawns multiple near-simultaneous signed events. These occur in low-frequency but structurally distinct paths, indicating collateral logging."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' include extra tokens ('_signed1', '_signed2') that appear consistently in repetitive positions, likely embedding resource or ID information into activity names. This pollution is evident in several long variants with abnormal label patterns."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Some variants show swapped order of 'Take order' and 'start', and overly long traces with excessive repetitions or post-end events like 'Bring drinks_signed1' after 'EVENT 8 END', suggesting mixed or merged case executions. Rare paths exhibit abnormal lengths and sequencing inconsistencies."
+        }
+      ],
+      "indicators": [
+        "Repetitive 'Bring drinks_signed1 -> Bring drinks_signed2' in signed variants",
+        "Swapped positions of 'Take order' and 'start' in some traces",
+        "Skipping of 'Prepare starter' in multiple high-frequency variants",
+        "Excessive loops in 'prepare drinks -> Bring drinks -> Review drinks' cycles",
+        "Out-of-order 'Prepare main course' before drinks in rare paths",
+        "Post-'EVENT 8 END' signed events in elongated traces"
+      ],
+      "notes": "High path diversity with loops and signed anomalies points to logging artifacts in a otherwise structured restaurant process."
+    }
+  },
+  {
+    "file": "Variant_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.95,
+          "why": "Numerous variants feature excessive repetitions of 'Bring drinks_signed1' and 'Bring drinks_signed2' in pairs, interspersed throughout traces, suggesting one 'Bring drinks' step spawns multiple near-simultaneous signing events. This pattern dominates the structural bloat in lower-frequency but numerous long variants."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.85,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' include extra tokens ('_signed1', '_signed2') likely indicating resources or IDs, appearing repeatedly and inflating sequence complexity. This is evident in the consistent suffix additions across many variants."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Signed variants exhibit overly long traces with merged-like repetitions, potentially from wrong case ID mixing, contrasting shorter normal variants. Frequencies show these elongated paths as less common but structurally deviant."
+        }
+      ],
+      "indicators": [
+        "Excessive paired repetitions of 'Bring drinks_signed1 -> Bring drinks_signed2' before diverse activities",
+        "Signed variants 5-10x longer than normal ones (e.g., 50+ events vs 10-20)",
+        "Optional skipping of 'Prepare starter' or 'Prepare main course' in some traces",
+        "Inconsistent initial sequence: 'Take order -> start' vs 'start -> Take order'",
+        "Loop patterns in 'prepare drinks -> Bring drinks -> Review drinks' amplified in signed variants",
+        "Lower frequencies for bloated signed variants compared to concise normal paths"
+      ],
+      "notes": "Process shows legitimate loops in drinks handling, but signed events indicate logging artifacts."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Rare variants contain labels with appended IDs and timestamps, such as 'Bring drinks_62VDJPA_20240508211014393000', indicating extra tokens polluting activity names."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Multiple variants show skips of major steps like 'Prepare starter' or 'Prepare main course', with direct jumps from 'Review drinks' to 'Signal food complete', suggesting missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Overly long traces with excessive repetitions of 'prepare drinks -> Bring drinks -> Review drinks' and irregular early placements of 'Prepare main course' imply possible merged or misattributed cases."
+        }
+      ],
+      "indicators": [
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' loops in frequent variants",
+        "Optional 'Prepare starter' absent in most common paths",
+        "Jumps skipping 'Prepare main course' to 'Signal food complete'",
+        "Irregular 'Prepare main course' before drinks in some traces",
+        "Variants starting with 'start' before 'Take order'",
+        "Labels suffixed with IDs/timestamps in low-frequency variants"
+      ],
+      "notes": "High path diversity from loops and skips, with most frequent variants being concise without extras."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Variants frequently skip major activities like 'Prepare starter' or 'Prepare main course', with direct jumps from 'Review drinks' to 'Signal food complete', indicating missing trace parts."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Some variants show swapped ordering of initial activities ('start' before/after 'Take order'), and rare long traces with excessive drink preparation loops suggest mixed or merged cases."
+        }
+      ],
+      "indicators": [
+        "Swapped initial sequence: 'Take order -> start' vs 'start -> Take order'",
+        "Repeated loops: multiple 'prepare drinks -> Bring drinks -> Review drinks' in rare variants",
+        "Skipped 'Prepare starter' in high-frequency variants (e.g., freq 1681)",
+        "Irregular 'Prepare main course' placement before drinks preparation",
+        "Jumps from 'Review drinks' to 'Signal food complete' without main course",
+        "Variable lengths: short traces (~11 activities) vs long with 20+ due to loops"
+      ],
+      "notes": "Excessive loop variations in low-frequency traces may indicate process retries but align with mixing imperfections."
+    }
+  },
+  {
+    "file": "Variant_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple low-frequency variants (freq=1) feature activity labels with appended unique IDs and timestamps, such as 'Bring drinks_32ZhfaY_20240507234813185000', indicating extra tokens polluting standard labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Several variants show abrupt skips of major steps, like jumping from Review drinks directly to Signal food complete without Prepare main course, or omitting Prepare starter entirely, suggesting missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Irregular and illogical sequence orders in rare variants, such as Prepare main course before drinks or Bring food before completing drink reviews, point to potential merged or misattributed traces."
+        }
+      ],
+      "indicators": [
+        "Appended IDs/timestamps in labels like Bring drinks_32ZhfaY_20240507234813185000",
+        "Skipped Prepare main course in variants going Review drinks -> Signal food complete",
+        "Omitted Prepare starter in many high-frequency paths",
+        "Out-of-order: Prepare main course -> prepare drinks in some traces",
+        "Illogical: Bring food -> Review drinks after Signal food complete",
+        "Excessive loops of prepare drinks -> Bring drinks -> Review drinks up to 10+ times in long variants"
+      ],
+      "notes": "High path diversity with 40+ variants suggests fragmented logging, but loops may be process-intended."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants show 'Bring drinks' appended with extra tokens like '- Dep1', '- Dep2', '- Dep3', indicating pollution from resource or department identifiers embedded in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Some traces exhibit skips such as missing 'Prepare starter' or jumps like early 'Prepare main course' before drinks, and rare inverted starts ('start -> Take order'), suggesting missing chunks in certain paths."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.7,
+          "why": "Overly long traces with excessive repetitions of the 'prepare drinks -> Bring drinks -> Review drinks' loop (up to 7+ iterations in low-frequency variants) imply possible merging of multiple cases into single traces."
+        }
+      ],
+      "indicators": [
+        "Label pollution: 'Bring drinks - DepX' suffixes in sequential positions",
+        "Repeated loops: 'prepare drinks -> Bring drinks -> Review drinks' iterated 2–7+ times in variants",
+        "Path skips: Absence of 'Prepare starter' in 1208+ freq variant vs inclusion in others",
+        "Sequence inversions: Rare 'start -> Take order' instead of 'Take order -> start'",
+        "Out-of-order jumps: 'Prepare main course' before drinks in low-freq trace",
+        "Length variation: Traces range from 11 to 25+ activities due to loops"
+      ],
+      "notes": "High path diversity with loops likely reflects real process behavior, but extremes suggest data issues."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants show 'Bring drinks' appended with tokens like '- Dep1', '- Dep2', '- Dep3', indicating extra resource or department information embedded in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Several variants exhibit large skips, such as jumping from 'Review drinks' directly to 'Signal food complete' without 'Prepare main course', or omitting 'Prepare starter' entirely, suggesting missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "A subset of variants display excessively long sequences with multiple repetitions of the 'prepare drinks -> Bring drinks -> Review drinks' loop (up to 10+ iterations), potentially indicating merged or incorrectly linked traces, especially given their low frequencies."
+        }
+      ],
+      "indicators": [
+        "Label variations: 'Bring drinks - Dep1/Dep2/Dep3'",
+        "Repeated loops: 'prepare drinks -> Bring drinks -> Review drinks' up to 10+ times in some variants",
+        "Activity skips: Missing 'Prepare main course' or 'Prepare starter' in multiple paths",
+        "Inconsistent sequence starts: 'Take order -> start' vs 'start -> Take order'",
+        "Unusual orderings: 'Prepare main course' before 'prepare drinks' in rare low-frequency variants",
+        "Path length diversity: Short traces (10-12 activities) vs long looped ones (20+ activities)"
+      ],
+      "notes": "High-frequency variants tend to be simpler and without skips, while low-frequency ones show more anomalies."
+    }
+  },
+  {
+    "file": "Variant_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.95,
+          "why": "Multiple variants show 'Bring drinks' appended with extra tokens like '- Dep2', '- Dep3', indicating embedded resource or department information in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Several traces exhibit skips of major steps, such as jumping from 'Review drinks' directly to 'Signal food complete' without 'Prepare main course', or omitting 'Prepare starter' in many paths."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Inconsistent trace ordering at the start ('Take order -> start' vs 'start -> Take order') across variants suggests possible mixing or incorrect case sequencing, with some overly long traces from excessive repetitions."
+        }
+      ],
+      "indicators": [
+        "Label anomalies: 'Bring drinks - Dep2', 'Bring drinks - Dep3' vs plain 'Bring drinks'",
+        "Skipped segments: 'Review drinks -> Signal food complete' bypassing 'Prepare main course'",
+        "Optional steps: 'Prepare starter' present in ~40% of variants, absent in others",
+        "Repeated loops: 'prepare drinks -> Bring drinks -> Review drinks' repeated 2-5+ times in longer traces",
+        "Initial sequence inconsistency: 'Take order -> start' (majority) vs 'start -> Take order' (minority)",
+        "Path length variation: traces range from 10 to 20+ activities due to loop counts"
+      ],
+      "notes": "High path diversity driven by loop iterations and department labels, with frequencies decreasing for more complex variants."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.9,
+          "why": "Variants show frequent skips of major steps like 'Prepare starter' or 'Prepare main course', with direct jumps from 'Review drinks' to 'Signal food complete' or early placement of 'Prepare main course' after 'Review order', indicating missing trace parts."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.8,
+          "why": "Overly long traces with excessive repetitions of 'prepare drinks -> Bring drinks -> Review drinks' loops (up to 10+ cycles in low-frequency variants) suggest merged or incorrectly linked cases, contrasting shorter high-frequency paths."
+        }
+      ],
+      "indicators": [
+        "Repeated subsequences of 'prepare drinks -> Bring drinks -> Review drinks' in loops",
+        "Skipped 'Prepare starter' in high-frequency variant (1763)",
+        "'start' appears before or after 'Take order' inconsistently",
+        "Irregular jumps skipping 'Prepare main course'",
+        "Excessive path lengths in low-frequency variants with multiple drink cycles",
+        "Early 'Prepare main course' before drinks preparation in some traces"
+      ],
+      "notes": "High path diversity with loops and skips points to structural inconsistencies in case completeness."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Multiple variants show skips of major chunks, such as omitting 'Prepare starter' entirely or jumping from 'Review order' directly to 'Prepare main course' without drink preparation, indicating missing trace parts."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Rare variants exhibit overly long sequences with excessive repetitions of 'prepare drinks -> Bring drinks -> Review drinks' loops (up to 8+ iterations at low frequencies), suggesting possible merging of multiple cases into single traces."
+        }
+      ],
+      "indicators": [
+        "Inconsistent 'start' positioning: after 'Take order' in high-frequency traces, before in low-frequency ones",
+        "Frequent omission of 'Prepare starter' across variants",
+        "Variable loop counts in 'prepare drinks -> Bring drinks -> Review drinks' (1 to 8+ iterations)",
+        "Irregular jumps: 'Review order' directly to 'Prepare main course' skipping drinks",
+        "Out-of-order activities: 'Prepare main course' before or interleaved with drink sequences",
+        "Rare long traces with high repetition (e.g., frequency 1-17 for 5+ loops)"
+      ],
+      "notes": "Loop behavior in drinks may be process-normal but exaggerated in rare variants supports merging hypothesis."
+    }
+  },
+  {
+    "file": "Variant_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.9,
+          "why": "Variants show inconsistent starting sequences (e.g., 'Take order -> start' vs 'start -> Take order') and excessively long traces with multiple repetitions of the same subsequence, suggesting merged or misattributed cases."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Several variants exhibit jumps skipping major chunks, such as direct transitions from 'Review order' to 'Prepare main course' without 'Prepare starter' or initial 'prepare drinks', indicating missing trace parts."
+        }
+      ],
+      "indicators": [
+        "Repeated subsequences: 'prepare drinks -> Bring drinks -> Review drinks' loops 2–5+ times in low-frequency variants",
+        "Inconsistent trace starts: 'Take order -> start' in high-frequency variants vs 'start -> Take order' in others",
+        "Activity skips: absence of 'Prepare starter' or early 'prepare drinks' in 20%+ of variants",
+        "Irregular ordering: 'Prepare main course' positioned before or after drinks loop in different paths",
+        "Path length variation: short traces (10–12 activities) frequent, long looped traces (20+) rare",
+        "Uniform end marker: all variants terminate with 'EVENT 8 END'"
+      ],
+      "notes": "High-frequency variants follow a core path with optional starter, while low-frequency ones amplify loops, pointing to logging inconsistencies."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Numerous variants exhibit overly long traces with excessive repetitions of the 'prepare drinks -> Bring drinks -> Review drinks' loop, up to 10+ iterations in low-frequency paths, suggesting possible merging of multiple cases or incorrect case ID assignments leading to concatenated sequences."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Several variants show abrupt skips, such as omitting 'Prepare starter' or jumping from 'Review order' directly to 'Prepare main course' without intervening drink preparation steps, indicating missing trace segments or incomplete recordings."
+        }
+      ],
+      "indicators": [
+        "Variable positioning of 'start' activity: precedes or follows 'Take order' inconsistently",
+        "Repeated subsequences: 'prepare drinks -> Bring drinks -> Review drinks' loops vary from 1 to 10+ times",
+        "Skipped steps: absence of 'Prepare starter' in 40%+ of variants",
+        "Irregular jumps: 'Prepare main course' appears early, before or interrupting drink sequences",
+        "Path length anomalies: trace lengths range from 10 to 25+ activities, with longer ones rarer",
+        "Low-frequency outliers: longest looped variants have frequencies <50 vs. >1000 for shorter paths"
+      ],
+      "notes": "Inconsistent casing in activity labels (e.g., 'prepare drinks' vs. 'Prepare starter') may hint at minor recording inconsistencies but lacks strong evidence for distortion patterns."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Variants show consistent inconsistencies in capitalization and minor spelling, such as 'prepare drinks' vs 'Prepare drinks', 'Review order' vs 'review order', and 'eVENT 8 END' vs 'EVENT 8 END', indicating small label distortions across sequences."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Many traces skip major steps like 'Prepare starter' or 'Prepare main course', with jumps from 'Review drinks' to 'Signal food complete' or illogical placements, suggesting missing chunks in process paths."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Overly long traces with excessive repetitions of 'prepare drinks -> Bring drinks -> Review drinks' and varying starting points (e.g., 'start' before or after 'Take order') imply possible merging or misassigned case sequences."
+        }
+      ],
+      "indicators": [
+        "Case variations in labels (e.g., 'prepare drinks' vs 'Prepare drinks')",
+        "Repeated 'prepare drinks -> Bring drinks -> Review drinks' loops varying from 1 to 7+ times",
+        "Skipped activities (e.g., missing 'Prepare starter' in 1515+ freq variant)",
+        "Illogical orders (e.g., 'Prepare main course' before 'prepare drinks')",
+        "Inconsistent trace starts ('Take order -> start' vs 'start -> Take order')",
+        "Spelling anomalies (e.g., 'eVENT 8 END', 'signal food complete')"
+      ],
+      "notes": "High path diversity with loops and skips suggests process variability but amplified by labeling issues."
+    }
+  },
+  {
+    "file": "Variant_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.95,
+          "why": "Variants exhibit inconsistent capitalization (e.g., 'prepare drinks' vs 'Prepare drinks', 'Bring drinks' vs 'bring drinks') and clear typos (e.g., 'Review drigks'), indicating small distortions in activity labels."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.85,
+          "why": "Several variants skip major steps like 'Prepare starter' or show abrupt jumps (e.g., early 'Prepare main course' without prior preparation), suggesting missing trace segments."
+        },
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.75,
+          "why": "Inconsistent placement of 'start' (before or after 'Take order' across variants) and overly long traces with excessive repeats imply possible merging or mixing of cases."
+        }
+      ],
+      "indicators": [
+        "Inconsistent capitalization in labels like 'Prepare' vs 'prepare', 'Bring' vs 'bring'",
+        "Typo evident in 'Review drigks'",
+        "Skips of 'Prepare starter' in high-frequency variants",
+        "Early or misplaced 'Prepare main course' in some sequences",
+        "Varying position of 'start' relative to 'Take order'",
+        "Excessive repeats of 'prepare drinks -> Bring drinks -> Review drinks' loops in low-frequency variants"
+      ],
+      "notes": "High path diversity with loops may reflect process variability, but anomalies point to logging issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Inconsistent casing observed in labels like 'notify reject' (lowercase) versus 'Notify accept' (uppercase) across variants, indicating potential typos or recording distortions in activity names."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Every trace ends with 'EVENT 13 END', where '13' appears as an embedded numeric token likely representing an ID or extraneous data polluting the label structure."
+        }
+      ],
+      "indicators": [
+        "Inconsistent casing in 'notify reject' vs 'Notify accept'",
+        "Universal 'EVENT 13 END' with embedded '13' token",
+        "Repeated loop segments: 'Request info -> info received -> Check for completeness'",
+        "Variable trace lengths due to multiple loops (6 to 20+ activities)",
+        "Frequent short paths (high frequency) vs rare long looped paths",
+        "Restart patterns after 'review request received' to 'Check for completeness'"
+      ],
+      "notes": "Process shows structured looping and branching, with label anomalies as primary imperfections."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Elusive Case",
+          "confidence": 0.85,
+          "why": "Overly long traces with multiple repetitions of subsequences like 'Request info -> info received -> Check for completeness' and variable lengths suggest possible merging of cases due to incorrect case IDs. Decreasing frequencies for traces with more loops indicate rare but extended paths likely from mixed traces."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.7,
+          "why": "Inconsistent capitalization between 'notify reject' (lowercase) and 'Notify accept' (title case) across similar decision outcomes points to minor label distortions or inconsistencies in naming conventions."
+        }
+      ],
+      "indicators": [
+        "Repeated subsequences: 'Request info -> info received -> Check for completeness' up to 7+ times",
+        "Variable trace lengths: short (7 activities) to long (20+ activities)",
+        "Inconsistent label casing: 'notify reject' vs 'Notify accept'",
+        "Nested loops after 'review request received' restarting process segments",
+        "Decreasing frequencies with increasing loop counts (e.g., 374 for no loops, 2 for many)",
+        "Consistent 'EVENT 13 END' as artificial terminator in all variants"
+      ],
+      "notes": "Process shows legitimate looping for requests and reviews, but extreme variations suggest data quality issues."
+    }
+  },
+  {
+    "file": "Variant_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.85,
+          "why": "Inconsistent capitalization between 'notify reject' (lowercase) and 'Notify accept' (capitalized) across variants indicates minor typographical distortions in activity labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The universal end activity 'EVENT 13 END' contains an extraneous numeric token '13', suggesting pollution from case IDs or similar metadata in labels."
+        }
+      ],
+      "indicators": [
+        "Inconsistent capitalization in 'notify reject' vs 'Notify accept'",
+        "Repeated loop subsequence 'Request info -> info received -> Check for completeness'",
+        "Universal end marker 'EVENT 13 END' with numeric '13'",
+        "Variable trace lengths from 6 to over 30 activities due to loops and restarts",
+        "Restart pattern after 'review request received' to 'Check for completeness'",
+        "Branching after 'Make decision' to accept or reject paths with differing frequencies"
+      ],
+      "notes": "High path diversity from loops and reviews is likely process behavior, not imperfection."
+    }
+  },
+  {
+    "file": "Variant_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.95,
+          "why": "Multiple variants use 'Check:homonymous' in different contexts, such as initial checks, post-info receipt, or consecutive repetitions, replacing 'Check for completeness' with varying predecessors like 'New online application received' or 'info received', indicating the same label for distinct process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "Certain variants exhibit jumps skipping major chunks, such as from 'New online application received' directly to 'Make decision' without 'Perform checks' or 'Request info', suggesting missing trace parts in homonymous paths compared to standard sequences."
+        }
+      ],
+      "indicators": [
+        "Repeated 'Check:homonymous' in sequences with different predecessors",
+        "Absence of 'Perform checks' in homonymous variants leading to direct jumps to 'Make decision'",
+        "Consecutive 'Check:homonymous' instances without intervening activities",
+        "Standard variants include 'Check for completeness' followed by 'Perform checks' or 'Request info'",
+        "Inconsistent path structures: some skip loops and checks entirely",
+        "Frequencies higher for complete paths (e.g., 1081) vs. abbreviated ones (e.g., 122)"
+      ],
+      "notes": "Homonymous labeling likely causes apparent scattering; no timing or attribute issues observable."
+    }
+  }
+]

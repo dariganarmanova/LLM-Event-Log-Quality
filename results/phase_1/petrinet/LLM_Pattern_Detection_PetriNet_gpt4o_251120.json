@@ -1,0 +1,1821 @@
+[
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.10.txt",
+    "error": "Error code: 429 - {'error': {'message': 'Request too large for gpt-4o in organization org-S3VzSSP27djSnjF51j9idY96 on tokens per min (TPM): Limit 800000, Requested 1387368. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}",
+    "raw": "```json\n{\n  \"detected\": [\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.9,\n      \"why\": \"There are numerous variants with significant jumps and missing segments, such as skipping from 'register submission date request' directly to 'phase application received' or 'registration date publication'.\"\n    },\n    {\n      \"pattern\": \"Elusive Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Some traces are unusually long and complex, suggesting possible merging of cases or incorrect case IDs, as seen in traces with extensive sequences of activities.\"\n    },\n    {\n      \"pattern\": \"Polluted Label\",\n      \"confidence\": 0.7,\n      \"why\": \"Labels like 'enter senddate acknowledgement' and 'registrer date of publishing received request' suggest the presence of extra tokens or metadata within activity names.\"\n    }\n  ],\n  \"indicators\": [\n    \"register submission date request -> phase application received\",\n    \"register submission date request -> registration date publication\",\n    \"extremely long traces with many activities\",\n    \"enter senddate acknowledgement\",\n    \"registrer date of publishing received request\",\n    \"inconsistent trace lengths\"\n  ],\n  \"notes\": \"The presence of both very short and very long traces indicates structural inconsistencies.\"\n}\n```"
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.30.txt",
+    "error": "Error code: 429 - {'error': {'message': 'Request too large for gpt-4o in organization org-S3VzSSP27djSnjF51j9idY96 on tokens per min (TPM): Limit 800000, Requested 2176604. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}",
+    "raw": "```json\n{\n  \"detected\": [\n    {\n      \"pattern\": \"Scattered Case\",\n      \"confidence\": 0.9,\n      \"why\": \"There are numerous variants with significant jumps and missing segments, such as skipping from 'register submission date request' directly to 'phase application received' or 'registration date publication'.\"\n    },\n    {\n      \"pattern\": \"Elusive Case\",\n      \"confidence\": 0.8,\n      \"why\": \"Some traces are unusually long and complex, suggesting possible merging of cases or incorrect case IDs, as seen in traces with extensive sequences of activities.\"\n    },\n    {\n      \"pattern\": \"Polluted Label\",\n      \"confidence\": 0.7,\n      \"why\": \"Labels like 'enter senddate acknowledgement' and 'registrer date of publishing received request' suggest the presence of extra tokens or metadata within activity names.\"\n    }\n  ],\n  \"indicators\": [\n    \"register submission date request -> phase application received\",\n    \"register submission date request -> registration date publication\",\n    \"extremely long traces with many activities\",\n    \"enter senddate acknowledgement\",\n    \"registrer date of publishing received request\",\n    \"inconsistent trace lengths\"\n  ],\n  \"notes\": \"The presence of both very short and very long traces indicates structural inconsistencies.\"\n}\n```"
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain additional tokens such as numbers and underscores, indicating potential inclusion of extraneous information like IDs or timestamps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'hemoglobin photoelectric' appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with underscores and numbers",
+        "Repeated label 'hemoglobin photoelectric' with different predecessors",
+        "Complex and lengthy transition labels",
+        "Multiple transitions with similar prefixes but different suffixes",
+        "Presence of 'pre_' and 'splace_in_' prefixes in labels",
+        "Transition labels with medical terms and additional tokens"
+      ],
+      "notes": "The structure suggests label-related issues due to complex and inconsistent labeling patterns."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs, timestamps, or resource information, indicating label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Complex and lengthy transition names",
+        "Irregular label patterns",
+        "Multiple transitions with similar prefixes",
+        "Distinct predecessors for identical labels"
+      ],
+      "notes": "The Petri net shows significant label complexity and reuse, suggesting label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Many transition labels contain extra tokens such as IDs or resource information, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Complex and lengthy transition names",
+        "Irregular label patterns",
+        "Multiple transitions with similar prefixes",
+        "Distinct predecessors for same labels"
+      ],
+      "notes": "The structural complexity and label irregularities suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple transitions with the label 'Check:homonymous' suggests that the same label is used for different process steps, indicating potential homonymy."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Many transition labels contain additional tokens or identifiers, such as 'splace_in_190205 class 3b a205_29', which suggests label pollution with extraneous information."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'Check:homonymous'",
+        "Complex labels with extra tokens",
+        "Transition labels with appended identifiers",
+        "Multiple transitions with similar but distinct labels",
+        "Labels containing numerical codes",
+        "Inconsistent label formats"
+      ],
+      "notes": "The structural evidence strongly points to label-related issues, particularly homonymy and pollution."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The presence of multiple transitions labeled as 'Check:homonymous' suggests the same label is used for different process steps, indicating homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Check:homonymous' transitions",
+        "splace_in_Check:homonymous_57",
+        "splace_in_Check:homonymous_126",
+        "splace_in_Check:homonymous_173",
+        "splace_in_rhesusfactor d - centrifugeermethode - e_Check:homonymous_0"
+      ],
+      "notes": "The repeated use of 'Check:homonymous' in different contexts strongly indicates homonymous labeling."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Many transition labels contain extra tokens such as IDs and other information, suggesting labels are polluted with additional data."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'Check:homonymous' with different predecessors",
+        "Labels with extra tokens like IDs and timestamps",
+        "Complex and lengthy transition labels",
+        "Multiple transitions with similar but distinct labels",
+        "Irregular label structures",
+        "Inconsistent label formats"
+      ],
+      "notes": "The presence of homonymous and polluted labels suggests potential confusion in event interpretation and traceability."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Repeated labels with different predecessors",
+        "Complex and lengthy transition labels"
+      ],
+      "notes": "The structural complexity and label irregularities suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs or other metadata, indicating potential label pollution."
+        },
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.8,
+          "why": "There are several instances of labels with small typos or character swaps, such as 'creatiDnine' and 'alMbumin'."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Labels with typos or character swaps",
+        "Complex and lengthy transition names",
+        "Repeated patterns in label structure",
+        "Inconsistent label formatting",
+        "Presence of metadata in labels"
+      ],
+      "notes": "The structural complexity and irregularities in labeling suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Distorted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as numbers and underscores, suggesting additional information like IDs or timestamps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, indicating potential reuse of labels for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with underscores and numbers",
+        "Repeated labels with different predecessors",
+        "Complex and lengthy transition labels",
+        "Multiple transitions with similar base names but different suffixes"
+      ],
+      "notes": "The structural complexity and label patterns suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels like 'Make decision_signed1' and 'Make decision_signed2' suggest additional tokens or identifiers appended to activity names."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The label 'Make decision' appears in different contexts with distinct predecessors, indicating potential reuse of the same label for different steps."
+        }
+      ],
+      "indicators": [
+        "Transition 'Make decision_signed1'",
+        "Transition 'Make decision_signed2'",
+        "Transition 'Make decision'",
+        "Repeated label 'Make decision'",
+        "Transition 'Perform checks'",
+        "Transition 'Check for completeness'"
+      ],
+      "notes": "The presence of multiple silent transitions (τ) suggests complex routing, but no direct evidence of other patterns."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of transitions like 'Make decision_signed1' and 'Make decision_signed2' suggests multiple events are generated from a single real-world step."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'EVENT 13 END' and 'Make decision_signed1' indicate potential inclusion of extra tokens or identifiers."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Make decision' variants",
+        "Label 'EVENT 13 END'",
+        "Transition 'Make decision_signed1'",
+        "Transition 'Make decision_signed2'",
+        "Transition 'Notify accept'",
+        "Transition 'notify reject'"
+      ],
+      "notes": "The Petri net structure suggests label irregularities and event duplication."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of transitions like 'Make decision_signed1' and 'Make decision_signed2' suggests multiple events stemming from a single decision point, indicating potential collateral events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'Make decision_signed1' and 'Make decision_signed2' appear to contain additional tokens, which may indicate label pollution with extra information."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated label patterns",
+        "Unexpected τ loops",
+        "Label tokens with suffixes",
+        "Multiple transitions from single decision point"
+      ],
+      "notes": "The structure suggests complex decision points leading to multiple related events."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'Make decision' is used in different contexts with distinct predecessors, suggesting homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Repeated 'Make decision' label with different predecessors",
+        "Complex transition labels like 'Perform checks_41TZiDF_20231025102208956000'",
+        "Multiple 'Make decision' transitions with unique identifiers",
+        "Transition 'Make decision' appears in various paths",
+        "Transition labels with embedded timestamps"
+      ],
+      "notes": "The presence of complex labels with embedded metadata strongly suggests label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Complex transition names like 'Perform checks_18mhOZq_20231005034634144000'",
+        "Repetitive structure in transition labels",
+        "Presence of multiple tokens in transition names",
+        "Inconsistent naming patterns across transitions",
+        "Transition names appear to include metadata"
+      ],
+      "notes": "The structure suggests label pollution due to the presence of metadata in transition labels."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs",
+        "Transition labels with timestamps",
+        "Complex transition labels",
+        "Inconsistent label formats"
+      ],
+      "notes": "The presence of IDs and timestamps in transition labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The transition 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Multiple silent transitions (tau) are present, suggesting that a single real step may spawn multiple near-simultaneous events."
+        }
+      ],
+      "indicators": [
+        "Transition 'Check:homonymous' with different predecessors",
+        "Multiple tau transitions",
+        "Parallel paths with tau transitions",
+        "Repeated labels like 'Check for completeness'",
+        "Silent transitions leading to different places"
+      ],
+      "notes": "The presence of multiple tau transitions and homonymous labels suggests structural irregularities."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check' is used in different contexts with distinct predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple silent transitions (τ) suggests that some traces may skip significant parts of the process."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous label used in different contexts",
+        "Multiple τ transitions indicating potential skips",
+        "Parallel paths with τ transitions",
+        "Repeated labels with different predecessors"
+      ],
+      "notes": "The structure suggests potential label confusion and trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The transition 'EVENT 13 END' suggests a label containing extra tokens, possibly indicating IDs or other metadata."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple 'Perform checks' transitions with department-specific suffixes suggest synonymous labels for similar activities."
+        }
+      ],
+      "indicators": [
+        "Transition 'EVENT 13 END'",
+        "Multiple 'Perform checks' transitions with department suffixes",
+        "Parallel sibling transitions",
+        "Unexpected τ loop",
+        "Repeated labels",
+        "Irregular fan-in/fan-out"
+      ],
+      "notes": "The presence of multiple 'Perform checks' transitions indicates potential label synonymy."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The transition 'Perform checks - Dep1', 'Perform checks - Dep2', and 'Perform checks - Dep3' suggest labels with extra tokens, possibly indicating department or resource information."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.75,
+          "why": "Multiple 'Perform checks' transitions with different suffixes ('Dep1', 'Dep2', 'Dep3') suggest synonymous activities with different labels."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Perform checks' transitions with suffixes",
+        "Transition 'Perform checks - Dep1'",
+        "Transition 'Perform checks - Dep2'",
+        "Transition 'Perform checks - Dep3'",
+        "Transition 'EVENT 13 END' with unusual naming",
+        "Transition 'hid_3' as a silent transition"
+      ],
+      "notes": "The presence of multiple 'Perform checks' transitions with department-specific suffixes indicates potential label pollution and synonymy."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "Multiple 'Perform checks' transitions with department-specific labels suggest synonymous activities."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like 'Perform checks - Dep3' contain extra tokens indicating department, which may be unnecessary."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Perform checks' transitions",
+        "Department-specific labels in transitions",
+        "Parallel sibling transitions for 'Perform checks'"
+      ],
+      "notes": "The presence of department-specific labels suggests potential label pollution and synonymy."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions exhibit minor typos or character swaps, such as 'Perform checis' and 'Make deJcision', indicating potential data entry errors."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels like 'New onlineapplication received' suggest possible inclusion of extra tokens or concatenated information."
+        }
+      ],
+      "indicators": [
+        "Numerous typos in transition labels",
+        "Concatenated words in labels",
+        "Repeated transition labels with slight variations",
+        "Unexpected τ transitions",
+        "Irregular transition naming patterns",
+        "Multiple transitions with similar but incorrect labels"
+      ],
+      "notes": "The presence of numerous typos and concatenated labels strongly suggests label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions exhibit small typos or character swaps, such as 'Make devision' and 'Notify acctept'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'review requestJ received' and 'New online applicatiQon received' suggest extra tokens or characters."
+        }
+      ],
+      "indicators": [
+        "Repeated typos in transition labels",
+        "Inconsistent spelling across similar transitions",
+        "Unexpected characters in labels",
+        "Multiple transitions with similar but incorrect labels"
+      ],
+      "notes": "The presence of numerous typos and unusual characters in labels suggests data entry errors or label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions and places exhibit minor typos or character swaps, such as 'Check forcompleteness' and 'Check for completeness'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'EVENT 13 END' and 'EVENT 13 EXND' suggest additional tokens or inconsistent naming conventions."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Check for completeness' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Numerous typos in transition labels",
+        "Inconsistent naming conventions in labels",
+        "Repeated labels with different predecessors",
+        "Multiple 'EVENT 13 END' variations",
+        "Frequent minor character swaps",
+        "Inconsistent label formats"
+      ],
+      "notes": "The structural anomalies suggest significant label inconsistencies and potential mislabeling."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple tau transitions and direct jumps between major process steps suggest that some traces may skip significant portions of the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The label 'EVENT 8 END' contains a numeric token, which may indicate additional information embedded within the label."
+        }
+      ],
+      "indicators": [
+        "Multiple tau transitions (hid_8, hid_9, hid_11)",
+        "Direct arcs from source0 to hid_2",
+        "Label 'EVENT 8 END' with numeric token"
+      ],
+      "notes": "The structure suggests potential issues with trace completeness and label clarity."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple τ transitions (hid_2, hid_8, hid_9, hid_11) suggests potential skipping of significant process parts, indicating missing trace segments."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'splace_in_Signal food complete_Review drinks_0' and 'splace_in_Signal food complete_Prepare main course_0' contain extra tokens that may represent IDs or other metadata."
+        }
+      ],
+      "indicators": [
+        "Multiple τ transitions (hid_2, hid_8, hid_9, hid_11)",
+        "Complex labels with extra tokens",
+        "Unexpected τ loops",
+        "Parallel paths with τ transitions"
+      ],
+      "notes": "The structure suggests potential issues with trace completeness and label clarity."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple tau transitions suggests that some paths may skip significant parts of the process, indicating missing trace segments."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like 'splace_in_Signal food complete_Prepare main course_0' contain extra tokens that suggest potential pollution with additional information."
+        }
+      ],
+      "indicators": [
+        "Multiple tau transitions (hid_9, hid_2, hid_8, hid_11)",
+        "Complex labels with extra tokens (e.g., splace_in_Signal food complete_Prepare main course_0)",
+        "Parallel paths with tau transitions"
+      ],
+      "notes": "The presence of tau transitions and complex labels are strong indicators of scattered cases and label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of multiple 'Bring drinks_signed1' and 'Bring drinks_signed2' transitions suggests a single real-world event is spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like 'Bring drinks_signed1' and 'Bring drinks_signed2' contain extra tokens that may indicate additional information such as IDs or signatures."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Bring drinks_signed1' and 'Bring drinks_signed2' transitions",
+        "Labels with '_signed1' and '_signed2' suffixes",
+        "Parallel sibling transitions",
+        "Unexpected τ loops"
+      ],
+      "notes": "The structure suggests potential label pollution and collateral events due to repeated and suffixed labels."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of transitions like 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are spawned from a single real-world step."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'Bring drinks_signed1' and 'Bring drinks_signed2' indicate potential extra tokens or identifiers appended to activity names."
+        }
+      ],
+      "indicators": [
+        "Parallel transitions with similar labels",
+        "Repeated label patterns with suffixes",
+        "Multiple silent transitions",
+        "Complex transition naming",
+        "Unexpected transition pairs",
+        "Fragmented transition regions"
+      ],
+      "notes": "The structure suggests label pollution and collateral events due to repeated and suffixed transition labels."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Collateral_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "The presence of transitions like 'Bring drinks_signed1' and 'Bring drinks_signed2' suggests multiple events are generated from a single real-world action."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels such as 'Bring drinks_signed1' and 'Bring drinks_signed2' contain extra tokens that may indicate additional information embedded in the labels."
+        }
+      ],
+      "indicators": [
+        "Parallel sibling transitions",
+        "Repeated label patterns",
+        "Extra tokens in labels",
+        "Multiple silent transitions",
+        "Complex transition neighborhoods"
+      ],
+      "notes": "The structure suggests potential label pollution and collateral events due to the presence of signed labels and parallel transitions."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs",
+        "Transition labels with timestamps",
+        "Complex transition labels",
+        "Irregular label patterns",
+        "Label inflation",
+        "Label inconsistency"
+      ],
+      "notes": "The presence of IDs and timestamps in transition labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Transition labels with embedded timestamps",
+        "Transition labels with embedded IDs",
+        "Complex transition labels"
+      ],
+      "notes": "The presence of timestamps and IDs in transition labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple tau transitions and direct jumps between places suggests that some traces may skip significant portions of the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The transition 'EVENT 8 END' appears to contain extraneous tokens, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Multiple tau transitions (hid_9, hid_11, hid_2, hid_8)",
+        "Direct arcs suggesting skipped regions",
+        "Transition 'EVENT 8 END' with unusual naming"
+      ],
+      "notes": "The structure suggests potential issues with trace completeness and label clarity."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.8,
+          "why": "Multiple 'Bring drinks' transitions (Dep1, Dep2, Dep3) suggest a single real-world event spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The label 'Bring drinks' is used for different transitions (Dep1, Dep2, Dep3), indicating the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Bring drinks' transitions",
+        "Parallel sibling transitions",
+        "Repeated label 'Bring drinks'"
+      ],
+      "notes": "The presence of multiple 'Bring drinks' transitions with different suffixes suggests label misuse or event duplication."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The transition 'Bring drinks' appears multiple times with different dependencies, suggesting the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels like 'Bring drinks - Dep1' and 'Bring drinks - Dep3' contain extra tokens that may indicate additional information embedded in the label."
+        }
+      ],
+      "indicators": [
+        "Repeated transition label 'Bring drinks'",
+        "Transition labels with suffixes '- Dep1', '- Dep2', '- Dep3'",
+        "Multiple τ transitions",
+        "Complex transition dependencies",
+        "Irregular transition naming patterns"
+      ],
+      "notes": "The presence of multiple τ transitions suggests potential structural complexity or hidden behavior."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Synonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Collateral Event",
+          "confidence": 0.9,
+          "why": "Multiple 'Bring drinks' transitions (Dep1, Dep2, Dep3) suggest a single real-world event is spawning multiple near-simultaneous events."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels like 'Bring drinks - Dep1' and 'Bring drinks - Dep2' indicates potential extra tokens or identifiers in the labels."
+        }
+      ],
+      "indicators": [
+        "Multiple 'Bring drinks' transitions",
+        "Labels with '- Dep' suffix",
+        "Unexpected τ transitions (hid_12, hid_17, hid_19)"
+      ],
+      "notes": "The presence of multiple 'Bring drinks' transitions with suffixes suggests label pollution and collateral event patterns."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Polluted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Transition labels with appended timestamps",
+        "Transition labels with appended IDs",
+        "Complex transition names",
+        "Inconsistent label formats"
+      ],
+      "notes": "The presence of timestamps and IDs in transition labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple τ transitions and direct jumps between places suggests that some traces may skip significant parts of the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The transition 'EVENT 8 END' contains extra tokens that may indicate additional information embedded in the label."
+        }
+      ],
+      "indicators": [
+        "Multiple τ transitions",
+        "Direct jumps between places",
+        "Transition 'EVENT 8 END' with extra tokens"
+      ],
+      "notes": "The structure suggests potential issues with trace completeness and label clarity."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple tau transitions and direct jumps between places suggests that some traces may skip significant portions of the process."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The transition 'EVENT 8 END' contains extra tokens that are not typical for process step labels, indicating potential label pollution."
+        }
+      ],
+      "indicators": [
+        "Multiple tau transitions (hid_11, hid_2, hid_9, hid_8)",
+        "Direct jumps between places",
+        "Transition 'EVENT 8 END' with extra tokens"
+      ],
+      "notes": "The Petri net structure suggests potential issues with trace completeness and label clarity."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions exhibit minor typos or character swaps, such as 'Prepare main couorse' and 'Deliver to customeNr'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'Deliver to customer' appears in different contexts with distinct predecessors, indicating potential misuse of the same label for different steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'RVENT 8 END' and 'EVENyT 8 END' suggest possible inclusion of extraneous tokens or identifiers."
+        }
+      ],
+      "indicators": [
+        "Repeated typos in transition labels",
+        "Same label used in different contexts",
+        "Labels with unusual tokens or formatting",
+        "Multiple 'Deliver to customer' transitions",
+        "Inconsistent label spellings",
+        "Unexpected transition label variations"
+      ],
+      "notes": "The presence of numerous typos and label variations strongly suggests label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions exhibit minor typos or character swaps, such as 'Prepare main courshe' and 'Prepare main course'."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels contain extra tokens or unusual characters, such as 'Signal food complete_Review drinks_10'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'Review drinks' appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Numerous typos in transition labels",
+        "Labels with extra tokens or characters",
+        "Repeated labels with different predecessors",
+        "Transition 'Prepare main courshe' vs 'Prepare main course'",
+        "Label 'Signal food complete_Review drinks_10'",
+        "Label 'Review drinks' in multiple contexts"
+      ],
+      "notes": "The Petri net shows significant label irregularities, suggesting data entry or extraction issues."
+    }
+  },
+  {
+    "file": "PetriNet_Pub_Distorted_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions and places have minor typos or character swaps, such as 'Review dtrinks' and 'Prepare tmain course'."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label is used for different process steps, such as 'Bring drinks' appearing in different contexts with distinct predecessors."
+        }
+      ],
+      "indicators": [
+        "Numerous typos in transition labels",
+        "Repeated labels with different predecessors",
+        "Inconsistent transition naming",
+        "Multiple variations of 'Prepare main course'",
+        "Multiple variations of 'Review drinks'",
+        "Multiple variations of 'Take order'"
+      ],
+      "notes": "The structural inconsistencies suggest label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Check for completeness' appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "The label 'EVENT 13 END' contains extra tokens, which may indicate additional information embedded in the label."
+        }
+      ],
+      "indicators": [
+        "Repeated label: Check for completeness",
+        "Label with extra tokens: EVENT 13 END",
+        "Parallel sibling transitions: Notify accept, notify reject",
+        "Unexpected τ transition: hid_3"
+      ],
+      "notes": "The presence of a τ transition suggests potential abstraction or simplification in the process model."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Homonymous_0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The transition 'Check:homonymous' appears in different contexts with distinct predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of multiple τ transitions and direct jumps between places suggests that some variants may skip significant parts of the process."
+        }
+      ],
+      "indicators": [
+        "Check:homonymous label used in multiple contexts",
+        "Multiple τ transitions indicating potential skips",
+        "Direct arcs suggesting jumps between process parts"
+      ],
+      "notes": "The structure suggests potential label misuse and trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The label 'Make decision' appears multiple times with different predecessors, suggesting it may represent different steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The presence of a silent transition (tau) and multiple paths skipping significant parts of the process indicate potential missing trace parts."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'Make decision'",
+        "Silent transition 'tau'",
+        "Multiple paths from 'intplace_Check for completeness'",
+        "Parallel paths leading to 'notify reject' and 'Notify accept'"
+      ],
+      "notes": "The structure suggests potential label confusion and missing trace segments."
+    }
+  },
+  {
+    "file": "PetriNet_Credit_Formbased_0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The transition 'EVENT 13 END' suggests a label with extraneous tokens, possibly indicating metadata or identifiers."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.75,
+          "why": "The presence of a τ transition (hid_3) and direct jumps like 'intplace_Check for completeness -> New online application received' suggest potential skipping of process parts."
+        }
+      ],
+      "indicators": [
+        "Transition 'EVENT 13 END' with unusual label",
+        "τ transition 'hid_3' indicating possible skipped steps",
+        "Direct arc 'intplace_Check for completeness -> New online application received'"
+      ],
+      "notes": "The structure suggests potential label pollution and skipped process parts."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens such as 'enter senddate decision suspension' and 'enter date draft decisionenvironmental permit' suggests label pollution with additional information."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label 'enter senddate decision suspension' appears in different contexts, indicating potential homonymy where the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Complex label structures",
+        "Multiple transitions with similar names",
+        "Irregular label patterns",
+        "Suspiciously detailed labels"
+      ],
+      "notes": "The Petri net structure suggests label irregularities, particularly with complex and repeated labels."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens such as 'send confirmation receipt - Dep3' and 'send design decision to stakeholders' suggests labels may contain additional information like department identifiers."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label 'send confirmation receipt' appears in different contexts with different predecessors, indicating potential homonymy."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of transitions like 'stop suspended completeness subcases' and 'phase procedure prematurely terminated' suggests that parts of traces might be missing or skipped."
+        }
+      ],
+      "indicators": [
+        "Labels with extra tokens",
+        "Repeated label 'send confirmation receipt'",
+        "Transitions indicating skipped or terminated processes",
+        "Multiple silent (τ) transitions",
+        "Complex transition names",
+        "Irregular transition neighborhoods"
+      ],
+      "notes": "The Petri net structure suggests label and trace inconsistencies, likely affecting event log clarity."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Synonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share the same label, such as 'enter senddate decision suspension' and 'enter senddate retrieve missing data', indicating potential label reuse for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels contain extra tokens or information, such as 'send confirmation receipt - Dep1', suggesting labels may include additional data like department identifiers."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of numerous silent transitions (τ) and direct jumps between non-adjacent states suggest potential missing parts of traces or skipped process segments."
+        }
+      ],
+      "indicators": [
+        "Repeated labels across transitions",
+        "Labels with extra tokens",
+        "Numerous silent transitions (τ)",
+        "Direct jumps between non-adjacent states",
+        "Complex transition labels",
+        "Multiple transitions with identical labels"
+      ],
+      "notes": "The Petri net structure suggests label inconsistencies and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The label 'Check:homonymous' appears in multiple contexts with different predecessors, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.8,
+          "why": "There are multiple transitions with similar meanings, such as 'enter senddate procedure term extension' and 'enter senddate decision procedure term extension', suggesting synonymous labels."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'Check:homonymous' contain extra tokens, which may include IDs or other metadata, indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'Check:homonymous'",
+        "Multiple 'enter senddate' transitions with similar meanings",
+        "Label 'Check:homonymous' used in different contexts",
+        "Labels with extra tokens like 'Check:homonymous'",
+        "Transitions with similar meanings but different labels",
+        "Multiple contexts for 'enter senddate' transitions"
+      ],
+      "notes": "The presence of repeated and contextually varied labels suggests label-related imperfections."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The same label 'Check:homonymous' is used in different contexts, indicating potential confusion in process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels such as 'creating cover letter decision_2' and 'enter senddate decision environmental permit_13' suggest additional tokens like numbers or identifiers are appended."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Multiple labels like 'send design decision to stakeholders' and 'send decision suspension' appear to describe similar actions, indicating potential synonymy."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'Check:homonymous'",
+        "Labels with appended numbers",
+        "Multiple similar labels for sending decisions",
+        "Transition label inflation",
+        "Irregular label patterns",
+        "Suspicious label variations"
+      ],
+      "notes": "The presence of repeated and varied labels suggests label management issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Homonymous-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "Multiple transitions share the same label, such as 'Check:homonymous', indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels contain extra tokens, such as 'enter senddate decision environmental permit', suggesting labels may include additional information like IDs or timestamps."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Different labels like 'send suspension by competent authority' and 'send design decision to stakeholders' may refer to similar actions, indicating synonymous labels."
+        }
+      ],
+      "indicators": [
+        "Repeated labels like 'Check:homonymous'",
+        "Complex labels with multiple tokens",
+        "Multiple transitions with similar meanings",
+        "High number of τ transitions",
+        "Labels with procedural terms",
+        "Transitions with similar prefixes"
+      ],
+      "notes": "The presence of numerous τ transitions suggests potential structural complexity or abstraction."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.3.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions exhibit minor typographical errors, such as 'generatin decision environmental permit' and 'rwtrieve missing data', indicating potential label distortions."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'Submit draft decision' appears in different contexts, suggesting it may be used for different process steps."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.7,
+          "why": "Labels like 'enter senddate decision suspension' and 'enter senddate retrieve missing data' suggest the inclusion of extraneous tokens, possibly indicating label pollution."
+        }
+      ],
+      "indicators": [
+        "Typographical errors in transition labels",
+        "Repeated transition labels in different contexts",
+        "Labels with extraneous tokens",
+        "Multiple silent transitions (τ)",
+        "Irregular transition naming patterns",
+        "Inconsistent label formats"
+      ],
+      "notes": "The presence of numerous silent transitions (τ) may also indicate structural complexity or abstraction issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.1.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Distorted Label",
+          "confidence": 0.9,
+          "why": "Numerous transitions have minor typographical errors, such as 'environmentwl' instead of 'environmental', indicating potential label distortions."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels often contain extra tokens or information, such as 'enter senddage decision environmental permit', suggesting label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.7,
+          "why": "The same label 'enter senddate decision environmental permit' appears in different contexts, indicating possible homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Typographical errors in transition labels",
+        "Extra tokens in transition labels",
+        "Repeated labels in different contexts",
+        "Unexpected τ loops",
+        "Irregular fan-in/fan-out",
+        "Suspicious model topologies"
+      ],
+      "notes": "The presence of numerous τ transitions and label inconsistencies suggests potential data quality issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Distorted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.9,
+          "why": "The same label is used for different process steps, such as 'enter senddate decision environmental permit' and 'enter date draft decisionenvironmental permit', which appear in different contexts with distinct predecessors."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Labels contain extra tokens or information, such as 'splace_in_create draft environtmental permit_request complete_1', indicating potential pollution with additional data."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are numerous transitions and places indicating skipped regions and fragmented paths, suggesting that parts of traces might be missing or some variants skip significant chunks."
+        }
+      ],
+      "indicators": [
+        "Repeated labels with different contexts",
+        "Labels with extra tokens",
+        "Numerous silent (τ) transitions",
+        "Fragmented paths",
+        "Irregular transition fan-in/fan-out",
+        "Unexpected loops"
+      ],
+      "notes": "The presence of numerous silent transitions and fragmented paths suggests potential issues with trace completeness and label consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of numerous transitions with similar prefixes but different suffixes suggests that parts of traces may be missing or skipped."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Numerous transitions with similar prefixes",
+        "Irregular transition naming patterns",
+        "Complex transition sequences",
+        "Fragmented transition paths",
+        "Inconsistent transition suffixes"
+      ],
+      "notes": "The Petri net shows structural complexity and label irregularities, suggesting data quality issues."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Repeated labels with different predecessors",
+        "Complex transition names with multiple underscores",
+        "Transitions with similar names but different contexts"
+      ],
+      "notes": "The presence of IDs and timestamps in labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as timestamps and IDs, indicating label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label is used for different process steps, as evidenced by transitions like 'enter senddate decision environmental permit' appearing in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are jumps in the process flow, such as direct transitions from 'request complete' to 'start WABOprocedure', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Transition labels with timestamps",
+        "Repeated labels in different contexts",
+        "Direct jumps in process flow",
+        "Transition labels with IDs",
+        "Multiple transitions with identical labels",
+        "Unexpected direct arcs"
+      ],
+      "notes": "The presence of timestamps and IDs in labels strongly suggests label pollution."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of labels with extra tokens such as 'set decision status_5' and 'enter senddate draft decisionenvironmental permit_6' suggests labels may contain additional information like IDs or timestamps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "Labels like 'enter senddate draft decision' and 'enter senddate decision suspension' appear in different contexts, indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Synonymous Label",
+          "confidence": 0.7,
+          "why": "Labels such as 'send design decision to stakeholders' and 'send decision suspension' suggest multiple labels with similar meanings are used interchangeably."
+        }
+      ],
+      "indicators": [
+        "Labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Multiple labels with similar meanings",
+        "Transition labels with suffixes",
+        "Identical labels in varied contexts",
+        "Labels with similar prefixes"
+      ],
+      "notes": "The structural patterns suggest label-related issues are prevalent in this Petri net."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label is used for different process steps, as seen with transitions like 'send confirmation receipt' in different contexts."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "There are direct jumps between distant places, suggesting missing parts of traces or skipped regions."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Repeated use of 'send confirmation receipt' in different contexts",
+        "Direct jumps between distant places",
+        "Numerous silent (τ) transitions",
+        "Complex transition labeling",
+        "Irregular transition neighborhoods"
+      ],
+      "notes": "The presence of numerous silent transitions and complex labeling suggests potential structural inconsistencies."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "Many transition labels contain extra tokens such as numbers and underscores, suggesting potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label appears in different contexts with distinct predecessors, indicating possible homonymous labeling."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of numerous silent transitions (τ) and fragmented paths suggests that parts of traces might be missing or scattered."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Numerous silent transitions (τ)",
+        "Fragmented paths",
+        "Irregular transition labeling",
+        "Unexpected τ loops"
+      ],
+      "notes": "The Petri net structure suggests label inconsistencies and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of numerous transitions with labels containing underscores and numbers suggests labels may include extraneous tokens such as IDs or timestamps."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "Several transitions share identical labels, such as 'enter senddate decision suspension', indicating the same label is used for different process steps."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The Petri net shows direct jumps between distant places, such as 'splace_in_request complete' to 'splace_in_enter senddate retrieve missing data', suggesting missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "transitions with underscores and numbers",
+        "identical transition labels",
+        "direct jumps between distant places",
+        "repeated labels",
+        "unexpected τ loops",
+        "fragmented regions"
+      ],
+      "notes": "The structural complexity and label patterns suggest potential issues with label consistency and trace completeness."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The presence of numerous transitions with complex and lengthy labels suggests that labels may contain extraneous information such as IDs or other metadata."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label appears in different contexts, such as 'enter senddate procedure confirmation' and 'entering senddate draft decision environmental permit', indicating potential reuse of labels for different steps."
+        }
+      ],
+      "indicators": [
+        "Complex transition labels",
+        "Repeated labels in different contexts",
+        "Numerous silent (τ) transitions",
+        "Irregular transition naming patterns",
+        "High number of transitions with similar prefixes",
+        "Multiple transitions with similar suffixes"
+      ],
+      "notes": "The Petri net structure suggests label-related issues, possibly due to inconsistent labeling practices."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC15-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label 'enter senddate decision' is used for different process steps, indicating potential homonymy."
+        },
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.75,
+          "why": "Labels like 'enter senddate decision environmental permit_publish official draft decision_12' contain extra tokens, suggesting label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.7,
+          "why": "The presence of many silent transitions (τ) and complex branching suggests that parts of traces might be missing, indicating scattered cases."
+        }
+      ],
+      "indicators": [
+        "Repeated label 'enter senddate decision'",
+        "Complex branching with τ transitions",
+        "Label 'enter senddate decision environmental permit_publish official draft decision_12'",
+        "Silent transitions (τ) like 'tau, hid_1024'",
+        "Label 'enter senddate decision environmental permit_treat subcases content_0'",
+        "Label 'enter senddate decision environmental permit_publish official draft decision_12'"
+      ],
+      "notes": "The Petri net structure suggests label issues and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.8,
+          "why": "The transition labels contain extra tokens such as IDs and other information, which suggests label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.75,
+          "why": "The same label appears in different contexts with distinct predecessors, indicating potential homonymy."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Same label used in different contexts",
+        "Irregular transition labeling",
+        "Complex and lengthy transition names",
+        "Repeated label patterns",
+        "Distinct predecessors for same labels"
+      ],
+      "notes": "The structural complexity and label irregularities suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs or numerical codes, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Repeated labels with different predecessors",
+        "Complex and lengthy transition names",
+        "Numerical codes in transition labels"
+      ],
+      "notes": "The presence of complex labels with numerical codes suggests label pollution, while repeated labels in different contexts suggest homonymy."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-FormBased-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs, timestamps, or resource information, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Repeated labels in different contexts",
+        "Complex and lengthy transition names",
+        "Multiple transitions with similar prefixes",
+        "Inconsistent label structures",
+        "Transitions with similar names but different arcs"
+      ],
+      "notes": "The Petri net structure suggests significant label irregularities, likely due to data capture or labeling practices."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.30.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "The transition labels contain extra tokens such as IDs and timestamps, which suggest label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "There are numerous transitions with large jumps between places, indicating potential missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Large jumps between places",
+        "Irregular transition naming patterns",
+        "Complex and fragmented process paths"
+      ],
+      "notes": "The Petri net structure suggests significant label irregularities and potential trace fragmentation."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.10.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs or other metadata, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting the same label is used for different process steps."
+        }
+      ],
+      "indicators": [
+        "Transition labels with appended IDs or metadata",
+        "Repeated labels with different predecessors",
+        "Complex and lengthy transition labels",
+        "Multiple transitions with similar base names but different suffixes",
+        "Inconsistent label structures across transitions"
+      ],
+      "notes": "The structural complexity and label irregularities suggest issues with label clarity and consistency."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-CollateralEvent-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs, timestamps, or resource info, indicating potential label pollution."
+        },
+        {
+          "pattern": "Scattered Case",
+          "confidence": 0.8,
+          "why": "The presence of numerous skipped regions and direct jumps between distant places suggests missing parts of traces."
+        }
+      ],
+      "indicators": [
+        "Transition labels with extra tokens",
+        "Direct jumps between distant places",
+        "Skipped regions in the process",
+        "Complex and lengthy transition labels",
+        "Irregular transition naming patterns",
+        "Fragmented process regions"
+      ],
+      "notes": "The Petri net structure suggests significant label irregularities and potential trace incompleteness."
+    }
+  },
+  {
+    "file": "PetriNet_BPIC11-Polluted-0.02.txt",
+    "result": {
+      "detected": [
+        {
+          "pattern": "Polluted Label",
+          "confidence": 0.9,
+          "why": "Many transition labels contain extra tokens such as IDs and timestamps, indicating potential label pollution."
+        },
+        {
+          "pattern": "Homonymous Label",
+          "confidence": 0.8,
+          "why": "The same label appears in different contexts with distinct predecessors, suggesting homonymous labeling."
+        }
+      ],
+      "indicators": [
+        "Transition labels with IDs and timestamps",
+        "Repeated labels with different predecessors",
+        "Complex label structures",
+        "Irregular label patterns",
+        "Multiple transitions with similar names",
+        "Distinct contexts for same labels"
+      ],
+      "notes": "The structural complexity and label irregularities suggest issues with label clarity and consistency."
+    }
+  }
+]
