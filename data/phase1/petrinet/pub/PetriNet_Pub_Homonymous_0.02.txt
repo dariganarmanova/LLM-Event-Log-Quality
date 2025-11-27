@@ -1,0 +1,62 @@
+places:
+splace_in_Signal food complete_Review drinks_0, intplace_Review order, pre_start, pre_Prepare main course, splace_in_Signal food complete_Prepare main course_0, pre_Review order, source0, sink0, pre_Bring food, pre_Deliver to customer, pre_Bring drinks, pre_prepare drinks, pre_Review drinks, pre_EVENT 8 END, intplace_Review drinks
+
+transitions:
+(Prepare starter, Prepare starter)
+(Bring drinks, Bring drinks)
+(Prepare main course, Prepare main course)
+(Take order, Take order)
+(start, start)
+(Signal food complete, Signal food complete)
+(tau, hid_9)
+(Review drinks, Review drinks)
+(Bring food, Bring food)
+(prepare drinks, prepare drinks)
+(Review order, Review order)
+(tau, hid_11)
+(Deliver to customer, Deliver to customer)
+(tau, hid_2)
+(EVENT 8 END, EVENT 8 END)
+(tau, hid_8)
+
+arcs:
+(pre_Review order -> Review order)
+(start -> pre_Review order)
+(Bring drinks -> pre_Review drinks)
+(EVENT 8 END -> sink0)
+(pre_Review drinks -> Review drinks)
+(pre_Bring food -> Bring food)
+(pre_EVENT 8 END -> EVENT 8 END)
+(intplace_Review order -> hid_8)
+(source0 -> Take order)
+(hid_2 -> pre_start)
+(pre_prepare drinks -> prepare drinks)
+(prepare drinks -> pre_Bring drinks)
+(Prepare main course -> splace_in_Signal food complete_Prepare main course_0)
+(source0 -> hid_2)
+(pre_Bring drinks -> Bring drinks)
+(Review drinks -> intplace_Review drinks)
+(hid_9 -> pre_Prepare main course)
+(intplace_Review order -> Prepare starter)
+(Deliver to customer -> pre_EVENT 8 END)
+(hid_9 -> splace_in_Signal food complete_Review drinks_0)
+(hid_11 -> pre_prepare drinks)
+(pre_Deliver to customer -> Deliver to customer)
+(intplace_Review drinks -> hid_9)
+(Signal food complete -> pre_Bring food)
+(pre_start -> start)
+(Prepare starter -> pre_prepare drinks)
+(splace_in_Signal food complete_Prepare main course_0 -> Signal food complete)
+(Review order -> intplace_Review order)
+(intplace_Review drinks -> hid_11)
+(hid_8 -> pre_prepare drinks)
+(splace_in_Signal food complete_Review drinks_0 -> Signal food complete)
+(pre_Prepare main course -> Prepare main course)
+(Bring food -> pre_Deliver to customer)
+(Take order -> pre_start)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

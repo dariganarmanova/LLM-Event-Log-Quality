@@ -1,0 +1,62 @@
+places:
+splace_in_Signal food complete_Prepare main course_0, pre_Prepare main course, pre_Bring drinks, pre_Bring food, source0, pre_Deliver to customer, intplace_Review order, intplace_Review drinks, pre_start, splace_in_Signal food complete_Review drinks_0, sink0, pre_Review drinks, pre_Review order, pre_prepare drinks, pre_EVENT 8 END
+
+transitions:
+(Prepare starter, Prepare starter)
+(Bring food, Bring food)
+(Deliver to customer, Deliver to customer)
+(Bring drinks, Bring drinks)
+(tau, hid_11)
+(Take order, Take order)
+(prepare drinks, prepare drinks)
+(tau, hid_2)
+(tau, hid_9)
+(Review order, Review order)
+(EVENT 8 END, EVENT 8 END)
+(Review drinks, Review drinks)
+(Signal food complete, Signal food complete)
+(Prepare main course, Prepare main course)
+(tau, hid_8)
+(start, start)
+
+arcs:
+(intplace_Review order -> Prepare starter)
+(hid_8 -> pre_prepare drinks)
+(Prepare starter -> pre_prepare drinks)
+(splace_in_Signal food complete_Review drinks_0 -> Signal food complete)
+(source0 -> Take order)
+(Review order -> intplace_Review order)
+(intplace_Review drinks -> hid_9)
+(Signal food complete -> pre_Bring food)
+(Bring food -> pre_Deliver to customer)
+(Take order -> pre_start)
+(pre_Prepare main course -> Prepare main course)
+(hid_11 -> pre_prepare drinks)
+(intplace_Review drinks -> hid_11)
+(Deliver to customer -> pre_EVENT 8 END)
+(pre_EVENT 8 END -> EVENT 8 END)
+(pre_Review order -> Review order)
+(pre_prepare drinks -> prepare drinks)
+(pre_Bring drinks -> Bring drinks)
+(pre_Review drinks -> Review drinks)
+(pre_Bring food -> Bring food)
+(pre_Deliver to customer -> Deliver to customer)
+(start -> pre_Review order)
+(prepare drinks -> pre_Bring drinks)
+(hid_9 -> splace_in_Signal food complete_Review drinks_0)
+(hid_2 -> pre_start)
+(Review drinks -> intplace_Review drinks)
+(hid_9 -> pre_Prepare main course)
+(source0 -> hid_2)
+(pre_start -> start)
+(splace_in_Signal food complete_Prepare main course_0 -> Signal food complete)
+(intplace_Review order -> hid_8)
+(Bring drinks -> pre_Review drinks)
+(Prepare main course -> splace_in_Signal food complete_Prepare main course_0)
+(EVENT 8 END -> sink0)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

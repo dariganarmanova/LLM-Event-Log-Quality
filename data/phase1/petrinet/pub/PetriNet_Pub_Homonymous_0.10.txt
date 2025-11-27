@@ -1,0 +1,62 @@
+places:
+source0, pre_start, splace_in_Signal food complete_Review drinks_0, pre_Deliver to customer, pre_EVENT 8 END, pre_Bring drinks, splace_in_Signal food complete_Prepare main course_0, pre_Review order, pre_Review drinks, pre_Bring food, intplace_Review order, sink0, pre_Prepare main course, intplace_Review drinks, pre_prepare drinks
+
+transitions:
+(Take order, Take order)
+(Signal food complete, Signal food complete)
+(tau, hid_2)
+(start, start)
+(tau, hid_8)
+(tau, hid_11)
+(Deliver to customer, Deliver to customer)
+(Bring food, Bring food)
+(EVENT 8 END, EVENT 8 END)
+(Prepare starter, Prepare starter)
+(tau, hid_9)
+(Bring drinks, Bring drinks)
+(Prepare main course, Prepare main course)
+(Review order, Review order)
+(Review drinks, Review drinks)
+(prepare drinks, prepare drinks)
+
+arcs:
+(splace_in_Signal food complete_Review drinks_0 -> Signal food complete)
+(hid_2 -> pre_start)
+(pre_Bring food -> Bring food)
+(Review drinks -> intplace_Review drinks)
+(Deliver to customer -> pre_EVENT 8 END)
+(hid_8 -> pre_prepare drinks)
+(Bring drinks -> pre_Review drinks)
+(Prepare starter -> pre_prepare drinks)
+(Signal food complete -> pre_Bring food)
+(pre_Review order -> Review order)
+(pre_prepare drinks -> prepare drinks)
+(pre_Prepare main course -> Prepare main course)
+(pre_Deliver to customer -> Deliver to customer)
+(start -> pre_Review order)
+(hid_9 -> splace_in_Signal food complete_Review drinks_0)
+(intplace_Review drinks -> hid_11)
+(source0 -> Take order)
+(splace_in_Signal food complete_Prepare main course_0 -> Signal food complete)
+(pre_EVENT 8 END -> EVENT 8 END)
+(intplace_Review order -> Prepare starter)
+(Prepare main course -> splace_in_Signal food complete_Prepare main course_0)
+(source0 -> hid_2)
+(Take order -> pre_start)
+(prepare drinks -> pre_Bring drinks)
+(intplace_Review drinks -> hid_9)
+(Bring food -> pre_Deliver to customer)
+(pre_Bring drinks -> Bring drinks)
+(hid_11 -> pre_prepare drinks)
+(pre_start -> start)
+(pre_Review drinks -> Review drinks)
+(Review order -> intplace_Review order)
+(intplace_Review order -> hid_8)
+(hid_9 -> pre_Prepare main course)
+(EVENT 8 END -> sink0)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

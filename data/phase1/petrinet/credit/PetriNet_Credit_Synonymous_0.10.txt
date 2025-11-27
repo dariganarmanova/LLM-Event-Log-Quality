@@ -1,0 +1,65 @@
+places:
+pre_Check for completeness, pre_EVENT 13 END, pre_info received, source0, pre_Make decision, intplace_Check for completeness, intplace_New online application received, intplace_notify reject, sink0, pre_Deliver card, intplace_Make decision
+
+transitions:
+(Perform checks, Perform checks)
+(Request info, Request info)
+(Perform checks - Dep3, Perform checks - Dep3)
+(Perform checks - Dep1, Perform checks - Dep1)
+(Make decision, Make decision)
+(notify reject, notify reject)
+(Perform checks - Dep2, Perform checks - Dep2)
+(time out, time out)
+(info received, info received)
+(EVENT 13 END, EVENT 13 END)
+(review request received, review request received)
+(Deliver card, Deliver card)
+(tau, hid_3)
+(Check for completeness, Check for completeness)
+(New online application received, New online application received)
+(Notify accept, Notify accept)
+
+arcs:
+(Request info -> pre_info received)
+(intplace_New online application received -> Perform checks - Dep1)
+(New online application received -> intplace_New online application received)
+(review request received -> pre_Check for completeness)
+(pre_info received -> info received)
+(intplace_notify reject -> review request received)
+(intplace_Make decision -> notify reject)
+(hid_3 -> pre_Check for completeness)
+(Perform checks - Dep2 -> pre_Make decision)
+(notify reject -> intplace_notify reject)
+(EVENT 13 END -> sink0)
+(intplace_Check for completeness -> Perform checks - Dep1)
+(intplace_Check for completeness -> Perform checks - Dep2)
+(source0 -> hid_3)
+(Notify accept -> pre_Deliver card)
+(Perform checks -> pre_Make decision)
+(intplace_Check for completeness -> Request info)
+(intplace_Make decision -> Notify accept)
+(Perform checks - Dep3 -> pre_Make decision)
+(time out -> pre_EVENT 13 END)
+(pre_Make decision -> Make decision)
+(intplace_New online application received -> Request info)
+(intplace_Check for completeness -> New online application received)
+(intplace_Check for completeness -> Perform checks)
+(intplace_New online application received -> Perform checks - Dep3)
+(Check for completeness -> intplace_Check for completeness)
+(Make decision -> intplace_Make decision)
+(info received -> pre_Check for completeness)
+(pre_Check for completeness -> Check for completeness)
+(intplace_Check for completeness -> Perform checks - Dep3)
+(intplace_notify reject -> time out)
+(Deliver card -> pre_EVENT 13 END)
+(pre_EVENT 13 END -> EVENT 13 END)
+(pre_Deliver card -> Deliver card)
+(intplace_New online application received -> Perform checks - Dep2)
+(intplace_New online application received -> Perform checks)
+(Perform checks - Dep1 -> pre_Make decision)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

@@ -1,0 +1,53 @@
+places:
+pre_Check for completeness, intplace_New online application received, pre_Make decision, source0, pre_info received, intplace_Check for completeness, intplace_Make decision, pre_EVENT 13 END, sink0, pre_Deliver card, intplace_notify reject
+
+transitions:
+(Make decision, Make decision)
+(notify reject, notify reject)
+(New online application received, New online application received)
+(Deliver card, Deliver card)
+(Check for completeness, Check for completeness)
+(Perform checks, Perform checks)
+(info received, info received)
+(EVENT 13 END, EVENT 13 END)
+(tau, hid_3)
+(Request info, Request info)
+(time out, time out)
+(Notify accept, Notify accept)
+(review request received, review request received)
+
+arcs:
+(source0 -> hid_3)
+(pre_EVENT 13 END -> EVENT 13 END)
+(intplace_New online application received -> Perform checks)
+(Perform checks -> pre_Make decision)
+(pre_Make decision -> Make decision)
+(Check for completeness -> intplace_Check for completeness)
+(Make decision -> intplace_Make decision)
+(intplace_notify reject -> review request received)
+(intplace_Make decision -> notify reject)
+(EVENT 13 END -> sink0)
+(intplace_Check for completeness -> Perform checks)
+(intplace_Check for completeness -> New online application received)
+(hid_3 -> pre_Check for completeness)
+(New online application received -> intplace_New online application received)
+(intplace_New online application received -> Request info)
+(pre_Check for completeness -> Check for completeness)
+(Deliver card -> pre_EVENT 13 END)
+(intplace_Make decision -> Notify accept)
+(intplace_notify reject -> time out)
+(pre_Deliver card -> Deliver card)
+(time out -> pre_EVENT 13 END)
+(intplace_Check for completeness -> Request info)
+(notify reject -> intplace_notify reject)
+(info received -> pre_Check for completeness)
+(pre_info received -> info received)
+(Request info -> pre_info received)
+(review request received -> pre_Check for completeness)
+(Notify accept -> pre_Deliver card)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

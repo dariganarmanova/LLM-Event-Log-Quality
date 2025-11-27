@@ -1,0 +1,62 @@
+places:
+sink0, pre_Review drinks, source0, splace_in_Signal food complete_Prepare main course_0, intplace_Review drinks, pre_Bring drinks, pre_Prepare main course, pre_EVENT 8 END, intplace_Review order, pre_start, pre_prepare drinks, splace_in_Signal food complete_Review drinks_0, pre_Bring food, pre_Review order, pre_Deliver to customer
+
+transitions:
+(Bring drinks, Bring drinks)
+(EVENT 8 END, EVENT 8 END)
+(tau, hid_9)
+(Prepare main course, Prepare main course)
+(prepare drinks, prepare drinks)
+(Review drinks, Review drinks)
+(Deliver to customer, Deliver to customer)
+(Take order, Take order)
+(Review order, Review order)
+(tau, hid_2)
+(Prepare starter, Prepare starter)
+(tau, hid_8)
+(tau, hid_11)
+(Signal food complete, Signal food complete)
+(Bring food, Bring food)
+(start, start)
+
+arcs:
+(pre_Review order -> Review order)
+(pre_prepare drinks -> prepare drinks)
+(Take order -> pre_start)
+(Bring drinks -> pre_Review drinks)
+(intplace_Review drinks -> hid_9)
+(pre_Review drinks -> Review drinks)
+(pre_Bring food -> Bring food)
+(start -> pre_Review order)
+(hid_9 -> pre_Prepare main course)
+(Signal food complete -> pre_Bring food)
+(EVENT 8 END -> sink0)
+(pre_Bring drinks -> Bring drinks)
+(hid_8 -> pre_prepare drinks)
+(Review drinks -> intplace_Review drinks)
+(source0 -> hid_2)
+(intplace_Review order -> Prepare starter)
+(intplace_Review order -> hid_8)
+(Prepare main course -> splace_in_Signal food complete_Prepare main course_0)
+(splace_in_Signal food complete_Review drinks_0 -> Signal food complete)
+(source0 -> Take order)
+(pre_start -> start)
+(pre_EVENT 8 END -> EVENT 8 END)
+(prepare drinks -> pre_Bring drinks)
+(intplace_Review drinks -> hid_11)
+(Deliver to customer -> pre_EVENT 8 END)
+(hid_11 -> pre_prepare drinks)
+(pre_Prepare main course -> Prepare main course)
+(hid_9 -> splace_in_Signal food complete_Review drinks_0)
+(Bring food -> pre_Deliver to customer)
+(hid_2 -> pre_start)
+(splace_in_Signal food complete_Prepare main course_0 -> Signal food complete)
+(pre_Deliver to customer -> Deliver to customer)
+(Review order -> intplace_Review order)
+(Prepare starter -> pre_prepare drinks)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1

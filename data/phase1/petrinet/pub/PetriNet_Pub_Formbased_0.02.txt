@@ -1,0 +1,62 @@
+places:
+pre_Review drinks, pre_Review order, intplace_Review drinks, sink0, pre_prepare drinks, splace_in_Signal food complete_Prepare main course_0, pre_Bring food, pre_Deliver to customer, intplace_Review order, pre_start, pre_Prepare main course, pre_Bring drinks, splace_in_Signal food complete_Review drinks_0, pre_EVENT 8 END, source0
+
+transitions:
+(Take order, Take order)
+(prepare drinks, prepare drinks)
+(tau, hid_8)
+(Review order, Review order)
+(start, start)
+(EVENT 8 END, EVENT 8 END)
+(tau, hid_2)
+(Bring drinks, Bring drinks)
+(Bring food, Bring food)
+(Deliver to customer, Deliver to customer)
+(Prepare starter, Prepare starter)
+(Signal food complete, Signal food complete)
+(Prepare main course, Prepare main course)
+(Review drinks, Review drinks)
+(tau, hid_9)
+(tau, hid_11)
+
+arcs:
+(source0 -> Take order)
+(pre_start -> start)
+(pre_Deliver to customer -> Deliver to customer)
+(start -> pre_Review order)
+(Review order -> intplace_Review order)
+(Bring drinks -> pre_Review drinks)
+(intplace_Review drinks -> hid_9)
+(hid_9 -> splace_in_Signal food complete_Review drinks_0)
+(pre_Review order -> Review order)
+(pre_Bring food -> Bring food)
+(Deliver to customer -> pre_EVENT 8 END)
+(hid_11 -> pre_prepare drinks)
+(splace_in_Signal food complete_Prepare main course_0 -> Signal food complete)
+(Bring food -> pre_Deliver to customer)
+(splace_in_Signal food complete_Review drinks_0 -> Signal food complete)
+(pre_Review drinks -> Review drinks)
+(pre_Prepare main course -> Prepare main course)
+(Review drinks -> intplace_Review drinks)
+(intplace_Review drinks -> hid_11)
+(source0 -> hid_2)
+(hid_2 -> pre_start)
+(pre_prepare drinks -> prepare drinks)
+(Prepare starter -> pre_prepare drinks)
+(prepare drinks -> pre_Bring drinks)
+(pre_Bring drinks -> Bring drinks)
+(Signal food complete -> pre_Bring food)
+(hid_8 -> pre_prepare drinks)
+(Take order -> pre_start)
+(intplace_Review order -> Prepare starter)
+(hid_9 -> pre_Prepare main course)
+(Prepare main course -> splace_in_Signal food complete_Prepare main course_0)
+(EVENT 8 END -> sink0)
+(pre_EVENT 8 END -> EVENT 8 END)
+(intplace_Review order -> hid_8)
+
+initial marking:
+source0:1
+
+final marking:
+sink0:1
