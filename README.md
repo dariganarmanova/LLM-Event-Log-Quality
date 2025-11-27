@@ -6,10 +6,6 @@ Automated detection and repair of imperfection patterns in process mining event 
 
 Event logs are fundamental data structures in process mining, but they often contain imperfections that compromise analysis quality. This project investigates whether modern Large Language Models can automatically identify and repair common data quality issues in event logs without requiring domain-specific training or fine-tuning.
 
-### End-to-End Pipeline
-**Phase 1**: Standardize → Abstract → Predict Candidate Patterns  
-**Phase 2**: Detect → Validate → Repair
-
 ### The Challenge
 
 Process mining practitioners frequently encounter six types of event log imperfections that distort process discovery, conformance checking, and performance analysis. Manual identification and repair of these issues is time-consuming, error-prone, and requires deep domain expertise. This project explores an automated approach using LLM-generated Python code to detect and fix these quality problems.
@@ -36,7 +32,6 @@ We employ a **prompt-based code generation methodology** where LLMs receive deta
 The key innovation is that LLMs generate complete data repair pipelines on-demand, adapting to different event log structures without pre-training on process mining data.
 
 ---
-
 
 ## Imperfection Patterns and Repair Algorithms
 
@@ -333,100 +328,7 @@ After (Cleaned):
 
 ---
 
-
-## Event Log Preparation Pipeline (Phase 1)
-
-### 1. Event Log Standardization & Abstraction
-
-The generated program performs:
-
-(a). **Column Role Interface** 
-
-The script infers standard column roles using alias matching:
-   - Case identifier
-   - Activity label
-   - Timestamp
-   - (Optional) resource
-     
-This ensures that downstream detection code can operate without dataset-specific assumptions.
-
-(b). **Data Cleaning & Ordering**
-   - Converts timestamps to a unified datetime format
-   - Sorts events within each case
-   - Removes corrupted or missing timestamp entries
-
-(c). **Textual Abstraction Generation** 
-
-Full event logs cannot fit into an LLM prompt due to context window, the script produces a compact structural summary of the log:
-   - **Directly-Follows Graph (DFG)** with frequency and timing statistics generated via PM4Py
-   - **Variant list** containing the most frequent process variants
-   - **Petri Net** abstraction generated via PM4Py (WF-Net serialized into text)
-     
-These abstractions condense thousands of events into a short, LLM-processable representation while preserving important behavioral information.
-
-### 2. Candidate Pattern Identification
-
-Using the textual abstraction from Phase 1-1, the generated program prompts an LLM to infer **which imperfection patterns are most likely present** in the log.
-
-(a). **Structure-Based Reasoning**
-
-The LLM is instructed to: 
-
-   - Analyze the provided abstraction (DFG / Variant / Petri Net)
-   - Infer up to **three** plausible imperfection patterns
-   - Assign a **confidence score ∈ [0, 1]**, report only ≥ 0.7
-   - Provide a short, evidence-based justification
-   - Return all results in a strict JSON schema
-
-(b). **Robust Execution Layer**
-
-The script includes context truncation, retry logic, and JSON sanitization to ensure consistent results across different LLM APIs (GPT, Llama, DeepSeek, Grok).
-
-(c). **Prioritized Pattern List**
-
-For each abstraction file, the program outputs a ranked list of plausible patterns, guiding Phase 2 toward the most relevant error types.
-
-
-**Example Output Format:**
-
-```
-[
-  {
-    "file": "DFG_Credit_Synonymous_0.02.txt",
-    "result": [
-      {
-        "pattern": "Synonymous Label",
-        "confidence": 0.9,
-        "justification": "The presence of multiple 'Perform checks' variants (Dep1, Dep2, Dep3) suggests synonymous labels for similar activities."
-      },
-      {
-        "pattern": "Scattered Case",
-        "confidence": 0.7,
-        "justification": "The DFG shows direct jumps like 'Check for completeness' to 'New online application received'."
-      },
-    ],
-   "indicators": [
-   "Perform checks - Dep1, Dep2, Dep3",
-   "Check for completeness -> New online application received",
-   ],
-  },
-]
-
-```
-
-### 3. Using Phase 1 Output in Phase 2
-
-The ranked pattern list serves as a **target-selection mechanism** for Phase 2.
-It allows the framework to:
-
-   - Focus detection efforts on high-confidence patterns
-   - Avoid unnecessary computation on unlikely cases
-   - Improve overall detection accuracy and efficiency
-
-Phase 2 then generates specialized detection code only for the prioritized patterns.
-
-
-## Evaluation Methodology (Phase 2)
+## Evaluation Methodology
 
 ### Two-Phase Approach
 
