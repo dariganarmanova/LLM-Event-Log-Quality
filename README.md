@@ -384,48 +384,6 @@ The LLM is instructed to:
 
 The script includes context truncation, retry logic, and JSON sanitization to ensure consistent results across different LLM APIs (GPT, Llama, DeepSeek, Grok).
 
-(c). **Prioritized Pattern List**
-
-For each abstraction file, the program outputs a ranked list of plausible patterns, guiding Phase 2 toward the most relevant error types.
-
-**Example Output Format:**
-
-```
-[
-  {
-    "file": "DFG_Credit_Synonymous_0.02.txt",
-    "result": [
-      {
-        "pattern": "Synonymous Label",
-        "confidence": 0.9,
-        "justification": "The presence of multiple 'Perform checks' variants (Dep1, Dep2, Dep3) suggests synonymous labels for similar activities."
-      },
-      {
-        "pattern": "Scattered Case",
-        "confidence": 0.7,
-        "justification": "The DFG shows direct jumps like 'Check for completeness' to 'New online application received'."
-      },
-    ],
-   "indicators": [
-   "Perform checks - Dep1, Dep2, Dep3",
-   "Check for completeness -> New online application received",
-   ],
-  },
-]
-
-```
-
-### 3. Using Phase 1 Output in Phase 2
-
-The ranked pattern list serves as a **target-selection mechanism** for Phase 2.
-It allows the framework to:
-
-- Focus detection efforts on high-confidence patterns
-- Avoid unnecessary computation on unlikely cases
-- Improve overall detection accuracy and efficiency
-
-Phase 2 then generates specialized detection code only for the prioritized patterns.
-
 ## Evaluation Methodology (Phase 2)
 
 ### Two-Phase Approach
